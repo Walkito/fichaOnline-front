@@ -1,0 +1,12 @@
+<a routerLink="/home">Voltar</a>
+<label for="user">Usuário</label>
+<input id="user" class="input-user" type="text" placeholder="Usuário" [(ngModel)]="account.user">
+<label for="name">Nome</label>
+<input id="name" class="input-name" type="text" placeholder="Nome" [(ngModel)]="account.name">
+<label for="lastName">Sobrenome</label>
+<input id="lastName" class="input-lastName" type="text" placeholder="Sobrenome" [(ngModel)]="account.lastName">
+<label for="email">E-mail</label>
+<input id="email" class="input-email" type="email" placeholder="E-mail" [(ngModel)]="account.email">
+<label for="password">Senha</label>
+<input id="password" class="input-password" type="password" placeholder="Senha" [(ngModel)]="account.password">
+<button (click)="editAccount()">Salvar</button>

@@ -26,9 +26,10 @@ async doLogin(){
 
   this.service.doLogin(loginBody).subscribe({
     next: (account) =>{
-      this.router.navigate(['/home'])
+      this.utils.setTemporaryAccountInfos(account);
+      this.router.navigate(['/home']);
     },
-    error: (error) => this.utils.showError(error),
+    error: (error) => this.utils.showError(error)
   })
 
 

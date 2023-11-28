@@ -1,1 +1,12 @@
-<p>create-account works!</p>
+<h1>Cadastrar Uma Nova Conta</h1>
+<label for="name">Nome</label>
+<input id="name" class="input-name" type="text" placeholder="Nome" [(ngModel)]="name">
+<label for="lastName">Sobrenome</label>
+<input id="lastName" class="input-lastname" type="text" placeholder="Sobrenome" [(ngModel)]="lastName">
+<label for="user">Usuário</label>
+<input id="user" class="input-user" type="text" placeholder="Usuário" [(ngModel)]="user">
+<label for="email">E-mail</label>
+<input id="email" class="input-email" type="text" placeholder="E-mail" [(ngModel)]="email">
+<label for="password">Senha</label>
+<input id="password" class="input-password" type="password" placeholder="Senha" [(ngModel)]="password">
+<button (click)="createAccount()">Cadastrar</button>
