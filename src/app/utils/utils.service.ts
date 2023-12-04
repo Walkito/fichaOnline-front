@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { IErro } from '../interfaces/IErro';
-import { HttpParams } from '@angular/common/http';
-import { IAccount } from '../interfaces/IAccount';
+import { HttpHeaders, HttpParams } from '@angular/common/http';
+import { CAccount} from '../class/CAccount';
+import { CErro } from '../class/CErro';
 
 @Injectable({
   providedIn: 'root'
@@ -10,35 +10,23 @@ export class UtilsService {
 
   constructor() { }
 
-  private accountInfo: IAccount = {
-    id : "",
-    user : "",
-    name : "",
-    lastName : "",
-    email : "",
-    password : "",
-    type : ""
-  };
+  private accountInfo: CAccount = new CAccount;
 
-  showError(error:IErro){
+  showError(error: CErro){
     alert(`Mensagem: ` + error.error.mensagem);
   }
 
-  createParams(params: { [key: string]: string}): HttpParams{
-    let paramsArr = new HttpParams();
-    for (const key in params){
-      if (params.hasOwnProperty(key)) {
-        paramsArr = paramsArr.set(key, params[key]);
-      }
-    }
-    return paramsArr;
-  }
-
-  setTemporaryAccountInfos(account: IAccount){
+  setTemporaryAccountInfos(account: CAccount){
     this.accountInfo = account;
   }
 
   getTemporaryAccountInfos(){
     return this.accountInfo;
+  }
+
+  getHeaders(): HttpHeaders {
+    return new HttpHeaders()
+      .append("Content-Type", "application/json")
+
   }
 }

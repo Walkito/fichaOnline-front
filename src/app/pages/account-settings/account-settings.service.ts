@@ -2,20 +2,21 @@ import { HttpClient, HttpHeaders} from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { API_PATH } from 'src/app/environments/environment';
-import { IAccount } from 'src/app/interfaces/IAccount';
+import { CAccount} from 'src/app/class/CAccount';
 import { UtilsService } from 'src/app/utils/utils.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AccountSettingsService {
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private utils: UtilsService) { }
 
   private basePath = API_PATH;
 
 
-  editAccount(updateAccount: IAccount):Observable<IAccount>{
-    return this.http.put<IAccount>(`${this.basePath}account/edit`, updateAccount);
+  editAccount(updateAccount: CAccount):Observable<CAccount>{
+    const headers = this.utils.getHeaders();
+    return this.http.put<CAccount>(`${this.basePath}account/edit`, updateAccount, {headers});
   }
 
 }

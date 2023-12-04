@@ -1,6 +1,6 @@
 <label for="user">Usuário</label>
-<input id="user" class="input-user" type="text" placeholder="Usuário ou E-mail" [(ngModel)]="user" (keydown.enter)="doLogin()">
+<input id="user" class="input-user" type="text" placeholder="Usuário ou E-mail" [(ngModel)]="login.user" (keydown.enter)="doLogin()">
 <label for="password">Senha</label>
-<input id="password" class="input-password" type="password" placeholder="Senha" [(ngModel)]="password" (keydown.enter)="doLogin()">
+<input id="password" class="input-password" type="password" placeholder="Senha" [(ngModel)]="login.password" (keydown.enter)="doLogin()">
 <button (click)="doLogin()">Login</button>
 <a routerLink="/create-account">Não possui conta? Crie uma agora.</a>

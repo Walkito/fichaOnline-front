@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { LoginService } from './login.service';
 import { UtilsService } from 'src/app/utils/utils.service';
 import { Router } from '@angular/router';
+import { CLogin } from 'src/app/class/CLogin';
 
 @Component({
   selector: 'app-login',
@@ -10,21 +11,15 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent {
 
-constructor(private service:LoginService, 
+login : CLogin = new CLogin();
+
+constructor(private service:LoginService,
             private utils:UtilsService,
             private router:Router){}
 
-user: string = "";
-password: string = "";
 
 async doLogin(){
-  const loginBody = {
-    user: this.user,
-    email: this.user,
-    password: this.password,
-  }
-
-  this.service.doLogin(loginBody).subscribe({
+  this.service.doLogin(this.login).subscribe({
     next: (account) =>{
       this.utils.setTemporaryAccountInfos(account);
       this.router.navigate(['/home']);
