@@ -14,8 +14,6 @@ export class CreateAccountService {
   constructor(private http:HttpClient,
               private utils:UtilsService) { }
 
-
-
   createLogin(account:CAccount){
     const headers = this.utils.getHeaders();
 

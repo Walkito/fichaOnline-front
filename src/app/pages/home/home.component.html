@@ -1,11 +1,11 @@
-<h1> Bem-Vindo(a) {{account?.user}}</h1>
+<h1> Bem-Vindo(a) {{account.user}}</h1>
 
-<h1>{{account?.user}}</h1>
-<h2>{{account?.name + " " + account?.lastName}}</h2>
+<h1>{{account.user}}</h1>
+<h2>{{account.name + " " + account.lastName}}</h2>
 
 <ul>
     <li> Minhas Fichas </li>
-    <li> Minhas Runs </li>
+    <li routerLink="/home/my-runs"> Minhas Runs </li>
     <li routerLink="/home/account-settings"> Configurações </li>
     <li routerLink=""> Sair </li>
 </ul>

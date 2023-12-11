@@ -27,6 +27,5 @@ export class UtilsService {
   getHeaders(): HttpHeaders {
     return new HttpHeaders()
       .append("Content-Type", "application/json")
-
   }
 }

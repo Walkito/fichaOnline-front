@@ -24,7 +24,7 @@ export class AccountSettingsComponent {
   async editAccount(){
     this.service.editAccount(this.account).subscribe({
       next: () => {
-        alert("Conta atualizada com sucesso!")
+        alert("Conta atualizada com sucesso!");
         this.router.navigate(["home"])
       },
       error: (error => this.utils.showError(error))

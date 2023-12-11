@@ -13,7 +13,6 @@ export class AccountSettingsService {
 
   private basePath = API_PATH;
 
-
   editAccount(updateAccount: CAccount):Observable<CAccount>{
     const headers = this.utils.getHeaders();
     return this.http.put<CAccount>(`${this.basePath}account/edit`, updateAccount, {headers});

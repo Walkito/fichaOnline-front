@@ -19,6 +19,7 @@ export class CreateAccountComponent {
 
 
   createAccount(): void {
+    console.log(this.account);
     this.service.createLogin(this.account).subscribe({
       next: () => {
         alert("Cadastro Realizado com Sucesso!");

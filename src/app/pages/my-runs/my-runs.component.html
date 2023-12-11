@@ -1,0 +1,6 @@
+<p routerLink="/home">Voltar</p>
+<ul *ngFor="let run of account.runs">
+  <li> Id da Run: {{run.id}}</li>
+  <li> Nome da Campanha: {{run.campaign}}</li>
+  <li> Sistema: {{run.system.name}}</li>
+</ul>

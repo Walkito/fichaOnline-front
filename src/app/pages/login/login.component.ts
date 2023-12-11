@@ -26,7 +26,5 @@ async doLogin(){
     },
     error: (error) => this.utils.showError(error)
   })
-
-
 }
 }

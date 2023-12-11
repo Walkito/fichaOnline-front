@@ -1,9 +1,13 @@
+import { CRun } from "./CRun";
+
 export class CAccount{
-    id: string = "";
+    id: number = 0;
     name: string = "";
     lastName: string = "";
     user: string = "";
     email: string = "";
     password: string = "";
-    type: string = "";
+    type: string = "J";
+    situation: string = "A";
+    runs: CRun[] = [];
 }

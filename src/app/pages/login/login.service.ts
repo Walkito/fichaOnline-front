@@ -15,10 +15,11 @@ export class LoginService {
               private utils: UtilsService) { }
 
   doLogin(login:CLogin):Observable<CAccount>{
-    return this.http.get<CAccount>(`${this.basePath}account/login?
-    user=${login.user}
-    &email=${login.email}
-    &password=${login.password}
-    `);
+    const params = new HttpParams()
+      .set('user', login.user)
+      .set('email', login.email)
+      .set('password', login.password);
+
+    return this.http.get<CAccount>(`${this.basePath}account/login`,{ params});
   }
 }
