@@ -10,6 +10,7 @@ import { CreateAccountComponent } from './pages/create-account/create-account.co
 import { HomeComponent } from './pages/home/home.component';
 import { AccountSettingsComponent } from './pages/account-settings/account-settings.component';
 import { MyRunsComponent } from './pages/my-runs/my-runs.component';
+import { MySheetsComponent } from './pages/my-sheets/my-sheets.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { MyRunsComponent } from './pages/my-runs/my-runs.component';
     CreateAccountComponent,
     HomeComponent,
     AccountSettingsComponent,
-    MyRunsComponent
+    MyRunsComponent,
+    MySheetsComponent
   ],
   imports: [
     BrowserModule,

@@ -3,6 +3,7 @@ import { UtilsService } from 'src/app/utils/utils.service';
 import { ActivatedRoute } from '@angular/router';
 import { CAccount } from 'src/app/class/CAccount';
 import { MyRunsService } from './my-runs.service';
+import { CRun } from 'src/app/class/CRun';
 
 @Component({
   selector: 'app-my-runs',
@@ -15,8 +16,19 @@ export class MyRunsComponent {
     private route:ActivatedRoute){}
 
     account : CAccount = new CAccount();
+    runs : CRun[] = [];
 
     ngOnInit(){
       this.account = this.utils.getTemporaryAccountInfos();
+      this.getLinkedRuns();
+    }
+
+    getLinkedRuns(){
+      this.service.getLinkedRuns(this.account.id).subscribe({
+        next : (run) => {
+          this.runs = run;
+        },
+        error : (error) => this.utils.showError(error)
+      })
     }
 }

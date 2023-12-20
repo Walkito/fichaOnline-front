@@ -19,6 +19,7 @@ export class AccountSettingsComponent {
 
   ngOnInit(){
     this.account = this.utils.getTemporaryAccountInfos();
+    this.account.password = "";
   }
 
   async editAccount(){

@@ -9,5 +9,4 @@ export class CAccount{
     password: string = "";
     type: string = "J";
     situation: string = "A";
-    runs: CRun[] = [];
 }

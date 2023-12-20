@@ -12,13 +12,12 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class HomeComponent {
   constructor(private service:LoginService,
               private utils:UtilsService,
-              private route:ActivatedRoute){}
+              ){}
 
   account: CAccount = new CAccount;
 
   ngOnInit(){
     this.account = this.utils.getTemporaryAccountInfos();
   }
-
 
 }
