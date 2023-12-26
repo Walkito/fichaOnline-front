@@ -9,21 +9,63 @@
     </div>
     <div class="primary-personal-infos-div">
         <div class="row-one">
-            <input type="text" class="class-input" placeholder="Classe e Nível">
-            <h4 class="class-title"> Classe & Nível </h4>
-            <input type="text" class="antecedent-input" placeholder="Antecedente">
-            <h4 class="antecedent-title"> Antecedente </h4>
-            <h3 class="player-name-text"> {{sheetDnD.personalInfo.playerName}} </h3>
-            <h4 class="player-name-title"> Nome do Jogador</h4>
+            <input type="text" class="class-input personal-infos-inputs" placeholder="Classe e Nível">
+            <h4 class="class-title personal-infos-titles"> Classe & Nível </h4>
+            <input type="text" class="antecedent-input personal-infos-inputs" placeholder="Antecedente">
+            <h4 class="antecedent-title personal-infos-titles"> Antecedente </h4>
+            <h3 class="player-name-text"> Leonardo </h3>
+            <h4 class="player-name-title personal-infos-titles"> Nome do Jogador</h4>
+            <div class="separate-row1"> </div>
         </div>
         <div class="row-two">
-            <input type="text" class="race-input" placeholder="Raça">
-            <h4 class="race-title"> Raça </h4>
-            <input type="text" class="trend-input" placeholder="Tendência">
-            <h4 class="trend-title"> Tendência </h4>
-            <input type="number" min="0" class="experience-input" placeholder="Pontos de Experiência">
-            <h4 class="experience-title"> Pontos de Experiência </h4> 
-        </div>
+          <input type="text" class="race-input personal-infos-inputs" placeholder="Raça">
+          <h4 class="race-title personal-infos-titles"> Raça </h4>
+          <input type="text" class="trend-input personal-infos-inputs" placeholder="Tendência">
+          <h4 class="trend-title personal-infos-titles"> Tendência </h4>
+          <input type="number" min="0" class="experience-input personal-infos-inputs" placeholder="Pontos de Experiência">
+          <h4 class="experience-title personal-infos-titles"> Pontos de Experiência </h4>
+          <div class="separate-row2"> </div>
+      </div>
     </div>
-    <button> Teste </button>
+    <button class="button-clear-sheet"> Limpar Ficha </button>
+    <div class="attributes-div">
+      <div class="white-border">
+        <div class="strength-div attribute-div">
+          <h1 class="strength-mod"> +2 </h1>
+        </div>
+        <div class="strength-value-div">
+          <input type="number" min="0" placeholder="0" class="strength-value value-input">
+        </div>
+        <div class="dexterity-div attribute-div">
+          <h1 class="dexterity-mod"> +2 </h1>
+        </div>
+        <div class="dexterity-value-div">
+          <input type="number" min="0" placeholder="0"  class="dexterity-value value-input">
+        </div>
+        <div class="constitution-div attribute-div">
+          <h1 class="constitution-mod"> +2 </h1>
+        </div>
+        <div class="constitution-value-div">
+          <input type="number" min="0" placeholder="0" class="constitution-value value-input">
+        </div>
+        <div class="intelligence-div attribute-div">
+          <h1 class="intelligence-mod"> +2 </h1>
+        </div>
+        <div class="intelligence-value-div">
+          <input type="number" min="0" placeholder="0"  class="intelligence-value value-input">
+        </div>
+        <div class="wisdom-div attribute-div">
+        <h1 class="wisdom-mod"> +2 </h1>
+        </div>
+        <div class="wisdom-value-div">
+          <input type="number" min="0" placeholder="0"  class="wisdom-value value-input">
+        </div>
+        <div class="charisma-div attribute-div">
+          <h1 class="charisma-mod"> +2 </h1>
+        </div>
+        <div class="charisma-value-div">
+          <input type="number" min="0" placeholder="0"  class="charisma-value value-input">
+        </div>
+      </div>
+    </div>
 </div>

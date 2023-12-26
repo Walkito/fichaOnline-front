@@ -2,17 +2,19 @@
     .sheet-body{
         background-color: white;
         margin: 1.5em;
-        height: 100%;
+        height: 100em;
         font-family: 'Averia Sans Libre', sans-serif;
         color: black;
         font-size: 20px;
-        
+        border-radius: 15px;
+
         .buttons button{
             display: block;
             font-size: 20px;
             width: 100px;
             height: 45px;
             border-radius: 5px;
+            background-color: white;
         }
         .buttons button:hover{
             color: white;
@@ -22,16 +24,16 @@
         .buttons{
             padding-top: 3%;
             margin-left: 5%;
-            
+
             .button-save{
                 border: 2px solid rgb(137, 231, 137);
                 color: rgb(137, 231, 137);
             }
             .button-save:hover{
                 background-color: rgb(137, 231, 137);
-                
+
             }
-            
+
             .button-cancel{
                 margin-top: 2%;
                 border: 2px solid rgb(250, 143, 143);
@@ -41,31 +43,181 @@
                 background-color: rgb(250, 143, 143);
             }
         }
-        
+
         .character-name-div{
             position: absolute;
-            left: 18%;    
+            left: 18%;
             top: 14%;
+            .character-name-input{
+                width: 135%;
+                height: 2.5em;
+                font-size: 24px;
+                border: 3px solid black;
+                border-radius: 5px;
+            }
+            .character-name-title{
+                margin-top: 1%;
+                margin-left: 32%;
+                width: 100%;
+            }
         }
-        .character-name-input{
-            width: 135%;
-            height: 2.5em;
-            font-size: 24px;
-            border: 3px solid black;
-        }
-        .character-name-title{
-            margin-top: 1%;
-            margin-left: 32%;
-            width: 100%;
-        }
-        
+
         .primary-personal-infos-div{
             position: absolute;
             top: 8%;
             left: 46%;
             width: 47%;
-            height: 30%;
+            height: auto;
+            padding-right: 15px;
+            padding-bottom: 3px;
             border: 3px solid black;
+            border-radius: 5px;
+
+            .personal-infos-titles{
+              margin-top: 8%;
+              text-align: center;
+              line-height: 0%;
+            }
+
+            .personal-infos-inputs{
+              border: 1px solid white;
+              font-size: 18px;
+            }
+
+            .row-one{
+              display: grid;
+              grid-template-columns: repeat(3, 1fr);
+              grid-template-rows: 30px 0 30px;
+              column-gap: 3%;
+              margin-top: 2%;
+              margin-left: 2%;
+
+              .class-input{
+                grid-column: 1;
+                grid-row: 1;
+              }
+              .class-title{
+                grid-column: 1;
+                grid-row: 3;
+              }
+              .antecedent-input{
+                grid-column: 2;
+                grid-row: 1;
+              }
+              .antecedent-title{
+                grid-column: 2;
+                grid-row: 3;
+              }
+              .player-name-text{
+                margin-top: 2%;
+                text-align: center;
+                grid-column: 3;
+                grid-row: 1;
+                font-size: 18px;
+              }
+
+              .separate-row1{
+                margin: 0;
+                grid-row: 2;
+                grid-column: 1 / 4;
+                border: 1px solid black;
+                height: 0;
+              }
+
+            }
+            .row-two{
+              display: grid;
+              grid-template-columns: repeat(3, 1fr);
+              grid-template-rows: 30px 0 30px;
+              column-gap: 3%;
+              margin-top: 2%;
+              margin-left: 2%;
+
+              .race-input{
+                grid-column: 1;
+                grid-row: 1;
+              }
+              .race-title{
+                grid-column: 1;
+                grid-row: 3;
+              }
+              .trend-input{
+                grid-column: 2;
+                grid-row: 1;
+              }
+              .trend-title{
+                grid-column: 2;
+                grid-row: 3;
+              }
+              .separate-row2{
+                margin: 0;
+                grid-row: 2;
+                grid-column: 1 / 4;
+                border: 1px solid black;
+                height: 0;
+              }
+            }
+        }
+        .primary-personal-infos-div input:focus{
+          border-color: white;
+          outline: none;
+        }
+
+        .button-clear-sheet{
+          position: absolute;
+          left: 83.5%;
+          top: 33%;
+          font-size: 20px;
+          border: 2px solid #134074;
+          border-radius: 5px;
+          background-color: white;
+          color: #134074;
+          width: 150px;
+          height: 45px;
+        }
+
+        .button-clear-sheet:hover{
+          background-color: #134074;
+          color: white;
+          cursor: pointer;
+          transition: 0.25s;
+        }
+
+        .attributes-div{
+          background-color: rgb(209, 205, 205);
+          display: inline-block;
+          margin-left: 5%;
+          margin-top: 2%;
+          width: 15%;
+          border-radius: 20px;
+
+          .attribute-div{
+            background-color: white;
+            margin: 10% auto -12% auto;
+            border: 2px solid black;
+            border-radius: 20px;
+            text-align: center;
+            font-size: 18px;
+            width: 50%;
+          }
+
+          .value-input{
+            background-color: white;
+            border: 2px solid black;
+            text-align: center;
+            border-radius: 100%;
+            width: 20%;
+            height: 2em;
+            line-height: 2em;
+            font-size: 18px;
+            margin-left: 36%;
+          }
+
+          .white-border{
+            border: 2px solid white;
+            border-radius: 20px;
+            margin: 4%;
+          }
         }
     }
 
