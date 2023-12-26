@@ -1,0 +1,76 @@
+@media screen and (min-width: 1300px){
+    .sheet-body{
+        background-color: white;
+        margin: 1.5em;
+        height: 100%;
+        font-family: 'Averia Sans Libre', sans-serif;
+        color: black;
+        font-size: 20px;
+        
+        .buttons button{
+            display: block;
+            font-size: 20px;
+            width: 100px;
+            height: 45px;
+            border-radius: 5px;
+        }
+        .buttons button:hover{
+            color: white;
+            transition-duration: 0.25s;
+            cursor: pointer;
+        }
+        .buttons{
+            padding-top: 3%;
+            margin-left: 5%;
+            
+            .button-save{
+                border: 2px solid rgb(137, 231, 137);
+                color: rgb(137, 231, 137);
+            }
+            .button-save:hover{
+                background-color: rgb(137, 231, 137);
+                
+            }
+            
+            .button-cancel{
+                margin-top: 2%;
+                border: 2px solid rgb(250, 143, 143);
+                color: rgb(250, 143, 143);
+            }
+            .button-cancel:hover{
+                background-color: rgb(250, 143, 143);
+            }
+        }
+        
+        .character-name-div{
+            position: absolute;
+            left: 18%;    
+            top: 14%;
+        }
+        .character-name-input{
+            width: 135%;
+            height: 2.5em;
+            font-size: 24px;
+            border: 3px solid black;
+        }
+        .character-name-title{
+            margin-top: 1%;
+            margin-left: 32%;
+            width: 100%;
+        }
+        
+        .primary-personal-infos-div{
+            position: absolute;
+            top: 8%;
+            left: 46%;
+            width: 47%;
+            height: 30%;
+            border: 3px solid black;
+        }
+    }
+
+    .sheet-body input{
+        font-family: 'Averia Sans Libre', sans-serif;
+        text-align: center;
+    }
+}
