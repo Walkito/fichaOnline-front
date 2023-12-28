@@ -6,7 +6,7 @@ import { HomeComponent } from './pages/home/home.component';
 import { AccountSettingsComponent } from './pages/account-settings/account-settings.component';
 import { MyRunsComponent } from './pages/my-runs/my-runs.component';
 import { MySheetsComponent } from './pages/my-sheets/my-sheets.component';
-import { SheetComponent } from './pages/sheet/sheet.component';
+import { DndSheetComponent } from './pages/sheet/dndSheet.component';
 
 const routes: Routes = [
   {path: "", component: LoginComponent},
@@ -15,7 +15,7 @@ const routes: Routes = [
   {path: "home/account-settings", component: AccountSettingsComponent},
   {path: "home/my-runs", component: MyRunsComponent},
   {path: "home/my-sheets", component: MySheetsComponent},
-  {path: "home/my-sheets/sheet", component: SheetComponent}
+  {path: "home/my-sheets/dnd-sheet", component: DndSheetComponent}
 ];
 
 @NgModule({

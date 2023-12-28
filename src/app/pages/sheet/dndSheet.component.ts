@@ -1,15 +1,15 @@
 import { Component } from '@angular/core';
-import { SheetService } from './sheet.service';
+import { SheetService } from './dndSheet.service';
 import { UtilsService } from 'src/app/utils/utils.service';
 import { Router } from '@angular/router';
 import { CSheetDnD } from 'src/app/class/sheets/CSheetDnD';
 
 @Component({
   selector: 'app-sheet',
-  templateUrl: './sheet.component.html',
-  styleUrls: ['./sheet.component.scss']
+  templateUrl: './dndSheet.component.html',
+  styleUrls: ['./dndSheet.component.scss']
 })
-export class SheetComponent {
+export class DndSheetComponent {
   constructor(private service: SheetService, private utils: UtilsService, private router:Router){}
 
   sheetDnD : CSheetDnD = new CSheetDnD();

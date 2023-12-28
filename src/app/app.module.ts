@@ -11,7 +11,7 @@ import { HomeComponent } from './pages/home/home.component';
 import { AccountSettingsComponent } from './pages/account-settings/account-settings.component';
 import { MyRunsComponent } from './pages/my-runs/my-runs.component';
 import { MySheetsComponent } from './pages/my-sheets/my-sheets.component';
-import { SheetComponent } from './pages/sheet/sheet.component';
+import { DndSheetComponent } from './pages/sheet/dndSheet.component';
 
 
 @NgModule({
@@ -23,7 +23,7 @@ import { SheetComponent } from './pages/sheet/sheet.component';
     AccountSettingsComponent,
     MyRunsComponent,
     MySheetsComponent,
-    SheetComponent,
+    DndSheetComponent,
   ],
   imports: [
     BrowserModule,
