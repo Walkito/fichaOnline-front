@@ -1,431 +1,724 @@
 <div class="sheet-body">
-  <div class="buttons">
-    <button class="button-save"> Salvar </button>
-    <button class="button-cancel" (click)="cancelSheet()"> Cancelar </button>
-  </div>
-  <div class="character-name-div">
-    <input class="character-name-input" type="text" placeholder="Nome de Personagem">
-    <h4 class="character-name-title"> Nome de Personagem </h4>
-  </div>
-  <div class="primary-personal-infos-div">
-    <div class="row-one">
-      <input type="text" class="class-input personal-infos-inputs" placeholder="Classe e Nível">
-      <h4 class="class-title personal-infos-titles"> Classe & Nível </h4>
-      <input type="text" class="antecedent-input personal-infos-inputs" placeholder="Antecedente">
-      <h4 class="antecedent-title personal-infos-titles"> Antecedente </h4>
-      <h3 class="player-name-text"> Leonardo </h3>
-      <h4 class="player-name-title personal-infos-titles"> Nome do Jogador</h4>
-      <div class="separate-row1"> </div>
-    </div>
-    <div class="row-two">
-      <input type="text" class="race-input personal-infos-inputs" placeholder="Raça">
-      <h4 class="race-title personal-infos-titles"> Raça </h4>
-      <input type="text" class="trend-input personal-infos-inputs" placeholder="Tendência">
-      <h4 class="trend-title personal-infos-titles"> Tendência </h4>
-      <input type="number" min="0" class="experience-input personal-infos-inputs" placeholder="Pontos de Experiência">
-      <h4 class="experience-title personal-infos-titles"> Pontos de Experiência </h4>
-      <div class="separate-row2"> </div>
-    </div>
-  </div>
-  <button class="button-clear-sheet"> Limpar Ficha </button>
-  <div class="attributes-div">
-    <div class="white-border">
-      <div class="strength-div attribute-div">
-        <h4 class="attribute-name"> Força </h4>
-        <h1 class="strength-mod"> +2 </h1>
-      </div>
-      <div class="strength-value-div">
-        <input type="number" min="0" placeholder="0" class="strength-value value-input">
-      </div>
-      <div class="dexterity-div attribute-div">
-        <h4 class="attribute-name"> Destreza </h4>
-        <h1 class="dexterity-mod"> +2 </h1>
-      </div>
-      <div class="dexterity-value-div">
-        <input type="number" min="0" placeholder="0" class="dexterity-value value-input">
-      </div>
-      <div class="constitution-div attribute-div">
-        <h4 class="attribute-name"> Constituição </h4>
-        <h1 class="constitution-mod"> +2 </h1>
-      </div>
-      <div class="constitution-value-div">
-        <input type="number" min="0" placeholder="0" class="constitution-value value-input">
-      </div>
-      <div class="intelligence-div attribute-div">
-        <h4 class="attribute-name"> Inteligência </h4>
-        <h1 class="intelligence-mod"> +2 </h1>
-      </div>
-      <div class="intelligence-value-div">
-        <input type="number" min="0" placeholder="0" class="intelligence-value value-input">
-      </div>
-      <div class="wisdom-div attribute-div">
-        <h4 class="attribute-name"> Sabedoria </h4>
-        <h1 class="wisdom-mod"> +2 </h1>
-      </div>
-      <div class="wisdom-value-div">
-        <input type="number" min="0" placeholder="0" class="wisdom-value value-input">
-      </div>
-      <div class="charisma-div attribute-div">
-        <h4 class="attribute-name"> Carisma </h4>
-        <h1 class="charisma-mod"> +2 </h1>
-      </div>
-      <div class="charisma-value-div">
-        <input type="number" min="0" placeholder="0" class="charisma-value value-input">
+  <div class="sheet-body-row1">
+    <div class="row1-column1">
+      <div class="buttons">
+        <button class="button-save"> Salvar </button>
+        <button class="button-cancel" (click)="cancelSheet()"> Cancelar </button>
       </div>
     </div>
-  </div>
-  <div class="inspiration-div">
-    <input type="number" class="inspiration-input" placeholder="0">
-    <h4 class="inspiration-title"> Inspiração </h4>
-  </div>
-  <div class="proeficiency-bonus-div">
-    <input type="number" class="proeficiency-bonus-input" placeholder="2">
-    <h4 class="proeficiency-bonus-title"> Bônus de Proeficiência </h4>
-  </div>
-  <div class="saving-throws-div">
-    <div class="saving-throws-proeficiency-div">
-      <input type="checkbox" class="strength-proeficiency proeficiency-checkbox">
-      <input type="checkbox" class="dexterity-proeficiency proeficiency-checkbox">
-      <input type="checkbox" class="constitution-proeficiency proeficiency-checkbox">
-      <input type="checkbox" class="intelligence-proeficiency proeficiency-checkbox">
-      <input type="checkbox" class="wisdom-proeficiency proeficiency-checkbox">
-      <input type="checkbox" class="charisma-proeficiency proeficiency-checkbox">
-    </div>
-    <div class="saving-throws-inputs-div">
-      <h4 class="strength-value"> +12 </h4>
-      <h4 class="dexterity-value"> +2 </h4>
-      <h4 class="constitution-value"> +2 </h4>
-      <h4 class="intelligence-value"> +2 </h4>
-      <h4 class="wisdom-value"> +2 </h4>
-      <h4 class="charisma-value"> +2 </h4>
-    </div>
-    <div class="saving-throws-titles-div">
-      <h4 class="strength-title"> Força </h4>
-      <h4 class="dexterity-title"> Destreza </h4>
-      <h4 class="constitution-title"> Constituição </h4>
-      <h4 class="intelligence-title"> Inteligência </h4>
-      <h4 class="wisdom-title"> Sabedoria </h4>
-      <h4 class="charisma-title"> Carisma </h4>
-    </div>
-    <h4 class="saving-throws-tests"> Testes de Resistência</h4>
-  </div>
-  <div class="skills-div">
-    <div class="skills-row">
-      <div class="skills-column1">
-        <input type="checkbox" class="acrobatics-proeficiency skills-proeficiency">
-      </div>
-      <div class="skills-column2">
-        <h4 class="acrobatics-value"> +2 </h4>
-      </div>
-      <div class="skills-column3">
-        <h4 class="acrobatics-name">Acrobacia</h4>
-      </div>
-      <div class="skills-column4">
-        <h6 class="acrobatics-attribute"> (Des) </h6>
+    <div class="row1-column2">
+      <div class="character-name-div">
+        <input class="character-name-input" type="text" placeholder="Nome de Personagem">
+        <h4 class="character-name-title"> Nome de Personagem </h4>
       </div>
     </div>
-    <div class="skills-row">
-      <div class="skills-column1">
-        <input type="checkbox" class="arcana-proeficiency skills-proeficiency">
-      </div>
-      <div class="skills-column2">
-        <h4 class="arcana-value"> +2 </h4>
-      </div>
-      <div class="skills-column3">
-        <h4 class="arcana-name">Arcana</h4>
-      </div>
-      <div class="skills-column4">
-        <h6 class="arcana-attribute"> (Int) </h6>
-      </div>
-    </div>
-    <div class="skills-row">
-      <div class="skills-column1">
-        <input type="checkbox" class="athletics-proeficiency skills-proeficiency">
-      </div>
-      <div class="skills-column2">
-        <h4 class="athletics-value"> +2 </h4>
-      </div>
-      <div class="skills-column3">
-        <h4 class="athletics-name">Atletismo</h4>
-      </div>
-      <div class="skills-column4">
-        <h6 class="athletics-attribute"> (For) </h6>
-      </div>
-    </div>
-    <div class="skills-row">
-      <div class="skills-column1">
-        <input type="checkbox" class="performance-proeficiency skills-proeficiency">
-      </div>
-      <div class="skills-column2">
-        <h4 class="performance-value"> +2 </h4>
-      </div>
-      <div class="skills-column3">
-        <h4 class="performance-name">Atuação</h4>
-      </div>
-      <div class="skills-column4">
-        <h6 class="performance-attribute"> (Car)</h6>
-      </div>
-    </div>
-    <div class="skills-row">
-      <div class="skills-column1">
-        <input type="checkbox" class="deception-proeficiency skills-proeficiency">
-      </div>
-      <div class="skills-column2">
-        <h4 class="deception-value"> +2 </h4>
-      </div>
-      <div class="skills-column3">
-        <h4 class="deception-name">Blefar</h4>
-      </div>
-      <div class="skills-column4">
-        <h6 class="deception-attribute"> (Car)</h6>
-      </div>
-    </div>
-    <div class="skills-row">
-      <div class="skills-column1">
-        <input type="checkbox" class="stealth-proeficiency skills-proeficiency">
-      </div>
-      <div class="skills-column2">
-        <h4 class="stealth-value"> +2 </h4>
-      </div>
-      <div class="skills-column3">
-        <h4 class="stealth-name">Furtividade</h4>
-      </div>
-      <div class="skills-column4">
-        <h6 class="stealth-attribute"> (Des)</h6>
-      </div>
-    </div>
-    <div class="skills-row">
-      <div class="skills-column1">
-        <input type="checkbox" class="history-proeficiency skills-proeficiency">
-      </div>
-      <div class="skills-column2">
-        <h4 class="history-value"> +2 </h4>
-      </div>
-      <div class="skills-column3">
-        <h4 class="history-name">História</h4>
-      </div>
-      <div class="skills-column4">
-        <h6 class="history-attribute"> (Int)</h6>
-      </div>
-    </div>
-    <div class="skills-row">
-      <div class="skills-column1">
-        <input type="checkbox" class="intimidation-proeficiency skills-proeficiency">
-      </div>
-      <div class="skills-column2">
-        <h4 class="intimidation-value"> +2 </h4>
-      </div>
-      <div class="skills-column3">
-        <h4 class="intimidation-name">Intimidação</h4>
-      </div>
-      <div class="skills-column4">
-        <h6 class="intimidation-attribute"> (Car)</h6>
-      </div>
-    </div>
-    <div class="skills-row">
-      <div class="skills-column1">
-        <input type="checkbox" class="insight-proeficiency skills-proeficiency">
-      </div>
-      <div class="skills-column2">
-        <h4 class="insight-value"> +2 </h4>
-      </div>
-      <div class="skills-column3">
-        <h4 class="insight-name">Intuição</h4>
-      </div>
-      <div class="skills-column4">
-        <h6 class="insight-attribute"> (Sab)</h6>
-      </div>
-    </div>
-    <div class="skills-row">
-      <div class="skills-column1">
-        <input type="checkbox" class="investigation-proeficiency skills-proeficiency">
-      </div>
-      <div class="skills-column2">
-        <h4 class="investigation-value"> +2 </h4>
-      </div>
-      <div class="skills-column3">
-        <h4 class="investigation-name">Investigação</h4>
-      </div>
-      <div class="skills-column4">
-        <h6 class="investigation-attribute"> (Int)</h6>
-      </div>
-    </div>
-    <div class="skills-row">
-      <div class="skills-column1">
-        <input type="checkbox" class="animal-handling-proeficiency skills-proeficiency">
-      </div>
-      <div class="skills-column2">
-        <h4 class="animal-handling-value"> +2 </h4>
-      </div>
-      <div class="skills-column3">
-        <h4 class="animal-handling-name">Lidar com Animais</h4>
-      </div>
-      <div class="skills-column4">
-        <h6 class="animal-handling-attribute"> (Sab)</h6>
-      </div>
-    </div>
-    <div class="skills-row">
-      <div class="skills-column1">
-        <input type="checkbox" class="medicine-proeficiency skills-proeficiency">
-      </div>
-      <div class="skills-column2">
-        <h4 class="medicine-value"> +2 </h4>
-      </div>
-      <div class="skills-column3">
-        <h4 class="medicine-name">Medicina</h4>
-      </div>
-      <div class="skills-column4">
-        <h6 class="medicine-attribute"> (Sab)</h6>
-      </div>
-    </div>
-    <div class="skills-row">
-      <div class="skills-column1">
-        <input type="checkbox" class="nature-proeficiency skills-proeficiency">
-      </div>
-      <div class="skills-column2">
-        <h4 class="nature-value"> +2 </h4>
-      </div>
-      <div class="skills-column3">
-        <h4 class="nature-name">Natureza</h4>
-      </div>
-      <div class="skills-column4">
-        <h6 class="nature-attribute"> (Int)</h6>
-      </div>
-    </div>
-    <div class="skills-row">
-      <div class="skills-column1">
-        <input type="checkbox" class="perception-proeficiency skills-proeficiency">
-      </div>
-      <div class="skills-column2">
-        <h4 class="perception-value"> +2 </h4>
-      </div>
-      <div class="skills-column3">
-        <h4 class="perception-name">Percepção</h4>
-      </div>
-      <div class="skills-column4">
-        <h6 class="perception-attribute"> (Sab)</h6>
-      </div>
-    </div>
-    <div class="skills-row">
-      <div class="skills-column1">
-        <input type="checkbox" class="persuasion-proeficiency skills-proeficiency">
-      </div>
-      <div class="skills-column2">
-        <h4 class="persuasion-value"> +2 </h4>
-      </div>
-      <div class="skills-column3">
-        <h4 class="persuasion-name">Persuasão</h4>
-      </div>
-      <div class="skills-column4">
-        <h6 class="persuasion-attribute"> (Car)</h6>
-      </div>
-    </div>
-    <div class="skills-row">
-      <div class="skills-column1">
-        <input type="checkbox" class="sleightOf-proeficiency skills-proeficiency">
-      </div>
-      <div class="skills-column2">
-        <h4 class="sleightOf-value"> +2 </h4>
-      </div>
-      <div class="skills-column3">
-        <h4 class="sleightOf-name">Prestidigitação</h4>
-      </div>
-      <div class="skills-column4">
-        <h6 class="sleightOf-attribute"> (Des)</h6>
-      </div>
-    </div>
-    <div class="skills-row">
-      <div class="skills-column1">
-        <input type="checkbox" class="religion-proeficiency skills-proeficiency">
-      </div>
-      <div class="skills-column2">
-        <h4 class="religion-value"> +2 </h4>
-      </div>
-      <div class="skills-column3">
-        <h4 class="religion-name">Religião</h4>
-      </div>
-      <div class="skills-column4">
-        <h6 class="religion-attribute"> (Int)</h6>
-      </div>
-    </div>
-    <div class="skills-row">
-      <div class="skills-column1">
-        <input type="checkbox" class="survival-proeficiency skills-proeficiency">
-      </div>
-      <div class="skills-column2">
-        <h4 class="survival-value"> +2 </h4>
-      </div>
-      <div class="skills-column3">
-        <h4 class="survival-name">Sobrevivência</h4>
-      </div>
-      <div class="skills-column4">
-        <h6 class="survival-attribute"> (Sab)</h6>
-      </div>
-    </div>
-    <div class="skills-row">
-      <div class="skills-columns">
-        <h4 class="skills-title"> Perícias </h4>
-      </div>
-    </div>
-  </div>
-  <div class="health-infos-div">
-    <div class="out-border">
-      <div class="health-infos-row1">
-        <div class="health-infos-column">
-          <div class="armor-class-div background-white1">
-            <input type="number" class="armor-class-input" placeholder="10">
-            <h4 class="armor-class-title"> Classe Armd</h4>
+    <div class="row1-column3">
+      <div class="primary-personal-infos-div">
+        <div class="row-one">
+          <div class="row-one-column">
+            <input type="text" class="class-input personal-infos-inputs" placeholder="Classe e Nível">
+          </div>
+          <div class="row-one-column">
+            <input type="text" class="antecedent-input personal-infos-inputs" placeholder="Antecedente">
+          </div>
+          <div class="row-one-column">
+            <h3 class="player-name-text"> Leonardo </h3>
           </div>
         </div>
-        <div class="health-infos-column">
-          <div class="initiative-div background-white1">
-            <input type="number" class="initiative-input" placeholder="0">
-            <h4 class="initiative-title"> Iniciativa</h4>
+        <div class="row-two">
+          <div class="separate-row"> </div>
+        </div>
+        <div class="row-three">
+          <div class="row-three-column">
+            <h4 class="class-title personal-infos-titles"> Classe & Nível </h4>
+          </div>
+          <div class="row-three-column">
+            <h4 class="antecedent-title personal-infos-titles"> Antecedente </h4>
+          </div>
+          <div class="row-three-column">
+            <h4 class="player-name-title personal-infos-titles"> Nome do Jogador</h4>
           </div>
         </div>
-        <div class="health-infos-column">
-          <div class="speed-div background-white1">
-            <input type="text" class="speed-input" placeholder="5m">
-            <h4 class="speed-title"> Desloc.</h4>
+        <div class="row-four">
+          <div class="row-four-column">
+            <input type="text" class="race-input personal-infos-inputs" placeholder="Raça">
+          </div>
+          <div class="row-four-column">
+            <input type="text" class="trend-input personal-infos-inputs" placeholder="Tendência">
+          </div>
+          <div class="row-four-column">
+            <input type="number" min="0" class="experience-input personal-infos-inputs"
+              placeholder="Pontos de Experiência">
+          </div>
+        </div>
+        <div class="row-five">
+          <div class="separate-row"> </div>
+        </div>
+        <div class="row-six">
+          <div class="row-six-column">
+            <h4 class="race-title personal-infos-titles"> Raça </h4>
+          </div>
+          <div class="row-six-column">
+            <h4 class="trend-title personal-infos-titles"> Tendência </h4>
+          </div>
+          <div class="row-six-column">
+            <h4 class="experience-title personal-infos-titles"> Pontos de Experiência </h4>
           </div>
         </div>
       </div>
-      <div class="health-points-div background-white">
-        <div class="health-points-div-row">
-          <h5 class="total-health-points"> PV Totais</h5>
-          <input type="number" class="total-health-points-input" placeholder="30">
+    </div>
+  </div>
+
+  <div class="sheet-body-row2">
+    <button class="button-page-two"> Outras Infos </button>
+    <button class="button-page-three"> Magias</button>
+    <button class="button-clear-sheet"> Limpar Ficha </button>
+  </div>
+
+  <div class="sheet-body-row3">
+    <div class="row3-column1">
+      <div class="attributes-div">
+        <div class="white-border">
+          <div class="strength-div attribute-div">
+            <h4 class="attribute-name"> Força </h4>
+            <h1 class="strength-mod"> +2 </h1>
+          </div>
+          <div class="strength-value-div">
+            <input type="number" min="0" placeholder="0" class="strength-value value-input">
+          </div>
+          <div class="dexterity-div attribute-div">
+            <h4 class="attribute-name"> Destreza </h4>
+            <h1 class="dexterity-mod"> +2 </h1>
+          </div>
+          <div class="dexterity-value-div">
+            <input type="number" min="0" placeholder="0" class="dexterity-value value-input">
+          </div>
+          <div class="constitution-div attribute-div">
+            <h4 class="attribute-name"> Constituição </h4>
+            <h1 class="constitution-mod"> +2 </h1>
+          </div>
+          <div class="constitution-value-div">
+            <input type="number" min="0" placeholder="0" class="constitution-value value-input">
+          </div>
+          <div class="intelligence-div attribute-div">
+            <h4 class="attribute-name"> Inteligência </h4>
+            <h1 class="intelligence-mod"> +2 </h1>
+          </div>
+          <div class="intelligence-value-div">
+            <input type="number" min="0" placeholder="0" class="intelligence-value value-input">
+          </div>
+          <div class="wisdom-div attribute-div">
+            <h4 class="attribute-name"> Sabedoria </h4>
+            <h1 class="wisdom-mod"> +2 </h1>
+          </div>
+          <div class="wisdom-value-div">
+            <input type="number" min="0" placeholder="0" class="wisdom-value value-input">
+          </div>
+          <div class="charisma-div attribute-div">
+            <h4 class="attribute-name"> Carisma </h4>
+            <h1 class="charisma-mod"> +2 </h1>
+          </div>
+          <div class="charisma-value-div">
+            <input type="number" min="0" placeholder="0" class="charisma-value value-input">
+          </div>
         </div>
-        <input type="number" class="actual-health-points-input" placeholder="20">
-        <h4 class="actual-health-points"> Pontos de Vida Atuais</h4>
       </div>
-      <div class="temporary-health-points-div background-white">
-        <input type="number" class="temporary-health-points-input" placeholder="12">
-        <h4 class="temporary-health-points"> Pontos de Vida Temporários</h4>
+    </div>
+    <div class="row3-column2">
+      <div class="inspiration-div">
+        <input type="number" class="inspiration-input" placeholder="0">
+        <h4 class="inspiration-title column2-titles"> Inspiração </h4>
       </div>
-      <div class="health-infos-row2">
-        <div class="hits-dice-div background-white">
-          <div class="hits-dice-row">
-            <h5 class="total-hits-dice"> Total</h5>
-            <input type="text" class="total-hits-dice-input" placeholder="5d8">
+      <div class="proeficiency-bonus-div">
+        <input type="number" class="proeficiency-bonus-input" placeholder="2">
+        <h4 class="proeficiency-bonus-title column2-titles"> Bônus de Proeficiência </h4>
+      </div>
+      <div class="saving-throws-div">
+        <div class="saving-throws-row1">
+          <div class="saving-throws-row1-column1">
+            <div class="saving-throws-proeficiency-div">
+              <input type="checkbox" class="strength-proeficiency proeficiency-checkbox" placeholder="a">
+              <input type="checkbox" class="dexterity-proeficiency proeficiency-checkbox" placeholder="a">
+              <input type="checkbox" class="constitution-proeficiency proeficiency-checkbox" placeholder="a">
+              <input type="checkbox" class="intelligence-proeficiency proeficiency-checkbox" placeholder="a">
+              <input type="checkbox" class="wisdom-proeficiency proeficiency-checkbox" placeholder="a">
+              <input type="checkbox" class="charisma-proeficiency proeficiency-checkbox" placeholder="a">
+            </div>
           </div>
-          <input type="text" class="actual-hits-dice" placeholder="2d8">
-          <h5 class="hits-dice"> Dados de Vida </h5>
+          <div class="saving-throws-row1-column2">
+            <div class="saving-throws-inputs-div">
+              <h4 class="strength-value"> +12 </h4>
+              <h4 class="dexterity-value"> +2 </h4>
+              <h4 class="constitution-value"> +2 </h4>
+              <h4 class="intelligence-value"> +2 </h4>
+              <h4 class="wisdom-value"> +2 </h4>
+              <h4 class="charisma-value"> +2 </h4>
+            </div>
+          </div>
+          <div class="saving-throws-row1-column3">
+            <div class="saving-throws-titles-div">
+              <h4 class="strength-title"> Força </h4>
+              <h4 class="dexterity-title"> Destreza </h4>
+              <h4 class="constitution-title"> Constituição </h4>
+              <h4 class="intelligence-title"> Inteligência </h4>
+              <h4 class="wisdom-title"> Sabedoria </h4>
+              <h4 class="charisma-title"> Carisma </h4>
+            </div>
+          </div>
         </div>
-        <div class="death-tests-div background-white">
-          <div class="death-tests-row1">
-            <h5 class="death-tests-sucess-title"> Sucessos</h5>
-            <input type="checkbox" class="succes-1 circle-checkbox">
-            <input type="checkbox" class="sucess-2 circle-checkbox">
-            <input type="checkbox" class="sucess-3 circle-checkbox">
-          </div>
-          <div class="death-tests-row2">
-            <h5 class="death-tests-failures-title"> Fracassos</h5>
-            <input type="checkbox" class="failures-1 circle-checkbox">
-            <input type="checkbox" class="failures-2 circle-checkbox">
-            <input type="checkbox" class="failures-3 circle-checkbox">
-          </div>
-          <h5 class="death-tests">Testes Contra a Morte</h5>
+        <div class="saving-throws-row2">
+          <h4 class="saving-throws-tests"> Testes de Resistência</h4>
         </div>
+      </div>
+      <div class="skills-div">
+        <div class="skills-principal-column1">
+          <div class="skills-row">
+            <div class="skills-column1">
+              <input type="checkbox" class="acrobatics-proeficiency skills-proeficiency proeficiency-checkbox"
+                placeholder="a">
+            </div>
+            <div class="skills-column2">
+              <h4 class="acrobatics-value"> +2 </h4>
+            </div>
+            <div class="skills-column3">
+              <h4 class="acrobatics-name">Acrobacia</h4>
+            </div>
+            <div class="skills-column4">
+              <h6 class="acrobatics-attribute"> (Des) </h6>
+            </div>
+          </div>
+          <div class="skills-row">
+            <div class="skills-column1">
+              <input type="checkbox" class="arcana-proeficiency skills-proeficiency proeficiency-checkbox"
+                placeholder="a">
+            </div>
+            <div class="skills-column2">
+              <h4 class="arcana-value"> +2 </h4>
+            </div>
+            <div class="skills-column3">
+              <h4 class="arcana-name">Arcana</h4>
+            </div>
+            <div class="skills-column4">
+              <h6 class="arcana-attribute"> (Int) </h6>
+            </div>
+          </div>
+          <div class="skills-row">
+            <div class="skills-column1">
+              <input type="checkbox" class="athletics-proeficiency skills-proeficiency proeficiency-checkbox"
+                placeholder="a">
+            </div>
+            <div class="skills-column2">
+              <h4 class="athletics-value"> +2 </h4>
+            </div>
+            <div class="skills-column3">
+              <h4 class="athletics-name">Atletismo</h4>
+            </div>
+            <div class="skills-column4">
+              <h6 class="athletics-attribute"> (For) </h6>
+            </div>
+          </div>
+          <div class="skills-row">
+            <div class="skills-column1">
+              <input type="checkbox" class="performance-proeficiency skills-proeficiency proeficiency-checkbox"
+                placeholder="a">
+            </div>
+            <div class="skills-column2">
+              <h4 class="performance-value"> +2 </h4>
+            </div>
+            <div class="skills-column3">
+              <h4 class="performance-name">Atuação</h4>
+            </div>
+            <div class="skills-column4">
+              <h6 class="performance-attribute"> (Car)</h6>
+            </div>
+          </div>
+          <div class="skills-row">
+            <div class="skills-column1">
+              <input type="checkbox" class="deception-proeficiency skills-proeficiency proeficiency-checkbox"
+                placeholder="a">
+            </div>
+            <div class="skills-column2">
+              <h4 class="deception-value"> +2 </h4>
+            </div>
+            <div class="skills-column3">
+              <h4 class="deception-name">Blefar</h4>
+            </div>
+            <div class="skills-column4">
+              <h6 class="deception-attribute"> (Car)</h6>
+            </div>
+          </div>
+          <div class="skills-row">
+            <div class="skills-column1">
+              <input type="checkbox" class="stealth-proeficiency skills-proeficiency proeficiency-checkbox"
+                placeholder="a">
+            </div>
+            <div class="skills-column2">
+              <h4 class="stealth-value"> +2 </h4>
+            </div>
+            <div class="skills-column3">
+              <h4 class="stealth-name">Furtividade</h4>
+            </div>
+            <div class="skills-column4">
+              <h6 class="stealth-attribute"> (Des)</h6>
+            </div>
+          </div>
+          <div class="skills-row">
+            <div class="skills-column1">
+              <input type="checkbox" class="history-proeficiency skills-proeficiency proeficiency-checkbox"
+                placeholder="a">
+            </div>
+            <div class="skills-column2">
+              <h4 class="history-value"> +2 </h4>
+            </div>
+            <div class="skills-column3">
+              <h4 class="history-name">História</h4>
+            </div>
+            <div class="skills-column4">
+              <h6 class="history-attribute"> (Int)</h6>
+            </div>
+          </div>
+          <div class="skills-row">
+            <div class="skills-column1">
+              <input type="checkbox" class="intimidation-proeficiency skills-proeficiency proeficiency-checkbox"
+                placeholder="a">
+            </div>
+            <div class="skills-column2">
+              <h4 class="intimidation-value"> +2 </h4>
+            </div>
+            <div class="skills-column3">
+              <h4 class="intimidation-name">Intimidação</h4>
+            </div>
+            <div class="skills-column4">
+              <h6 class="intimidation-attribute"> (Car)</h6>
+            </div>
+          </div>
+          <div class="skills-row">
+            <div class="skills-column1">
+              <input type="checkbox" class="insight-proeficiency skills-proeficiency proeficiency-checkbox"
+                placeholder="a">
+            </div>
+            <div class="skills-column2">
+              <h4 class="insight-value"> +2 </h4>
+            </div>
+            <div class="skills-column3">
+              <h4 class="insight-name">Intuição</h4>
+            </div>
+            <div class="skills-column4">
+              <h6 class="insight-attribute"> (Sab)</h6>
+            </div>
+          </div>
+        </div>
+        <div class="skills-principal-column2">
+          <div class="skills-row">
+            <div class="skills-column1">
+              <input type="checkbox" class="investigation-proeficiency skills-proeficiency proeficiency-checkbox"
+                placeholder="a">
+            </div>
+            <div class="skills-column2">
+              <h4 class="investigation-value"> +2 </h4>
+            </div>
+            <div class="skills-column3">
+              <h4 class="investigation-name">Investigação</h4>
+            </div>
+            <div class="skills-column4">
+              <h6 class="investigation-attribute"> (Int)</h6>
+            </div>
+          </div>
+          <div class="skills-row">
+            <div class="skills-column1">
+              <input type="checkbox" class="animal-handling-proeficiency skills-proeficiency proeficiency-checkbox"
+                placeholder="a">
+            </div>
+            <div class="skills-column2">
+              <h4 class="animal-handling-value"> +2 </h4>
+            </div>
+            <div class="skills-column3">
+              <h4 class="animal-handling-name">Lidar com Animais</h4>
+            </div>
+            <div class="skills-column4">
+              <h6 class="animal-handling-attribute"> (Sab)</h6>
+            </div>
+          </div>
+          <div class="skills-row">
+            <div class="skills-column1">
+              <input type="checkbox" class="medicine-proeficiency skills-proeficiency proeficiency-checkbox"
+                placeholder="a">
+            </div>
+            <div class="skills-column2">
+              <h4 class="medicine-value"> +2 </h4>
+            </div>
+            <div class="skills-column3">
+              <h4 class="medicine-name">Medicina</h4>
+            </div>
+            <div class="skills-column4">
+              <h6 class="medicine-attribute"> (Sab)</h6>
+            </div>
+          </div>
+          <div class="skills-row">
+            <div class="skills-column1">
+              <input type="checkbox" class="nature-proeficiency skills-proeficiency proeficiency-checkbox"
+                placeholder="a">
+            </div>
+            <div class="skills-column2">
+              <h4 class="nature-value"> +2 </h4>
+            </div>
+            <div class="skills-column3">
+              <h4 class="nature-name">Natureza</h4>
+            </div>
+            <div class="skills-column4">
+              <h6 class="nature-attribute"> (Int)</h6>
+            </div>
+          </div>
+          <div class="skills-row">
+            <div class="skills-column1">
+              <input type="checkbox" class="perception-proeficiency skills-proeficiency proeficiency-checkbox"
+                placeholder="a">
+            </div>
+            <div class="skills-column2">
+              <h4 class="perception-value"> +2 </h4>
+            </div>
+            <div class="skills-column3">
+              <h4 class="perception-name">Percepção</h4>
+            </div>
+            <div class="skills-column4">
+              <h6 class="perception-attribute"> (Sab)</h6>
+            </div>
+          </div>
+          <div class="skills-row">
+            <div class="skills-column1">
+              <input type="checkbox" class="persuasion-proeficiency skills-proeficiency proeficiency-checkbox"
+                placeholder="a">
+            </div>
+            <div class="skills-column2">
+              <h4 class="persuasion-value"> +2 </h4>
+            </div>
+            <div class="skills-column3">
+              <h4 class="persuasion-name">Persuasão</h4>
+            </div>
+            <div class="skills-column4">
+              <h6 class="persuasion-attribute"> (Car)</h6>
+            </div>
+          </div>
+          <div class="skills-row-sleightOf">
+            <div class="skills-column1">
+              <input type="checkbox" class="sleightOf-proeficiency skills-proeficiency proeficiency-checkbox"
+                placeholder="a">
+            </div>
+            <div class="skills-column2">
+              <h4 class="sleightOf-value"> +2 </h4>
+            </div>
+            <div class="skills-column3">
+              <h4 class="sleightOf-name">Prestidigitação</h4>
+            </div>
+            <div class="skills-column4">
+              <h6 class="sleightOf-attribute"> (Des)</h6>
+            </div>
+          </div>
+          <div class="skills-row">
+            <div class="skills-column1">
+              <input type="checkbox" class="religion-proeficiency skills-proeficiency proeficiency-checkbox"
+                placeholder="a">
+            </div>
+            <div class="skills-column2">
+              <h4 class="religion-value"> +2 </h4>
+            </div>
+            <div class="skills-column3">
+              <h4 class="religion-name">Religião</h4>
+            </div>
+            <div class="skills-column4">
+              <h6 class="religion-attribute"> (Int)</h6>
+            </div>
+          </div>
+          <div class="skills-row">
+            <div class="skills-column1">
+              <input type="checkbox" class="survival-proeficiency skills-proeficiency proeficiency-checkbox"
+                placeholder="a">
+            </div>
+            <div class="skills-column2">
+              <h4 class="survival-value"> +2 </h4>
+            </div>
+            <div class="skills-column3">
+              <h4 class="survival-name">Sobrevivência</h4>
+            </div>
+            <div class="skills-column4">
+              <h6 class="survival-attribute"> (Sab)</h6>
+            </div>
+          </div>
+        </div>
+        <div class="skills-column-title">
+          <h4 class="skills-title"> Perícias </h4>
+        </div>
+      </div>
+    </div>
+    <div class="row3-column3">
+      <div class="health-infos-div">
+        <div class="health-infos-row1">
+          <div class="health-infos-column">
+            <div class="armor-class-div background-white1">
+              <input type="number" class="armor-class-input" placeholder="10">
+              <h4 class="armor-class-title"> C.A</h4>
+            </div>
+          </div>
+          <div class="health-infos-column">
+            <div class="initiative-div background-white1">
+              <input type="number" class="initiative-input" placeholder="0">
+              <h4 class="initiative-title"> Iniciativa</h4>
+            </div>
+          </div>
+          <div class="health-infos-column">
+            <div class="speed-div background-white1">
+              <input type="text" class="speed-input" placeholder="5m">
+              <h4 class="speed-title"> Desloc.</h4>
+            </div>
+          </div>
+        </div>
+        <div class="health-infos-row2">
+          <div class="health-points-div background-white">
+            <div class="health-points-div-row">
+              <h5 class="total-health-points"> PV Totais</h5>
+              <input type="number" class="total-health-points-input" placeholder="30">
+            </div>
+            <input type="number" class="actual-health-points-input" placeholder="20">
+            <h4 class="actual-health-points"> Pontos de Vida Atuais</h4>
+          </div>
+          <div class="temporary-health-points-div background-white">
+            <input type="number" class="temporary-health-points-input" placeholder="12">
+            <h4 class="temporary-health-points"> Pontos de Vida Temporários</h4>
+          </div>
+        </div>
+        <div class="health-infos-row3">
+          <div class="hits-dice-div background-white">
+            <div class="hits-dice-row">
+              <h5 class="total-hits-dice"> Total</h5>
+              <input type="text" class="total-hits-dice-input" placeholder="5d8">
+            </div>
+            <input type="text" class="actual-hits-dice" placeholder="2d8">
+            <h5 class="hits-dice"> Dados de Vida </h5>
+          </div>
+          <div class="death-tests-div background-white">
+            <div class="death-tests-row1">
+              <h5 class="death-tests-sucess-title"> Sucessos</h5>
+              <input type="checkbox" class="succes-1 circle-checkbox" placeholder="a">
+              <input type="checkbox" class="sucess-2 circle-checkbox" placeholder="a">
+              <input type="checkbox" class="sucess-3 circle-checkbox" placeholder="a">
+            </div>
+            <div class="death-tests-row2">
+              <h5 class="death-tests-failures-title"> Fracassos</h5>
+              <input type="checkbox" class="failures-1 circle-checkbox" placeholder="a">
+              <input type="checkbox" class="failures-2 circle-checkbox" placeholder="a">
+              <input type="checkbox" class="failures-3 circle-checkbox" placeholder="a">
+            </div>
+            <h5 class="death-tests">Testes Contra a Morte</h5>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row3-column4">
+      <div class="personal-infos-div">
+        <div class="white-line">
+          <div class="personal-infos-traits-div default-div">
+            <textarea class="traits-input" placeholder="Traços de Personalidade"></textarea>
+            <h4 class="traits-title">Traços de Personalidade</h4>
+          </div>
+          <div class="personal-infos-ideals default-div">
+            <textarea class="ideals-input" placeholder="Ideais"></textarea>
+            <h4 class="ideals-title">Ideais</h4>
+          </div>
+          <div class="personal-infos-bonds default-div">
+            <textarea class="bonds-input" placeholder="Vínculos"></textarea>
+            <h4 class="bonds-title">Vínculos</h4>
+          </div>
+          <div class="personal-infos-weaknesses default-div">
+            <textarea class="weaknesses-input" placeholder="Fraquezas"></textarea>
+            <h4 class="weaknesses-title">Fraquezas</h4>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sheet-body-row4">
+    <div class="row4-column1">
+      <div class="passive-wisdom-div">
+        <input type="text" class="passive-wisdom-input" placeholder="0">
+        <h4 class="passive-wisdom-title">Sabedoria Passiva (Percepção)</h4>
+      </div>
+      <div class="others-proeficiency-div">
+        <textarea class="others-proeficiency-input" placeholder="Outras Proficiências & Idiomas"></textarea>
+        <h4 class="others-proeficiency-title">Outras Proficiências & Idiomas</h4>
+      </div>
+    </div>
+    <div class="row4-column2">
+      <div class="attacks-spells-div">
+        <div class="row-titles">
+          <div class="name-column">
+            <h5 class="attack-name-title">Nome</h5>
+          </div>
+          <div class="bonus-column">
+            <h5 class="attack-bonus-title">Bônus</h5>
+          </div>
+          <div class="damage-column">
+            <h5 class="attack-damage-title">Dano/Tipo</h5>
+          </div>
+        </div>
+        <div class="row">
+          <div class="column1">
+            <input type="text" class="attack-name-input" placeholder="Nome Ataque">
+            <input type="text" class="attack-name-input" placeholder="Nome Ataque">
+            <input type="text" class="attack-name-input" placeholder="Nome Ataque">
+            <input type="text" class="attack-name-input" placeholder="Nome Ataque">
+            <input type="text" class="attack-name-input" placeholder="Nome Ataque">
+            <input type="text" class="attack-name-input" placeholder="Nome Ataque">
+            <input type="text" class="attack-name-input" placeholder="Nome Ataque">
+            <input type="text" class="attack-name-input" placeholder="Nome Ataque">
+            <input type="text" class="attack-name-input" placeholder="Nome Ataque">
+            <input type="text" class="attack-name-input" placeholder="Nome Ataque">
+          </div>
+          <div class="column2">
+            <input type="text" class="attack-bonus-input" placeholder="+2">
+            <input type="text" class="attack-bonus-input" placeholder="+2">
+            <input type="text" class="attack-bonus-input" placeholder="+2">
+            <input type="text" class="attack-bonus-input" placeholder="+2">
+            <input type="text" class="attack-bonus-input" placeholder="+2">
+            <input type="text" class="attack-bonus-input" placeholder="+2">
+            <input type="text" class="attack-bonus-input" placeholder="+2">
+            <input type="text" class="attack-bonus-input" placeholder="+2">
+            <input type="text" class="attack-bonus-input" placeholder="+2">
+            <input type="text" class="attack-bonus-input" placeholder="+2">
+          </div>
+          <div class="column3">
+            <input type="text" class="attack-damage-input" placeholder="1d8">
+            <input type="text" class="attack-damage-input" placeholder="1d8">
+            <input type="text" class="attack-damage-input" placeholder="1d8">
+            <input type="text" class="attack-damage-input" placeholder="1d8">
+            <input type="text" class="attack-damage-input" placeholder="1d8">
+            <input type="text" class="attack-damage-input" placeholder="1d8">
+            <input type="text" class="attack-damage-input" placeholder="1d8">
+            <input type="text" class="attack-damage-input" placeholder="1d8">
+            <input type="text" class="attack-damage-input" placeholder="1d8">
+            <input type="text" class="attack-damage-input" placeholder="1d8">
+          </div>
+        </div>
+        <div class="attack-row">
+          <h4 class="attack-spell-title">Ataques & Magias</h4>
+        </div>
+      </div>
+      <div class="equipment-div">
+        <textarea class="equipment-input" placeholder="Equipamento"></textarea>
+        <h4 class="equipment-title">Equipamento</h4>
+      </div>
+    </div>
+    <div class="row4-column3">
+      <div class="characteristics-traits-div">
+        <textarea class="characteristics-traits-input" placeholder="Característics e Traços"></textarea>
+        <h4 class="characteristics-traits-title">Características e Traços</h4>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="sheet-body-2">
+  <div class="sheet-body-row1">
+    <div class="row1-column1">
+      <div class="buttons">
+        <button class="button-principal-infos"> Principal Infos </button>
+        <button class="button-spells"> Magias </button>
+      </div>
+    </div>
+    <div class="row1-column2">
+      <div class="character-name-div">
+        <input class="character-name-input" type="text" placeholder="Nome de Personagem">
+        <h4 class="character-name-title"> Nome de Personagem </h4>
+      </div>
+    </div>
+    <div class="row1-column3">
+      <div class="others-personal-infos-div">
+        <div class="row-one">
+          <div class="row-one-column">
+            <input type="text" class="age-input personal-infos-inputs" placeholder="Idade">
+          </div>
+          <div class="row-one-column">
+            <input type="text" class="heigth-input personal-infos-inputs" placeholder="Altura">
+          </div>
+          <div class="row-one-column">
+            <input type="text" class="weigth-input personal-infos-inputs" placeholder="Peso">
+          </div>
+        </div>
+        <div class="row-two">
+          <div class="separate-row"> </div>
+        </div>
+        <div class="row-three">
+          <div class="row-three-column">
+            <h4 class="age-title personal-infos-titles"> Idade </h4>
+          </div>
+          <div class="row-three-column">
+            <h4 class="heigth-title personal-infos-titles"> Altura </h4>
+          </div>
+          <div class="row-three-column">
+            <h4 class="weigth-title personal-infos-titles"> Peso</h4>
+          </div>
+        </div>
+        <div class="row-four">
+          <div class="row-four-column">
+            <input type="text" class="eyes-input personal-infos-inputs" placeholder="Olhos">
+          </div>
+          <div class="row-four-column">
+            <input type="text" class="skin-input personal-infos-inputs" placeholder="Pele">
+          </div>
+          <div class="row-four-column">
+            <input type="text" class="hair-input personal-infos-inputs" placeholder="Cabelo">
+          </div>
+        </div>
+        <div class="row-five">
+          <div class="separate-row"> </div>
+        </div>
+        <div class="row-six">
+          <div class="row-six-column">
+            <h4 class="eyes-title personal-infos-titles"> Olhos </h4>
+          </div>
+          <div class="row-six-column">
+            <h4 class="skin-title personal-infos-titles"> Pele </h4>
+          </div>
+          <div class="row-six-column">
+            <h4 class="hair-title personal-infos-titles"> Cabelo </h4>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="sheet-body-row2">
+    <div class="row2-column1">
+      <div class="character-picture-div">
+
+      </div>
+    </div>
+    <div class="row2-column2">
+      <div class="features-traits-div">
+        <textarea class="features-traits-input" placeholder="Traços Adicionais"></textarea>
+        <h4 class="features-traits-title">Características & Traços Adicionais</h4>
+      </div>
+    </div>
+  </div>
+  <div class="sheet-body-row3">
+    <div class="backstory-div">
+      <textarea class="backstory-input" placeholder="História do Personagem"></textarea>
+      <h4 class="backstory-title">História do Personagem</h4>
+    </div>
+  </div>
+</div>
+
+<div class="sheet-body-3">
+  <div class="sheet-body-row1">
+    <div class="row1-column1">
+      <div class="buttons">
+        <button class="button-principal-infos"> Principal Infos </button>
+        <button class="button-spells"> Outras Infos </button>
+      </div>
+    </div>
+    <div class="row1-column2">
+      <div class="character-name-div">
+        <input class="character-name-input" type="text" placeholder="Nome de Personagem">
+        <h4 class="character-name-title"> Nome de Personagem </h4>
       </div>
     </div>
   </div>
