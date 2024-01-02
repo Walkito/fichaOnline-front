@@ -1,8 +1,8 @@
 <p routerLink="/home">Voltar</p>
 <ul *ngFor="let sheet of playerSheets">
-  <li> Ficha Número {{sheet.id}}</li>
+  <li> Ficha Número {{sheetNumber+1}}</li>
   <li> Personagem: {{sheet.sheetDnD.personalInfo.characterName}}</li>
   <li> Nome da Campanha: {{sheet.run.campaign}}</li>
   <li> Sistema: {{sheet.run.system.name}}</li>
-  <li> <button (click)="openSheetPage()">Abrir</button></li>
+  <li> <button (click)="openSheetPage(sheetNumber)">Abrir</button></li>
 </ul>

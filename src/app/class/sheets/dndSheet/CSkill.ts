@@ -20,6 +20,8 @@ export class CSkill{
     investigationProeficiency: boolean = false;
     medicine: number = 0;
     medicineProeficiency: boolean = false;
+    nature: number = 0;
+    natureProeficiency: boolean = false;
     perception: number = 0;
     perceptionProeficiency: boolean = false;
     performance: number = 0;

@@ -11,6 +11,7 @@ export class UtilsService {
   constructor() { }
 
   private accountInfo: CAccount = new CAccount;
+  private sheetId: number = 0;
 
   showError(error: CErro){
     alert(`Mensagem: ` + error.error.mensagem);
@@ -27,5 +28,13 @@ export class UtilsService {
   getHeaders(): HttpHeaders {
     return new HttpHeaders()
       .append("Content-Type", "application/json")
+  }
+
+  setSheetId(id: number){
+    this.sheetId = id;
+  }
+
+  getSheetId(){
+    return this.sheetId;
   }
 }

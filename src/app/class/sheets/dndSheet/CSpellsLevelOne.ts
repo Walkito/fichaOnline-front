@@ -1,6 +1,6 @@
 export class CSpellsLevelOne{
  id: number = 0;
- level1TotalSlots: number = 0; 
+ level1TotalSlots: number = 0;
  level1SlotsExpended: number = 0;
  level1Slot1: string = "";
  level1Prepared1: boolean = false;
@@ -11,7 +11,7 @@ export class CSpellsLevelOne{
  level1Slot4: string = "";
  level1Prepared4: boolean = false;
  level1Slot5: string = "";
- level1repared5: boolean = false;
+ level1Prepared5: boolean = false;
  level1Slot6: string = "";
  level1Prepared6: boolean = false;
  level1Slot7: string = "";
@@ -25,5 +25,5 @@ export class CSpellsLevelOne{
  level1Slot11: string = "";
  level1Prepared11: boolean = false;
  level1Slot12: string = "";
- level1Prepared12: boolean = false;    
+ level1Prepared12: boolean = false;
 }

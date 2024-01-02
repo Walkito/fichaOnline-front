@@ -15,6 +15,7 @@ export class MySheetsComponent {
 
   }
 
+  sheetNumber : number = 0;
   account : CAccount = new CAccount();
   playerSheets : CPlayerSheet[] = [];
 
@@ -32,7 +33,8 @@ export class MySheetsComponent {
     })
   }
 
-  openSheetPage(){
-    this.router.navigate(['home/my-sheets/sheet']);  
+  openSheetPage(sheetNumber : number){
+    this.utils.setSheetId(this.playerSheets[sheetNumber].sheetDnD.id);
+    this.router.navigate(['home/my-sheets/dnd-sheet']);
   }
 }
