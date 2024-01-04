@@ -12,6 +12,7 @@ export class UtilsService {
 
   private accountInfo: CAccount = new CAccount;
   private sheetId: number = 0;
+  private sheetType: number = 1;
 
   showError(error: CErro){
     alert(`Mensagem: ` + error.error.mensagem);
@@ -36,5 +37,13 @@ export class UtilsService {
 
   getSheetId(){
     return this.sheetId;
+  }
+
+  setSheetType(value: number){
+    this.sheetType = value;
+  }
+
+  getSheetType(){
+    return this.sheetType;
   }
 }

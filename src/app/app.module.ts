@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 
@@ -12,6 +12,11 @@ import { AccountSettingsComponent } from './pages/account-settings/account-setti
 import { MyRunsComponent } from './pages/my-runs/my-runs.component';
 import { MySheetsComponent } from './pages/my-sheets/my-sheets.component';
 import { DndSheetComponent } from './pages/sheet/dndSheet.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ModalComponent } from './pages/sheet/modal/modal.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { ModalCancelComponent } from './pages/sheet/modal-cancel/modal-cancel.component';
+import { ModalCreateComponent } from './pages/sheet/modal-create/modal-create.component';
 
 
 @NgModule({
@@ -24,12 +29,18 @@ import { DndSheetComponent } from './pages/sheet/dndSheet.component';
     MyRunsComponent,
     MySheetsComponent,
     DndSheetComponent,
+    ModalComponent,
+    ModalCancelComponent,
+    ModalCreateComponent,
   ],
   imports: [
     BrowserModule,
     FormsModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule,
+    MatDialogModule,
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

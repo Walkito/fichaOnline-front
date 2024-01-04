@@ -1,6 +1,6 @@
 export class CSpellsLevelSeven{
     id: number = 0;
-    level7TotalSlots: number = 0; 
+    level7TotalSlots: number = 0;
     level7SlotsExpended: number = 0;
     level7Slot1: string = "";
     level7Prepared1: boolean = false;
@@ -11,7 +11,7 @@ export class CSpellsLevelSeven{
     level7Slot4: string = "";
     level7Prepared4: boolean = false;
     level7Slot5: string = "";
-    level7repared5: boolean = false;
+    level7Prepared5: boolean = false;
     level7Slot6: string = "";
     level7Prepared6: boolean = false;
     level7Slot7: string = "";
@@ -19,5 +19,5 @@ export class CSpellsLevelSeven{
     level7Slot8: string = "";
     level7Prepared8: boolean = false;
     level7Slot9: string = "";
-    level7Prepared9: boolean = false;       
+    level7Prepared9: boolean = false;
 }

@@ -19,4 +19,19 @@ export class SheetService {
 
     return this.http.get<CSheetDnD>(`${this.basePath}sheetDnD`, {params});
   }
+
+  editSheet(sheetDnD: CSheetDnD):Observable<CSheetDnD>{
+    const headers = this.utils.getHeaders();
+    return this.http.put<CSheetDnD>(`${this.basePath}sheetDnD/edit`, sheetDnD, {headers});
+  }
+
+  postSheet(sheetDnD: CSheetDnD):Observable<CSheetDnD>{
+    const headers = this.utils.getHeaders();
+    return this.http.post<CSheetDnD>(`${this.basePath}sheetDnD/create`, sheetDnD, {headers});
+  }
+
+  updateAttributesInCreation(sheetDnD: CSheetDnD):Observable<CSheetDnD>{
+    const headers = this.utils.getHeaders();
+    return this.http.post<CSheetDnD>(`${this.basePath}sheetDnD/create/updateAttributes`, sheetDnD, {headers});
+  }
 }

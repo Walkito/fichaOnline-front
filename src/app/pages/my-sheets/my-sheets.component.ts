@@ -1,30 +1,30 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CAccount } from 'src/app/class/CAccount';
 import { MySheetsService } from './my-sheets.service';
 import { UtilsService } from 'src/app/utils/utils.service';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, NavigationExtras, Router } from '@angular/router';
 import { CPlayerSheet } from 'src/app/class/CPlayerSheet';
+import { DndSheetComponent } from '../sheet/dndSheet.component';
 
 @Component({
   selector: 'app-my-sheets',
   templateUrl: './my-sheets.component.html',
   styleUrls: ['./my-sheets.component.scss']
 })
-export class MySheetsComponent {
-  constructor(private service: MySheetsService, private utils: UtilsService, private router: Router){
+export class MySheetsComponent implements OnInit {
+  constructor(private service: MySheetsService, private utils: UtilsService, private router: Router) {
 
   }
 
-  sheetNumber : number = 0;
-  account : CAccount = new CAccount();
-  playerSheets : CPlayerSheet[] = [];
+  account: CAccount = new CAccount();
+  playerSheets: CPlayerSheet[] = [];
 
-  ngOnInit(){
+  ngOnInit() {
     this.account = this.utils.getTemporaryAccountInfos();
     this.getSheets();
   }
 
-  getSheets(){
+  getSheets() {
     this.service.getSheets(this.account.id, 0).subscribe({
       next: (sheet) => {
         this.playerSheets = sheet;
@@ -33,8 +33,15 @@ export class MySheetsComponent {
     })
   }
 
-  openSheetPage(sheetNumber : number){
+  openSheetPage(sheetNumber: number) {
     this.utils.setSheetId(this.playerSheets[sheetNumber].sheetDnD.id);
+    this.utils.setSheetType(2);
+    this.router.navigate(['home/my-sheets/dnd-sheet']);
+  }
+
+  openSheetPage2(sheetNumber: number) {
+    this.utils.setSheetId(this.playerSheets[sheetNumber].sheetDnD.id);
+    this.utils.setSheetType(1);
     this.router.navigate(['home/my-sheets/dnd-sheet']);
   }
 }

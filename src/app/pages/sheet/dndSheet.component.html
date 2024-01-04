@@ -1,1265 +1,1691 @@
-<div class="sheet-body">
-  <div class="sheet-body-row1" id="principal-infos">
-    <div class="row1-column1">
-      <div class="buttons">
-        <button class="button-save"> Salvar </button>
-        <button class="button-cancel" (click)="cancelSheet()"> Cancelar </button>
+<form [formGroup]="sheetForm">
+  <div class="sheet-body">
+    <div class="sheet-body-row1" id="principal-infos">
+      <div class="row1-column1">
+        <div class="buttons">
+          <button class="button-save" (click)="postSheet()"> Salvar </button>
+          <button class="button-cancel" (click)="cancelSheet()"> Voltar </button>
+        </div>
+      </div>
+      <div class="row1-column2">
+        <div class="character-name-div">
+          <input #characterInput class="character-name-input" type="text" placeholder="Nome de Personagem"
+            [(ngModel)]="sheetDnD.personalInfo.characterName" (blur)="editSheet()"
+            (keydown.enter)="lostFocus(characterInput)">
+          <h4 class="character-name-title"> Nome de Personagem </h4>
+        </div>
+      </div>
+      <div class="row1-column3">
+        <div class="primary-personal-infos-div">
+          <div class="row-one">
+            <div class="row-one-column">
+              <input #classInput type="text" class="class-input personal-infos-inputs" placeholder="Classe"
+                [(ngModel)]="sheetDnD.personalInfo._class" (blur)="editSheet()" (keydown.enter)="lostFocus(classInput)">
+              <p class="nv-title"> Nv.</p>
+              <input #levelInput type="text" class="level-input personal-infos-inputs" placeholder="Nível"
+                [(ngModel)]="sheetDnD.personalInfo.level" (blur)="editSheet()" (keydown.enter)="lostFocus(levelInput)">
+            </div>
+            <div class="row-one-column">
+              <input #antecedentInput type="text" class="antecedent-input personal-infos-inputs"
+                placeholder="Antecedente" [(ngModel)]="sheetDnD.personalInfo.antecedent" (blur)="editSheet()"
+                (keydown.enter)="lostFocus(antecedentInput)">
+            </div>
+            <div class="row-one-column">
+              <h3 class="player-name-text"> {{sheetDnD.personalInfo.playerName}} </h3>
+            </div>
+          </div>
+          <div class="row-two">
+            <div class="separate-row"> </div>
+          </div>
+          <div class="row-three">
+            <div class="row-three-column">
+              <h4 class="class-title personal-infos-titles"> Classe & Nível </h4>
+            </div>
+            <div class="row-three-column">
+              <h4 class="antecedent-title personal-infos-titles"> Antecedente </h4>
+            </div>
+            <div class="row-three-column">
+              <h4 class="player-name-title personal-infos-titles"> Nome do Jogador</h4>
+            </div>
+          </div>
+          <div class="row-four">
+            <div class="row-four-column">
+              <input #raceInput type="text" class="race-input personal-infos-inputs" placeholder="Raça"
+                [(ngModel)]="sheetDnD.personalInfo.race" (blur)="editSheet()" (keydown.enter)="lostFocus(raceInput)">
+            </div>
+            <div class="row-four-column">
+              <input #trendInput type="text" class="trend-input personal-infos-inputs" placeholder="Tendência"
+                [(ngModel)]="sheetDnD.personalInfo.trend" (blur)="editSheet()" (keydown.enter)="lostFocus(trendInput)">
+            </div>
+            <div class="row-four-column">
+              <input #experienceInput type="number" min="0" class="experience-input personal-infos-inputs"
+                placeholder="Pontos de Experiência" [(ngModel)]="sheetDnD.personalInfo.experience" (blur)="editSheet()"
+                (keydown.enter)="lostFocus(experienceInput)">
+            </div>
+          </div>
+          <div class="row-five">
+            <div class="separate-row"> </div>
+          </div>
+          <div class="row-six">
+            <div class="row-six-column">
+              <h4 class="race-title personal-infos-titles"> Raça </h4>
+            </div>
+            <div class="row-six-column">
+              <h4 class="trend-title personal-infos-titles"> Tendência </h4>
+            </div>
+            <div class="row-six-column">
+              <h4 class="experience-title personal-infos-titles"> Pontos de Experiência </h4>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-    <div class="row1-column2">
-      <div class="character-name-div">
-        <input class="character-name-input" type="text" placeholder="Nome de Personagem"
-          [(ngModel)]="sheetDnD.personalInfo.characterName">
-        <h4 class="character-name-title"> Nome de Personagem </h4>
+
+    <div class="sheet-body-row2">
+      <button class="button-page-two"> <a href="/home/my-sheets/dnd-sheet#others-infos">Outras Infos</a> </button>
+      <button class="button-page-three"> <a href="/home/my-sheets/dnd-sheet#spells-page">Magias</a></button>
+      <button class="button-clear-sheet" (click)="cleanSheet()"> Limpar Ficha </button>
+    </div>
+
+    <div class="sheet-body-row3">
+      <div class="row3-column1">
+        <div class="attributes-div">
+          <div class="white-border">
+            <div class="strength-div attribute-div">
+              <h4 class="attribute-name"> Força </h4>
+              <h1 #strengthMod class="strength-mod"> {{sheetDnD.attribute.strengthMod}} </h1>
+            </div>
+            <div class="strength-value-div">
+              <input #strengthInput type="number" min="1" placeholder="0" class="strength-value value-input"
+                [(ngModel)]="sheetDnD.attribute.strength" (blur)="editSheet()"
+                (keydown.enter)="lostFocus(strengthInput)">
+            </div>
+            <div class="dexterity-div attribute-div">
+              <h4 class="attribute-name"> Destreza </h4>
+              <h1 #dexterityMod class="dexterity-mod"> {{sheetDnD.attribute.dexterityMod}} </h1>
+            </div>
+            <div class="dexterity-value-div">
+              <input #dexterityInput type="number" min="1" placeholder="0" class="dexterity-value value-input"
+                [(ngModel)]="sheetDnD.attribute.dexterity" (blur)="editSheet()"
+                (keydown.enter)="lostFocus(dexterityInput)">
+            </div>
+            <div class="constitution-div attribute-div">
+              <h4 class="attribute-name"> Constituição </h4>
+              <h1 #constitutionMod class="constitution-mod"> {{sheetDnD.attribute.constitutionMod}} </h1>
+            </div>
+            <div class="constitution-value-div">
+              <input #constitutionInput type="number" min="1" placeholder="0" class="constitution-value value-input"
+                [(ngModel)]="sheetDnD.attribute.constitution" (blur)="editSheet()"
+                (keydown.enter)="lostFocus(constitutionInput)">
+            </div>
+            <div class="intelligence-div attribute-div">
+              <h4 class="attribute-name"> Inteligência </h4>
+              <h1 #intelligenceMod class="intelligence-mod"> {{sheetDnD.attribute.intelligenceMod}} </h1>
+            </div>
+            <div class="intelligence-value-div">
+              <input #intelligenceInput type="number" min="1" placeholder="0" class="intelligence-value value-input"
+                [(ngModel)]="sheetDnD.attribute.intelligence" (blur)="editSheet()"
+                (keydown.enter)="lostFocus(intelligenceInput)">
+            </div>
+            <div class="wisdom-div attribute-div">
+              <h4 class="attribute-name"> Sabedoria </h4>
+              <h1 #wisdomMod class="wisdom-mod"> {{sheetDnD.attribute.wisdomMod}} </h1>
+            </div>
+            <div class="wisdom-value-div">
+              <input #wisdomInput type="number" min="1" placeholder="0" class="wisdom-value value-input"
+                [(ngModel)]="sheetDnD.attribute.wisdom" (blur)="editSheet()" (keydown.enter)="lostFocus(wisdomInput)">
+            </div>
+            <div class="charisma-div attribute-div">
+              <h4 class="attribute-name"> Carisma </h4>
+              <h1 #charismaMod class="charisma-mod"> {{sheetDnD.attribute.charismaMod}} </h1>
+            </div>
+            <div class="charisma-value-div">
+              <input #charismaInput type="number" min="1" placeholder="0" class="charisma-value value-input"
+                [(ngModel)]="sheetDnD.attribute.charisma" (blur)="editSheet()"
+                (keydown.enter)="lostFocus(charismaInput)">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row3-column2">
+        <div class="inspiration-div">
+          <input #inspirationInput type="number" class="inspiration-input" placeholder="0"
+            [(ngModel)]="sheetDnD.inspiration" (blur)="editSheet()" (keydown.enter)="lostFocus(inspirationInput)">
+          <h4 class="inspiration-title column2-titles"> Inspiração </h4>
+        </div>
+        <div class="proeficiency-bonus-div">
+          <input #proeficiencyBonus type="number" class="proeficiency-bonus-input" placeholder="2"
+            [(ngModel)]="sheetDnD.proeficiencyBonus" (blur)="editSheet()"
+            (keydown.enter)="lostFocus(proeficiencyBonus)">
+          <h4 class="proeficiency-bonus-title column2-titles"> Bônus de Proeficiência </h4>
+        </div>
+        <div class="saving-throws-div">
+          <div class="saving-throws-row1">
+            <div class="saving-throws-row1-column1">
+              <div class="saving-throws-proeficiency-div">
+                <input type="checkbox" class="strength-proeficiency proeficiency-checkbox" placeholder="a"
+                  [(ngModel)]="sheetDnD.savingThrow.strengthProeficiency" (change)="editSheet()">
+                <input type="checkbox" class="dexterity-proeficiency proeficiency-checkbox" placeholder="a"
+                  [(ngModel)]="sheetDnD.savingThrow.dexterityProeficiency" (change)="editSheet()">
+                <input type="checkbox" class="constitution-proeficiency proeficiency-checkbox" placeholder="a"
+                  [(ngModel)]="sheetDnD.savingThrow.constitutionProeficiency" (change)="editSheet()">
+                <input type="checkbox" class="intelligence-proeficiency proeficiency-checkbox" placeholder="a"
+                  [(ngModel)]="sheetDnD.savingThrow.intelligenceProeficiency" (change)="editSheet()">
+                <input type="checkbox" class="wisdom-proeficiency proeficiency-checkbox" placeholder="a"
+                  [(ngModel)]="sheetDnD.savingThrow.wisdomProeficiency" (change)="editSheet()">
+                <input type="checkbox" class="charisma-proeficiency proeficiency-checkbox" placeholder="a"
+                  [(ngModel)]="sheetDnD.savingThrow.charismaProeficiency" (change)="editSheet()">
+              </div>
+            </div>
+            <div class="saving-throws-row1-column2">
+              <div class="saving-throws-inputs-div">
+                <h4 class="strength-value"> {{sheetDnD.savingThrow.strength}} </h4>
+                <h4 class="dexterity-value"> {{sheetDnD.savingThrow.dexterity}} </h4>
+                <h4 class="constitution-value"> {{sheetDnD.savingThrow.constitution}} </h4>
+                <h4 class="intelligence-value"> {{sheetDnD.savingThrow.intelligence}} </h4>
+                <h4 class="wisdom-value"> {{sheetDnD.savingThrow.wisdom}} </h4>
+                <h4 class="charisma-value"> {{sheetDnD.savingThrow.charisma}} </h4>
+              </div>
+            </div>
+            <div class="saving-throws-row1-column3">
+              <div class="saving-throws-titles-div">
+                <h4 class="strength-title"> Força </h4>
+                <h4 class="dexterity-title"> Destreza </h4>
+                <h4 class="constitution-title"> Constituição </h4>
+                <h4 class="intelligence-title"> Inteligência </h4>
+                <h4 class="wisdom-title"> Sabedoria </h4>
+                <h4 class="charisma-title"> Carisma </h4>
+              </div>
+            </div>
+          </div>
+          <div class="saving-throws-row2">
+            <h4 class="saving-throws-tests"> Testes de Resistência</h4>
+          </div>
+        </div>
+        <div class="skills-div">
+          <div class="skills-principal-column1">
+            <div class="skills-row">
+              <div class="skills-column1">
+                <input type="checkbox" class="acrobatics-proeficiency skills-proeficiency proeficiency-checkbox"
+                  placeholder="a" [(ngModel)]="sheetDnD.skill.acrobaticsProeficiency" (change)="editSheet()">
+              </div>
+              <div class="skills-column2">
+                <h4 class="acrobatics-value"> {{sheetDnD.skill.acrobatics}} </h4>
+              </div>
+              <div class="skills-column3">
+                <h4 class="acrobatics-name">Acrobacia</h4>
+              </div>
+              <div class="skills-column4">
+                <h6 class="acrobatics-attribute"> (Des) </h6>
+              </div>
+            </div>
+            <div class="skills-row">
+              <div class="skills-column1">
+                <input type="checkbox" class="arcana-proeficiency skills-proeficiency proeficiency-checkbox"
+                  placeholder="a" [(ngModel)]="sheetDnD.skill.arcanaProeficiency" (change)="editSheet()">
+              </div>
+              <div class="skills-column2">
+                <h4 class="arcana-value"> {{sheetDnD.skill.arcana}} </h4>
+              </div>
+              <div class="skills-column3">
+                <h4 class="arcana-name">Arcana</h4>
+              </div>
+              <div class="skills-column4">
+                <h6 class="arcana-attribute"> (Int) </h6>
+              </div>
+            </div>
+            <div class="skills-row">
+              <div class="skills-column1">
+                <input type="checkbox" class="athletics-proeficiency skills-proeficiency proeficiency-checkbox"
+                  placeholder="a" [(ngModel)]="sheetDnD.skill.athleticsProeficiency" (change)="editSheet()">
+              </div>
+              <div class="skills-column2">
+                <h4 class="athletics-value"> {{sheetDnD.skill.athletics}} </h4>
+              </div>
+              <div class="skills-column3">
+                <h4 class="athletics-name">Atletismo</h4>
+              </div>
+              <div class="skills-column4">
+                <h6 class="athletics-attribute"> (For) </h6>
+              </div>
+            </div>
+            <div class="skills-row">
+              <div class="skills-column1">
+                <input type="checkbox" class="performance-proeficiency skills-proeficiency proeficiency-checkbox"
+                  placeholder="a" [(ngModel)]="sheetDnD.skill.performanceProeficiency" (change)="editSheet()">
+              </div>
+              <div class="skills-column2">
+                <h4 class="performance-value"> {{sheetDnD.skill.performance}} </h4>
+              </div>
+              <div class="skills-column3">
+                <h4 class="performance-name">Atuação</h4>
+              </div>
+              <div class="skills-column4">
+                <h6 class="performance-attribute"> (Car)</h6>
+              </div>
+            </div>
+            <div class="skills-row">
+              <div class="skills-column1">
+                <input type="checkbox" class="deception-proeficiency skills-proeficiency proeficiency-checkbox"
+                  placeholder="a" [(ngModel)]="sheetDnD.skill.deceptionProeficiency" (change)="editSheet()">
+              </div>
+              <div class="skills-column2">
+                <h4 class="deception-value"> {{sheetDnD.skill.deception}} </h4>
+              </div>
+              <div class="skills-column3">
+                <h4 class="deception-name">Blefar</h4>
+              </div>
+              <div class="skills-column4">
+                <h6 class="deception-attribute"> (Car)</h6>
+              </div>
+            </div>
+            <div class="skills-row">
+              <div class="skills-column1">
+                <input type="checkbox" class="stealth-proeficiency skills-proeficiency proeficiency-checkbox"
+                  placeholder="a" [(ngModel)]="sheetDnD.skill.stealthProeficiency" (change)="editSheet()">
+              </div>
+              <div class="skills-column2">
+                <h4 class="stealth-value"> {{sheetDnD.skill.stealth}} </h4>
+              </div>
+              <div class="skills-column3">
+                <h4 class="stealth-name">Furtividade</h4>
+              </div>
+              <div class="skills-column4">
+                <h6 class="stealth-attribute"> (Des)</h6>
+              </div>
+            </div>
+            <div class="skills-row">
+              <div class="skills-column1">
+                <input type="checkbox" class="history-proeficiency skills-proeficiency proeficiency-checkbox"
+                  placeholder="a" [(ngModel)]="sheetDnD.skill.historyProeficiency" (change)="editSheet()">
+              </div>
+              <div class="skills-column2">
+                <h4 class="history-value"> {{sheetDnD.skill.history}} </h4>
+              </div>
+              <div class="skills-column3">
+                <h4 class="history-name">História</h4>
+              </div>
+              <div class="skills-column4">
+                <h6 class="history-attribute"> (Int)</h6>
+              </div>
+            </div>
+            <div class="skills-row">
+              <div class="skills-column1">
+                <input type="checkbox" class="intimidation-proeficiency skills-proeficiency proeficiency-checkbox"
+                  placeholder="a" [(ngModel)]="sheetDnD.skill.intimidationProeficiency" (change)="editSheet()">
+              </div>
+              <div class="skills-column2">
+                <h4 class="intimidation-value"> {{sheetDnD.skill.intimidation}} </h4>
+              </div>
+              <div class="skills-column3">
+                <h4 class="intimidation-name">Intimidação</h4>
+              </div>
+              <div class="skills-column4">
+                <h6 class="intimidation-attribute"> (Car)</h6>
+              </div>
+            </div>
+            <div class="skills-row">
+              <div class="skills-column1">
+                <input type="checkbox" class="insight-proeficiency skills-proeficiency proeficiency-checkbox"
+                  placeholder="a" [(ngModel)]="sheetDnD.skill.insightProeficiency" (change)="editSheet()">
+              </div>
+              <div class="skills-column2">
+                <h4 class="insight-value"> {{sheetDnD.skill.insight}} </h4>
+              </div>
+              <div class="skills-column3">
+                <h4 class="insight-name">Intuição</h4>
+              </div>
+              <div class="skills-column4">
+                <h6 class="insight-attribute"> (Sab)</h6>
+              </div>
+            </div>
+          </div>
+          <div class="skills-principal-column2">
+            <div class="skills-row">
+              <div class="skills-column1">
+                <input type="checkbox" class="investigation-proeficiency skills-proeficiency proeficiency-checkbox"
+                  placeholder="a" [(ngModel)]="sheetDnD.skill.investigationProeficiency" (change)="editSheet()">
+              </div>
+              <div class="skills-column2">
+                <h4 class="investigation-value"> {{sheetDnD.skill.investigation}} </h4>
+              </div>
+              <div class="skills-column3">
+                <h4 class="investigation-name">Investigação</h4>
+              </div>
+              <div class="skills-column4">
+                <h6 class="investigation-attribute"> (Int)</h6>
+              </div>
+            </div>
+            <div class="skills-row">
+              <div class="skills-column1">
+                <input type="checkbox" class="animal-handling-proeficiency skills-proeficiency proeficiency-checkbox"
+                  placeholder="a" [(ngModel)]="sheetDnD.skill.animalHandlingProeficiency" (change)="editSheet()">
+              </div>
+              <div class="skills-column2">
+                <h4 class="animal-handling-value"> {{sheetDnD.skill.animalHandling}} </h4>
+              </div>
+              <div class="skills-column3">
+                <h4 class="animal-handling-name">Lidar com Animais</h4>
+              </div>
+              <div class="skills-column4">
+                <h6 class="animal-handling-attribute"> (Sab)</h6>
+              </div>
+            </div>
+            <div class="skills-row">
+              <div class="skills-column1">
+                <input type="checkbox" class="medicine-proeficiency skills-proeficiency proeficiency-checkbox"
+                  placeholder="a" [(ngModel)]="sheetDnD.skill.medicineProeficiency" (change)="editSheet()">
+              </div>
+              <div class="skills-column2">
+                <h4 class="medicine-value"> {{sheetDnD.skill.medicine}} </h4>
+              </div>
+              <div class="skills-column3">
+                <h4 class="medicine-name">Medicina</h4>
+              </div>
+              <div class="skills-column4">
+                <h6 class="medicine-attribute"> (Sab)</h6>
+              </div>
+            </div>
+            <div class="skills-row">
+              <div class="skills-column1">
+                <input type="checkbox" class="nature-proeficiency skills-proeficiency proeficiency-checkbox"
+                  placeholder="a" [(ngModel)]="sheetDnD.skill.natureProeficiency" (change)="editSheet()">
+              </div>
+              <div class="skills-column2">
+                <h4 class="nature-value"> {{sheetDnD.skill.nature}} </h4>
+              </div>
+              <div class="skills-column3">
+                <h4 class="nature-name">Natureza</h4>
+              </div>
+              <div class="skills-column4">
+                <h6 class="nature-attribute"> (Int)</h6>
+              </div>
+            </div>
+            <div class="skills-row">
+              <div class="skills-column1">
+                <input type="checkbox" class="perception-proeficiency skills-proeficiency proeficiency-checkbox"
+                  placeholder="a" [(ngModel)]="sheetDnD.skill.perceptionProeficiency" (change)="editSheet()">
+              </div>
+              <div class="skills-column2">
+                <h4 class="perception-value"> {{sheetDnD.skill.perception}} </h4>
+              </div>
+              <div class="skills-column3">
+                <h4 class="perception-name">Percepção</h4>
+              </div>
+              <div class="skills-column4">
+                <h6 class="perception-attribute"> (Sab)</h6>
+              </div>
+            </div>
+            <div class="skills-row">
+              <div class="skills-column1">
+                <input type="checkbox" class="persuasion-proeficiency skills-proeficiency proeficiency-checkbox"
+                  placeholder="a" [(ngModel)]="sheetDnD.skill.persuasionProeficiency" (change)="editSheet()">
+              </div>
+              <div class="skills-column2">
+                <h4 class="persuasion-value"> {{sheetDnD.skill.persuasion}} </h4>
+              </div>
+              <div class="skills-column3">
+                <h4 class="persuasion-name">Persuasão</h4>
+              </div>
+              <div class="skills-column4">
+                <h6 class="persuasion-attribute"> (Car)</h6>
+              </div>
+            </div>
+            <div class="skills-row-sleightOf">
+              <div class="skills-column1">
+                <input type="checkbox" class="sleightOf-proeficiency skills-proeficiency proeficiency-checkbox"
+                  placeholder="a" [(ngModel)]="sheetDnD.skill.sleightOfProeficiency" (change)="editSheet()">
+              </div>
+              <div class="skills-column2">
+                <h4 class="sleightOf-value"> {{sheetDnD.skill.sleightOf}} </h4>
+              </div>
+              <div class="skills-column3">
+                <h4 class="sleightOf-name">Prestidigitação</h4>
+              </div>
+              <div class="skills-column4">
+                <h6 class="sleightOf-attribute"> (Des)</h6>
+              </div>
+            </div>
+            <div class="skills-row">
+              <div class="skills-column1">
+                <input type="checkbox" class="religion-proeficiency skills-proeficiency proeficiency-checkbox"
+                  placeholder="a" [(ngModel)]="sheetDnD.skill.religionProeficiency" (change)="editSheet()">
+              </div>
+              <div class="skills-column2">
+                <h4 class="religion-value"> {{sheetDnD.skill.religion}} </h4>
+              </div>
+              <div class="skills-column3">
+                <h4 class="religion-name">Religião</h4>
+              </div>
+              <div class="skills-column4">
+                <h6 class="religion-attribute"> (Int)</h6>
+              </div>
+            </div>
+            <div class="skills-row">
+              <div class="skills-column1">
+                <input type="checkbox" class="survival-proeficiency skills-proeficiency proeficiency-checkbox"
+                  placeholder="a" [(ngModel)]="sheetDnD.skill.survivalProeficiency" (change)="editSheet()">
+              </div>
+              <div class="skills-column2">
+                <h4 class="survival-value"> {{sheetDnD.skill.survival}} </h4>
+              </div>
+              <div class="skills-column3">
+                <h4 class="survival-name">Sobrevivência</h4>
+              </div>
+              <div class="skills-column4">
+                <h6 class="survival-attribute"> (Sab)</h6>
+              </div>
+            </div>
+          </div>
+          <div class="skills-column-title">
+            <h4 class="skills-title"> Perícias </h4>
+          </div>
+        </div>
+      </div>
+      <div class="row3-column3">
+        <div class="health-infos-div">
+          <div class="health-infos-row1">
+            <div class="health-infos-column">
+              <div class="armor-class-div background-white1">
+                <input #caInput type="number" class="armor-class-input" placeholder="10"
+                  [(ngModel)]="sheetDnD.armorClass" (blur)="editSheet()" (keydown.enter)="lostFocus(caInput)">
+                <h4 class="armor-class-title"> C.A</h4>
+              </div>
+            </div>
+            <div class="health-infos-column">
+              <div class="initiative-div background-white1">
+                <input #initiativeInput type="number" class="initiative-input" placeholder="0"
+                  [(ngModel)]="sheetDnD.initiative" (blur)="editSheet()" (keydown.enter)="lostFocus(initiativeInput)">
+                <h4 class="initiative-title"> Iniciativa</h4>
+              </div>
+            </div>
+            <div class="health-infos-column">
+              <div class="speed-div background-white1">
+                <input #speedInput type="text" class="speed-input" placeholder="5m" [(ngModel)]="sheetDnD.speed"
+                  (blur)="editSheet()" (keydown.enter)="lostFocus(speedInput)">
+                <h4 class="speed-title"> Desloc.</h4>
+              </div>
+            </div>
+          </div>
+          <div class="health-infos-row2">
+            <div class="health-points-div background-white">
+              <div class="health-points-div-row">
+                <h5 class="total-health-points"> PV Totais</h5>
+                <input #hpMaxInput type="number" class="total-health-points-input" placeholder="30"
+                  [(ngModel)]="sheetDnD.hpMax" (blur)="editSheet()" (keydown.enter)="lostFocus(hpMaxInput)">
+              </div>
+              <input #currentHpInput type="number" class="actual-health-points-input" placeholder="20"
+                [(ngModel)]="sheetDnD.currentHp" (blur)="editSheet()" (keydown.enter)="lostFocus(currentHpInput)">
+              <h4 class="actual-health-points"> Pontos de Vida Atuais</h4>
+            </div>
+            <div class="temporary-health-points-div background-white">
+              <input #temporaryInput type="number" class="temporary-health-points-input" placeholder="12"
+                [(ngModel)]="sheetDnD.temporaryHp" (blur)="editSheet()" (keydown.enter)="lostFocus(temporaryInput)">
+              <h4 class="temporary-health-points"> Pontos de Vida Temporários</h4>
+            </div>
+          </div>
+          <div class="health-infos-row3">
+            <div class="hits-dice-div background-white">
+              <div class="hits-dice-row">
+                <h5 class="total-hits-dice"> Total</h5>
+                <input #totalHitInput type="text" class="total-hits-dice-input" placeholder="5d8"
+                  [(ngModel)]="sheetDnD.totalHitDice" (blur)="editSheet()" (keydown.enter)="lostFocus(totalHitInput)">
+              </div>
+              <input #actualHitDiceInput type="text" class="actual-hits-dice" placeholder="2d8"
+                [(ngModel)]="sheetDnD.hitDice" (blur)="editSheet()" (keydown.enter)="lostFocus(actualHitDiceInput)">
+              <h5 class="hits-dice"> Dados de Vida </h5>
+            </div>
+            <div class="death-tests-div background-white">
+              <div class="death-tests-row1">
+                <h5 class="death-tests-sucess-title"> Sucessos</h5>
+                <input type="checkbox" class="succes-1 circle-checkbox" placeholder="a"
+                  [(ngModel)]="sheetDnD.successOne" (change)="editSheet()">
+                <input type="checkbox" class="sucess-2 circle-checkbox" placeholder="a"
+                  [(ngModel)]="sheetDnD.successTwo" (change)="editSheet()">
+                <input type="checkbox" class="sucess-3 circle-checkbox" placeholder="a"
+                  [(ngModel)]="sheetDnD.successThree" (change)="editSheet()">
+              </div>
+              <div class="death-tests-row2">
+                <h5 class="death-tests-failures-title"> Fracassos</h5>
+                <input type="checkbox" class="failures-1 circle-checkbox" placeholder="a" [(ngModel)]="sheetDnD.failOne"
+                  (change)="editSheet()">
+                <input type="checkbox" class="failures-2 circle-checkbox" placeholder="a" [(ngModel)]="sheetDnD.failTwo"
+                  (change)="editSheet()">
+                <input type="checkbox" class="failures-3 circle-checkbox" placeholder="a"
+                  [(ngModel)]="sheetDnD.failThree" (change)="editSheet()">
+              </div>
+              <h5 class="death-tests">Testes Contra a Morte</h5>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row3-column4">
+        <div class="personal-infos-div">
+          <div class="white-line">
+            <div class="personal-infos-traits-div default-div">
+              <textarea class="traits-input" placeholder="Traços de Personalidade"
+                [(ngModel)]="sheetDnD.personality.personalityTraits" (blur)="editSheet()"></textarea>
+              <h4 class="traits-title">Traços de Personalidade</h4>
+            </div>
+            <div class="personal-infos-ideals default-div">
+              <textarea class="ideals-input" placeholder="Ideais" [(ngModel)]="sheetDnD.personality.ideals"
+                (blur)="editSheet()"></textarea>
+              <h4 class="ideals-title">Ideais</h4>
+            </div>
+            <div class="personal-infos-bonds default-div">
+              <textarea class="bonds-input" placeholder="Vínculos" [(ngModel)]="sheetDnD.personality.bonds"
+                (blur)="editSheet()"></textarea>
+              <h4 class="bonds-title">Vínculos</h4>
+            </div>
+            <div class="personal-infos-weaknesses default-div">
+              <textarea class="weaknesses-input" placeholder="Fraquezas" [(ngModel)]="sheetDnD.personality.flaws"
+                (blur)="editSheet()"></textarea>
+              <h4 class="weaknesses-title">Fraquezas</h4>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-    <div class="row1-column3">
-      <div class="primary-personal-infos-div">
-        <div class="row-one">
-          <div class="row-one-column">
-            <input type="text" class="class-input personal-infos-inputs" placeholder="Classe e Nível"
-              [(ngModel)]="sheetDnD.personalInfo._class">
+
+    <div class="sheet-body-row4">
+      <div class="row4-column1">
+        <div class="passive-wisdom-div">
+          <input #wisdomTemporaryInput type="text" class="passive-wisdom-input" placeholder="0"
+            [(ngModel)]="sheetDnD.passiveWisdom" (blur)="editSheet()" (keydown.enter)="lostFocus(wisdomTemporaryInput)">
+          <h4 class="passive-wisdom-title">Sabedoria Passiva (Percepção)</h4>
+        </div>
+        <div class="others-proeficiency-div">
+          <textarea class="others-proeficiency-input" placeholder="Outras Proficiências & Idiomas"
+            [(ngModel)]="sheetDnD.othersProficiencies" (blur)="editSheet()"></textarea>
+          <h4 class="others-proeficiency-title">Outras Proficiências & Idiomas</h4>
+        </div>
+      </div>
+      <div class="row4-column2">
+        <div class="attacks-spells-div">
+          <div class="row-titles">
+            <div class="name-column">
+              <h5 class="attack-name-title">Nome</h5>
+            </div>
+            <div class="bonus-column">
+              <h5 class="attack-bonus-title">Bônus</h5>
+            </div>
+            <div class="damage-column">
+              <h5 class="attack-damage-title">Dano/Tipo</h5>
+            </div>
           </div>
-          <div class="row-one-column">
-            <input type="text" class="antecedent-input personal-infos-inputs" placeholder="Antecedente"
-              [(ngModel)]="sheetDnD.personalInfo.antecedent">
+          <div class="row">
+            <div class="column1">
+              <input #attack1Input type="text" class="attack-name-input" placeholder="Nome Ataque"
+                [(ngModel)]="sheetDnD.attack.atkName1" (blur)="editSheet()" (keydown.enter)="lostFocus(attack1Input)">
+              <input #attack2Input type="text" class="attack-name-input" placeholder="Nome Ataque"
+                [(ngModel)]="sheetDnD.attack.atkName2" (blur)="editSheet()" (keydown.enter)="lostFocus(attack2Input)">
+              <input #attack3Input type="text" class="attack-name-input" placeholder="Nome Ataque"
+                [(ngModel)]="sheetDnD.attack.atkName3" (blur)="editSheet()" (keydown.enter)="lostFocus(attack3Input)">
+              <input #attack4Input type="text" class="attack-name-input" placeholder="Nome Ataque"
+                [(ngModel)]="sheetDnD.attack.atkName4" (blur)="editSheet()" (keydown.enter)="lostFocus(attack4Input)">
+              <input #attack5Input type="text" class="attack-name-input" placeholder="Nome Ataque"
+                [(ngModel)]="sheetDnD.attack.atkName5" (blur)="editSheet()" (keydown.enter)="lostFocus(attack5Input)">
+              <input #attack6Input type="text" class="attack-name-input" placeholder="Nome Ataque"
+                [(ngModel)]="sheetDnD.attack.atkName6" (blur)="editSheet()" (keydown.enter)="lostFocus(attack6Input)">
+              <input #attack7Input type="text" class="attack-name-input" placeholder="Nome Ataque"
+                [(ngModel)]="sheetDnD.attack.atkName7" (blur)="editSheet()" (keydown.enter)="lostFocus(attack7Input)">
+              <input #attack8Input type="text" class="attack-name-input" placeholder="Nome Ataque"
+                [(ngModel)]="sheetDnD.attack.atkName8" (blur)="editSheet()" (keydown.enter)="lostFocus(attack8Input)">
+              <input #attack9Input type="text" class="attack-name-input" placeholder="Nome Ataque"
+                [(ngModel)]="sheetDnD.attack.atkName9" (blur)="editSheet()" (keydown.enter)="lostFocus(attack9Input)">
+              <input #attack10Input type="text" class="attack-name-input" placeholder="Nome Ataque"
+                [(ngModel)]="sheetDnD.attack.atkName10" (blur)="editSheet()" (keydown.enter)="lostFocus(attack10Input)">
+            </div>
+            <div class="column2">
+              <input #attack1BonusInput type="text" class="attack-bonus-input" placeholder="+2"
+                [(ngModel)]="sheetDnD.attack.atkBonus1" (blur)="editSheet()"
+                (keydown.enter)="lostFocus(attack1BonusInput)">
+              <input #attack2BonusInput type="text" class="attack-bonus-input" placeholder="+2"
+                [(ngModel)]="sheetDnD.attack.atkBonus2" (blur)="editSheet()"
+                (keydown.enter)="lostFocus(attack2BonusInput)">
+              <input #attack3BonusInput type="text" class="attack-bonus-input" placeholder="+2"
+                [(ngModel)]="sheetDnD.attack.atkBonus3" (blur)="editSheet()"
+                (keydown.enter)="lostFocus(attack3BonusInput)">
+              <input #attack4BonusInput type="text" class="attack-bonus-input" placeholder="+2"
+                [(ngModel)]="sheetDnD.attack.atkBonus4" (blur)="editSheet()"
+                (keydown.enter)="lostFocus(attack4BonusInput)">
+              <input #attack5BonusInput type="text" class="attack-bonus-input" placeholder="+2"
+                [(ngModel)]="sheetDnD.attack.atkBonus5" (blur)="editSheet()"
+                (keydown.enter)="lostFocus(attack5BonusInput)">
+              <input #attack6BonusInput type="text" class="attack-bonus-input" placeholder="+2"
+                [(ngModel)]="sheetDnD.attack.atkBonus6" (blur)="editSheet()"
+                (keydown.enter)="lostFocus(attack6BonusInput)">
+              <input #attack7BonusInput type="text" class="attack-bonus-input" placeholder="+2"
+                [(ngModel)]="sheetDnD.attack.atkBonus7" (blur)="editSheet()"
+                (keydown.enter)="lostFocus(attack7BonusInput)">
+              <input #attack8BonusInput type="text" class="attack-bonus-input" placeholder="+2"
+                [(ngModel)]="sheetDnD.attack.atkBonus8" (blur)="editSheet()"
+                (keydown.enter)="lostFocus(attack8BonusInput)">
+              <input #attack9BonusInput type="text" class="attack-bonus-input" placeholder="+2"
+                [(ngModel)]="sheetDnD.attack.atkBonus9" (blur)="editSheet()"
+                (keydown.enter)="lostFocus(attack9BonusInput)">
+              <input #attack10BonusInput type="text" class="attack-bonus-input" placeholder="+2"
+                [(ngModel)]="sheetDnD.attack.atkBonus10" (blur)="editSheet()"
+                (keydown.enter)="lostFocus(attack10BonusInput)">
+            </div>
+            <div class="column3">
+              <input #attack1DamageInput type="text" class="attack-damage-input" placeholder="1d8 / Cortante"
+                [(ngModel)]="sheetDnD.attack.atkDamageType1" (blur)="editSheet()"
+                (keydown.enter)="lostFocus(attack1DamageInput)">
+              <input #attack2DamageInput type="text" class="attack-damage-input" placeholder="1d8 / Cortante"
+                [(ngModel)]="sheetDnD.attack.atkDamageType2" (blur)="editSheet()"
+                (keydown.enter)="lostFocus(attack2DamageInput)">
+              <input #attack3DamageInput type="text" class="attack-damage-input" placeholder="1d8 / Cortante"
+                [(ngModel)]="sheetDnD.attack.atkDamageType3" (blur)="editSheet()"
+                (keydown.enter)="lostFocus(attack3DamageInput)">
+              <input #attack4DamageInput type="text" class="attack-damage-input" placeholder="1d8 / Cortante"
+                [(ngModel)]="sheetDnD.attack.atkDamageType4" (blur)="editSheet()"
+                (keydown.enter)="lostFocus(attack4DamageInput)">
+              <input #attack5DamageInput type="text" class="attack-damage-input" placeholder="1d8 / Cortante"
+                [(ngModel)]="sheetDnD.attack.atkDamageType5" (blur)="editSheet()"
+                (keydown.enter)="lostFocus(attack5DamageInput)">
+              <input #attack6DamageInput type="text" class="attack-damage-input" placeholder="1d8 / Cortante"
+                [(ngModel)]="sheetDnD.attack.atkDamageType6" (blur)="editSheet()"
+                (keydown.enter)="lostFocus(attack6DamageInput)">
+              <input #attack7DamageInput type="text" class="attack-damage-input" placeholder="1d8 / Cortante"
+                [(ngModel)]="sheetDnD.attack.atkDamageType7" (blur)="editSheet()"
+                (keydown.enter)="lostFocus(attack7DamageInput)">
+              <input #attack8DamageInput type="text" class="attack-damage-input" placeholder="1d8 / Cortante"
+                [(ngModel)]="sheetDnD.attack.atkDamageType8" (blur)="editSheet()"
+                (keydown.enter)="lostFocus(attack8DamageInput)">
+              <input #attack9DamageInput type="text" class="attack-damage-input" placeholder="1d8 / Cortante"
+                [(ngModel)]="sheetDnD.attack.atkDamageType9" (blur)="editSheet()"
+                (keydown.enter)="lostFocus(attack9DamageInput)">
+              <input #attack10DamageInput type="text" class="attack-damage-input" placeholder="1d8 / Cortante"
+                [(ngModel)]="sheetDnD.attack.atkDamageType10" (blur)="editSheet()"
+                (keydown.enter)="lostFocus(attack10DamageInput)">
+            </div>
           </div>
-          <div class="row-one-column">
-            <h3 class="player-name-text"> {{sheetDnD.personalInfo.playerName}} </h3>
+          <div class="attack-row">
+            <h4 class="attack-spell-title">Ataques & Magias</h4>
           </div>
         </div>
-        <div class="row-two">
-          <div class="separate-row"> </div>
+        <div class="equipment-div">
+          <textarea class="equipment-input" placeholder="Equipamento" [(ngModel)]="sheetDnD.equipment"
+            (blur)="editSheet()"></textarea>
+          <h4 class="equipment-title">Equipamento</h4>
         </div>
-        <div class="row-three">
-          <div class="row-three-column">
-            <h4 class="class-title personal-infos-titles"> Classe & Nível </h4>
-          </div>
-          <div class="row-three-column">
-            <h4 class="antecedent-title personal-infos-titles"> Antecedente </h4>
-          </div>
-          <div class="row-three-column">
-            <h4 class="player-name-title personal-infos-titles"> Nome do Jogador</h4>
-          </div>
-        </div>
-        <div class="row-four">
-          <div class="row-four-column">
-            <input type="text" class="race-input personal-infos-inputs" placeholder="Raça"
-              [(ngModel)]="sheetDnD.personalInfo.race">
-          </div>
-          <div class="row-four-column">
-            <input type="text" class="trend-input personal-infos-inputs" placeholder="Tendência"
-            [(ngModel)]="sheetDnD.personalInfo.trend">
-          </div>
-          <div class="row-four-column">
-            <input type="number" min="0" class="experience-input personal-infos-inputs"
-              placeholder="Pontos de Experiência" [(ngModel)]="sheetDnD.personalInfo.experience">
-          </div>
-        </div>
-        <div class="row-five">
-          <div class="separate-row"> </div>
-        </div>
-        <div class="row-six">
-          <div class="row-six-column">
-            <h4 class="race-title personal-infos-titles"> Raça </h4>
-          </div>
-          <div class="row-six-column">
-            <h4 class="trend-title personal-infos-titles"> Tendência </h4>
-          </div>
-          <div class="row-six-column">
-            <h4 class="experience-title personal-infos-titles"> Pontos de Experiência </h4>
-          </div>
+      </div>
+      <div class="row4-column3">
+        <div class="characteristics-traits-div">
+          <textarea class="characteristics-traits-input" placeholder="Característics e Traços"
+            [(ngModel)]="sheetDnD.traits" (blur)="editSheet()"></textarea>
+          <h4 class="characteristics-traits-title">Características e Traços</h4>
         </div>
       </div>
     </div>
   </div>
 
-  <div class="sheet-body-row2">
-    <button class="button-page-two"> <a href="/home/my-sheets/dnd-sheet#others-infos">Outras Infos</a> </button>
-    <button class="button-page-three"> <a href="/home/my-sheets/dnd-sheet#spells-page">Magias</a></button>
-    <button class="button-clear-sheet"> Limpar Ficha </button>
-  </div>
+  <div class="sheet-body-2">
+    <div class="sheet-body-row1" id="others-infos">
+      <div class="row1-column1">
+        <div class="buttons">
+          <button class="button-principal-infos"> <a href="/home/my-sheets/dnd-sheet#principal-infos"> Principal Infos
+            </a></button>
+          <button class="button-spells"> <a href="/home/my-sheets/dnd-sheet#spells-page"> Magias </a> </button>
+        </div>
+      </div>
+      <div class="row1-column2">
+        <div class="character-name-div">
+          <input #characterName2Input class="character-name-input" type="text" placeholder="Nome de Personagem"
+            [(ngModel)]="sheetDnD.personalInfo.characterName" (blur)="editSheet()"
+            (keydown.enter)="lostFocus(characterName2Input)">
+          <h4 class="character-name-title"> Nome de Personagem </h4>
+        </div>
+      </div>
+      <div class="row1-column3">
+        <div class="others-personal-infos-div">
+          <div class="row-one">
+            <div class="row-one-column">
+              <input #ageInput type="text" class="age-input personal-infos-inputs" placeholder="Idade"
+                [(ngModel)]="sheetDnD.personalInfo.age" (blur)="editSheet()" (keydown.enter)="lostFocus(ageInput)">
+            </div>
+            <div class="row-one-column">
+              <input #heigthInput type="text" class="heigth-input personal-infos-inputs" placeholder="Altura"
+                [(ngModel)]="sheetDnD.personalInfo.height" (blur)="editSheet()"
+                (keydown.enter)="lostFocus(heigthInput)">
+            </div>
+            <div class="row-one-column">
+              <input #weigthInput type="text" class="weigth-input personal-infos-inputs" placeholder="Peso"
+                [(ngModel)]="sheetDnD.personalInfo.weight" (blur)="editSheet()"
+                (keydown.enter)="lostFocus(weigthInput)">
+            </div>
+          </div>
+          <div class="row-two">
+            <div class="separate-row"> </div>
+          </div>
+          <div class="row-three">
+            <div class="row-three-column">
+              <h4 class="age-title personal-infos-titles"> Idade </h4>
+            </div>
+            <div class="row-three-column">
+              <h4 class="heigth-title personal-infos-titles"> Altura </h4>
+            </div>
+            <div class="row-three-column">
+              <h4 class="weigth-title personal-infos-titles"> Peso</h4>
+            </div>
+          </div>
+          <div class="row-four">
+            <div class="row-four-column">
+              <input #eyesInput type="text" class="eyes-input personal-infos-inputs" placeholder="Olhos"
+                [(ngModel)]="sheetDnD.personalInfo.eyes" (blur)="editSheet()" (keydown.enter)="lostFocus(eyesInput)">
+            </div>
+            <div class="row-four-column">
+              <input #skinInput type="text" class="skin-input personal-infos-inputs" placeholder="Pele"
+                [(ngModel)]="sheetDnD.personalInfo.skin" (blur)="editSheet()" (keydown.enter)="lostFocus(skinInput)">
+            </div>
+            <div class="row-four-column">
+              <input #hairInput type="text" class="hair-input personal-infos-inputs" placeholder="Cabelo"
+                [(ngModel)]="sheetDnD.personalInfo.hair" (blur)="editSheet()" (keydown.enter)="lostFocus(hairInput)">
+            </div>
+          </div>
+          <div class="row-five">
+            <div class="separate-row"> </div>
+          </div>
+          <div class="row-six">
+            <div class="row-six-column">
+              <h4 class="eyes-title personal-infos-titles"> Olhos </h4>
+            </div>
+            <div class="row-six-column">
+              <h4 class="skin-title personal-infos-titles"> Pele </h4>
+            </div>
+            <div class="row-six-column">
+              <h4 class="hair-title personal-infos-titles"> Cabelo </h4>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="sheet-body-row2">
+      <div class="row2-column1">
+        <div class="character-picture-div">
 
-  <div class="sheet-body-row3">
-    <div class="row3-column1">
-      <div class="attributes-div">
-        <div class="white-border">
-          <div class="strength-div attribute-div">
-            <h4 class="attribute-name"> Força </h4>
-            <h1 class="strength-mod"> {{sheetDnD.attribute.strengthMod}} </h1>
-          </div>
-          <div class="strength-value-div">
-            <input type="number" min="0" placeholder="0" class="strength-value value-input"
-            [(ngModel)]="sheetDnD.attribute.strength">
-          </div>
-          <div class="dexterity-div attribute-div">
-            <h4 class="attribute-name"> Destreza </h4>
-            <h1 class="dexterity-mod"> {{sheetDnD.attribute.dexterityMod}} </h1>
-          </div>
-          <div class="dexterity-value-div">
-            <input type="number" min="0" placeholder="0" class="dexterity-value value-input"
-            [(ngModel)]="sheetDnD.attribute.dexterity">
-          </div>
-          <div class="constitution-div attribute-div">
-            <h4 class="attribute-name"> Constituição </h4>
-            <h1 class="constitution-mod"> {{sheetDnD.attribute.constitutionMod}} </h1>
-          </div>
-          <div class="constitution-value-div">
-            <input type="number" min="0" placeholder="0" class="constitution-value value-input"
-            [(ngModel)]="sheetDnD.attribute.constitution">
-          </div>
-          <div class="intelligence-div attribute-div">
-            <h4 class="attribute-name"> Inteligência </h4>
-            <h1 class="intelligence-mod"> {{sheetDnD.attribute.intelligenceMod}} </h1>
-          </div>
-          <div class="intelligence-value-div">
-            <input type="number" min="0" placeholder="0" class="intelligence-value value-input"
-            [(ngModel)]="sheetDnD.attribute.intelligence">
-          </div>
-          <div class="wisdom-div attribute-div">
-            <h4 class="attribute-name"> Sabedoria </h4>
-            <h1 class="wisdom-mod"> {{sheetDnD.attribute.wisdomMod}} </h1>
-          </div>
-          <div class="wisdom-value-div">
-            <input type="number" min="0" placeholder="0" class="wisdom-value value-input"
-            [(ngModel)]="sheetDnD.attribute.wisdom">
-          </div>
-          <div class="charisma-div attribute-div">
-            <h4 class="attribute-name"> Carisma </h4>
-            <h1 class="charisma-mod"> {{sheetDnD.attribute.charismaMod}} </h1>
-          </div>
-          <div class="charisma-value-div">
-            <input type="number" min="0" placeholder="0" class="charisma-value value-input"
-            [(ngModel)]="sheetDnD.attribute.charisma">
-          </div>
+        </div>
+      </div>
+      <div class="row2-column2">
+        <div class="features-traits-div">
+          <textarea class="features-traits-input" placeholder="Traços Adicionais" [(ngModel)]="sheetDnD.featuresTraits"
+            (blur)="editSheet()"></textarea>
+          <h4 class="features-traits-title">Características & Traços Adicionais</h4>
         </div>
       </div>
     </div>
-    <div class="row3-column2">
-      <div class="inspiration-div">
-        <input type="number" class="inspiration-input" placeholder="0" [(ngModel)]="sheetDnD.inspiration">
-        <h4 class="inspiration-title column2-titles"> Inspiração </h4>
-      </div>
-      <div class="proeficiency-bonus-div">
-        <input type="number" class="proeficiency-bonus-input" placeholder="2" [(ngModel)]="sheetDnD.proeficiencyBonus">
-        <h4 class="proeficiency-bonus-title column2-titles"> Bônus de Proeficiência </h4>
-      </div>
-      <div class="saving-throws-div">
-        <div class="saving-throws-row1">
-          <div class="saving-throws-row1-column1">
-            <div class="saving-throws-proeficiency-div">
-              <input type="checkbox" class="strength-proeficiency proeficiency-checkbox" placeholder="a"
-              [(ngModel)]="sheetDnD.savingThrow.strengthProeficiency">
-              <input type="checkbox" class="dexterity-proeficiency proeficiency-checkbox" placeholder="a"
-              [(ngModel)]="sheetDnD.savingThrow.dexterityProeficiency">
-              <input type="checkbox" class="constitution-proeficiency proeficiency-checkbox" placeholder="a"
-              [(ngModel)]="sheetDnD.savingThrow.constitutionProeficiency">
-              <input type="checkbox" class="intelligence-proeficiency proeficiency-checkbox" placeholder="a"
-              [(ngModel)]="sheetDnD.savingThrow.intelligenceProeficiency">
-              <input type="checkbox" class="wisdom-proeficiency proeficiency-checkbox" placeholder="a"
-              [(ngModel)]="sheetDnD.savingThrow.wisdomProeficiency">
-              <input type="checkbox" class="charisma-proeficiency proeficiency-checkbox" placeholder="a"
-              [(ngModel)]="sheetDnD.savingThrow.charismaProeficiency">
-            </div>
-          </div>
-          <div class="saving-throws-row1-column2">
-            <div class="saving-throws-inputs-div">
-              <h4 class="strength-value"> {{sheetDnD.savingThrow.strength}} </h4>
-              <h4 class="dexterity-value"> {{sheetDnD.savingThrow.dexterity}} </h4>
-              <h4 class="constitution-value"> {{sheetDnD.savingThrow.constitution}} </h4>
-              <h4 class="intelligence-value"> {{sheetDnD.savingThrow.intelligence}} </h4>
-              <h4 class="wisdom-value"> {{sheetDnD.savingThrow.wisdom}} </h4>
-              <h4 class="charisma-value"> {{sheetDnD.savingThrow.charisma}} </h4>
-            </div>
-          </div>
-          <div class="saving-throws-row1-column3">
-            <div class="saving-throws-titles-div">
-              <h4 class="strength-title"> Força </h4>
-              <h4 class="dexterity-title"> Destreza </h4>
-              <h4 class="constitution-title"> Constituição </h4>
-              <h4 class="intelligence-title"> Inteligência </h4>
-              <h4 class="wisdom-title"> Sabedoria </h4>
-              <h4 class="charisma-title"> Carisma </h4>
-            </div>
-          </div>
-        </div>
-        <div class="saving-throws-row2">
-          <h4 class="saving-throws-tests"> Testes de Resistência</h4>
-        </div>
-      </div>
-      <div class="skills-div">
-        <div class="skills-principal-column1">
-          <div class="skills-row">
-            <div class="skills-column1">
-              <input type="checkbox" class="acrobatics-proeficiency skills-proeficiency proeficiency-checkbox"
-                placeholder="a" [(ngModel)]="sheetDnD.skill.acrobaticsProeficiency">
-            </div>
-            <div class="skills-column2">
-              <h4 class="acrobatics-value"> {{sheetDnD.skill.acrobatics}} </h4>
-            </div>
-            <div class="skills-column3">
-              <h4 class="acrobatics-name">Acrobacia</h4>
-            </div>
-            <div class="skills-column4">
-              <h6 class="acrobatics-attribute"> (Des) </h6>
-            </div>
-          </div>
-          <div class="skills-row">
-            <div class="skills-column1">
-              <input type="checkbox" class="arcana-proeficiency skills-proeficiency proeficiency-checkbox"
-                placeholder="a" [(ngModel)]="sheetDnD.skill.arcanaProeficiency">
-            </div>
-            <div class="skills-column2">
-              <h4 class="arcana-value"> {{sheetDnD.skill.arcana}} </h4>
-            </div>
-            <div class="skills-column3">
-              <h4 class="arcana-name">Arcana</h4>
-            </div>
-            <div class="skills-column4">
-              <h6 class="arcana-attribute"> (Int) </h6>
-            </div>
-          </div>
-          <div class="skills-row">
-            <div class="skills-column1">
-              <input type="checkbox" class="athletics-proeficiency skills-proeficiency proeficiency-checkbox"
-                placeholder="a" [(ngModel)]="sheetDnD.skill.athleticsProeficiency">
-            </div>
-            <div class="skills-column2">
-              <h4 class="athletics-value"> {{sheetDnD.skill.athletics}} </h4>
-            </div>
-            <div class="skills-column3">
-              <h4 class="athletics-name">Atletismo</h4>
-            </div>
-            <div class="skills-column4">
-              <h6 class="athletics-attribute"> (For) </h6>
-            </div>
-          </div>
-          <div class="skills-row">
-            <div class="skills-column1">
-              <input type="checkbox" class="performance-proeficiency skills-proeficiency proeficiency-checkbox"
-                placeholder="a" [(ngModel)]="sheetDnD.skill.performanceProeficiency">
-            </div>
-            <div class="skills-column2">
-              <h4 class="performance-value"> {{sheetDnD.skill.performance}} </h4>
-            </div>
-            <div class="skills-column3">
-              <h4 class="performance-name">Atuação</h4>
-            </div>
-            <div class="skills-column4">
-              <h6 class="performance-attribute"> (Car)</h6>
-            </div>
-          </div>
-          <div class="skills-row">
-            <div class="skills-column1">
-              <input type="checkbox" class="deception-proeficiency skills-proeficiency proeficiency-checkbox"
-                placeholder="a" [(ngModel)]="sheetDnD.skill.deceptionProeficiency">
-            </div>
-            <div class="skills-column2">
-              <h4 class="deception-value"> {{sheetDnD.skill.deception}} </h4>
-            </div>
-            <div class="skills-column3">
-              <h4 class="deception-name">Blefar</h4>
-            </div>
-            <div class="skills-column4">
-              <h6 class="deception-attribute"> (Car)</h6>
-            </div>
-          </div>
-          <div class="skills-row">
-            <div class="skills-column1">
-              <input type="checkbox" class="stealth-proeficiency skills-proeficiency proeficiency-checkbox"
-                placeholder="a" [(ngModel)]="sheetDnD.skill.stealthProeficiency">
-            </div>
-            <div class="skills-column2">
-              <h4 class="stealth-value"> {{sheetDnD.skill.stealth}} </h4>
-            </div>
-            <div class="skills-column3">
-              <h4 class="stealth-name">Furtividade</h4>
-            </div>
-            <div class="skills-column4">
-              <h6 class="stealth-attribute"> (Des)</h6>
-            </div>
-          </div>
-          <div class="skills-row">
-            <div class="skills-column1">
-              <input type="checkbox" class="history-proeficiency skills-proeficiency proeficiency-checkbox"
-                placeholder="a" [(ngModel)]="sheetDnD.skill.historyProeficiency">
-            </div>
-            <div class="skills-column2">
-              <h4 class="history-value"> {{sheetDnD.skill.history}} </h4>
-            </div>
-            <div class="skills-column3">
-              <h4 class="history-name">História</h4>
-            </div>
-            <div class="skills-column4">
-              <h6 class="history-attribute"> (Int)</h6>
-            </div>
-          </div>
-          <div class="skills-row">
-            <div class="skills-column1">
-              <input type="checkbox" class="intimidation-proeficiency skills-proeficiency proeficiency-checkbox"
-                placeholder="a" [(ngModel)]="sheetDnD.skill.intimidationProeficiency">
-            </div>
-            <div class="skills-column2">
-              <h4 class="intimidation-value"> {{sheetDnD.skill.intimidation}} </h4>
-            </div>
-            <div class="skills-column3">
-              <h4 class="intimidation-name">Intimidação</h4>
-            </div>
-            <div class="skills-column4">
-              <h6 class="intimidation-attribute"> (Car)</h6>
-            </div>
-          </div>
-          <div class="skills-row">
-            <div class="skills-column1">
-              <input type="checkbox" class="insight-proeficiency skills-proeficiency proeficiency-checkbox"
-                placeholder="a" [(ngModel)]="sheetDnD.skill.insightProeficiency">
-            </div>
-            <div class="skills-column2">
-              <h4 class="insight-value"> {{sheetDnD.skill.insight}} </h4>
-            </div>
-            <div class="skills-column3">
-              <h4 class="insight-name">Intuição</h4>
-            </div>
-            <div class="skills-column4">
-              <h6 class="insight-attribute"> (Sab)</h6>
-            </div>
-          </div>
-        </div>
-        <div class="skills-principal-column2">
-          <div class="skills-row">
-            <div class="skills-column1">
-              <input type="checkbox" class="investigation-proeficiency skills-proeficiency proeficiency-checkbox"
-                placeholder="a" [(ngModel)]="sheetDnD.skill.investigationProeficiency">
-            </div>
-            <div class="skills-column2">
-              <h4 class="investigation-value"> {{sheetDnD.skill.investigation}} </h4>
-            </div>
-            <div class="skills-column3">
-              <h4 class="investigation-name">Investigação</h4>
-            </div>
-            <div class="skills-column4">
-              <h6 class="investigation-attribute"> (Int)</h6>
-            </div>
-          </div>
-          <div class="skills-row">
-            <div class="skills-column1">
-              <input type="checkbox" class="animal-handling-proeficiency skills-proeficiency proeficiency-checkbox"
-                placeholder="a" [(ngModel)]="sheetDnD.skill.animalHandlingProeficiency">
-            </div>
-            <div class="skills-column2">
-              <h4 class="animal-handling-value"> {{sheetDnD.skill.animalHandling}} </h4>
-            </div>
-            <div class="skills-column3">
-              <h4 class="animal-handling-name">Lidar com Animais</h4>
-            </div>
-            <div class="skills-column4">
-              <h6 class="animal-handling-attribute"> (Sab)</h6>
-            </div>
-          </div>
-          <div class="skills-row">
-            <div class="skills-column1">
-              <input type="checkbox" class="medicine-proeficiency skills-proeficiency proeficiency-checkbox"
-                placeholder="a" [(ngModel)]="sheetDnD.skill.medicineProeficiency">
-            </div>
-            <div class="skills-column2">
-              <h4 class="medicine-value"> {{sheetDnD.skill.medicine}} </h4>
-            </div>
-            <div class="skills-column3">
-              <h4 class="medicine-name">Medicina</h4>
-            </div>
-            <div class="skills-column4">
-              <h6 class="medicine-attribute"> (Sab)</h6>
-            </div>
-          </div>
-          <div class="skills-row">
-            <div class="skills-column1">
-              <input type="checkbox" class="nature-proeficiency skills-proeficiency proeficiency-checkbox"
-                placeholder="a" [(ngModel)]="sheetDnD.skill.natureProeficiency">
-            </div>
-            <div class="skills-column2">
-              <h4 class="nature-value"> {{sheetDnD.skill.nature}} </h4>
-            </div>
-            <div class="skills-column3">
-              <h4 class="nature-name">Natureza</h4>
-            </div>
-            <div class="skills-column4">
-              <h6 class="nature-attribute"> (Int)</h6>
-            </div>
-          </div>
-          <div class="skills-row">
-            <div class="skills-column1">
-              <input type="checkbox" class="perception-proeficiency skills-proeficiency proeficiency-checkbox"
-                placeholder="a" [(ngModel)]="sheetDnD.skill.perceptionProeficiency">
-            </div>
-            <div class="skills-column2">
-              <h4 class="perception-value"> {{sheetDnD.skill.perception}} </h4>
-            </div>
-            <div class="skills-column3">
-              <h4 class="perception-name">Percepção</h4>
-            </div>
-            <div class="skills-column4">
-              <h6 class="perception-attribute"> (Sab)</h6>
-            </div>
-          </div>
-          <div class="skills-row">
-            <div class="skills-column1">
-              <input type="checkbox" class="persuasion-proeficiency skills-proeficiency proeficiency-checkbox"
-                placeholder="a" [(ngModel)]="sheetDnD.skill.persuasionProeficiency">
-            </div>
-            <div class="skills-column2">
-              <h4 class="persuasion-value"> {{sheetDnD.skill.persuasion}} </h4>
-            </div>
-            <div class="skills-column3">
-              <h4 class="persuasion-name">Persuasão</h4>
-            </div>
-            <div class="skills-column4">
-              <h6 class="persuasion-attribute"> (Car)</h6>
-            </div>
-          </div>
-          <div class="skills-row-sleightOf">
-            <div class="skills-column1">
-              <input type="checkbox" class="sleightOf-proeficiency skills-proeficiency proeficiency-checkbox"
-                placeholder="a" [(ngModel)]="sheetDnD.skill.sleightOfProeficiency">
-            </div>
-            <div class="skills-column2">
-              <h4 class="sleightOf-value"> {{sheetDnD.skill.sleightOf}} </h4>
-            </div>
-            <div class="skills-column3">
-              <h4 class="sleightOf-name">Prestidigitação</h4>
-            </div>
-            <div class="skills-column4">
-              <h6 class="sleightOf-attribute"> (Des)</h6>
-            </div>
-          </div>
-          <div class="skills-row">
-            <div class="skills-column1">
-              <input type="checkbox" class="religion-proeficiency skills-proeficiency proeficiency-checkbox"
-                placeholder="a" [(ngModel)]="sheetDnD.skill.religionProeficiency">
-            </div>
-            <div class="skills-column2">
-              <h4 class="religion-value"> {{sheetDnD.skill.religion}} </h4>
-            </div>
-            <div class="skills-column3">
-              <h4 class="religion-name">Religião</h4>
-            </div>
-            <div class="skills-column4">
-              <h6 class="religion-attribute"> (Int)</h6>
-            </div>
-          </div>
-          <div class="skills-row">
-            <div class="skills-column1">
-              <input type="checkbox" class="survival-proeficiency skills-proeficiency proeficiency-checkbox"
-                placeholder="a" [(ngModel)]="sheetDnD.skill.survivalProeficiency">
-            </div>
-            <div class="skills-column2">
-              <h4 class="survival-value"> {{sheetDnD.skill.survival}} </h4>
-            </div>
-            <div class="skills-column3">
-              <h4 class="survival-name">Sobrevivência</h4>
-            </div>
-            <div class="skills-column4">
-              <h6 class="survival-attribute"> (Sab)</h6>
-            </div>
-          </div>
-        </div>
-        <div class="skills-column-title">
-          <h4 class="skills-title"> Perícias </h4>
-        </div>
-      </div>
-    </div>
-    <div class="row3-column3">
-      <div class="health-infos-div">
-        <div class="health-infos-row1">
-          <div class="health-infos-column">
-            <div class="armor-class-div background-white1">
-              <input type="number" class="armor-class-input" placeholder="10" [(ngModel)]="sheetDnD.armorClass">
-              <h4 class="armor-class-title"> C.A</h4>
-            </div>
-          </div>
-          <div class="health-infos-column">
-            <div class="initiative-div background-white1">
-              <input type="number" class="initiative-input" placeholder="0" [(ngModel)]="sheetDnD.initiative">
-              <h4 class="initiative-title"> Iniciativa</h4>
-            </div>
-          </div>
-          <div class="health-infos-column">
-            <div class="speed-div background-white1">
-              <input type="text" class="speed-input" placeholder="5m" [(ngModel)]="sheetDnD.speed">
-              <h4 class="speed-title"> Desloc.</h4>
-            </div>
-          </div>
-        </div>
-        <div class="health-infos-row2">
-          <div class="health-points-div background-white">
-            <div class="health-points-div-row">
-              <h5 class="total-health-points"> PV Totais</h5>
-              <input type="number" class="total-health-points-input" placeholder="30" [(ngModel)]="sheetDnD.hpMax">
-            </div>
-            <input type="number" class="actual-health-points-input" placeholder="20" [(ngModel)]="sheetDnD.currentHp">
-            <h4 class="actual-health-points"> Pontos de Vida Atuais</h4>
-          </div>
-          <div class="temporary-health-points-div background-white">
-            <input type="number" class="temporary-health-points-input" placeholder="12" [(ngModel)]="sheetDnD.temporaryHp">
-            <h4 class="temporary-health-points"> Pontos de Vida Temporários</h4>
-          </div>
-        </div>
-        <div class="health-infos-row3">
-          <div class="hits-dice-div background-white">
-            <div class="hits-dice-row">
-              <h5 class="total-hits-dice"> Total</h5>
-              <input type="text" class="total-hits-dice-input" placeholder="5d8" [(ngModel)]="sheetDnD.totalHitDice">
-            </div>
-            <input type="text" class="actual-hits-dice" placeholder="2d8" [(ngModel)]="sheetDnD.hitDice">
-            <h5 class="hits-dice"> Dados de Vida </h5>
-          </div>
-          <div class="death-tests-div background-white">
-            <div class="death-tests-row1">
-              <h5 class="death-tests-sucess-title"> Sucessos</h5>
-              <input type="checkbox" class="succes-1 circle-checkbox" placeholder="a" [(ngModel)]="sheetDnD.successOne">
-              <input type="checkbox" class="sucess-2 circle-checkbox" placeholder="a" [(ngModel)]="sheetDnD.successTwo">
-              <input type="checkbox" class="sucess-3 circle-checkbox" placeholder="a" [(ngModel)]="sheetDnD.successThree">
-            </div>
-            <div class="death-tests-row2">
-              <h5 class="death-tests-failures-title"> Fracassos</h5>
-              <input type="checkbox" class="failures-1 circle-checkbox" placeholder="a" [(ngModel)]="sheetDnD.failOne">
-              <input type="checkbox" class="failures-2 circle-checkbox" placeholder="a" [(ngModel)]="sheetDnD.failTwo">
-              <input type="checkbox" class="failures-3 circle-checkbox" placeholder="a" [(ngModel)]="sheetDnD.failThree">
-            </div>
-            <h5 class="death-tests">Testes Contra a Morte</h5>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="row3-column4">
-      <div class="personal-infos-div">
-        <div class="white-line">
-          <div class="personal-infos-traits-div default-div">
-            <textarea class="traits-input" placeholder="Traços de Personalidade" [(ngModel)]="sheetDnD.personality.personalityTraits"></textarea>
-            <h4 class="traits-title">Traços de Personalidade</h4>
-          </div>
-          <div class="personal-infos-ideals default-div">
-            <textarea class="ideals-input" placeholder="Ideais" [(ngModel)]="sheetDnD.personality.ideals"></textarea>
-            <h4 class="ideals-title">Ideais</h4>
-          </div>
-          <div class="personal-infos-bonds default-div">
-            <textarea class="bonds-input" placeholder="Vínculos" [(ngModel)]="sheetDnD.personality.bonds"></textarea>
-            <h4 class="bonds-title">Vínculos</h4>
-          </div>
-          <div class="personal-infos-weaknesses default-div">
-            <textarea class="weaknesses-input" placeholder="Fraquezas" [(ngModel)]="sheetDnD.personality.flaws"></textarea>
-            <h4 class="weaknesses-title">Fraquezas</h4>
-          </div>
-        </div>
+    <div class="sheet-body-row3">
+      <div class="backstory-div">
+        <textarea class="backstory-input" placeholder="História do Personagem" [(ngModel)]="sheetDnD.backstory"
+          (blur)="editSheet()"></textarea>
+        <h4 class="backstory-title">História do Personagem</h4>
       </div>
     </div>
   </div>
 
-  <div class="sheet-body-row4">
-    <div class="row4-column1">
-      <div class="passive-wisdom-div">
-        <input type="text" class="passive-wisdom-input" placeholder="0" [(ngModel)]="sheetDnD.passiveWisdom">
-        <h4 class="passive-wisdom-title">Sabedoria Passiva (Percepção)</h4>
+  <div class="sheet-body-3">
+    <div class="sheet-body-row1" id="spells-page">
+      <div class="row1-column1">
+        <div class="buttons">
+          <a href="/home/my-sheets/dnd-sheet#principal-infos">
+            <button class="button-principal-infos"> Principal Infos </button>
+          </a>
+          <a href="/home/my-sheets/dnd-sheet#others-infos">
+            <button class="button-other-infos"> Outras Infos </button>
+          </a>
+        </div>
       </div>
-      <div class="others-proeficiency-div">
-        <textarea class="others-proeficiency-input" placeholder="Outras Proficiências & Idiomas" [(ngModel)]="sheetDnD.othersProficiencies"></textarea>
-        <h4 class="others-proeficiency-title">Outras Proficiências & Idiomas</h4>
+      <div class="row1-column2">
+        <div class="conjurer-class-div">
+          <input #conjurerClassInput class="conjurer-class-input" type="text" placeholder="Classe de Conjurador"
+            [(ngModel)]="sheetDnD.spellcastingClass" (blur)="editSheet()"
+            (keydown.enter)="lostFocus(conjurerClassInput)">
+          <h4 class="conjurer-class-title"> Classe de Conjurador </h4>
+        </div>
+      </div>
+      <div class="row1-column3">
+        <div class="spell-cast-infos">
+          <div class="column">
+            <input #spellCastingHabilityInput type="text" class="key-attribute-input" placeholder="Inteligencia"
+              [(ngModel)]="sheetDnD.spellcastingHability" (blur)="editSheet()"
+              (keydown.enter)="lostFocus(spellCastingHabilityInput)">
+            <h4 class="key-attribute-title">Habilidade Chave</h4>
+          </div>
+          <div class="column">
+            <input #difficultyClassInput type="number" min="0" class="difficulty-class-input" placeholder="14"
+              [(ngModel)]="sheetDnD.spellDC" (blur)="editSheet()" (keydown.enter)="lostFocus(difficultyClassInput)">
+            <h4 class="difficulty-class-title">C.D</h4>
+          </div>
+          <div class="column">
+            <input #attackBonusInput type="number" min="0" class="attack-bonus" placeholder="6"
+              [(ngModel)]="sheetDnD.spellAtkBonus" (blur)="editSheet()" (keydown.enter)="lostFocus(attackBonusInput)">
+            <h4 class="attack-bonus-title">Bônus de Ataque</h4>
+          </div>
+        </div>
       </div>
     </div>
-    <div class="row4-column2">
-      <div class="attacks-spells-div">
-        <div class="row-titles">
-          <div class="name-column">
-            <h5 class="attack-name-title">Nome</h5>
+    <div class="sheet-body-row2">
+      <div class="spells-cantrips-div">
+        <div class="spells-column1">
+          <div class="cantrips-div">
+            <div class="cantrips-title-row">
+              <div class="cantrips-title-column1">
+                <h4 class="cantrips-level">0</h4>
+              </div>
+              <div class="cantrips-title-column2">
+                <h4 class="cantrips-title">Truques</h4>
+              </div>
+            </div>
+            <div class="cantrips-content-row">
+              <input #cantrip1 type="text" class="cantrip-input" placeholder="Nome do Truque"
+                [(ngModel)]="sheetDnD.cantrips.cantrip1" (blur)="editSheet()" (keydown.enter)="lostFocus(cantrip1)">
+              <input #cantrip2 type="text" class="cantrip-input" placeholder="Nome do Truque"
+                [(ngModel)]="sheetDnD.cantrips.cantrip2" (blur)="editSheet()" (keydown.enter)="lostFocus(cantrip2)">
+              <input #cantrip3 type="text" class="cantrip-input" placeholder="Nome do Truque"
+                [(ngModel)]="sheetDnD.cantrips.cantrip3" (blur)="editSheet()" (keydown.enter)="lostFocus(cantrip3)">
+              <input #cantrip4 type="text" class="cantrip-input" placeholder="Nome do Truque"
+                [(ngModel)]="sheetDnD.cantrips.cantrip4" (blur)="editSheet()" (keydown.enter)="lostFocus(cantrip4)">
+              <input #cantrip5 type="text" class="cantrip-input" placeholder="Nome do Truque"
+                [(ngModel)]="sheetDnD.cantrips.cantrip5" (blur)="editSheet()" (keydown.enter)="lostFocus(cantrip5)">
+              <input #cantrip6 type="text" class="cantrip-input" placeholder="Nome do Truque"
+                [(ngModel)]="sheetDnD.cantrips.cantrip6" (blur)="editSheet()" (keydown.enter)="lostFocus(cantrip6)">
+              <input #cantrip7 type="text" class="cantrip-input" placeholder="Nome do Truque"
+                [(ngModel)]="sheetDnD.cantrips.cantrip7" (blur)="editSheet()" (keydown.enter)="lostFocus(cantrip7)">
+              <input #cantrip8 type="text" class="cantrip-input" placeholder="Nome do Truque"
+                [(ngModel)]="sheetDnD.cantrips.cantrip8" (blur)="editSheet()" (keydown.enter)="lostFocus(cantrip8)">
+            </div>
           </div>
-          <div class="bonus-column">
-            <h5 class="attack-bonus-title">Bônus</h5>
+          <div class="spells-level1-div spells-div">
+            <div class="labels-titles labels-row">
+              <div class="column1">
+                <h6 class="level-label">Level</h6>
+              </div>
+              <div class="column2">
+                <h6 class="total-spaces-label"> Espaços Totais</h6>
+              </div>
+              <div class="column3">
+                <h6 class="total-spaces-label">Espaços Gastos</h6>
+              </div>
+            </div>
+            <div class="spells-level1-title-row title-row">
+              <div class="column1">
+                <h4 class="level1-title title">1</h4>
+              </div>
+              <div class="column2">
+                <input #totalSlotsLv1 type="number" min="0" class="total-spaces" placeholder="0"
+                  [(ngModel)]="sheetDnD.spellsLevelOne.level1TotalSlots" (blur)="editSheet()"
+                  (keydown.enter)="lostFocus(totalSlotsLv1)">
+              </div>
+              <div class="column3">
+                <input #slotsExpendedLv1 type="number" min="0" class="left-spaces" placeholder="0"
+                  [(ngModel)]="sheetDnD.spellsLevelOne.level1SlotsExpended" (blur)="editSheet()"
+                  (keydown.enter)="lostFocus(slotsExpendedLv1)">
+              </div>
+            </div>
+            <div class="spells-level1-content-row content-row">
+              <div class="prepared-spell-column1">
+                <div class="circle"></div>
+                <input type="checkbox" class="prepared-spell" [(ngModel)]="sheetDnD.spellsLevelOne.level1Prepared1"
+                  (change)="editSheet()">
+                <input type="checkbox" class="prepared-spell" [(ngModel)]="sheetDnD.spellsLevelOne.level1Prepared2"
+                  (change)="editSheet()">
+                <input type="checkbox" class="prepared-spell" [(ngModel)]="sheetDnD.spellsLevelOne.level1Prepared3"
+                  (change)="editSheet()">
+                <input type="checkbox" class="prepared-spell" [(ngModel)]="sheetDnD.spellsLevelOne.level1Prepared4"
+                  (change)="editSheet()">
+                <input type="checkbox" class="prepared-spell" [(ngModel)]="sheetDnD.spellsLevelOne.level1Prepared5"
+                  (change)="editSheet()">
+                <input type="checkbox" class="prepared-spell" [(ngModel)]="sheetDnD.spellsLevelOne.level1Prepared6"
+                  (change)="editSheet()">
+                <input type="checkbox" class="prepared-spell" [(ngModel)]="sheetDnD.spellsLevelOne.level1Prepared7"
+                  (change)="editSheet()">
+                <input type="checkbox" class="prepared-spell" [(ngModel)]="sheetDnD.spellsLevelOne.level1Prepared8"
+                  (change)="editSheet()">
+                <input type="checkbox" class="prepared-spell" [(ngModel)]="sheetDnD.spellsLevelOne.level1Prepared9"
+                  (change)="editSheet()">
+                <input type="checkbox" class="prepared-spell" [(ngModel)]="sheetDnD.spellsLevelOne.level1Prepared10"
+                  (change)="editSheet()">
+                <input type="checkbox" class="prepared-spell" [(ngModel)]="sheetDnD.spellsLevelOne.level1Prepared11"
+                  (change)="editSheet()">
+                <input type="checkbox" class="prepared-spell" [(ngModel)]="sheetDnD.spellsLevelOne.level1Prepared12"
+                  (change)="editSheet()">
+              </div>
+              <div class="spell-name-column2">
+                <h6 class="spell-name-label">Nome da Magia</h6>
+                <input #spell1Lv1 type="text" class="spell-name" placeholder="Nome da Magia"
+                  [(ngModel)]="sheetDnD.spellsLevelOne.level1Slot1" (blur)="editSheet()"
+                  (keydown.enter)="lostFocus(spell1Lv1)">
+                <input #spell2Lv1 type="text" class="spell-name" placeholder="Nome da Magia"
+                  [(ngModel)]="sheetDnD.spellsLevelOne.level1Slot2" (blur)="editSheet()"
+                  (keydown.enter)="lostFocus(spell2Lv1)">
+                <input #spell3Lv1 type="text" class="spell-name" placeholder="Nome da Magia"
+                  [(ngModel)]="sheetDnD.spellsLevelOne.level1Slot3" (blur)="editSheet()"
+                  (keydown.enter)="lostFocus(spell3Lv1)">
+                <input #spell4Lv1 type="text" class="spell-name" placeholder="Nome da Magia"
+                  [(ngModel)]="sheetDnD.spellsLevelOne.level1Slot4" (blur)="editSheet()"
+                  (keydown.enter)="lostFocus(spell4Lv1)">
+                <input #spell5Lv1 type="text" class="spell-name" placeholder="Nome da Magia"
+                  [(ngModel)]="sheetDnD.spellsLevelOne.level1Slot5" (blur)="editSheet()"
+                  (keydown.enter)="lostFocus(spell5Lv1)">
+                <input #spell6Lv1 type="text" class="spell-name" placeholder="Nome da Magia"
+                  [(ngModel)]="sheetDnD.spellsLevelOne.level1Slot6" (blur)="editSheet()"
+                  (keydown.enter)="lostFocus(spell6Lv1)">
+                <input #spell7Lv1 type="text" class="spell-name" placeholder="Nome da Magia"
+                  [(ngModel)]="sheetDnD.spellsLevelOne.level1Slot7" (blur)="editSheet()"
+                  (keydown.enter)="lostFocus(spell7Lv1)">
+                <input #spell8Lv1 type="text" class="spell-name" placeholder="Nome da Magia"
+                  [(ngModel)]="sheetDnD.spellsLevelOne.level1Slot8" (blur)="editSheet()"
+                  (keydown.enter)="lostFocus(spell8Lv1)">
+                <input #spell9Lv1 type="text" class="spell-name" placeholder="Nome da Magia"
+                  [(ngModel)]="sheetDnD.spellsLevelOne.level1Slot9" (blur)="editSheet()"
+                  (keydown.enter)="lostFocus(spell9Lv1)">
+                <input #spell10Lv1 type="text" class="spell-name" placeholder="Nome da Magia"
+                  [(ngModel)]="sheetDnD.spellsLevelOne.level1Slot10" (blur)="editSheet()"
+                  (keydown.enter)="lostFocus(spell10Lv1)">
+                <input #spell11Lv1 type="text" class="spell-name" placeholder="Nome da Magia"
+                  [(ngModel)]="sheetDnD.spellsLevelOne.level1Slot11" (blur)="editSheet()"
+                  (keydown.enter)="lostFocus(spell11Lv1)">
+                <input #spell12Lv1 type="text" class="spell-name" placeholder="Nome da Magia"
+                  [(ngModel)]="sheetDnD.spellsLevelOne.level1Slot12" (blur)="editSheet()"
+                  (keydown.enter)="lostFocus(spell12Lv1)">
+              </div>
+            </div>
           </div>
-          <div class="damage-column">
-            <h5 class="attack-damage-title">Dano/Tipo</h5>
+          <div class="spells-level2-div spells-div">
+            <div class="labels-titles labels-row">
+              <div class="column1">
+                <h6 class="level-label">Level</h6>
+              </div>
+              <div class="column2">
+                <h6 class="total-spaces-label">Espaços Totais</h6>
+              </div>
+              <div class="column3">
+                <h6 class="total-spaces-label">Espaços Gastos</h6>
+              </div>
+            </div>
+            <div class="spells-level2-title-row title-row">
+              <div class="column1">
+                <h4 class="level2-title title">2</h4>
+              </div>
+              <div class="column2">
+                <input #totalSpacesLv2 type="number" min="0" class="total-spaces" placeholder="0"
+                  [(ngModel)]="sheetDnD.spellsLevelTwo.level2TotalSlots" (blur)="editSheet()"
+                  (keydown.enter)="lostFocus(totalSpacesLv2)">
+              </div>
+              <div class="column3">
+                <input #slotsExpendedLv2 type="number" min="0" class="left-spaces" placeholder="0"
+                  [(ngModel)]="sheetDnD.spellsLevelTwo.level2SlotsExpended" (blur)="editSheet()"
+                  (keydown.enter)="lostFocus(slotsExpendedLv2)">
+              </div>
+            </div>
+            <div class="spells-level2-content-row content-row">
+              <div class="prepared-spell-column1">
+                <div class="circle"></div>
+                <input type="checkbox" class="prepared-spell" [(ngModel)]="sheetDnD.spellsLevelTwo.level2Prepared1"
+                  (change)="editSheet()">
+                <input type="checkbox" class="prepared-spell" [(ngModel)]="sheetDnD.spellsLevelTwo.level2Prepared2"
+                  (change)="editSheet()">
+                <input type="checkbox" class="prepared-spell" [(ngModel)]="sheetDnD.spellsLevelTwo.level2Prepared3"
+                  (change)="editSheet()">
+                <input type="checkbox" class="prepared-spell" [(ngModel)]="sheetDnD.spellsLevelTwo.level2Prepared4"
+                  (change)="editSheet()">
+                <input type="checkbox" class="prepared-spell" [(ngModel)]="sheetDnD.spellsLevelTwo.level2Prepared5"
+                  (change)="editSheet()">
+                <input type="checkbox" class="prepared-spell" [(ngModel)]="sheetDnD.spellsLevelTwo.level2Prepared6"
+                  (change)="editSheet()">
+                <input type="checkbox" class="prepared-spell" [(ngModel)]="sheetDnD.spellsLevelTwo.level2Prepared7"
+                  (change)="editSheet()">
+                <input type="checkbox" class="prepared-spell" [(ngModel)]="sheetDnD.spellsLevelTwo.level2Prepared8"
+                  (change)="editSheet()">
+                <input type="checkbox" class="prepared-spell" [(ngModel)]="sheetDnD.spellsLevelTwo.level2Prepared9"
+                  (change)="editSheet()">
+                <input type="checkbox" class="prepared-spell" [(ngModel)]="sheetDnD.spellsLevelTwo.level2Prepared10"
+                  (change)="editSheet()">
+                <input type="checkbox" class="prepared-spell" [(ngModel)]="sheetDnD.spellsLevelTwo.level2Prepared11"
+                  (change)="editSheet()">
+                <input type="checkbox" class="prepared-spell" [(ngModel)]="sheetDnD.spellsLevelTwo.level2Prepared12"
+                  (change)="editSheet()">
+                <input type="checkbox" class="prepared-spell" [(ngModel)]="sheetDnD.spellsLevelTwo.level2Prepared13"
+                  (change)="editSheet()">
+              </div>
+              <div class="spell-name-column2">
+                <h6 class="spell-name-label">Nome da Magia</h6>
+                <input #spell1Lv2 type="text" class="spell-name" placeholder="Nome da Magia"
+                  [(ngModel)]="sheetDnD.spellsLevelTwo.level2Slot1" (blur)="editSheet()"
+                  (keydown.enter)="lostFocus(spell1Lv2)">
+                <input #spell2Lv2 type="text" class="spell-name" placeholder="Nome da Magia"
+                  [(ngModel)]="sheetDnD.spellsLevelTwo.level2Slot2" (blur)="editSheet()"
+                  (keydown.enter)="lostFocus(spell2Lv2)">
+                <input #spell3Lv2 type="text" class="spell-name" placeholder="Nome da Magia"
+                  [(ngModel)]="sheetDnD.spellsLevelTwo.level2Slot3" (blur)="editSheet()"
+                  (keydown.enter)="lostFocus(spell3Lv2)">
+                <input #spell4Lv2 type="text" class="spell-name" placeholder="Nome da Magia"
+                  [(ngModel)]="sheetDnD.spellsLevelTwo.level2Slot4" (blur)="editSheet()"
+                  (keydown.enter)="lostFocus(spell4Lv2)">
+                <input #spell5Lv2 type="text" class="spell-name" placeholder="Nome da Magia"
+                  [(ngModel)]="sheetDnD.spellsLevelTwo.level2Slot5" (blur)="editSheet()"
+                  (keydown.enter)="lostFocus(spell5Lv2)">
+                <input #spell6Lv2 type="text" class="spell-name" placeholder="Nome da Magia"
+                  [(ngModel)]="sheetDnD.spellsLevelTwo.level2Slot6" (blur)="editSheet()"
+                  (keydown.enter)="lostFocus(spell6Lv2)">
+                <input #spell7Lv2 type="text" class="spell-name" placeholder="Nome da Magia"
+                  [(ngModel)]="sheetDnD.spellsLevelTwo.level2Slot7" (blur)="editSheet()"
+                  (keydown.enter)="lostFocus(spell7Lv2)">
+                <input #spell8Lv2 type="text" class="spell-name" placeholder="Nome da Magia"
+                  [(ngModel)]="sheetDnD.spellsLevelTwo.level2Slot8" (blur)="editSheet()"
+                  (keydown.enter)="lostFocus(spell8Lv2)">
+                <input #spell9Lv2 type="text" class="spell-name" placeholder="Nome da Magia"
+                  [(ngModel)]="sheetDnD.spellsLevelTwo.level2Slot9" (blur)="editSheet()"
+                  (keydown.enter)="lostFocus(spell9Lv2)">
+                <input #spell10Lv2 type="text" class="spell-name" placeholder="Nome da Magia"
+                  [(ngModel)]="sheetDnD.spellsLevelTwo.level2Slot10" (blur)="editSheet()"
+                  (keydown.enter)="lostFocus(spell10Lv2)">
+                <input #spell11Lv2 type="text" class="spell-name" placeholder="Nome da Magia"
+                  [(ngModel)]="sheetDnD.spellsLevelTwo.level2Slot11" (blur)="editSheet()"
+                  (keydown.enter)="lostFocus(spell11Lv2)">
+                <input #spell12Lv2 type="text" class="spell-name" placeholder="Nome da Magia"
+                  [(ngModel)]="sheetDnD.spellsLevelTwo.level2Slot12" (blur)="editSheet()"
+                  (keydown.enter)="lostFocus(spell12Lv2)">
+                <input #spell13Lv2 type="text" class="spell-name" placeholder="Nome da Magia"
+                  [(ngModel)]="sheetDnD.spellsLevelTwo.level2Slot13" (blur)="editSheet()"
+                  (keydown.enter)="lostFocus(spell13Lv2)">
+              </div>
+            </div>
           </div>
         </div>
-        <div class="row">
-          <div class="column1">
-            <input type="text" class="attack-name-input" placeholder="Nome Ataque" [(ngModel)]="sheetDnD.attack.atkName1">
-            <input type="text" class="attack-name-input" placeholder="Nome Ataque" [(ngModel)]="sheetDnD.attack.atkName2">
-            <input type="text" class="attack-name-input" placeholder="Nome Ataque" [(ngModel)]="sheetDnD.attack.atkName3">
-            <input type="text" class="attack-name-input" placeholder="Nome Ataque" [(ngModel)]="sheetDnD.attack.atkName4">
-            <input type="text" class="attack-name-input" placeholder="Nome Ataque" [(ngModel)]="sheetDnD.attack.atkName5">
-            <input type="text" class="attack-name-input" placeholder="Nome Ataque" [(ngModel)]="sheetDnD.attack.atkName6">
-            <input type="text" class="attack-name-input" placeholder="Nome Ataque" [(ngModel)]="sheetDnD.attack.atkName7">
-            <input type="text" class="attack-name-input" placeholder="Nome Ataque" [(ngModel)]="sheetDnD.attack.atkName8">
-            <input type="text" class="attack-name-input" placeholder="Nome Ataque" [(ngModel)]="sheetDnD.attack.atkName9">
-            <input type="text" class="attack-name-input" placeholder="Nome Ataque" [(ngModel)]="sheetDnD.attack.atkName10">
+        <div class="spells-column2">
+          <div class="spells-level3-div spells-div">
+            <div class="labels-titles labels-row">
+              <div class="column1">
+                <h6 class="level-label">Level</h6>
+              </div>
+              <div class="column2">
+                <h6 class="total-spaces-label">Espaços Totais</h6>
+              </div>
+              <div class="column3">
+                <h6 class="total-spaces-label">Espaços Gastos</h6>
+              </div>
+            </div>
+            <div class="spells-level3-title-row title-row">
+              <div class="column1">
+                <h4 class="level3-title title">3</h4>
+              </div>
+              <div class="column2">
+                <input #totalSlotsLv3 type="number" min="0" class="total-spaces" placeholder="0"
+                  [(ngModel)]="sheetDnD.spellsLevelThree.level3TotalSlots" (blur)="editSheet()"
+                  (keydown.enter)="lostFocus(totalSlotsLv3)">
+              </div>
+              <div class="column3">
+                <input #slotsExpendedLv3 type="number" min="0" class="left-spaces" placeholder="0"
+                  [(ngModel)]="sheetDnD.spellsLevelThree.level3SlotsExpended" (blur)="editSheet()"
+                  (keydown.enter)="lostFocus(slotsExpendedLv3)">
+              </div>
+            </div>
+            <div class="spells-level3-content-row content-row">
+              <div class="prepared-spell-column1">
+                <div class="circle"></div>
+                <input type="checkbox" class="prepared-spell" [(ngModel)]="sheetDnD.spellsLevelThree.level3Prepared1"
+                  (change)="editSheet()">
+                <input type="checkbox" class="prepared-spell" [(ngModel)]="sheetDnD.spellsLevelThree.level3Prepared2"
+                  (change)="editSheet()">
+                <input type="checkbox" class="prepared-spell" [(ngModel)]="sheetDnD.spellsLevelThree.level3Prepared3"
+                  (change)="editSheet()">
+                <input type="checkbox" class="prepared-spell" [(ngModel)]="sheetDnD.spellsLevelThree.level3Prepared4"
+                  (change)="editSheet()">
+                <input type="checkbox" class="prepared-spell" [(ngModel)]="sheetDnD.spellsLevelThree.level3Prepared5"
+                  (change)="editSheet()">
+                <input type="checkbox" class="prepared-spell" [(ngModel)]="sheetDnD.spellsLevelThree.level3Prepared6"
+                  (change)="editSheet()">
+                <input type="checkbox" class="prepared-spell" [(ngModel)]="sheetDnD.spellsLevelThree.level3Prepared7"
+                  (change)="editSheet()">
+                <input type="checkbox" class="prepared-spell" [(ngModel)]="sheetDnD.spellsLevelThree.level3Prepared8"
+                  (change)="editSheet()">
+                <input type="checkbox" class="prepared-spell" [(ngModel)]="sheetDnD.spellsLevelThree.level3Prepared9"
+                  (change)="editSheet()">
+                <input type="checkbox" class="prepared-spell" [(ngModel)]="sheetDnD.spellsLevelThree.level3Prepared10"
+                  (change)="editSheet()">
+                <input type="checkbox" class="prepared-spell" [(ngModel)]="sheetDnD.spellsLevelThree.level3Prepared11"
+                  (change)="editSheet()">
+                <input type="checkbox" class="prepared-spell" [(ngModel)]="sheetDnD.spellsLevelThree.level3Prepared12"
+                  (change)="editSheet()">
+                <input type="checkbox" class="prepared-spell" [(ngModel)]="sheetDnD.spellsLevelThree.level3Prepared13"
+                  (change)="editSheet()">
+              </div>
+              <div class="spell-name-column2">
+                <h6 class="spell-name-label">Nome da Magia</h6>
+                <input #spell1Lv3 type="text" class="spell-name" placeholder="Nome da Magia"
+                  [(ngModel)]="sheetDnD.spellsLevelThree.level3Slot1" (blur)="editSheet()"
+                  (keydown.enter)="lostFocus(spell1Lv3)">
+                <input #spell2Lv3 type="text" class="spell-name" placeholder="Nome da Magia"
+                  [(ngModel)]="sheetDnD.spellsLevelThree.level3Slot2" (blur)="editSheet()"
+                  (keydown.enter)="lostFocus(spell2Lv3)">
+                <input #spell3Lv3 type="text" class="spell-name" placeholder="Nome da Magia"
+                  [(ngModel)]="sheetDnD.spellsLevelThree.level3Slot3" (blur)="editSheet()"
+                  (keydown.enter)="lostFocus(spell3Lv3)">
+                <input #spell4Lv3 type="text" class="spell-name" placeholder="Nome da Magia"
+                  [(ngModel)]="sheetDnD.spellsLevelThree.level3Slot4" (blur)="editSheet()"
+                  (keydown.enter)="lostFocus(spell4Lv3)">
+                <input #spell5Lv3 type="text" class="spell-name" placeholder="Nome da Magia"
+                  [(ngModel)]="sheetDnD.spellsLevelThree.level3Slot5" (blur)="editSheet()"
+                  (keydown.enter)="lostFocus(spell5Lv3)">
+                <input #spell6Lv3 type="text" class="spell-name" placeholder="Nome da Magia"
+                  [(ngModel)]="sheetDnD.spellsLevelThree.level3Slot6" (blur)="editSheet()"
+                  (keydown.enter)="lostFocus(spell6Lv3)">
+                <input #spell7Lv3 type="text" class="spell-name" placeholder="Nome da Magia"
+                  [(ngModel)]="sheetDnD.spellsLevelThree.level3Slot7" (blur)="editSheet()"
+                  (keydown.enter)="lostFocus(spell7Lv3)">
+                <input #spell8Lv3 type="text" class="spell-name" placeholder="Nome da Magia"
+                  [(ngModel)]="sheetDnD.spellsLevelThree.level3Slot8" (blur)="editSheet()"
+                  (keydown.enter)="lostFocus(spell8Lv3)">
+                <input #spell9Lv3 type="text" class="spell-name" placeholder="Nome da Magia"
+                  [(ngModel)]="sheetDnD.spellsLevelThree.level3Slot9" (blur)="editSheet()"
+                  (keydown.enter)="lostFocus(spell9Lv3)">
+                <input #spell10Lv3 type="text" class="spell-name" placeholder="Nome da Magia"
+                  [(ngModel)]="sheetDnD.spellsLevelThree.level3Slot10" (blur)="editSheet()"
+                  (keydown.enter)="lostFocus(spell10Lv3)">
+                <input #spell11Lv3 type="text" class="spell-name" placeholder="Nome da Magia"
+                  [(ngModel)]="sheetDnD.spellsLevelThree.level3Slot11" (blur)="editSheet()"
+                  (keydown.enter)="lostFocus(spell11Lv3)">
+                <input #spell12Lv3 type="text" class="spell-name" placeholder="Nome da Magia"
+                  [(ngModel)]="sheetDnD.spellsLevelThree.level3Slot12" (blur)="editSheet()"
+                  (keydown.enter)="lostFocus(spell12Lv3)">
+                <input #spell13Lv3 type="text" class="spell-name" placeholder="Nome da Magia"
+                  [(ngModel)]="sheetDnD.spellsLevelThree.level3Slot13" (blur)="editSheet()"
+                  (keydown.enter)="lostFocus(spell13Lv3)">
+              </div>
+            </div>
           </div>
-          <div class="column2">
-            <input type="text" class="attack-bonus-input" placeholder="+2" [(ngModel)]="sheetDnD.attack.atkBonus1">
-            <input type="text" class="attack-bonus-input" placeholder="+2" [(ngModel)]="sheetDnD.attack.atkBonus2">
-            <input type="text" class="attack-bonus-input" placeholder="+2" [(ngModel)]="sheetDnD.attack.atkBonus3">
-            <input type="text" class="attack-bonus-input" placeholder="+2" [(ngModel)]="sheetDnD.attack.atkBonus4">
-            <input type="text" class="attack-bonus-input" placeholder="+2" [(ngModel)]="sheetDnD.attack.atkBonus5">
-            <input type="text" class="attack-bonus-input" placeholder="+2" [(ngModel)]="sheetDnD.attack.atkBonus6">
-            <input type="text" class="attack-bonus-input" placeholder="+2" [(ngModel)]="sheetDnD.attack.atkBonus7">
-            <input type="text" class="attack-bonus-input" placeholder="+2" [(ngModel)]="sheetDnD.attack.atkBonus8">
-            <input type="text" class="attack-bonus-input" placeholder="+2" [(ngModel)]="sheetDnD.attack.atkBonus9">
-            <input type="text" class="attack-bonus-input" placeholder="+2" [(ngModel)]="sheetDnD.attack.atkBonus10">
+          <div class="spells-level4-div spells-div">
+            <div class="labels-titles labels-row">
+              <div class="column1">
+                <h6 class="level-label">Level</h6>
+              </div>
+              <div class="column2">
+                <h6 class="total-spaces-label">Espaços Totais</h6>
+              </div>
+              <div class="column3">
+                <h6 class="total-spaces-label">Espaços Gastos</h6>
+              </div>
+            </div>
+            <div class="spells-level4-title-row title-row">
+              <div class="column1">
+                <h4 class="level4-title title">4</h4>
+              </div>
+              <div class="column2">
+                <input #totalSlotsLv4 type="number" min="0" class="total-spaces" placeholder="0"
+                  [(ngModel)]="sheetDnD.spellsLevelFour.level4TotalSlots" (blur)="editSheet()"
+                  (keydown.enter)="lostFocus(totalSlotsLv4)">
+              </div>
+              <div class="column3">
+                <input #slotsExpendedLv4 type="number" min="0" class="left-spaces" placeholder="0"
+                  [(ngModel)]="sheetDnD.spellsLevelFour.level4SlotsExpended" (blur)="editSheet()"
+                  (keydown.enter)="lostFocus(slotsExpendedLv4)">
+              </div>
+            </div>
+            <div class="spells-level4-content-row content-row">
+              <div class="prepared-spell-column1">
+                <div class="circle"></div>
+                <input type="checkbox" class="prepared-spell" [(ngModel)]="sheetDnD.spellsLevelFour.level4Prepared1"
+                  (change)="editSheet()">
+                <input type="checkbox" class="prepared-spell" [(ngModel)]="sheetDnD.spellsLevelFour.level4Prepared2"
+                  (change)="editSheet()">
+                <input type="checkbox" class="prepared-spell" [(ngModel)]="sheetDnD.spellsLevelFour.level4Prepared3"
+                  (change)="editSheet()">
+                <input type="checkbox" class="prepared-spell" [(ngModel)]="sheetDnD.spellsLevelFour.level4Prepared4"
+                  (change)="editSheet()">
+                <input type="checkbox" class="prepared-spell" [(ngModel)]="sheetDnD.spellsLevelFour.level4Prepared5"
+                  (change)="editSheet()">
+                <input type="checkbox" class="prepared-spell" [(ngModel)]="sheetDnD.spellsLevelFour.level4Prepared6"
+                  (change)="editSheet()">
+                <input type="checkbox" class="prepared-spell" [(ngModel)]="sheetDnD.spellsLevelFour.level4Prepared7"
+                  (change)="editSheet()">
+                <input type="checkbox" class="prepared-spell" [(ngModel)]="sheetDnD.spellsLevelFour.level4Prepared8"
+                  (change)="editSheet()">
+                <input type="checkbox" class="prepared-spell" [(ngModel)]="sheetDnD.spellsLevelFour.level4Prepared9"
+                  (change)="editSheet()">
+                <input type="checkbox" class="prepared-spell" [(ngModel)]="sheetDnD.spellsLevelFour.level4Prepared10"
+                  (change)="editSheet()">
+                <input type="checkbox" class="prepared-spell" [(ngModel)]="sheetDnD.spellsLevelFour.level4Prepared11"
+                  (change)="editSheet()">
+                <input type="checkbox" class="prepared-spell" [(ngModel)]="sheetDnD.spellsLevelFour.level4Prepared12"
+                  (change)="editSheet()">
+                <input type="checkbox" class="prepared-spell" [(ngModel)]="sheetDnD.spellsLevelFour.level4Prepared13"
+                  (change)="editSheet()">
+              </div>
+              <div class="spell-name-column2">
+                <h6 class="spell-name-label">Nome da Magia</h6>
+                <input #spells1Lv4 type="text" class="spell-name" placeholder="Nome da Magia"
+                  [(ngModel)]="sheetDnD.spellsLevelFour.level4Slot1" (blur)="editSheet()"
+                  (keydown.enter)="lostFocus(spells1Lv4)">
+                <input #spells2Lv4 type="text" class="spell-name" placeholder="Nome da Magia"
+                  [(ngModel)]="sheetDnD.spellsLevelFour.level4Slot2" (blur)="editSheet()"
+                  (keydown.enter)="lostFocus(spells2Lv4)">
+                <input #spells3Lv4 type="text" class="spell-name" placeholder="Nome da Magia"
+                  [(ngModel)]="sheetDnD.spellsLevelFour.level4Slot3" (blur)="editSheet()"
+                  (keydown.enter)="lostFocus(spells3Lv4)">
+                <input #spells4Lv4 type="text" class="spell-name" placeholder="Nome da Magia"
+                  [(ngModel)]="sheetDnD.spellsLevelFour.level4Slot4" (blur)="editSheet()"
+                  (keydown.enter)="lostFocus(spells4Lv4)">
+                <input #spells5Lv4 type="text" class="spell-name" placeholder="Nome da Magia"
+                  [(ngModel)]="sheetDnD.spellsLevelFour.level4Slot5" (blur)="editSheet()"
+                  (keydown.enter)="lostFocus(spells5Lv4)">
+                <input #spells6Lv4 type="text" class="spell-name" placeholder="Nome da Magia"
+                  [(ngModel)]="sheetDnD.spellsLevelFour.level4Slot6" (blur)="editSheet()"
+                  (keydown.enter)="lostFocus(spells6Lv4)">
+                <input #spells7Lv4 type="text" class="spell-name" placeholder="Nome da Magia"
+                  [(ngModel)]="sheetDnD.spellsLevelFour.level4Slot7" (blur)="editSheet()"
+                  (keydown.enter)="lostFocus(spells7Lv4)">
+                <input #spells8Lv4 type="text" class="spell-name" placeholder="Nome da Magia"
+                  [(ngModel)]="sheetDnD.spellsLevelFour.level4Slot8" (blur)="editSheet()"
+                  (keydown.enter)="lostFocus(spells8Lv4)">
+                <input #spells9Lv4 type="text" class="spell-name" placeholder="Nome da Magia"
+                  [(ngModel)]="sheetDnD.spellsLevelFour.level4Slot9" (blur)="editSheet()"
+                  (keydown.enter)="lostFocus(spells9Lv4)">
+                <input #spells10Lv4 type="text" class="spell-name" placeholder="Nome da Magia"
+                  [(ngModel)]="sheetDnD.spellsLevelFour.level4Slot10" (blur)="editSheet()"
+                  (keydown.enter)="lostFocus(spells10Lv4)">
+                <input #spells11Lv4 type="text" class="spell-name" placeholder="Nome da Magia"
+                  [(ngModel)]="sheetDnD.spellsLevelFour.level4Slot11" (blur)="editSheet()"
+                  (keydown.enter)="lostFocus(spells11Lv4)">
+                <input #spells12Lv4 type="text" class="spell-name" placeholder="Nome da Magia"
+                  [(ngModel)]="sheetDnD.spellsLevelFour.level4Slot12" (blur)="editSheet()"
+                  (keydown.enter)="lostFocus(spells12Lv4)">
+                <input #spells13Lv4 type="text" class="spell-name" placeholder="Nome da Magia"
+                  [(ngModel)]="sheetDnD.spellsLevelFour.level4Slot13" (blur)="editSheet()"
+                  (keydown.enter)="lostFocus(spells13Lv4)">
+              </div>
+            </div>
           </div>
-          <div class="column3">
-            <input type="text" class="attack-damage-input" placeholder="1d8 / Cortante" [(ngModel)]="sheetDnD.attack.atkDamageType1">
-            <input type="text" class="attack-damage-input" placeholder="1d8 / Cortante" [(ngModel)]="sheetDnD.attack.atkDamageType2">
-            <input type="text" class="attack-damage-input" placeholder="1d8 / Cortante" [(ngModel)]="sheetDnD.attack.atkDamageType3">
-            <input type="text" class="attack-damage-input" placeholder="1d8 / Cortante" [(ngModel)]="sheetDnD.attack.atkDamageType4">
-            <input type="text" class="attack-damage-input" placeholder="1d8 / Cortante" [(ngModel)]="sheetDnD.attack.atkDamageType5">
-            <input type="text" class="attack-damage-input" placeholder="1d8 / Cortante" [(ngModel)]="sheetDnD.attack.atkDamageType6">
-            <input type="text" class="attack-damage-input" placeholder="1d8 / Cortante" [(ngModel)]="sheetDnD.attack.atkDamageType7">
-            <input type="text" class="attack-damage-input" placeholder="1d8 / Cortante" [(ngModel)]="sheetDnD.attack.atkDamageType8">
-            <input type="text" class="attack-damage-input" placeholder="1d8 / Cortante" [(ngModel)]="sheetDnD.attack.atkDamageType9">
-            <input type="text" class="attack-damage-input" placeholder="1d8 / Cortante" [(ngModel)]="sheetDnD.attack.atkDamageType10">
+          <div class="spells-level5-div spells-div">
+            <div class="labels-titles labels-row">
+              <div class="column1">
+                <h6 class="level-label">Level</h6>
+              </div>
+              <div class="column2">
+                <h6 class="total-spaces-label">Espaços Totais</h6>
+              </div>
+              <div class="column3">
+                <h6 class="total-spaces-label">Espaços Gastos</h6>
+              </div>
+            </div>
+            <div class="spells-level5-title-row title-row">
+              <div class="column1">
+                <h4 class="level5-title title">5</h4>
+              </div>
+              <div class="column2">
+                <input #totalSlotsLv5 type="number" min="0" class="total-spaces" placeholder="0"
+                  [(ngModel)]="sheetDnD.spellsLevelFive.level5TotalSlots" (blur)="editSheet()"
+                  (keydown.enter)="lostFocus(totalSlotsLv5)">
+              </div>
+              <div class="column3">
+                <input #slotsExpendedLv5 type="number" min="0" class="left-spaces" placeholder="0"
+                  [(ngModel)]="sheetDnD.spellsLevelFive.level5SlotsExpended" (blur)="editSheet()"
+                  (keydown.enter)="lostFocus(slotsExpendedLv5)">
+              </div>
+            </div>
+            <div class="spells-level5-content-row content-row">
+              <div class="prepared-spell-column1">
+                <div class="circle"></div>
+                <input type="checkbox" class="prepared-spell" [(ngModel)]="sheetDnD.spellsLevelFive.level5Prepared1"
+                  (change)="editSheet()">
+                <input type="checkbox" class="prepared-spell" [(ngModel)]="sheetDnD.spellsLevelFive.level5Prepared2"
+                  (change)="editSheet()">
+                <input type="checkbox" class="prepared-spell" [(ngModel)]="sheetDnD.spellsLevelFive.level5Prepared3"
+                  (change)="editSheet()">
+                <input type="checkbox" class="prepared-spell" [(ngModel)]="sheetDnD.spellsLevelFive.level5Prepared4"
+                  (change)="editSheet()">
+                <input type="checkbox" class="prepared-spell" [(ngModel)]="sheetDnD.spellsLevelFive.level5Prepared5"
+                  (change)="editSheet()">
+                <input type="checkbox" class="prepared-spell" [(ngModel)]="sheetDnD.spellsLevelFive.level5Prepared6"
+                  (change)="editSheet()">
+                <input type="checkbox" class="prepared-spell" [(ngModel)]="sheetDnD.spellsLevelFive.level5Prepared7"
+                  (change)="editSheet()">
+                <input type="checkbox" class="prepared-spell" [(ngModel)]="sheetDnD.spellsLevelFive.level5Prepared8"
+                  (change)="editSheet()">
+                <input type="checkbox" class="prepared-spell" [(ngModel)]="sheetDnD.spellsLevelFive.level5Prepared9"
+                  (change)="editSheet()">
+              </div>
+              <div class="spell-name-column2">
+                <h6 class="spell-name-label">Nome da Magia</h6>
+                <input #spells1Lv5 type="text" class="spell-name" placeholder="Nome da Magia"
+                  [(ngModel)]="sheetDnD.spellsLevelFive.level5Slot1" (blur)="editSheet()"
+                  (keydown.enter)="lostFocus(spells1Lv5)">
+                <input #spells2Lv5 type="text" class="spell-name" placeholder="Nome da Magia"
+                  [(ngModel)]="sheetDnD.spellsLevelFive.level5Slot2" (blur)="editSheet()"
+                  (keydown.enter)="lostFocus(spells2Lv5)">
+                <input #spells3Lv5 type="text" class="spell-name" placeholder="Nome da Magia"
+                  [(ngModel)]="sheetDnD.spellsLevelFive.level5Slot3" (blur)="editSheet()"
+                  (keydown.enter)="lostFocus(spells3Lv5)">
+                <input #spells4Lv5 type="text" class="spell-name" placeholder="Nome da Magia"
+                  [(ngModel)]="sheetDnD.spellsLevelFive.level5Slot4" (blur)="editSheet()"
+                  (keydown.enter)="lostFocus(spells4Lv5)">
+                <input #spells5Lv5 type="text" class="spell-name" placeholder="Nome da Magia"
+                  [(ngModel)]="sheetDnD.spellsLevelFive.level5Slot5" (blur)="editSheet()"
+                  (keydown.enter)="lostFocus(spells5Lv5)">
+                <input #spells6Lv5 type="text" class="spell-name" placeholder="Nome da Magia"
+                  [(ngModel)]="sheetDnD.spellsLevelFive.level5Slot6" (blur)="editSheet()"
+                  (keydown.enter)="lostFocus(spells6Lv5)">
+                <input #spells7Lv5 type="text" class="spell-name" placeholder="Nome da Magia"
+                  [(ngModel)]="sheetDnD.spellsLevelFive.level5Slot7" (blur)="editSheet()"
+                  (keydown.enter)="lostFocus(spells7Lv5)">
+                <input #spells8Lv5 type="text" class="spell-name" placeholder="Nome da Magia"
+                  [(ngModel)]="sheetDnD.spellsLevelFive.level5Slot8" (blur)="editSheet()"
+                  (keydown.enter)="lostFocus(spells8Lv5)">
+                <input #spells9Lv5 type="text" class="spell-name" placeholder="Nome da Magia"
+                  [(ngModel)]="sheetDnD.spellsLevelFive.level5Slot9" (blur)="editSheet()"
+                  (keydown.enter)="lostFocus(spells9Lv5)">
+              </div>
+            </div>
           </div>
         </div>
-        <div class="attack-row">
-          <h4 class="attack-spell-title">Ataques & Magias</h4>
+        <div class="spells-column3">
+          <div class="spells-level6-div spells-div">
+            <div class="labels-titles labels-row">
+              <div class="column1">
+                <h6 class="level-label">Level</h6>
+              </div>
+              <div class="column2">
+                <h6 class="total-spaces-label">Espaços Totais</h6>
+              </div>
+              <div class="column3">
+                <h6 class="total-spaces-label">Espaços Gastos</h6>
+              </div>
+            </div>
+            <div class="spells-level6-title-row title-row">
+              <div class="column1">
+                <h4 class="level6-title title">6</h4>
+              </div>
+              <div class="column2">
+                <input #totalSlotsLv6 type="number" min="0" class="total-spaces" placeholder="0"
+                  [(ngModel)]="sheetDnD.spellsLevelSix.level6TotalSlots" (blur)="editSheet()"
+                  (keydown.enter)="lostFocus(totalSlotsLv6)">
+              </div>
+              <div class="column3">
+                <input #slotsExpendedLv6 type="number" min="0" class="left-spaces" placeholder="0"
+                  [(ngModel)]="sheetDnD.spellsLevelSix.level6SlotsExpended" (blur)="editSheet()"
+                  (keydown.enter)="lostFocus(slotsExpendedLv6)">
+              </div>
+            </div>
+            <div class="spells-level6-content-row content-row">
+              <div class="prepared-spell-column1">
+                <div class="circle"></div>
+                <input type="checkbox" class="prepared-spell" [(ngModel)]="sheetDnD.spellsLevelSix.level6Prepared1"
+                  (change)="editSheet()">
+                <input type="checkbox" class="prepared-spell" [(ngModel)]="sheetDnD.spellsLevelSix.level6Prepared2"
+                  (change)="editSheet()">
+                <input type="checkbox" class="prepared-spell" [(ngModel)]="sheetDnD.spellsLevelSix.level6Prepared3"
+                  (change)="editSheet()">
+                <input type="checkbox" class="prepared-spell" [(ngModel)]="sheetDnD.spellsLevelSix.level6Prepared4"
+                  (change)="editSheet()">
+                <input type="checkbox" class="prepared-spell" [(ngModel)]="sheetDnD.spellsLevelSix.level6Prepared5"
+                  (change)="editSheet()">
+                <input type="checkbox" class="prepared-spell" [(ngModel)]="sheetDnD.spellsLevelSix.level6Prepared6"
+                  (change)="editSheet()">
+                <input type="checkbox" class="prepared-spell" [(ngModel)]="sheetDnD.spellsLevelSix.level6Prepared7"
+                  (change)="editSheet()">
+                <input type="checkbox" class="prepared-spell" [(ngModel)]="sheetDnD.spellsLevelSix.level6Prepared8"
+                  (change)="editSheet()">
+                <input type="checkbox" class="prepared-spell" [(ngModel)]="sheetDnD.spellsLevelSix.level6Prepared9"
+                  (change)="editSheet()">
+              </div>
+              <div class="spell-name-column2">
+                <h6 class="spell-name-label">Nome da Magia</h6>
+                <input #spell1Lv6 type="text" class="spell-name" placeholder="Nome da Magia"
+                  [(ngModel)]="sheetDnD.spellsLevelSix.level6Slot1" (blur)="editSheet()"
+                  (keydown.enter)="lostFocus(spell1Lv6)">
+                <input #spell2Lv6 type="text" class="spell-name" placeholder="Nome da Magia"
+                  [(ngModel)]="sheetDnD.spellsLevelSix.level6Slot2" (blur)="editSheet()"
+                  (keydown.enter)="lostFocus(spell2Lv6)">
+                <input #spell3Lv6 type="text" class="spell-name" placeholder="Nome da Magia"
+                  [(ngModel)]="sheetDnD.spellsLevelSix.level6Slot3" (blur)="editSheet()"
+                  (keydown.enter)="lostFocus(spell3Lv6)">
+                <input #spell4Lv6 type="text" class="spell-name" placeholder="Nome da Magia"
+                  [(ngModel)]="sheetDnD.spellsLevelSix.level6Slot4" (blur)="editSheet()"
+                  (keydown.enter)="lostFocus(spell4Lv6)">
+                <input #spell5Lv6 type="text" class="spell-name" placeholder="Nome da Magia"
+                  [(ngModel)]="sheetDnD.spellsLevelSix.level6Slot5" (blur)="editSheet()"
+                  (keydown.enter)="lostFocus(spell5Lv6)">
+                <input #spell6Lv6 type="text" class="spell-name" placeholder="Nome da Magia"
+                  [(ngModel)]="sheetDnD.spellsLevelSix.level6Slot6" (blur)="editSheet()"
+                  (keydown.enter)="lostFocus(spell6Lv6)">
+                <input #spell7Lv6 type="text" class="spell-name" placeholder="Nome da Magia"
+                  [(ngModel)]="sheetDnD.spellsLevelSix.level6Slot7" (blur)="editSheet()"
+                  (keydown.enter)="lostFocus(spell7Lv6)">
+                <input #spell8Lv6 type="text" class="spell-name" placeholder="Nome da Magia"
+                  [(ngModel)]="sheetDnD.spellsLevelSix.level6Slot8" (blur)="editSheet()"
+                  (keydown.enter)="lostFocus(spell8Lv6)">
+                <input #spell9Lv6 type="text" class="spell-name" placeholder="Nome da Magia"
+                  [(ngModel)]="sheetDnD.spellsLevelSix.level6Slot9" (blur)="editSheet()"
+                  (keydown.enter)="lostFocus(spell9Lv6)">
+              </div>
+            </div>
+          </div>
+          <div class="spells-level7-div spells-div">
+            <div class="labels-titles labels-row">
+              <div class="column1">
+                <h6 class="level-label">Level</h6>
+              </div>
+              <div class="column2">
+                <h6 class="total-spaces-label">Espaços Totais</h6>
+              </div>
+              <div class="column3">
+                <h6 class="total-spaces-label">Espaços Gastos</h6>
+              </div>
+            </div>
+            <div class="spells-level7-title-row title-row">
+              <div class="column1">
+                <h4 class="level7-title title">7</h4>
+              </div>
+              <div class="column2">
+                <input #totalSlotsLv7 type="number" min="0" class="total-spaces" placeholder="0"
+                  [(ngModel)]="sheetDnD.spellsLevelSeven.level7TotalSlots" (blur)="editSheet()"
+                  (keydown.enter)="lostFocus(totalSlotsLv7)">
+              </div>
+              <div class="column3">
+                <input #slotsExpendedLv7 type="number" min="0" class="left-spaces" placeholder="0"
+                  [(ngModel)]="sheetDnD.spellsLevelSeven.level7SlotsExpended" (blur)="editSheet()"
+                  (keydown.enter)="lostFocus(slotsExpendedLv7)">
+              </div>
+            </div>
+            <div class="spells-level7-content-row content-row">
+              <div class="prepared-spell-column1">
+                <div class="circle"></div>
+                <input type="checkbox" class="prepared-spell" [(ngModel)]="sheetDnD.spellsLevelSeven.level7Prepared1"
+                  (change)="editSheet()">
+                <input type="checkbox" class="prepared-spell" [(ngModel)]="sheetDnD.spellsLevelSeven.level7Prepared2"
+                  (change)="editSheet()">
+                <input type="checkbox" class="prepared-spell" [(ngModel)]="sheetDnD.spellsLevelSeven.level7Prepared3"
+                  (change)="editSheet()">
+                <input type="checkbox" class="prepared-spell" [(ngModel)]="sheetDnD.spellsLevelSeven.level7Prepared4"
+                  (change)="editSheet()">
+                <input type="checkbox" class="prepared-spell" [(ngModel)]="sheetDnD.spellsLevelSeven.level7Prepared5"
+                  (change)="editSheet()">
+                <input type="checkbox" class="prepared-spell" [(ngModel)]="sheetDnD.spellsLevelSeven.level7Prepared6"
+                  (change)="editSheet()">
+                <input type="checkbox" class="prepared-spell" [(ngModel)]="sheetDnD.spellsLevelSeven.level7Prepared7"
+                  (change)="editSheet()">
+                <input type="checkbox" class="prepared-spell" [(ngModel)]="sheetDnD.spellsLevelSeven.level7Prepared8"
+                  (change)="editSheet()">
+                <input type="checkbox" class="prepared-spell" [(ngModel)]="sheetDnD.spellsLevelSeven.level7Prepared9"
+                  (change)="editSheet()">
+              </div>
+              <div class="spell-name-column2">
+                <h6 class="spell-name-label">Nome da Magia</h6>
+                <input #spell1Lv7 type="text" class="spell-name" placeholder="Nome da Magia"
+                  [(ngModel)]="sheetDnD.spellsLevelSeven.level7Slot1" (blur)="editSheet()"
+                  (keydown.enter)="lostFocus(spell1Lv7)">
+                <input #spell2Lv7 type="text" class="spell-name" placeholder="Nome da Magia"
+                  [(ngModel)]="sheetDnD.spellsLevelSeven.level7Slot2" (blur)="editSheet()"
+                  (keydown.enter)="lostFocus(spell2Lv7)">
+                <input #spell3Lv7 type="text" class="spell-name" placeholder="Nome da Magia"
+                  [(ngModel)]="sheetDnD.spellsLevelSeven.level7Slot3" (blur)="editSheet()"
+                  (keydown.enter)="lostFocus(spell3Lv7)">
+                <input #spell4Lv7 type="text" class="spell-name" placeholder="Nome da Magia"
+                  [(ngModel)]="sheetDnD.spellsLevelSeven.level7Slot4" (blur)="editSheet()"
+                  (keydown.enter)="lostFocus(spell4Lv7)">
+                <input #spell5Lv7 type="text" class="spell-name" placeholder="Nome da Magia"
+                  [(ngModel)]="sheetDnD.spellsLevelSeven.level7Slot5" (blur)="editSheet()"
+                  (keydown.enter)="lostFocus(spell5Lv7)">
+                <input #spell6Lv7 type="text" class="spell-name" placeholder="Nome da Magia"
+                  [(ngModel)]="sheetDnD.spellsLevelSeven.level7Slot6" (blur)="editSheet()"
+                  (keydown.enter)="lostFocus(spell6Lv7)">
+                <input #spell7Lv7 type="text" class="spell-name" placeholder="Nome da Magia"
+                  [(ngModel)]="sheetDnD.spellsLevelSeven.level7Slot7" (blur)="editSheet()"
+                  (keydown.enter)="lostFocus(spell7Lv7)">
+                <input #spell8Lv7 type="text" class="spell-name" placeholder="Nome da Magia"
+                  [(ngModel)]="sheetDnD.spellsLevelSeven.level7Slot8" (blur)="editSheet()"
+                  (keydown.enter)="lostFocus(spell8Lv7)">
+                <input #spell9Lv7 type="text" class="spell-name" placeholder="Nome da Magia"
+                  [(ngModel)]="sheetDnD.spellsLevelSeven.level7Slot9" (blur)="editSheet()"
+                  (keydown.enter)="lostFocus(spell9Lv7)">
+              </div>
+            </div>
+          </div>
+          <div class="spells-level8-div spells-div">
+            <div class="labels-titles labels-row">
+              <div class="column1">
+                <h6 class="level-label">Level</h6>
+              </div>
+              <div class="column2">
+                <h6 class="total-spaces-label">Espaços Totais</h6>
+              </div>
+              <div class="column3">
+                <h6 class="total-spaces-label">Espaços Gastos</h6>
+              </div>
+            </div>
+            <div class="spells-level8-title-row title-row">
+              <div class="column1">
+                <h4 class="level8-title title">8</h4>
+              </div>
+              <div class="column2">
+                <input #totalSlotsLv8 type="number" min="0" class="total-spaces" placeholder="0"
+                  [(ngModel)]="sheetDnD.spellsLevelEigth.level8TotalSlots" (blur)="editSheet()"
+                  (keydown.enter)="lostFocus(totalSlotsLv8)">
+              </div>
+              <div class="column3">
+                <input #slotsExpendedLv8 type="number" min="0" class="left-spaces" placeholder="0"
+                  [(ngModel)]="sheetDnD.spellsLevelEigth.level8SlotsExpended" (blur)="editSheet()"
+                  (keydown.enter)="lostFocus(slotsExpendedLv8)">
+              </div>
+            </div>
+            <div class="spells-level8-content-row content-row">
+              <div class="prepared-spell-column1">
+                <div class="circle"></div>
+                <input type="checkbox" class="prepared-spell" [(ngModel)]="sheetDnD.spellsLevelEigth.level8Prepared1"
+                  (change)="editSheet()">
+                <input type="checkbox" class="prepared-spell" [(ngModel)]="sheetDnD.spellsLevelEigth.level8Prepared2"
+                  (change)="editSheet()">
+                <input type="checkbox" class="prepared-spell" [(ngModel)]="sheetDnD.spellsLevelEigth.level8Prepared3"
+                  (change)="editSheet()">
+                <input type="checkbox" class="prepared-spell" [(ngModel)]="sheetDnD.spellsLevelEigth.level8Prepared4"
+                  (change)="editSheet()">
+                <input type="checkbox" class="prepared-spell" [(ngModel)]="sheetDnD.spellsLevelEigth.level8Prepared5"
+                  (change)="editSheet()">
+                <input type="checkbox" class="prepared-spell" [(ngModel)]="sheetDnD.spellsLevelEigth.level8Prepared6"
+                  (change)="editSheet()">
+                <input type="checkbox" class="prepared-spell" [(ngModel)]="sheetDnD.spellsLevelEigth.level8Prepared7"
+                  (change)="editSheet()">
+              </div>
+              <div class="spell-name-column2">
+                <h6 class="spell-name-label">Nome da Magia</h6>
+                <input #spell1Lv8 type="text" class="spell-name" placeholder="Nome da Magia"
+                  [(ngModel)]="sheetDnD.spellsLevelEigth.level8Slot1" (blur)="editSheet()"
+                  (keydown.enter)="lostFocus(spell1Lv8)">
+                <input #spell2Lv8 type="text" class="spell-name" placeholder="Nome da Magia"
+                  [(ngModel)]="sheetDnD.spellsLevelEigth.level8Slot2" (blur)="editSheet()"
+                  (keydown.enter)="lostFocus(spell2Lv8)">
+                <input #spell3Lv8 type="text" class="spell-name" placeholder="Nome da Magia"
+                  [(ngModel)]="sheetDnD.spellsLevelEigth.level8Slot3" (blur)="editSheet()"
+                  (keydown.enter)="lostFocus(spell3Lv8)">
+                <input #spell4Lv8 type="text" class="spell-name" placeholder="Nome da Magia"
+                  [(ngModel)]="sheetDnD.spellsLevelEigth.level8Slot4" (blur)="editSheet()"
+                  (keydown.enter)="lostFocus(spell4Lv8)">
+                <input #spell5Lv8 type="text" class="spell-name" placeholder="Nome da Magia"
+                  [(ngModel)]="sheetDnD.spellsLevelEigth.level8Slot5" (blur)="editSheet()"
+                  (keydown.enter)="lostFocus(spell5Lv8)">
+                <input #spell6Lv8 type="text" class="spell-name" placeholder="Nome da Magia"
+                  [(ngModel)]="sheetDnD.spellsLevelEigth.level8Slot6" (blur)="editSheet()"
+                  (keydown.enter)="lostFocus(spell6Lv8)">
+                <input #spell7Lv8 type="text" class="spell-name" placeholder="Nome da Magia"
+                  [(ngModel)]="sheetDnD.spellsLevelEigth.level8Slot7" (blur)="editSheet()"
+                  (keydown.enter)="lostFocus(spell7Lv8)">
+              </div>
+            </div>
+          </div>
+          <div class="spells-level9-div spells-div">
+            <div class="labels-titles labels-row">
+              <div class="column1">
+                <h6 class="level-label">Level</h6>
+              </div>
+              <div class="column2">
+                <h6 class="total-spaces-label">Espaços Totais</h6>
+              </div>
+              <div class="column3">
+                <h6 class="total-spaces-label">Espaços Gastos</h6>
+              </div>
+            </div>
+            <div class="spells-level9-title-row title-row">
+              <div class="column1">
+                <h4 class="level9-title title">9</h4>
+              </div>
+              <div class="column2">
+                <input #totalSlotsLv9 type="number" min="0" class="total-spaces" placeholder="0"
+                  [(ngModel)]="sheetDnD.spellsLevelNine.level9TotalSlots" (blur)="editSheet()"
+                  (keydown.enter)="lostFocus(totalSlotsLv9)">
+              </div>
+              <div class="column3">
+                <input #slotsExpendedLv9 type="number" min="0" class="left-spaces" placeholder="0"
+                  [(ngModel)]="sheetDnD.spellsLevelNine.level9SlotsExpended" (blur)="editSheet()"
+                  (keydown.enter)="lostFocus(slotsExpendedLv9)">
+              </div>
+            </div>
+            <div class="spells-level9-content-row content-row">
+              <div class="prepared-spell-column1">
+                <div class="circle"></div>
+                <input type="checkbox" class="prepared-spell" [(ngModel)]="sheetDnD.spellsLevelNine.level9Prepared1"
+                  (change)="editSheet()">
+                <input type="checkbox" class="prepared-spell" [(ngModel)]="sheetDnD.spellsLevelNine.level9Prepared2"
+                  (change)="editSheet()">
+                <input type="checkbox" class="prepared-spell" [(ngModel)]="sheetDnD.spellsLevelNine.level9Prepared3"
+                  (change)="editSheet()">
+                <input type="checkbox" class="prepared-spell" [(ngModel)]="sheetDnD.spellsLevelNine.level9Prepared4"
+                  (change)="editSheet()">
+                <input type="checkbox" class="prepared-spell" [(ngModel)]="sheetDnD.spellsLevelNine.level9Prepared5"
+                  (change)="editSheet()">
+                <input type="checkbox" class="prepared-spell" [(ngModel)]="sheetDnD.spellsLevelNine.level9Prepared6"
+                  (change)="editSheet()">
+                <input type="checkbox" class="prepared-spell" [(ngModel)]="sheetDnD.spellsLevelNine.level9Prepared7"
+                  (change)="editSheet()">
+              </div>
+              <div class="spell-name-column2">
+                <h6 class="spell-name-label">Nome da Magia</h6>
+                <input #spell1Lv9 type="text" class="spell-name" placeholder="Nome da Magia"
+                  [(ngModel)]="sheetDnD.spellsLevelNine.level9Slot1" (blur)="editSheet()"
+                  (keydown.enter)="lostFocus(spell1Lv9)">
+                <input #spell2Lv9 type="text" class="spell-name" placeholder="Nome da Magia"
+                  [(ngModel)]="sheetDnD.spellsLevelNine.level9Slot2" (blur)="editSheet()"
+                  (keydown.enter)="lostFocus(spell2Lv9)">
+                <input #spell3Lv9 type="text" class="spell-name" placeholder="Nome da Magia"
+                  [(ngModel)]="sheetDnD.spellsLevelNine.level9Slot3" (blur)="editSheet()"
+                  (keydown.enter)="lostFocus(spell3Lv9)">
+                <input #spell4Lv9 type="text" class="spell-name" placeholder="Nome da Magia"
+                  [(ngModel)]="sheetDnD.spellsLevelNine.level9Slot4" (blur)="editSheet()"
+                  (keydown.enter)="lostFocus(spell4Lv9)">
+                <input #spell5Lv9 type="text" class="spell-name" placeholder="Nome da Magia"
+                  [(ngModel)]="sheetDnD.spellsLevelNine.level9Slot5" (blur)="editSheet()"
+                  (keydown.enter)="lostFocus(spell5Lv9)">
+                <input #spell6Lv9 type="text" class="spell-name" placeholder="Nome da Magia"
+                  [(ngModel)]="sheetDnD.spellsLevelNine.level9Slot6" (blur)="editSheet()"
+                  (keydown.enter)="lostFocus(spell6Lv9)">
+                <input #spell7Lv9 type="text" class="spell-name" placeholder="Nome da Magia"
+                  [(ngModel)]="sheetDnD.spellsLevelNine.level9Slot7" (blur)="editSheet()"
+                  (keydown.enter)="lostFocus(spell7Lv9)">
+              </div>
+            </div>
+          </div>
         </div>
-      </div>
-      <div class="equipment-div">
-        <textarea class="equipment-input" placeholder="Equipamento" [(ngModel)]="sheetDnD.equipment"></textarea>
-        <h4 class="equipment-title">Equipamento</h4>
-      </div>
-    </div>
-    <div class="row4-column3">
-      <div class="characteristics-traits-div">
-        <textarea class="characteristics-traits-input" placeholder="Característics e Traços" [(ngModel)]="sheetDnD.traits"></textarea>
-        <h4 class="characteristics-traits-title">Características e Traços</h4>
       </div>
     </div>
   </div>
-</div>
-
-<div class="sheet-body-2">
-  <div class="sheet-body-row1" id="others-infos">
-    <div class="row1-column1">
-      <div class="buttons">
-        <button class="button-principal-infos"> <a href="/home/my-sheets/dnd-sheet#principal-infos"> Principal Infos
-          </a></button>
-        <button class="button-spells"> <a href="/home/my-sheets/dnd-sheet#spells-page"> Magias </a> </button>
-      </div>
-    </div>
-    <div class="row1-column2">
-      <div class="character-name-div">
-        <input class="character-name-input" type="text" placeholder="Nome de Personagem" [(ngModel)]="sheetDnD.personalInfo.characterName">
-        <h4 class="character-name-title"> Nome de Personagem </h4>
-      </div>
-    </div>
-    <div class="row1-column3">
-      <div class="others-personal-infos-div">
-        <div class="row-one">
-          <div class="row-one-column">
-            <input type="text" class="age-input personal-infos-inputs" placeholder="Idade" [(ngModel)]="sheetDnD.personalInfo.age">
-          </div>
-          <div class="row-one-column">
-            <input type="text" class="heigth-input personal-infos-inputs" placeholder="Altura" [(ngModel)]="sheetDnD.personalInfo.height">
-          </div>
-          <div class="row-one-column">
-            <input type="text" class="weigth-input personal-infos-inputs" placeholder="Peso" [(ngModel)]="sheetDnD.personalInfo.weight">
-          </div>
-        </div>
-        <div class="row-two">
-          <div class="separate-row"> </div>
-        </div>
-        <div class="row-three">
-          <div class="row-three-column">
-            <h4 class="age-title personal-infos-titles"> Idade </h4>
-          </div>
-          <div class="row-three-column">
-            <h4 class="heigth-title personal-infos-titles"> Altura </h4>
-          </div>
-          <div class="row-three-column">
-            <h4 class="weigth-title personal-infos-titles"> Peso</h4>
-          </div>
-        </div>
-        <div class="row-four">
-          <div class="row-four-column">
-            <input type="text" class="eyes-input personal-infos-inputs" placeholder="Olhos" [(ngModel)]="sheetDnD.personalInfo.eyes">
-          </div>
-          <div class="row-four-column">
-            <input type="text" class="skin-input personal-infos-inputs" placeholder="Pele" [(ngModel)]="sheetDnD.personalInfo.skin">
-          </div>
-          <div class="row-four-column">
-            <input type="text" class="hair-input personal-infos-inputs" placeholder="Cabelo" [(ngModel)]="sheetDnD.personalInfo.hair">
-          </div>
-        </div>
-        <div class="row-five">
-          <div class="separate-row"> </div>
-        </div>
-        <div class="row-six">
-          <div class="row-six-column">
-            <h4 class="eyes-title personal-infos-titles"> Olhos </h4>
-          </div>
-          <div class="row-six-column">
-            <h4 class="skin-title personal-infos-titles"> Pele </h4>
-          </div>
-          <div class="row-six-column">
-            <h4 class="hair-title personal-infos-titles"> Cabelo </h4>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="sheet-body-row2">
-    <div class="row2-column1">
-      <div class="character-picture-div">
-
-      </div>
-    </div>
-    <div class="row2-column2">
-      <div class="features-traits-div">
-        <textarea class="features-traits-input" placeholder="Traços Adicionais" [(ngModel)]="sheetDnD.featuresTraits"></textarea>
-        <h4 class="features-traits-title">Características & Traços Adicionais</h4>
-      </div>
-    </div>
-  </div>
-  <div class="sheet-body-row3">
-    <div class="backstory-div">
-      <textarea class="backstory-input" placeholder="História do Personagem" [(ngModel)]="sheetDnD.backstory"></textarea>
-      <h4 class="backstory-title">História do Personagem</h4>
-    </div>
-  </div>
-</div>
-
-<div class="sheet-body-3">
-  <div class="sheet-body-row1" id="spells-page">
-    <div class="row1-column1">
-      <div class="buttons">
-        <a href="/home/my-sheets/dnd-sheet#principal-infos">
-          <button class="button-principal-infos"> Principal Infos </button>
-        </a>
-        <a href="/home/my-sheets/dnd-sheet#others-infos">
-          <button class="button-other-infos"> Outras Infos </button>
-        </a>
-      </div>
-    </div>
-    <div class="row1-column2">
-      <div class="conjurer-class-div">
-        <input class="conjurer-class-input" type="text" placeholder="Classe de Conjurador" [(ngModel)]="sheetDnD.spellcastingClass">
-        <h4 class="conjurer-class-title"> Classe de Conjurador </h4>
-      </div>
-    </div>
-    <div class="row1-column3">
-      <div class="spell-cast-infos">
-        <div class="column">
-          <input type="text" class="key-attribute-input" placeholder="Inte" [(ngModel)]="sheetDnD.spellcastingHability">
-          <h4 class="key-attribute-title">Habilidade Chave</h4>
-        </div>
-        <div class="column">
-          <input type="number" min="0" class="difficulty-class-input" placeholder="14" [(ngModel)]="sheetDnD.spellDC">
-          <h4 class="difficulty-class-title">C.D</h4>
-        </div>
-        <div class="column">
-          <input type="number" min="0" class="attack-bonus" placeholder="6" [(ngModel)]="sheetDnD.spellAtkBonus">
-          <h4 class="attack-bonus-title">Bônus de Ataque</h4>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="sheet-body-row2">
-    <div class="spells-cantrips-div">
-      <div class="spells-column1">
-        <div class="cantrips-div">
-          <div class="cantrips-title-row">
-            <div class="cantrips-title-column1">
-              <h4 class="cantrips-level">0</h4>
-            </div>
-            <div class="cantrips-title-column2">
-              <h4 class="cantrips-title">Truques</h4>
-            </div>
-          </div>
-          <div class="cantrips-content-row">
-            <input type="text" class="cantrip-input" placeholder="Nome do Truque" [(ngModel)]="sheetDnD.cantrips.cantrip1">
-            <input type="text" class="cantrip-input" placeholder="Nome do Truque" [(ngModel)]="sheetDnD.cantrips.cantrip2">
-            <input type="text" class="cantrip-input" placeholder="Nome do Truque" [(ngModel)]="sheetDnD.cantrips.cantrip3">
-            <input type="text" class="cantrip-input" placeholder="Nome do Truque" [(ngModel)]="sheetDnD.cantrips.cantrip4">
-            <input type="text" class="cantrip-input" placeholder="Nome do Truque" [(ngModel)]="sheetDnD.cantrips.cantrip5">
-            <input type="text" class="cantrip-input" placeholder="Nome do Truque" [(ngModel)]="sheetDnD.cantrips.cantrip6">
-            <input type="text" class="cantrip-input" placeholder="Nome do Truque" [(ngModel)]="sheetDnD.cantrips.cantrip7">
-            <input type="text" class="cantrip-input" placeholder="Nome do Truque" [(ngModel)]="sheetDnD.cantrips.cantrip8">
-          </div>
-        </div>
-        <div class="spells-level1-div spells-div">
-          <div class="labels-titles labels-row">
-            <div class="column1">
-              <h6 class="level-label">Level</h6>
-            </div>
-            <div class="column2">
-              <h6 class="total-spaces-label"> Espaços Totais</h6>
-            </div>
-            <div class="column3">
-              <h6 class="total-spaces-label">Espaços Gastos</h6>
-            </div>
-          </div>
-          <div class="spells-level1-title-row title-row">
-            <div class="column1">
-              <h4 class="level1-title title">1</h4>
-            </div>
-            <div class="column2">
-              <input type="number" min="0" class="total-spaces" placeholder="0" [(ngModel)]="sheetDnD.spellsLevelOne.level1TotalSlots">
-            </div>
-            <div class="column3">
-              <input type="number" min="0" class="left-spaces" placeholder="0" [(ngModel)]="sheetDnD.spellsLevelOne.level1SlotsExpended">
-            </div>
-          </div>
-          <div class="spells-level1-content-row content-row">
-            <div class="prepared-spell-column1">
-              <div class="circle"></div>
-              <input type="checkbox" class="prepared-spell" [(ngModel)]="sheetDnD.spellsLevelOne.level1Prepared1">
-              <input type="checkbox" class="prepared-spell" [(ngModel)]="sheetDnD.spellsLevelOne.level1Prepared2">
-              <input type="checkbox" class="prepared-spell" [(ngModel)]="sheetDnD.spellsLevelOne.level1Prepared3">
-              <input type="checkbox" class="prepared-spell" [(ngModel)]="sheetDnD.spellsLevelOne.level1Prepared4">
-              <input type="checkbox" class="prepared-spell" [(ngModel)]="sheetDnD.spellsLevelOne.level1Prepared5">
-              <input type="checkbox" class="prepared-spell" [(ngModel)]="sheetDnD.spellsLevelOne.level1Prepared6">
-              <input type="checkbox" class="prepared-spell" [(ngModel)]="sheetDnD.spellsLevelOne.level1Prepared7">
-              <input type="checkbox" class="prepared-spell" [(ngModel)]="sheetDnD.spellsLevelOne.level1Prepared8">
-              <input type="checkbox" class="prepared-spell" [(ngModel)]="sheetDnD.spellsLevelOne.level1Prepared9">
-              <input type="checkbox" class="prepared-spell" [(ngModel)]="sheetDnD.spellsLevelOne.level1Prepared10">
-              <input type="checkbox" class="prepared-spell" [(ngModel)]="sheetDnD.spellsLevelOne.level1Prepared11">
-              <input type="checkbox" class="prepared-spell" [(ngModel)]="sheetDnD.spellsLevelOne.level1Prepared12">
-            </div>
-            <div class="spell-name-column2">
-              <h6 class="spell-name-label">Nome da Magia</h6>
-              <input type="text" class="spell-name" placeholder="Nome da Magia" [(ngModel)]="sheetDnD.spellsLevelOne.level1Slot1">
-              <input type="text" class="spell-name" placeholder="Nome da Magia" [(ngModel)]="sheetDnD.spellsLevelOne.level1Slot2">
-              <input type="text" class="spell-name" placeholder="Nome da Magia" [(ngModel)]="sheetDnD.spellsLevelOne.level1Slot3">
-              <input type="text" class="spell-name" placeholder="Nome da Magia" [(ngModel)]="sheetDnD.spellsLevelOne.level1Slot4">
-              <input type="text" class="spell-name" placeholder="Nome da Magia" [(ngModel)]="sheetDnD.spellsLevelOne.level1Slot5">
-              <input type="text" class="spell-name" placeholder="Nome da Magia" [(ngModel)]="sheetDnD.spellsLevelOne.level1Slot6">
-              <input type="text" class="spell-name" placeholder="Nome da Magia" [(ngModel)]="sheetDnD.spellsLevelOne.level1Slot7">
-              <input type="text" class="spell-name" placeholder="Nome da Magia" [(ngModel)]="sheetDnD.spellsLevelOne.level1Slot8">
-              <input type="text" class="spell-name" placeholder="Nome da Magia" [(ngModel)]="sheetDnD.spellsLevelOne.level1Slot9">
-              <input type="text" class="spell-name" placeholder="Nome da Magia" [(ngModel)]="sheetDnD.spellsLevelOne.level1Slot10">
-              <input type="text" class="spell-name" placeholder="Nome da Magia" [(ngModel)]="sheetDnD.spellsLevelOne.level1Slot11">
-              <input type="text" class="spell-name" placeholder="Nome da Magia" [(ngModel)]="sheetDnD.spellsLevelOne.level1Slot12">
-            </div>
-          </div>
-        </div>
-        <div class="spells-level2-div spells-div">
-          <div class="labels-titles labels-row">
-            <div class="column1">
-              <h6 class="level-label">Level</h6>
-            </div>
-            <div class="column2">
-              <h6 class="total-spaces-label">Espaços Totais</h6>
-            </div>
-            <div class="column3">
-              <h6 class="total-spaces-label">Espaços Gastos</h6>
-            </div>
-          </div>
-          <div class="spells-level2-title-row title-row">
-            <div class="column1">
-              <h4 class="level2-title title">2</h4>
-            </div>
-            <div class="column2">
-              <input type="number" min="0" class="total-spaces" placeholder="0" [(ngModel)]="sheetDnD.spellsLevelTwo.level2TotalSlots">
-            </div>
-            <div class="column3">
-              <input type="number" min="0" class="left-spaces" placeholder="0" [(ngModel)]="sheetDnD.spellsLevelTwo.level2SlotsExpended">
-            </div>
-          </div>
-          <div class="spells-level2-content-row content-row">
-            <div class="prepared-spell-column1">
-              <div class="circle"></div>
-              <input type="checkbox" class="prepared-spell" [(ngModel)]="sheetDnD.spellsLevelTwo.level2Prepared1">
-              <input type="checkbox" class="prepared-spell" [(ngModel)]="sheetDnD.spellsLevelTwo.level2Prepared2">
-              <input type="checkbox" class="prepared-spell" [(ngModel)]="sheetDnD.spellsLevelTwo.level2Prepared3">
-              <input type="checkbox" class="prepared-spell" [(ngModel)]="sheetDnD.spellsLevelTwo.level2Prepared4">
-              <input type="checkbox" class="prepared-spell" [(ngModel)]="sheetDnD.spellsLevelTwo.level2Prepared5">
-              <input type="checkbox" class="prepared-spell" [(ngModel)]="sheetDnD.spellsLevelTwo.level2Prepared6">
-              <input type="checkbox" class="prepared-spell" [(ngModel)]="sheetDnD.spellsLevelTwo.level2Prepared7">
-              <input type="checkbox" class="prepared-spell" [(ngModel)]="sheetDnD.spellsLevelTwo.level2Prepared8">
-              <input type="checkbox" class="prepared-spell" [(ngModel)]="sheetDnD.spellsLevelTwo.level2Prepared9">
-              <input type="checkbox" class="prepared-spell" [(ngModel)]="sheetDnD.spellsLevelTwo.level2Prepared10">
-              <input type="checkbox" class="prepared-spell" [(ngModel)]="sheetDnD.spellsLevelTwo.level2Prepared11">
-              <input type="checkbox" class="prepared-spell" [(ngModel)]="sheetDnD.spellsLevelTwo.level2Prepared12">
-              <input type="checkbox" class="prepared-spell" [(ngModel)]="sheetDnD.spellsLevelTwo.level2Prepared13">
-            </div>
-            <div class="spell-name-column2">
-              <h6 class="spell-name-label">Nome da Magia</h6>
-              <input type="text" class="spell-name" placeholder="Nome da Magia" [(ngModel)]="sheetDnD.spellsLevelTwo.level2Slot1">
-              <input type="text" class="spell-name" placeholder="Nome da Magia" [(ngModel)]="sheetDnD.spellsLevelTwo.level2Slot2">
-              <input type="text" class="spell-name" placeholder="Nome da Magia" [(ngModel)]="sheetDnD.spellsLevelTwo.level2Slot3">
-              <input type="text" class="spell-name" placeholder="Nome da Magia" [(ngModel)]="sheetDnD.spellsLevelTwo.level2Slot4">
-              <input type="text" class="spell-name" placeholder="Nome da Magia" [(ngModel)]="sheetDnD.spellsLevelTwo.level2Slot5">
-              <input type="text" class="spell-name" placeholder="Nome da Magia" [(ngModel)]="sheetDnD.spellsLevelTwo.level2Slot6">
-              <input type="text" class="spell-name" placeholder="Nome da Magia" [(ngModel)]="sheetDnD.spellsLevelTwo.level2Slot7">
-              <input type="text" class="spell-name" placeholder="Nome da Magia" [(ngModel)]="sheetDnD.spellsLevelTwo.level2Slot8">
-              <input type="text" class="spell-name" placeholder="Nome da Magia" [(ngModel)]="sheetDnD.spellsLevelTwo.level2Slot9">
-              <input type="text" class="spell-name" placeholder="Nome da Magia" [(ngModel)]="sheetDnD.spellsLevelTwo.level2Slot10">
-              <input type="text" class="spell-name" placeholder="Nome da Magia" [(ngModel)]="sheetDnD.spellsLevelTwo.level2Slot11">
-              <input type="text" class="spell-name" placeholder="Nome da Magia" [(ngModel)]="sheetDnD.spellsLevelTwo.level2Slot12">
-              <input type="text" class="spell-name" placeholder="Nome da Magia" [(ngModel)]="sheetDnD.spellsLevelTwo.level2Slot13">
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="spells-column2">
-        <div class="spells-level3-div spells-div">
-          <div class="labels-titles labels-row">
-            <div class="column1">
-              <h6 class="level-label">Level</h6>
-            </div>
-            <div class="column2">
-              <h6 class="total-spaces-label">Espaços Totais</h6>
-            </div>
-            <div class="column3">
-              <h6 class="total-spaces-label">Espaços Gastos</h6>
-            </div>
-          </div>
-          <div class="spells-level3-title-row title-row">
-            <div class="column1">
-              <h4 class="level3-title title">3</h4>
-            </div>
-            <div class="column2">
-              <input type="number" min="0" class="total-spaces" placeholder="0" [(ngModel)]="sheetDnD.spellsLevelThree.level3TotalSlots">
-            </div>
-            <div class="column3">
-              <input type="number" min="0" class="left-spaces" placeholder="0" [(ngModel)]="sheetDnD.spellsLevelThree.level3SlotsExpended">
-            </div>
-          </div>
-          <div class="spells-level3-content-row content-row">
-            <div class="prepared-spell-column1">
-              <div class="circle"></div>
-              <input type="checkbox" class="prepared-spell" [(ngModel)]="sheetDnD.spellsLevelThree.level3Prepared1">
-              <input type="checkbox" class="prepared-spell" [(ngModel)]="sheetDnD.spellsLevelThree.level3Prepared2">
-              <input type="checkbox" class="prepared-spell" [(ngModel)]="sheetDnD.spellsLevelThree.level3Prepared3">
-              <input type="checkbox" class="prepared-spell" [(ngModel)]="sheetDnD.spellsLevelThree.level3Prepared4">
-              <input type="checkbox" class="prepared-spell" [(ngModel)]="sheetDnD.spellsLevelThree.level3Prepared5">
-              <input type="checkbox" class="prepared-spell" [(ngModel)]="sheetDnD.spellsLevelThree.level3Prepared6">
-              <input type="checkbox" class="prepared-spell" [(ngModel)]="sheetDnD.spellsLevelThree.level3Prepared7">
-              <input type="checkbox" class="prepared-spell" [(ngModel)]="sheetDnD.spellsLevelThree.level3Prepared8">
-              <input type="checkbox" class="prepared-spell" [(ngModel)]="sheetDnD.spellsLevelThree.level3Prepared9">
-              <input type="checkbox" class="prepared-spell" [(ngModel)]="sheetDnD.spellsLevelThree.level3Prepared10">
-              <input type="checkbox" class="prepared-spell" [(ngModel)]="sheetDnD.spellsLevelThree.level3Prepared11">
-              <input type="checkbox" class="prepared-spell" [(ngModel)]="sheetDnD.spellsLevelThree.level3Prepared12">
-              <input type="checkbox" class="prepared-spell" [(ngModel)]="sheetDnD.spellsLevelThree.level3Prepared13">
-            </div>
-            <div class="spell-name-column2">
-              <h6 class="spell-name-label">Nome da Magia</h6>
-              <input type="text" class="spell-name" placeholder="Nome da Magia" [(ngModel)]="sheetDnD.spellsLevelThree.level3Slot1">
-              <input type="text" class="spell-name" placeholder="Nome da Magia" [(ngModel)]="sheetDnD.spellsLevelThree.level3Slot2">
-              <input type="text" class="spell-name" placeholder="Nome da Magia" [(ngModel)]="sheetDnD.spellsLevelThree.level3Slot3">
-              <input type="text" class="spell-name" placeholder="Nome da Magia" [(ngModel)]="sheetDnD.spellsLevelThree.level3Slot4">
-              <input type="text" class="spell-name" placeholder="Nome da Magia" [(ngModel)]="sheetDnD.spellsLevelThree.level3Slot5">
-              <input type="text" class="spell-name" placeholder="Nome da Magia" [(ngModel)]="sheetDnD.spellsLevelThree.level3Slot6">
-              <input type="text" class="spell-name" placeholder="Nome da Magia" [(ngModel)]="sheetDnD.spellsLevelThree.level3Slot7">
-              <input type="text" class="spell-name" placeholder="Nome da Magia" [(ngModel)]="sheetDnD.spellsLevelThree.level3Slot8">
-              <input type="text" class="spell-name" placeholder="Nome da Magia" [(ngModel)]="sheetDnD.spellsLevelThree.level3Slot9">
-              <input type="text" class="spell-name" placeholder="Nome da Magia" [(ngModel)]="sheetDnD.spellsLevelThree.level3Slot10">
-              <input type="text" class="spell-name" placeholder="Nome da Magia" [(ngModel)]="sheetDnD.spellsLevelThree.level3Slot11">
-              <input type="text" class="spell-name" placeholder="Nome da Magia" [(ngModel)]="sheetDnD.spellsLevelThree.level3Slot12">
-              <input type="text" class="spell-name" placeholder="Nome da Magia" [(ngModel)]="sheetDnD.spellsLevelThree.level3Slot13">
-            </div>
-          </div>
-        </div>
-        <div class="spells-level4-div spells-div">
-          <div class="labels-titles labels-row">
-            <div class="column1">
-              <h6 class="level-label">Level</h6>
-            </div>
-            <div class="column2">
-              <h6 class="total-spaces-label">Espaços Totais</h6>
-            </div>
-            <div class="column3">
-              <h6 class="total-spaces-label">Espaços Gastos</h6>
-            </div>
-          </div>
-          <div class="spells-level4-title-row title-row">
-            <div class="column1">
-              <h4 class="level4-title title">4</h4>
-            </div>
-            <div class="column2">
-              <input type="number" min="0" class="total-spaces" placeholder="0" [(ngModel)]="sheetDnD.spellsLevelFour.level4TotalSlots">
-            </div>
-            <div class="column3">
-              <input type="number" min="0" class="left-spaces" placeholder="0" [(ngModel)]="sheetDnD.spellsLevelFour.level4SlotsExpended">
-            </div>
-          </div>
-          <div class="spells-level4-content-row content-row">
-            <div class="prepared-spell-column1">
-              <div class="circle"></div>
-              <input type="checkbox" class="prepared-spell" [(ngModel)]="sheetDnD.spellsLevelFour.level4Prepared1">
-              <input type="checkbox" class="prepared-spell" [(ngModel)]="sheetDnD.spellsLevelFour.level4Prepared2">
-              <input type="checkbox" class="prepared-spell" [(ngModel)]="sheetDnD.spellsLevelFour.level4Prepared3">
-              <input type="checkbox" class="prepared-spell" [(ngModel)]="sheetDnD.spellsLevelFour.level4Prepared4">
-              <input type="checkbox" class="prepared-spell" [(ngModel)]="sheetDnD.spellsLevelFour.level4Prepared5">
-              <input type="checkbox" class="prepared-spell" [(ngModel)]="sheetDnD.spellsLevelFour.level4Prepared6">
-              <input type="checkbox" class="prepared-spell" [(ngModel)]="sheetDnD.spellsLevelFour.level4Prepared7">
-              <input type="checkbox" class="prepared-spell" [(ngModel)]="sheetDnD.spellsLevelFour.level4Prepared8">
-              <input type="checkbox" class="prepared-spell" [(ngModel)]="sheetDnD.spellsLevelFour.level4Prepared9">
-              <input type="checkbox" class="prepared-spell" [(ngModel)]="sheetDnD.spellsLevelFour.level4Prepared10">
-              <input type="checkbox" class="prepared-spell" [(ngModel)]="sheetDnD.spellsLevelFour.level4Prepared11">
-              <input type="checkbox" class="prepared-spell" [(ngModel)]="sheetDnD.spellsLevelFour.level4Prepared12">
-              <input type="checkbox" class="prepared-spell" [(ngModel)]="sheetDnD.spellsLevelFour.level4Prepared13">
-            </div>
-            <div class="spell-name-column2">
-              <h6 class="spell-name-label">Nome da Magia</h6>
-              <input type="text" class="spell-name" placeholder="Nome da Magia" [(ngModel)]="sheetDnD.spellsLevelFour.level4Slot1">
-              <input type="text" class="spell-name" placeholder="Nome da Magia" [(ngModel)]="sheetDnD.spellsLevelFour.level4Slot2">
-              <input type="text" class="spell-name" placeholder="Nome da Magia" [(ngModel)]="sheetDnD.spellsLevelFour.level4Slot3">
-              <input type="text" class="spell-name" placeholder="Nome da Magia" [(ngModel)]="sheetDnD.spellsLevelFour.level4Slot4">
-              <input type="text" class="spell-name" placeholder="Nome da Magia" [(ngModel)]="sheetDnD.spellsLevelFour.level4Slot5">
-              <input type="text" class="spell-name" placeholder="Nome da Magia" [(ngModel)]="sheetDnD.spellsLevelFour.level4Slot6">
-              <input type="text" class="spell-name" placeholder="Nome da Magia" [(ngModel)]="sheetDnD.spellsLevelFour.level4Slot7">
-              <input type="text" class="spell-name" placeholder="Nome da Magia" [(ngModel)]="sheetDnD.spellsLevelFour.level4Slot8">
-              <input type="text" class="spell-name" placeholder="Nome da Magia" [(ngModel)]="sheetDnD.spellsLevelFour.level4Slot9">
-              <input type="text" class="spell-name" placeholder="Nome da Magia" [(ngModel)]="sheetDnD.spellsLevelFour.level4Slot10">
-              <input type="text" class="spell-name" placeholder="Nome da Magia" [(ngModel)]="sheetDnD.spellsLevelFour.level4Slot11">
-              <input type="text" class="spell-name" placeholder="Nome da Magia" [(ngModel)]="sheetDnD.spellsLevelFour.level4Slot12">
-              <input type="text" class="spell-name" placeholder="Nome da Magia" [(ngModel)]="sheetDnD.spellsLevelFour.level4Slot13">
-            </div>
-          </div>
-        </div>
-        <div class="spells-level5-div spells-div">
-          <div class="labels-titles labels-row">
-            <div class="column1">
-              <h6 class="level-label">Level</h6>
-            </div>
-            <div class="column2">
-              <h6 class="total-spaces-label">Espaços Totais</h6>
-            </div>
-            <div class="column3">
-              <h6 class="total-spaces-label">Espaços Gastos</h6>
-            </div>
-          </div>
-          <div class="spells-level5-title-row title-row">
-            <div class="column1">
-              <h4 class="level5-title title">5</h4>
-            </div>
-            <div class="column2">
-              <input type="number" min="0" class="total-spaces" placeholder="0" [(ngModel)]="sheetDnD.spellsLevelFive.level5TotalSlots">
-            </div>
-            <div class="column3">
-              <input type="number" min="0" class="left-spaces" placeholder="0" [(ngModel)]="sheetDnD.spellsLevelFive.level5SlotsExpended">
-            </div>
-          </div>
-          <div class="spells-level5-content-row content-row">
-            <div class="prepared-spell-column1">
-              <div class="circle"></div>
-              <input type="checkbox" class="prepared-spell" [(ngModel)]="sheetDnD.spellsLevelFive.level5Prepared1">
-              <input type="checkbox" class="prepared-spell" [(ngModel)]="sheetDnD.spellsLevelFive.level5Prepared2">
-              <input type="checkbox" class="prepared-spell" [(ngModel)]="sheetDnD.spellsLevelFive.level5Prepared3">
-              <input type="checkbox" class="prepared-spell" [(ngModel)]="sheetDnD.spellsLevelFive.level5Prepared4">
-              <input type="checkbox" class="prepared-spell" [(ngModel)]="sheetDnD.spellsLevelFive.level5Prepared5">
-              <input type="checkbox" class="prepared-spell" [(ngModel)]="sheetDnD.spellsLevelFive.level5Prepared6">
-              <input type="checkbox" class="prepared-spell" [(ngModel)]="sheetDnD.spellsLevelFive.level5Prepared7">
-              <input type="checkbox" class="prepared-spell" [(ngModel)]="sheetDnD.spellsLevelFive.level5Prepared8">
-              <input type="checkbox" class="prepared-spell" [(ngModel)]="sheetDnD.spellsLevelFive.level5Prepared9">
-            </div>
-            <div class="spell-name-column2">
-              <h6 class="spell-name-label">Nome da Magia</h6>
-              <input type="text" class="spell-name" placeholder="Nome da Magia" [(ngModel)]="sheetDnD.spellsLevelFive.level5Slot1">
-              <input type="text" class="spell-name" placeholder="Nome da Magia" [(ngModel)]="sheetDnD.spellsLevelFive.level5Slot2">
-              <input type="text" class="spell-name" placeholder="Nome da Magia" [(ngModel)]="sheetDnD.spellsLevelFive.level5Slot3">
-              <input type="text" class="spell-name" placeholder="Nome da Magia" [(ngModel)]="sheetDnD.spellsLevelFive.level5Slot4">
-              <input type="text" class="spell-name" placeholder="Nome da Magia" [(ngModel)]="sheetDnD.spellsLevelFive.level5Slot5">
-              <input type="text" class="spell-name" placeholder="Nome da Magia" [(ngModel)]="sheetDnD.spellsLevelFive.level5Slot6">
-              <input type="text" class="spell-name" placeholder="Nome da Magia" [(ngModel)]="sheetDnD.spellsLevelFive.level5Slot7">
-              <input type="text" class="spell-name" placeholder="Nome da Magia" [(ngModel)]="sheetDnD.spellsLevelFive.level5Slot8">
-              <input type="text" class="spell-name" placeholder="Nome da Magia" [(ngModel)]="sheetDnD.spellsLevelFive.level5Slot9">
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="spells-column3">
-        <div class="spells-level6-div spells-div">
-          <div class="labels-titles labels-row">
-            <div class="column1">
-              <h6 class="level-label">Level</h6>
-            </div>
-            <div class="column2">
-              <h6 class="total-spaces-label">Espaços Totais</h6>
-            </div>
-            <div class="column3">
-              <h6 class="total-spaces-label">Espaços Gastos</h6>
-            </div>
-          </div>
-          <div class="spells-level6-title-row title-row">
-            <div class="column1">
-              <h4 class="level6-title title">6</h4>
-            </div>
-            <div class="column2">
-              <input type="number" min="0" class="total-spaces" placeholder="0">
-            </div>
-            <div class="column3">
-              <input type="number" min="0" class="left-spaces" placeholder="0">
-            </div>
-          </div>
-          <div class="spells-level6-content-row content-row">
-            <div class="prepared-spell-column1">
-              <div class="circle"></div>
-              <input type="checkbox" class="prepared-spell">
-              <input type="checkbox" class="prepared-spell">
-              <input type="checkbox" class="prepared-spell">
-              <input type="checkbox" class="prepared-spell">
-              <input type="checkbox" class="prepared-spell">
-              <input type="checkbox" class="prepared-spell">
-              <input type="checkbox" class="prepared-spell">
-              <input type="checkbox" class="prepared-spell">
-              <input type="checkbox" class="prepared-spell">
-            </div>
-            <div class="spell-name-column2">
-              <h6 class="spell-name-label">Nome da Magia</h6>
-              <input type="text" class="spell-name" placeholder="Nome da Magia">
-              <input type="text" class="spell-name" placeholder="Nome da Magia">
-              <input type="text" class="spell-name" placeholder="Nome da Magia">
-              <input type="text" class="spell-name" placeholder="Nome da Magia">
-              <input type="text" class="spell-name" placeholder="Nome da Magia">
-              <input type="text" class="spell-name" placeholder="Nome da Magia">
-              <input type="text" class="spell-name" placeholder="Nome da Magia">
-              <input type="text" class="spell-name" placeholder="Nome da Magia">
-              <input type="text" class="spell-name" placeholder="Nome da Magia">
-            </div>
-          </div>
-        </div>
-        <div class="spells-level7-div spells-div">
-          <div class="labels-titles labels-row">
-            <div class="column1">
-              <h6 class="level-label">Level</h6>
-            </div>
-            <div class="column2">
-              <h6 class="total-spaces-label">Espaços Totais</h6>
-            </div>
-            <div class="column3">
-              <h6 class="total-spaces-label">Espaços Gastos</h6>
-            </div>
-          </div>
-          <div class="spells-level7-title-row title-row">
-            <div class="column1">
-              <h4 class="level7-title title">7</h4>
-            </div>
-            <div class="column2">
-              <input type="number" min="0" class="total-spaces" placeholder="0">
-            </div>
-            <div class="column3">
-              <input type="number" min="0" class="left-spaces" placeholder="0">
-            </div>
-          </div>
-          <div class="spells-level7-content-row content-row">
-            <div class="prepared-spell-column1">
-              <div class="circle"></div>
-              <input type="checkbox" class="prepared-spell">
-              <input type="checkbox" class="prepared-spell">
-              <input type="checkbox" class="prepared-spell">
-              <input type="checkbox" class="prepared-spell">
-              <input type="checkbox" class="prepared-spell">
-              <input type="checkbox" class="prepared-spell">
-              <input type="checkbox" class="prepared-spell">
-              <input type="checkbox" class="prepared-spell">
-              <input type="checkbox" class="prepared-spell">
-            </div>
-            <div class="spell-name-column2">
-              <h6 class="spell-name-label">Nome da Magia</h6>
-              <input type="text" class="spell-name" placeholder="Nome da Magia">
-              <input type="text" class="spell-name" placeholder="Nome da Magia">
-              <input type="text" class="spell-name" placeholder="Nome da Magia">
-              <input type="text" class="spell-name" placeholder="Nome da Magia">
-              <input type="text" class="spell-name" placeholder="Nome da Magia">
-              <input type="text" class="spell-name" placeholder="Nome da Magia">
-              <input type="text" class="spell-name" placeholder="Nome da Magia">
-              <input type="text" class="spell-name" placeholder="Nome da Magia">
-              <input type="text" class="spell-name" placeholder="Nome da Magia">
-            </div>
-          </div>
-        </div>
-        <div class="spells-level8-div spells-div">
-          <div class="labels-titles labels-row">
-            <div class="column1">
-              <h6 class="level-label">Level</h6>
-            </div>
-            <div class="column2">
-              <h6 class="total-spaces-label">Espaços Totais</h6>
-            </div>
-            <div class="column3">
-              <h6 class="total-spaces-label">Espaços Gastos</h6>
-            </div>
-          </div>
-          <div class="spells-level8-title-row title-row">
-            <div class="column1">
-              <h4 class="level8-title title">8</h4>
-            </div>
-            <div class="column2">
-              <input type="number" min="0" class="total-spaces" placeholder="0">
-            </div>
-            <div class="column3">
-              <input type="number" min="0" class="left-spaces" placeholder="0">
-            </div>
-          </div>
-          <div class="spells-level8-content-row content-row">
-            <div class="prepared-spell-column1">
-              <div class="circle"></div>
-              <input type="checkbox" class="prepared-spell">
-              <input type="checkbox" class="prepared-spell">
-              <input type="checkbox" class="prepared-spell">
-              <input type="checkbox" class="prepared-spell">
-              <input type="checkbox" class="prepared-spell">
-              <input type="checkbox" class="prepared-spell">
-              <input type="checkbox" class="prepared-spell">
-            </div>
-            <div class="spell-name-column2">
-              <h6 class="spell-name-label">Nome da Magia</h6>
-              <input type="text" class="spell-name" placeholder="Nome da Magia">
-              <input type="text" class="spell-name" placeholder="Nome da Magia">
-              <input type="text" class="spell-name" placeholder="Nome da Magia">
-              <input type="text" class="spell-name" placeholder="Nome da Magia">
-              <input type="text" class="spell-name" placeholder="Nome da Magia">
-              <input type="text" class="spell-name" placeholder="Nome da Magia">
-              <input type="text" class="spell-name" placeholder="Nome da Magia">
-            </div>
-          </div>
-        </div>
-        <div class="spells-level9-div spells-div">
-          <div class="labels-titles labels-row">
-            <div class="column1">
-              <h6 class="level-label">Level</h6>
-            </div>
-            <div class="column2">
-              <h6 class="total-spaces-label">Espaços Totais</h6>
-            </div>
-            <div class="column3">
-              <h6 class="total-spaces-label">Espaços Gastos</h6>
-            </div>
-          </div>
-          <div class="spells-level9-title-row title-row">
-            <div class="column1">
-              <h4 class="level9-title title">9</h4>
-            </div>
-            <div class="column2">
-              <input type="number" min="0" class="total-spaces" placeholder="0">
-            </div>
-            <div class="column3">
-              <input type="number" min="0" class="left-spaces" placeholder="0">
-            </div>
-          </div>
-          <div class="spells-level9-content-row content-row">
-            <div class="prepared-spell-column1">
-              <div class="circle"></div>
-              <input type="checkbox" class="prepared-spell">
-              <input type="checkbox" class="prepared-spell">
-              <input type="checkbox" class="prepared-spell">
-              <input type="checkbox" class="prepared-spell">
-              <input type="checkbox" class="prepared-spell">
-              <input type="checkbox" class="prepared-spell">
-              <input type="checkbox" class="prepared-spell">
-            </div>
-            <div class="spell-name-column2">
-              <h6 class="spell-name-label">Nome da Magia</h6>
-              <input type="text" class="spell-name" placeholder="Nome da Magia">
-              <input type="text" class="spell-name" placeholder="Nome da Magia">
-              <input type="text" class="spell-name" placeholder="Nome da Magia">
-              <input type="text" class="spell-name" placeholder="Nome da Magia">
-              <input type="text" class="spell-name" placeholder="Nome da Magia">
-              <input type="text" class="spell-name" placeholder="Nome da Magia">
-              <input type="text" class="spell-name" placeholder="Nome da Magia">
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
+</form>

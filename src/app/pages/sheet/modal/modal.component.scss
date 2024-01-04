@@ -1,0 +1,58 @@
+.alert-box{
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  height: 100%;
+  background-color: #134074;
+  border: 5px solid white;
+  border-radius: 25px;
+  text-align: center;
+  justify-content: center;
+  margin: auto;
+  font-family: 'Averia Sans Libre', sans-serif;
+  h2{
+    margin:4% 2%;
+  }
+  .alert-buttons{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 2%;
+    width: 100%;
+
+    button{
+      width: 120px;
+      height: 50px;
+      border-radius: 10px;
+      font-size: 22px;
+    }
+
+    .btn-yes{
+      color: rgb(0, 0, 0);
+      border: 3px solid rgb(0, 0, 0);
+      background-color: white;
+      cursor: pointer;
+    }
+
+    .btn-yes:hover{
+      color: rgb(255, 255, 255);
+      border: 3px solid rgb(255, 255, 255);
+      background-color: rgb(82, 207, 82);
+    }
+
+    .btn-no{
+      margin-left: 5%;
+      color: rgb(0, 0, 0);
+      border: 3px solid rgb(0, 0, 0);
+      background-color: white;
+      cursor: pointer;
+    }
+
+    .btn-no:hover{
+      color: rgb(255, 255, 255);
+      border: 3px solid rgb(255, 255, 255);
+      background-color: rgb(238, 96, 96);
+    }
+  }
+}
+
+

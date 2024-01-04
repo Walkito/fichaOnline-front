@@ -1,6 +1,111 @@
-body{
-    background-color: #134074;
-    color: white;
-    margin: 0;
-    padding: 0;
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+@use '@angular/material' as mat;
+// Plus imports for other components in your app.
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat.core();
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://material.io/design/color/
+$ficha-online-primary: mat.define-palette(mat.$indigo-palette);
+$ficha-online-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
+
+// The warn palette is optional (defaults to red).
+$ficha-online-warn: mat.define-palette(mat.$red-palette);
+
+// Create the theme object. A theme consists of configurations for individual
+// theming systems such as "color" or "typography".
+$ficha-online-theme: mat.define-light-theme((color: (primary: $ficha-online-primary,
+        accent: $ficha-online-accent,
+        warn: $ficha-online-warn,
+      )));
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include mat.all-component-themes($ficha-online-theme);
+
+body {
+  background-color: #134074;
+  color: white;
+  margin: 0;
+  padding: 0;
 }
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.mat-mdc-dialog-container {
+  --mdc-dialog-container-color: none !important;
+  --mdc-dialog-container-elevation-shadow: none !important;
+}
+
+.alert-box{
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  height: 100%;
+  background-color: #134074;
+  border: 5px solid white;
+  border-radius: 25px;
+  text-align: center;
+  justify-content: center;
+  margin: auto;
+  font-family: 'Averia Sans Libre', sans-serif;
+  h2{
+    margin:4% 2%;
+  }
+  .alert-buttons{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 2%;
+    width: 100%;
+
+    button{
+      width: 120px;
+      height: 50px;
+      border-radius: 10px;
+      font-size: 22px;
+    }
+
+    .btn-yes{
+      color: rgb(0, 0, 0);
+      border: 3px solid rgb(0, 0, 0);
+      background-color: white;
+      cursor: pointer;
+    }
+
+    .btn-yes:hover{
+      color: rgb(255, 255, 255);
+      border: 3px solid rgb(255, 255, 255);
+      background-color: rgb(82, 207, 82);
+    }
+
+    .btn-no{
+      margin-left: 5%;
+      color: rgb(0, 0, 0);
+      border: 3px solid rgb(0, 0, 0);
+      background-color: white;
+      cursor: pointer;
+    }
+
+    .btn-no:hover{
+      color: rgb(255, 255, 255);
+      border: 3px solid rgb(255, 255, 255);
+      background-color: rgb(238, 96, 96);
+    }
+  }
+}
+
+

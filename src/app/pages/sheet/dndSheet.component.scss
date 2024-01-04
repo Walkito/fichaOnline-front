@@ -155,16 +155,39 @@ textarea:focus {
           width: 100%;
 
           .row-one-column {
-            display: block;
+            display: flex;
             width: 33%;
             margin-top: 0.5%;
             margin-left: auto;
             margin-right: auto;
 
+
             .player-name-text {
               text-align: center;
+              margin: 0 0 0 30%;
+              font-size: 18px;
+              align-self: center;
+            }
+
+            p{
               margin: 0;
               font-size: 18px;
+            }
+
+            .class-input{
+              text-align: right;
+              width: 50%;
+            }
+
+            .nv-title{
+              padding: 0;
+              align-self: center;
+            }
+
+            .level-input{
+              width: 20%;
+              text-align: left;
+              font-weight: lighter;
             }
           }
 
