@@ -9,7 +9,8 @@
       </div>
       <div class="row1-column2">
         <div class="character-name-div">
-          <input #characterInput class="character-name-input" type="text" placeholder="Nome de Personagem"
+          <label for="characterName"></label>
+          <input id="characterName" #characterInput class="character-name-input" type="text" placeholder="Nome de Personagem"
             [(ngModel)]="sheetDnD.personalInfo.characterName" (blur)="editSheet()"
             (keydown.enter)="lostFocus(characterInput)">
           <h4 class="character-name-title"> Nome de Personagem </h4>

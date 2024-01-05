@@ -19,7 +19,9 @@ export class DndSheetComponent implements OnInit {
   account: CAccount = new CAccount();
   private idSheet = 0;
   private typeSheet: number = 0;
-  private sheetForm: FormGroup | undefined;
+  sheetForm: FormGroup = this.formBuilder.group({
+    characterName: ['', [Validators.required, Validators.maxLength(35)]]
+  });;
 
   constructor(private service: SheetService,
     private utils: UtilsService,
@@ -27,13 +29,7 @@ export class DndSheetComponent implements OnInit {
     private dialog: MatDialog,
     private formBuilder: FormBuilder) { }
 
-
-
   ngOnInit() {
-    this.sheetForm = this.formBuilder.group({
-      characterName: ['', [Validators.required, Validators.maxLength(35)]]
-    });
-
     this.account = this.utils.getTemporaryAccountInfos();
     this.typeSheet = this.utils.getSheetType();
 
@@ -69,23 +65,27 @@ export class DndSheetComponent implements OnInit {
     }
   }
 
-  async postSheet(){
-    if (this.typeSheet === 1){
-      this.service.postSheet(this.sheetDnD).subscribe({
-        next: () => {
-          this.router.navigate(['/home/my-sheets']);
-          const dialogRef = this.dialog.open(ModalCreateComponent,{
-            disableClose: true
-          })
-        },
-        error: (error) => this.utils.showError(error)
-      });
+  async postSheet() {
+    if (this.sheetForm.invalid) {
+      this.invalidInput();
     } else {
-      this.editSheet();
+      if (this.typeSheet === 1) {
+        this.service.postSheet(this.sheetDnD).subscribe({
+          next: () => {
+            this.router.navigate(['/home/my-sheets']);
+            const dialogRef = this.dialog.open(ModalCreateComponent, {
+              disableClose: true
+            })
+          },
+          error: (error) => this.utils.showError(error)
+        });
+      } else {
+        this.editSheet();
+      }
     }
   }
 
-  async updateAttributesInCreation(){
+  async updateAttributesInCreation() {
     this.service.updateAttributesInCreation(this.sheetDnD).subscribe({
       next: (sheet) => {
         this.sheetDnD = sheet;
@@ -99,7 +99,7 @@ export class DndSheetComponent implements OnInit {
       const modalRef = this.dialog.open(ModalCancelComponent, {
         disableClose: true,
       }).afterClosed().subscribe(option => {
-        if (option === 1){
+        if (option === 1) {
           this.router.navigate(['/home/my-sheets']);
         }
       })
@@ -122,10 +122,28 @@ export class DndSheetComponent implements OnInit {
     input.blur();
   }
 
-  private hideCleanButton(){
+
+  private invalidInput() {
+    Object.keys(this.sheetForm.controls).forEach(field => {
+      const fieldControl = this.sheetForm.get(field);
+
+      if (fieldControl && fieldControl.errors) {
+        if (fieldControl.invalid) {
+          Object.keys(fieldControl.errors).forEach((key: string) => {
+            const errors = fieldControl.errors as Record<string, any>;
+            const error = errors[key];
+
+            alert(this.utils.getCustomErrorMessage(field, key, error));
+          });
+        }
+      }
+    });
+  }
+
+  private hideCleanButton() {
     const cleanSheetButton = document.querySelector('.button-clear-sheet') as HTMLElement;
 
-    if(cleanSheetButton){
+    if (cleanSheetButton) {
       cleanSheetButton.style.display = "none";
     }
   }

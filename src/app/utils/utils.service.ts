@@ -46,4 +46,20 @@ export class UtilsService {
   getSheetType(){
     return this.sheetType;
   }
+
+  getCustomErrorMessage(field: string, error: string, errorValue: any): string {
+    switch (error) {
+      case 'required':
+        return `${field} é obrigatório.`;
+      case 'minlength':
+        return `${field} deve ter pelo menos ${errorValue.requiredLength} caracteres.`;
+      case 'maxlength':
+        return `${field} não pode ter mais de ${errorValue.requiredLength} caracteres.`;
+      case 'email':
+        return 'E-mail inválido.';
+      // Adicione mais casos conforme necessário para outros validadores
+      default:
+        return `Erro no campo ${field}.`;
+    }
+  }
 }
