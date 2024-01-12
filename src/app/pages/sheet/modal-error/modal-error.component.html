@@ -1,0 +1,15 @@
+<div class="alert-box">
+  <h1 class="alert-title"> Erro</h1>
+  <h2 class="alert-content alert-content-row1"> Não foi possível salvar a sua ficha pois a mesma contêm o(s) seguinte(s) erro(s): </h2>
+  <div class="errors-row">
+    <div class="error-column">
+      <h4 class="alert-content error" *ngFor="let error of errorsSliceOne"> {{error}} </h4>
+    </div>
+    <div class="error-column">
+      <h4 class="alert-content error" *ngFor="let error of errorsSliceTwo"> {{error}} </h4>
+    </div>
+  </div>
+    <div class="alert-buttons">
+      <button class="btn-yes" (click)="close()">Okay</button>
+    </div>
+</div>

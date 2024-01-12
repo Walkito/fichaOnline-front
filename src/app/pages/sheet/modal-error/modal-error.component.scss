@@ -1,0 +1,32 @@
+.alert-box {
+  background-color: #f17c7c;
+  width: 95%;
+  height: 100%;
+
+  .alert-content-row1 {
+    margin: 0%;
+  }
+
+  .error {
+    margin: 0 5%;
+    text-align: left;
+  }
+
+  .errors-row {
+    display: flex;
+    width: 100%;
+    height: 30%;
+    margin: 2% 0;
+
+    .error-column {
+      display: flex;
+      flex-direction: column;
+      width: 50%;
+      height: 100%;
+    }
+  }
+
+  button{
+    margin: 0;
+  }
+}

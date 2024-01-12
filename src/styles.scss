@@ -29,8 +29,13 @@ $ficha-online-theme: mat.define-light-theme((color: (primary: $ficha-online-prim
 // that you are using.
 @include mat.all-component-themes($ficha-online-theme);
 
+:root{
+  --primaryBlue: #134074;
+  --buttonBlue: rgb(71, 112, 226);
+}
+
 body {
-  background-color: #134074;
+  background-color: var(--primaryBlue);
   color: white;
   margin: 0;
   padding: 0;
@@ -39,6 +44,11 @@ body {
 html,
 body {
   height: 100%;
+}
+
+input,
+button{
+  font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 
 body {
@@ -54,7 +64,7 @@ body {
 .alert-box{
   display: flex;
   flex-direction: column;
-  width: 50%;
+  width: auto;
   height: 100%;
   background-color: #134074;
   border: 5px solid white;
@@ -108,4 +118,18 @@ body {
   }
 }
 
+.input-blinking{
+  animation: inputBlink 0.5s infinite;
+}
 
+@keyframes inputBlink {
+  0% {
+    border-color: black
+  }
+  50%{
+    border-color: red;
+  }
+  100% {
+    border-color: black
+  }
+}

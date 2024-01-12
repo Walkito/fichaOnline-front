@@ -17,7 +17,9 @@ import { ModalComponent } from './pages/sheet/modal/modal.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { ModalCancelComponent } from './pages/sheet/modal-cancel/modal-cancel.component';
 import { ModalCreateComponent } from './pages/sheet/modal-create/modal-create.component';
-
+import { ModalErrorComponent } from './pages/sheet/modal-error/modal-error.component';
+import { ModalErrorLoginComponent } from './pages/login/modal-error-login/modal-error-login.component';
+import { ModalErrorCreateAccountComponent } from './pages/create-account/modal-error-create-account/modal-error-create-account.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +34,9 @@ import { ModalCreateComponent } from './pages/sheet/modal-create/modal-create.co
     ModalComponent,
     ModalCancelComponent,
     ModalCreateComponent,
+    ModalErrorComponent,
+    ModalErrorLoginComponent,
+    ModalErrorCreateAccountComponent,
   ],
   imports: [
     BrowserModule,

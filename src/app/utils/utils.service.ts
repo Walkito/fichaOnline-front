@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpHeaders, HttpParams } from '@angular/common/http';
 import { CAccount} from '../class/CAccount';
 import { CErro } from '../class/CErro';
+import { Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -13,9 +14,10 @@ export class UtilsService {
   private accountInfo: CAccount = new CAccount;
   private sheetId: number = 0;
   private sheetType: number = 1;
+  private alertSubject = new Subject<any>();
 
-  showError(error: CErro){
-    alert(`Mensagem: ` + error.error.mensagem);
+  showError(error: CErro):string{
+    return error.error.mensagem;
   }
 
   setTemporaryAccountInfos(account: CAccount){
