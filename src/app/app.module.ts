@@ -20,6 +20,7 @@ import { ModalCreateComponent } from './pages/sheet/modal-create/modal-create.co
 import { ModalErrorComponent } from './pages/sheet/modal-error/modal-error.component';
 import { ModalErrorLoginComponent } from './pages/login/modal-error-login/modal-error-login.component';
 import { ModalErrorCreateAccountComponent } from './pages/create-account/modal-error-create-account/modal-error-create-account.component';
+import { ModalSucessCreateAccountComponent } from './pages/create-account/modal-sucess-create-account/modal-sucess-create-account.component';
 
 @NgModule({
   declarations: [
@@ -37,6 +38,7 @@ import { ModalErrorCreateAccountComponent } from './pages/create-account/modal-e
     ModalErrorComponent,
     ModalErrorLoginComponent,
     ModalErrorCreateAccountComponent,
+    ModalSucessCreateAccountComponent,
   ],
   imports: [
     BrowserModule,
