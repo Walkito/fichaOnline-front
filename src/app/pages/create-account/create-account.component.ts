@@ -57,7 +57,7 @@ export class CreateAccountComponent {
           resolve(valid);
         },
         error: (error: CErro) => {
-          alert(this.utils.showError);
+          alert(this.utils.showError(error));
           reject(error);
         }
       })

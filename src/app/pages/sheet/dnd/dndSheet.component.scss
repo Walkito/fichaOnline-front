@@ -76,22 +76,22 @@ textarea:focus {
         height: 100%;
 
         .button-save {
-          border: 2px solid rgb(137, 231, 137);
-          color: rgb(137, 231, 137);
+          border: 2px solid var(--buttonGreen);
+          color: var(--buttonGreen);
         }
 
         .button-save:hover {
-          background-color: rgb(137, 231, 137);
+          background-color: var(--buttonGreen);
 
         }
 
         .button-cancel {
-          border: 2px solid rgb(250, 143, 143);
-          color: rgb(250, 143, 143);
+          border: 2px solid var(--buttonRed);
+          color: var(--buttonRed);
         }
 
         .button-cancel:hover {
-          background-color: rgb(250, 143, 143);
+          background-color: var(--buttonRed);
         }
       }
     }

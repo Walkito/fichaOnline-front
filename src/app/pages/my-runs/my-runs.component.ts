@@ -11,24 +11,31 @@ import { CRun } from 'src/app/class/CRun';
   styleUrls: ['./my-runs.component.scss']
 })
 export class MyRunsComponent {
-  constructor(private service:MyRunsService,
-    private utils:UtilsService,
-    private route:ActivatedRoute){}
+  constructor(private service: MyRunsService,
+    private utils: UtilsService,
+    private route: ActivatedRoute) { }
 
-    account : CAccount = new CAccount();
-    runs : CRun[] = [];
+  account: CAccount = new CAccount();
+  runs: CRun[] = [];
 
-    ngOnInit(){
-      this.account = this.utils.getTemporaryAccountInfos();
-      this.getLinkedRuns();
+  ngOnInit() {
+    this.account = this.utils.getTemporaryAccountInfos();
+    this.getLinkedRuns();
+  }
+
+  getLinkedRuns() {
+    this.service.getLinkedRuns(this.account.id).subscribe({
+      next: (run) => {
+        this.runs = run;
+      },
+      error: (error) => this.utils.showError(error)
+    })
+  }
+
+  openRunInfo(index: number) {
+    const run = this.runs.at(index);
+    if (run) {
+      run.opened = run.opened === true ? false : true;
     }
-
-    getLinkedRuns(){
-      this.service.getLinkedRuns(this.account.id).subscribe({
-        next : (run) => {
-          this.runs = run;
-        },
-        error : (error) => this.utils.showError(error)
-      })
-    }
+  }
 }

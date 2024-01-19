@@ -803,12 +803,12 @@
             <div class="row-one-column">
               <input name="heigth-input" #heigthInput type="number" class="heigth-input personal-infos-inputs"
                 placeholder="Altura" [(ngModel)]="sheetDnD.personalInfo.height" (blur)="editSheet()"
-                (keydown.enter)="lostFocus(heigthInput)" min="0.00" max="999.99">
+                (keydown.enter)="lostFocus(heigthInput)" min="0.00" max="9.99">
             </div>
             <div class="row-one-column">
               <input name="weigth-input" #weigthInput type="number" class="weigth-input personal-infos-inputs"
                 placeholder="Peso" [(ngModel)]="sheetDnD.personalInfo.weight" (blur)="editSheet()"
-                (keydown.enter)="lostFocus(weigthInput)" min="0.00" max="9.99">
+                (keydown.enter)="lostFocus(weigthInput)" min="0.00" max="999.99">
             </div>
           </div>
           <div class="row-two">

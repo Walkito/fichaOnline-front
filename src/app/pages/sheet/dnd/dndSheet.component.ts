@@ -4,12 +4,12 @@ import { SheetService } from './dndSheet.service';
 import { UtilsService } from 'src/app/utils/utils.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CSheetDnD } from 'src/app/class/sheets/CSheetDnD';
-import { ModalComponent } from './modal/modal.component';
-import { ModalCancelComponent } from './modal-cancel/modal-cancel.component';
+import { ModalComponent } from '../modal/modal.component';
+import { ModalCancelComponent } from '../modal-cancel/modal-cancel.component';
 import { CAccount } from 'src/app/class/CAccount';
-import { ModalCreateComponent } from './modal-create/modal-create.component';
+import { ModalCreateComponent } from '../modal-create/modal-create.component';
 import { NgForm } from '@angular/forms';
-import { ModalErrorComponent } from './modal-error/modal-error.component';
+import { ModalErrorComponent } from '../modal-error/modal-error.component';
 @Component({
   selector: 'app-sheet',
   templateUrl: './dndSheet.component.html',
@@ -50,7 +50,7 @@ export class DndSheetComponent implements OnInit {
     elementRef.classList.remove(`input-blinking`);
   }
 
-  async getSheet() {
+  getSheet() {
     this.service.getSheet(this.idSheet).subscribe({
       next: (sheet) => {
         this.sheetDnD = sheet;
@@ -59,7 +59,7 @@ export class DndSheetComponent implements OnInit {
     });
   }
 
-  async editSheet() {
+  editSheet() {
     if (this.typeSheet === 2) {
       this.service.editSheet(this.sheetDnD).subscribe({
         next: (sheet) => {
@@ -72,7 +72,7 @@ export class DndSheetComponent implements OnInit {
     }
   }
 
-  async postSheet(form: NgForm) {
+  postSheet(form: NgForm) {
     if (form.invalid) {
       let errorsToSend: string[] = new Array();
       for (const controlName in form.controls) {
@@ -99,7 +99,7 @@ export class DndSheetComponent implements OnInit {
     }
   }
 
-  async updateAttributesInCreation() {
+  updateAttributesInCreation() {
     this.service.updateAttributesInCreation(this.sheetDnD).subscribe({
       next: (sheet) => {
         this.sheetDnD = sheet;
@@ -123,7 +123,7 @@ export class DndSheetComponent implements OnInit {
   }
 
   cleanSheet() {
-    const dialogRef = this.dialog.open(ModalComponent, {
+    this.dialog.open(ModalComponent, {
       disableClose: true
     }).afterClosed().subscribe(option => {
       if (option === 1) {

@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { CPlayerSheet } from 'src/app/class/CPlayerSheet';
 import { API_PATH } from 'src/app/environments/environment';
 import { UtilsService } from 'src/app/utils/utils.service';
+import { ModalConfirmComponent } from './modal-confirm/modal-confirm.component';
 
 @Injectable({
   providedIn: 'root'
@@ -21,4 +22,13 @@ export class MySheetsService {
 
     return this.http.get<CPlayerSheet[]>(`${this.basePath}playerSheet/get`, {params});
   }
+
+  deleteSheet(sheetId: number):Observable<boolean>{
+    const params = new HttpParams()
+      .set('idSheet', sheetId.toString());
+
+    return this.http.delete<boolean>(`${this.basePath}playerSheet/delete`, {params});
+  }
+
+
 }

@@ -1,0 +1,109 @@
+.body-div {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  margin-top: 1%;
+  margin-bottom: 1%;
+
+  form {
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+
+    .error-field{
+      margin: 0;
+      color: red;
+    }
+
+    .title {
+      display: flex;
+      text-align: center;
+      justify-content: center;
+      align-items: center;
+
+      h1 {
+        margin-left: 5%;
+      }
+
+      a {
+        margin: 0 0 0 0;
+        transition: 0.25s;
+      }
+
+      a:hover {
+        scale: (1.2);
+      }
+    }
+
+    .form-div {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      background-color: white;
+      border: 6px solid white;
+      border-radius: 20px;
+      padding: 1%;
+
+      .blue-border {
+        display: flex;
+        flex-direction: column;
+        border: 6px solid var(--primaryBlue);
+        border-radius: 20px;
+        color: var(--primaryBlue);
+        justify-content: center;
+        align-items: center;
+      }
+
+      .row {
+        display: flex;
+        flex-direction: column;
+        width: 70%;
+        margin-top: 5%;
+
+        input {
+          margin-top: 2%;
+          height: 2.2em;
+          border: 2px solid #000000;
+          border-radius: 8px;
+          font-size: 18px;
+        }
+
+        input:focus {
+          border-color: var(--primaryBlue);
+          outline: none;
+        }
+
+        label {
+          font-size: 22px;
+        }
+
+      }
+
+      button {
+        margin: 2% 0;
+        width: 150px;
+        height: 50px;
+        border: 2px solid var(--buttonBlue);
+        border-radius: 5px;
+        background-color: white;
+        font-size: 20px;
+        color: var(--buttonBlue);
+        cursor: pointer;
+        transition: 0.25s;
+      }
+
+      button:hover {
+        background-color: var(--buttonBlue);
+        color: white;
+      }
+    }
+
+  }
+}
+
+.error-input{
+  border-color: red;
+  color: red;
+}

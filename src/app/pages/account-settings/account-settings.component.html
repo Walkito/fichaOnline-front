@@ -1,12 +1,65 @@
-<a routerLink="/home">Voltar</a>
-<label for="user">Usuário</label>
-<input id="user" class="input-user" type="text" placeholder="Usuário" [(ngModel)]="account.user">
-<label for="name">Nome</label>
-<input id="name" class="input-name" type="text" placeholder="Nome" [(ngModel)]="account.name">
-<label for="lastName">Sobrenome</label>
-<input id="lastName" class="input-lastName" type="text" placeholder="Sobrenome" [(ngModel)]="account.lastName">
-<label for="email">E-mail</label>
-<input id="email" class="input-email" type="email" placeholder="E-mail" [(ngModel)]="account.email">
-<label for="password">Senha</label>
-<input id="password" class="input-password" type="password" placeholder="Senha" [(ngModel)]="account.password">
-<button (click)="editAccount()">Salvar</button>
+<div class="body-div">
+  <form #editAccountForm="ngForm">
+    <div class="title">
+      <a routerLink="/home"> <img src="assets/setaVoltar.png" alt="Seta Apontando para a Esquerda" width="55px"></a>
+      <h1>Configurações da Conta</h1>
+    </div>
+    <div class="form-div">
+      <div class="blue-border">
+        <div class="row">
+          <label for="name">Nome</label>
+          <input name="name" id="name" class="form-control input-formulario" type="text" placeholder="Nome"
+            [(ngModel)]="account.name" required maxlength="15">
+          <div class="invalid-field"
+            *ngIf="editAccountForm.controls['name']?.invalid && editAccountForm.controls['name']?.touched">
+            <p class="error-field">O campo é obrigatório</p>
+          </div>
+        </div>
+        <div class="row">
+          <label for="lastName">Sobrenome</label>
+          <input name="lastName" id="lastName" class="form-control input-formulario" type="text" placeholder="Sobrenome"
+            [(ngModel)]="account.lastName" required maxlength="20">
+          <div class="invalid-field"
+            *ngIf="editAccountForm.controls['lastName']?.invalid && editAccountForm.controls['lastName']?.touched">
+            <p class="error-field">O campo é obrigatório</p>
+          </div>
+        </div>
+        <div class="row">
+          <label for="user">Usuário</label>
+          <input name="username" id="user" class="form-control input-formulario" type="text" placeholder="Usuário"
+            [(ngModel)]="account.user" required maxlength="20">
+          <div class="invalid-field"
+            *ngIf="editAccountForm.controls['username']?.invalid && editAccountForm.controls['username']?.touched">
+            <p class="error-field">O campo é obrigatório</p>
+          </div>
+          <div class="invalid-field" *ngIf="editAccountForm.hasError('emailUserInvalid')">
+            <p class="error-field">{{userErrorMessage}}</p>
+          </div>
+        </div>
+        <div class="row">
+          <label for="email">E-mail</label>
+          <input name="email" id="email" class="form-control input-formulario" type="text" placeholder="E-mail"
+            [(ngModel)]="account.email" required maxlength="50">
+          <div class="invalid-field"
+            *ngIf="editAccountForm.controls['email']?.invalid && editAccountForm.controls['email']?.touched">
+            <p class="error-field">O campo é obrigatório</p>
+          </div>
+          <div class="invalid-field" *ngIf="editAccountForm.hasError('emailUserInvalid')">
+            <p class="error-field">{{emailErrorMessage}}</p>
+          </div>
+        </div>
+        <div class="row">
+          <label for="password">Senha</label>
+          <input name="password" id="password" class="form-control input-formulario" type="password" placeholder="Senha"
+            [(ngModel)]="account.password" required maxlength="30">
+          <div class="invalid-field"
+            *ngIf="editAccountForm.controls['password']?.invalid && editAccountForm.controls['password']?.touched">
+            <p class="error-field">O campo é obrigatório</p>
+          </div>
+        </div>
+        <button (click)="editAccount(editAccountForm)" class="btn-create">Cadastrar</button>
+      </div>
+    </div>
+  </form>
+</div>
+

@@ -32,6 +32,8 @@ $ficha-online-theme: mat.define-light-theme((color: (primary: $ficha-online-prim
 :root{
   --primaryBlue: #134074;
   --buttonBlue: rgb(71, 112, 226);
+  --buttonRed: rgb(250, 143, 143);
+  --buttonGreen: rgb(137, 231, 137);
 }
 
 body {

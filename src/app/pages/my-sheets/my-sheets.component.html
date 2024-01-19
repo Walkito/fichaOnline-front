@@ -1,9 +1,21 @@
-<p routerLink="/home">Voltar</p>
-<ul *ngFor="let sheet of playerSheets; let i = index">
-  <li> Ficha Número {{i+1}}</li>
-  <li> Personagem: {{sheet.sheetDnD.personalInfo.characterName}}</li>
-  <li> Nome da Campanha: {{sheet.run.campaign}}</li>
-  <li> Sistema: {{sheet.run.system.name}}</li>
-  <li> <button (click)="openSheetPage(i)">Abrir</button></li>
-  <li> <button (click)="openSheetPage2(i)">Criar</button></li>
-</ul>
+<div class="body-div">
+  <div class="row">
+    <div class="column-a">
+      <a routerLink="/home"><img src="assets/setaVoltar.png" alt="Seta apontando para a esquerda para voltar"
+          width="55px"></a>
+    </div>
+    <div class="column-title">
+      <h1 class="title-div">Minhas Fichas</h1>
+    </div>
+  </div>
+  <div class="cards">
+    <ul *ngFor="let sheet of playerSheets; let i = index">
+      <div class="cardbox">
+        <li> {{sheet.sheetDnD.personalInfo.characterName}}</li>
+        <li> Campanha: {{sheet.run.campaign}}</li>
+        <li> Sistema: {{sheet.run.system.name}}</li>
+        <li> <button class="open-sheet" (click)="openSheetPage(i)">Abrir Ficha</button> <button class="delete-sheet" (click)="deleteSheet(i)">Excluir Ficha</button></li>
+      </div>
+    </ul>
+  </div>
+</div>

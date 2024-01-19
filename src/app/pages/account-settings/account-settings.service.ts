@@ -1,4 +1,4 @@
-import { HttpClient, HttpHeaders} from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { API_PATH } from 'src/app/environments/environment';
@@ -18,4 +18,11 @@ export class AccountSettingsService {
     return this.http.put<CAccount>(`${this.basePath}account/edit`, updateAccount, {headers});
   }
 
+  verifyEmailUser(email: string, user: string):Observable<number>{
+    const params = new HttpParams()
+      .set(`email`, email)
+      .set(`user`, user);
+
+    return this.http.get<number>(`${this.basePath}account/verifyEmailUser`, { params });
+  }
 }

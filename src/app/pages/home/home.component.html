@@ -1,13 +1,34 @@
-<h1> Bem-Vindo(a) {{account.user}}</h1>
-
-<h1>{{account.user}}</h1>
-<h2>{{account.name + " " + account.lastName}}</h2>
-
-<ul>
-    <li routerLink="/home/my-sheets"> Minhas Fichas </li>
-    <li routerLink="/home/my-runs"> Minhas Runs </li>
-    <li routerLink="/home/account-settings"> Configurações </li>
-    <li routerLink=""> Sair </li>
-</ul>
-
-
+<div class="body-div">
+  <div class="tree-div">
+    <div class="row">
+      <img src="assets/iconeUsuario.png" alt="Icone de um usuário genérico" width="120px">
+      <h2>{{account.user || "Usuário"}}</h2>
+    </div>
+    <div class="row">
+      <h1>{{account.name + " " + account.lastName}}</h1>
+    </div>
+    <div class="row">
+      <ul>
+        <li routerLink="/home/my-sheets"> Minhas Fichas </li>
+        <li routerLink="/home/my-runs"> Minhas Runs </li>
+        <li routerLink="/home/account-settings"> Configurações </li>
+        <li routerLink=""> Sair </li>
+      </ul>
+    </div>
+  </div>
+  <div class="content-div">
+    <div class="row">
+      <h1> Bem-Vindo(a) {{account.user || "Usuário"}} </h1>
+    </div>
+    <div class="row">
+      <h4 class="att-title">Notas de Atualização</h4>
+      <ul class="ul-att">
+        <li class="item-att"> Estamos em versão Beta ainda, algumas irão vir com o tempo. Pedimos paciência. </li>
+      </ul>
+    </div>
+    <div class="row fun-fact-row">
+      <h4 class="func-facts-title">Trechos/Curiosidades</h4>
+      <p class="fun-fact">Você sabia que em Relíquias do Caos a Diandra quase adotou a Felipa pela Run inteira?</p>
+    </div>
+  </div>
+</div>

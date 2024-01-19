@@ -1,0 +1,86 @@
+.body-div{
+  display: flex;
+  width: 100%;
+  height: 95%;
+
+  .tree-div{
+    display: flex;
+    flex-direction: column;
+    width: 20%;
+    height: 90%;
+    background-color: white;
+    color: var(--primaryBlue);
+    border-top: 0;
+    border-left: 0;
+    border-right: 3px solid var(--buttonBlue);
+    border-bottom: 3px solid var(--buttonBlue);
+    border-bottom-right-radius: 5px;
+    border-top-right-radius: 5px;
+    animation: treeApper 0.75s forwards;
+    .row{
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      margin: 12% 0 0 0;
+
+      h1,h2{
+        margin: 1% 0 0 0;
+      }
+
+      ul{
+        margin: 0;
+        padding: 0;
+        width: 100%;
+
+        li{
+          list-style-type: none;
+          font-size: 26px;
+          margin-top: 11%;
+          transition: 0.10s;
+          cursor: pointer;
+        }
+
+        li:hover{
+          color: var(--buttonBlue);
+          transform: scale(1.2);
+        }
+      }
+    }
+  }
+
+  @keyframes treeApper{
+    0%{
+      margin-left: -20%;
+    }
+    100%{
+      margin-left: 0%;
+    }
+  }
+
+  .content-div{
+    display: flex;
+    flex-direction: column;
+    width: 77%;
+    height: 100%;
+
+    .row{
+      display: flex;
+      flex-direction: column;
+      text-align: center;
+      width: 100%;
+      animation: pushContent 2s forwards;
+
+      ul{
+        list-style: none;
+      }
+    }
+
+    .func-fact-row{
+      overflow: scroll;
+    }
+  }
+
+}

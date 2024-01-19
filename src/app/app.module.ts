@@ -11,7 +11,7 @@ import { HomeComponent } from './pages/home/home.component';
 import { AccountSettingsComponent } from './pages/account-settings/account-settings.component';
 import { MyRunsComponent } from './pages/my-runs/my-runs.component';
 import { MySheetsComponent } from './pages/my-sheets/my-sheets.component';
-import { DndSheetComponent } from './pages/sheet/dndSheet.component';
+import { DndSheetComponent } from './pages/sheet/dnd/dndSheet.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ModalComponent } from './pages/sheet/modal/modal.component';
 import { MatDialogModule } from '@angular/material/dialog';
@@ -21,6 +21,11 @@ import { ModalErrorComponent } from './pages/sheet/modal-error/modal-error.compo
 import { ModalErrorLoginComponent } from './pages/login/modal-error-login/modal-error-login.component';
 import { ModalErrorCreateAccountComponent } from './pages/create-account/modal-error-create-account/modal-error-create-account.component';
 import { ModalSucessCreateAccountComponent } from './pages/create-account/modal-sucess-create-account/modal-sucess-create-account.component';
+import { ModalSucessEditAccountComponent } from './pages/account-settings/modal-sucess-edit-account/modal-sucess-edit-account.component';
+import { ModalErrorEditAccountComponent } from './pages/account-settings/modal-error-edit-account/modal-error-edit-account.component';
+import { ModalConfirmComponent } from './pages/my-sheets/modal-confirm/modal-confirm.component';
+import { ModalSucessDeleteSheetComponent } from './pages/my-sheets/modal-sucess-delete-sheet/modal-sucess-delete-sheet.component';
+import { ModalErrorDeleteSheetComponent } from './pages/my-sheets/modal-error-delete-sheet/modal-error-delete-sheet.component';
 
 @NgModule({
   declarations: [
@@ -39,6 +44,11 @@ import { ModalSucessCreateAccountComponent } from './pages/create-account/modal-
     ModalErrorLoginComponent,
     ModalErrorCreateAccountComponent,
     ModalSucessCreateAccountComponent,
+    ModalSucessEditAccountComponent,
+    ModalErrorEditAccountComponent,
+    ModalConfirmComponent,
+    ModalSucessDeleteSheetComponent,
+    ModalErrorDeleteSheetComponent,
   ],
   imports: [
     BrowserModule,
