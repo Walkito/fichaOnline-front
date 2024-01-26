@@ -7,6 +7,9 @@
     <div class="column-title">
       <h1 class="title-div">Minhas Fichas</h1>
     </div>
+    <div class="column-add">
+      <img src="assets/sinalAdicao.png" alt="Sinal de adição" width="55px" (click)="addSheet()">
+    </div>
   </div>
   <div class="cards">
     <ul *ngFor="let sheet of playerSheets; let i = index">

@@ -3,11 +3,15 @@ import { ModalSucessEditAccountComponent } from './modal-sucess-edit-account/mod
 import { Component } from '@angular/core';
 import { UtilsService } from 'src/app/utils/utils.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { CAccount} from 'src/app/class/CAccount';
+import { CAccount } from 'src/app/class/CAccount';
 import { AccountSettingsService } from './account-settings.service';
 import { NgForm } from '@angular/forms';
 import { CErro } from 'src/app/class/CErro';
 import { MatDialog } from '@angular/material/dialog';
+import { SessionStorageService } from 'src/app/utils/session-storage.service';
+import { ModalConfirmDeleteAccountComponent } from './modal-confirm-delete-account/modal-confirm-delete-account.component';
+import { ModalSucessDeleteAccountComponent } from './modal-sucess-delete-account/modal-sucess-delete-account.component';
+import { ModalErrorDeleteAccountComponent } from './modal-error-delete-account/modal-error-delete-account.component';
 
 @Component({
   selector: 'app-account-settings',
@@ -15,30 +19,43 @@ import { MatDialog } from '@angular/material/dialog';
   styleUrls: ['./account-settings.component.scss']
 })
 export class AccountSettingsComponent {
-  constructor(private service:AccountSettingsService,
-    private utils:UtilsService,
-    private router:Router,
-    private dialog:MatDialog){}
+  constructor(private service: AccountSettingsService,
+    private utils: UtilsService,
+    private router: Router,
+    private dialog: MatDialog,
+    private sessionStorage: SessionStorageService) { }
 
   account: CAccount = new CAccount();
-  private actualEmail : string = "";
-  private actualUser : string = "";
+  private actualEmail: string = "";
+  private actualUser: string = "";
   emailErrorMessage: string = "";
   userErrorMessage: string = "";
 
-  ngOnInit(){
-    this.account = this.utils.getTemporaryAccountInfos();
-    this.account.password = "";
+  async ngOnInit() {
+    this.account = this.sessionStorage.getData('account');
+    this.account = await this.getAccountInfos();
     this.actualEmail = this.account.email;
     this.actualUser = this.account.user;
   }
 
-  async editAccount(form: NgForm){
+  getAccountInfos(): Promise<CAccount> {
+    return new Promise<CAccount>((resolve, reject) => {
+      this.service.getAccountInfos(this.account.id).subscribe({
+        next: (account: CAccount) => resolve(account),
+        error: (error: CErro) => {
+          this.utils.showError(error);
+          reject(error);
+        }
+      });
+    });
+  }
+
+  async editAccount(form: NgForm) {
     const validUserEmail = await this.verifyEmailAndUser(form.value.email, form.value.username);
-    if(validUserEmail){
-      form.form.setErrors({'emailUserInvalid': true});
+    if (validUserEmail) {
+      form.form.setErrors({ 'emailUserInvalid': true });
     }
-    if(form.valid){
+    if (form.valid) {
       this.service.editAccount(this.account).subscribe({
         next: () => {
           this.router.navigate(["home"])
@@ -49,19 +66,54 @@ export class AccountSettingsComponent {
         error: (error => this.utils.showError(error))
       });
     } else {
-      this.dialog.open(ModalErrorEditAccountComponent,{
+      this.dialog.open(ModalErrorEditAccountComponent, {
         disableClose: true
       })
     }
   }
 
-  private verifyEmailAndUser(email: string, user: string): Promise<boolean>{
-    return new Promise<boolean>((resolve, reject) => {
-      console.log("Email Atual: " + this.actualEmail);
-      console.log("Usuario Atual: " + this.actualUser);
-      console.log("Email enviado: " + email);
-      console.log("Usuario enviado: " + user);
+  deleteAccount() {
+    this.dialog.open(ModalConfirmDeleteAccountComponent, {
+      disableClose: true
+    }).afterClosed().subscribe({
+      next: async (option: number) => {
+        if (option === 1) {
+          const response = await this.accountDelete(this.account.id);
+          this.showSucessDialog(response);
+        }
+      },
+      error: (error: CErro) => {
+        this.dialog.open(ModalErrorDeleteAccountComponent, {
+          disableClose: true,
+          data: { error: error }
+        });
+      }
+    });
 
+  }
+
+  showSucessDialog(response: number) {
+    this.dialog.open(ModalSucessDeleteAccountComponent, {
+      disableClose: true,
+      data: { value: response }
+    })
+    this.router.navigate(['/']);
+  }
+
+  private accountDelete(id: number): Promise<number> {
+    return new Promise<number>((resolve, reject) => {
+      this.service.deleteAccount(id).subscribe({
+        next: (response: number) => resolve(response),
+        error: (error: CErro) => {
+          this.utils.showError(error);
+          reject(error);
+        }
+      })
+    });
+  }
+
+  private verifyEmailAndUser(email: string, user: string): Promise<boolean> {
+    return new Promise<boolean>((resolve, reject) => {
       email = email === this.actualEmail ? "emailNunca@gmail.com" : email;
       user = user === this.actualUser ? "" : user;
 
@@ -95,7 +147,7 @@ export class AccountSettingsComponent {
       case 4:
         this.emailErrorMessage = `E-mail não é válido`;
         return true;
-      }
+    }
     return false;
   }
 }

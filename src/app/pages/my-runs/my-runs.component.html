@@ -8,53 +8,26 @@
     </div>
   </div>
   <div class="runs-row">
-    <!--<ul *ngFor="let run of runs">
-      <li>{{run.campaign}} - {{run.system.name}}</li>
-    </ul>-->
     <ul *ngFor="let run of runs; let i = index">
-      <li class="run-basic" ><span class="column-one">Campanha - Nome da Campanha</span>
-        <span class="column-two"> <span class="circle"></span> Concluída </span>
-        <span class="column-three"> De 04/12/2001 À 04/12/2023 </span>
-        <span class="column-four"> <img src="assets/setaBaixo.png" alt="Seta apontando pra baixo" width="45px" (click)="openRunInfo(i)"> </span>
+      <li class="run-basic" ><span class="column-one">{{run.system.name}} - {{run.campaign}}</span>
+        <span class="column-two"> <span #circle class="circle"></span> {{run.status}} </span>
+        <span class="column-three"> De {{run.dateBeginning}} à {{run.dateEnding}} </span>
+        <span class="column-four"> <img #imgButton src="assets/setaBaixo.png" alt="Seta apontando pra baixo" width="45px"
+          (click)="openRunInfo(i)" [class.rotate]="run.opened" [class.not-rotate]="!run.opened"> </span>
       </li>
-      <li [class]="'run-info run' + i" *ngIf=run.opened>
+      <li class="run-info" *ngIf="run.opened">
         <div class="column-one">
           <h2>Jogadores</h2>
-          <div class="players">
-            <h3>Leonardo Callefi como Trafalcon Nopenstallen</h3>
-            <h3>Alice Landim como Lara Rica</h3>
-            <h3>Andrey Santos como Kazimir</h3>
-            <h3>Ricardo Bernal como Hrawin Strong</h3>
-            <h3>Guilherme Callefi como Silvershade</h3>
-            <h3>Dimitri Debouch como Ares Goldwing</h3>
+          <div class="players" *ngFor="let account of run.accounts; let j = index">
+            <h3>{{account.name}} {{account.lastName}} como {{charactersNames[i][j]}}</h3>
           </div>
         </div>
         <div class="column-two">
           <h2>Mestre</h2>
           <div class="dm">
-            <h3>Walker de Carvalho</h3>
+            <h3>{{run.masterName}}</h3>
           </div>
         </div>
-      </li>
-      <li class="run-basic"><span class="column-one">Campanha - Nome da Campanha</span>
-        <span class="column-two"> <span class="circle"></span> Concluída </span>
-        <span class="column-three"> De 04/12/2001 À 04/12/2023 </span>
-        <span class="column-four"> <img src="assets/setaBaixo.png" alt="Seta apontando pra baixo" width="45px"> </span>
-      </li>
-      <li class="run-basic"><span class="column-one">Campanha - Nome da Campanha</span>
-        <span class="column-two"> <span class="circle"></span> Concluída </span>
-        <span class="column-three"> De 04/12/2001 À 04/12/2023 </span>
-        <span class="column-four"> <img src="assets/setaBaixo.png" alt="Seta apontando pra baixo" width="45px"> </span>
-      </li>
-      <li class="run-basic"><span class="column-one">Campanha - Nome da Campanha</span>
-        <span class="column-two"> <span class="circle"></span> Concluída </span>
-        <span class="column-three"> De 04/12/2001 À 04/12/2023 </span>
-        <span class="column-four"> <img src="assets/setaBaixo.png" alt="Seta apontando pra baixo" width="45px"> </span>
-      </li>
-      <li class="run-basic"><span class="column-one">Campanha - Nome da Campanha</span>
-        <span class="column-two"> <span class="circle"></span> Concluída </span>
-        <span class="column-three"> De 04/12/2001 À 04/12/2023 </span>
-        <span class="column-four"> <img src="assets/setaBaixo.png" alt="Seta apontando pra baixo" width="45px"> </span>
       </li>
     </ul>
   </div>

@@ -1,6 +1,7 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { CPlayerSheet } from 'src/app/class/CPlayerSheet';
 import { CSheetDnD } from 'src/app/class/sheets/CSheetDnD';
 import { API_PATH } from 'src/app/environments/environment';
 import { UtilsService } from 'src/app/utils/utils.service';
@@ -33,5 +34,10 @@ export class SheetService {
   updateAttributesInCreation(sheetDnD: CSheetDnD):Observable<CSheetDnD>{
     const headers = this.utils.getHeaders();
     return this.http.post<CSheetDnD>(`${this.basePath}sheetDnD/create/updateAttributes`, sheetDnD, {headers});
+  }
+
+  linkSheet(sheet: CPlayerSheet):Observable<boolean>{
+    const headers = this.utils.getHeaders();
+    return this.http.post<boolean>(`${this.basePath}playerSheet/linkSheet`, sheet, {headers});
   }
 }

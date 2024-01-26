@@ -1,7 +1,10 @@
 <div class="body-div">
   <div class="tree-div">
     <div class="row">
-      <img src="assets/iconeUsuario.png" alt="Icone de um usuário genérico" width="120px">
+      <label for="fileinput" class="profile-picture-label">
+      <img src={{profilePictureURL}} alt="Icone de um usuário genérico" class="profilePicture">
+      <input id="fileinput" name="fileinput" type="file" class="profile-picture-input" (change)="choosePicture($event)">
+    </label>
       <h2>{{account.user || "Usuário"}}</h2>
     </div>
     <div class="row">

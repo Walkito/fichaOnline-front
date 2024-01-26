@@ -3,50 +3,24 @@ import { HttpHeaders, HttpParams } from '@angular/common/http';
 import { CAccount} from '../class/CAccount';
 import { CErro } from '../class/CErro';
 import { Subject } from 'rxjs';
+import { SessionStorageService } from './session-storage.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UtilsService {
 
-  constructor() { }
+  constructor(private sessionStorage: SessionStorageService) { }
 
-  private accountInfo: CAccount = new CAccount;
-  private sheetId: number = 0;
-  private sheetType: number = 1;
-  private alertSubject = new Subject<any>();
+  private accountType: string = this.sessionStorage.getData('accountType');
 
   showError(error: CErro):string{
     return error.error.mensagem;
   }
 
-  setTemporaryAccountInfos(account: CAccount){
-    this.accountInfo = account;
-  }
-
-  getTemporaryAccountInfos(){
-    return this.accountInfo;
-  }
-
   getHeaders(): HttpHeaders {
     return new HttpHeaders()
       .append("Content-Type", "application/json")
-  }
-
-  setSheetId(id: number){
-    this.sheetId = id;
-  }
-
-  getSheetId(){
-    return this.sheetId;
-  }
-
-  setSheetType(value: number){
-    this.sheetType = value;
-  }
-
-  getSheetType(){
-    return this.sheetType;
   }
 
   getCustomErrorMessage(field: string, error: string, errorValue: any): string {
@@ -63,5 +37,9 @@ export class UtilsService {
       default:
         return `Erro no campo ${field}.`;
     }
+  }
+
+  getAccountType(){
+    return this.accountType;
   }
 }

@@ -57,7 +57,14 @@
             <p class="error-field">O campo é obrigatório</p>
           </div>
         </div>
-        <button (click)="editAccount(editAccountForm)" class="btn-create">Cadastrar</button>
+        <div class="row-buttons">
+          <div class="column">
+            <button (click)="editAccount(editAccountForm)" class="btn-create">Cadastrar</button>
+          </div>
+          <div class="column">
+            <button (click)="deleteAccount()" class="btn-delete">Excluir Conta</button>
+          </div>
+        </div>
       </div>
     </div>
   </form>

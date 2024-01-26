@@ -7,6 +7,5 @@ export class CAccount{
     user: string = "";
     email: string = "";
     password: string = "";
-    type: string = "J";
-    situation: string = "A";
+    type: string = "";
 }

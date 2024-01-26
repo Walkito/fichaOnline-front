@@ -26,6 +26,10 @@ import { ModalErrorEditAccountComponent } from './pages/account-settings/modal-e
 import { ModalConfirmComponent } from './pages/my-sheets/modal-confirm/modal-confirm.component';
 import { ModalSucessDeleteSheetComponent } from './pages/my-sheets/modal-sucess-delete-sheet/modal-sucess-delete-sheet.component';
 import { ModalErrorDeleteSheetComponent } from './pages/my-sheets/modal-error-delete-sheet/modal-error-delete-sheet.component';
+import { ModalConfirmDeleteAccountComponent } from './pages/account-settings/modal-confirm-delete-account/modal-confirm-delete-account.component';
+import { ModalSucessDeleteAccountComponent } from './pages/account-settings/modal-sucess-delete-account/modal-sucess-delete-account.component';
+import { ModalErrorDeleteAccountComponent } from './pages/account-settings/modal-error-delete-account/modal-error-delete-account.component';
+import { ModalAddSheetComponent } from './pages/my-sheets/modal-add-sheet/modal-add-sheet.component';
 
 @NgModule({
   declarations: [
@@ -49,6 +53,10 @@ import { ModalErrorDeleteSheetComponent } from './pages/my-sheets/modal-error-de
     ModalConfirmComponent,
     ModalSucessDeleteSheetComponent,
     ModalErrorDeleteSheetComponent,
+    ModalConfirmDeleteAccountComponent,
+    ModalSucessDeleteAccountComponent,
+    ModalErrorDeleteAccountComponent,
+    ModalAddSheetComponent
   ],
   imports: [
     BrowserModule,

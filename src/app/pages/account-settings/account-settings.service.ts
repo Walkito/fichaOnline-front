@@ -18,11 +18,25 @@ export class AccountSettingsService {
     return this.http.put<CAccount>(`${this.basePath}account/edit`, updateAccount, {headers});
   }
 
+  getAccountInfos(id: number):Observable<CAccount>{
+    const params = new HttpParams()
+      .set(`id`, id);
+
+      return this.http.get<CAccount>(`${this.basePath}account/accountInfos`, { params })
+  }
+
   verifyEmailUser(email: string, user: string):Observable<number>{
     const params = new HttpParams()
       .set(`email`, email)
       .set(`user`, user);
 
     return this.http.get<number>(`${this.basePath}account/verifyEmailUser`, { params });
+  }
+
+  deleteAccount(id: number):Observable<number>{
+    const params = new HttpParams()
+      .set(`idAccount`, id);
+
+      return this.http.delete<number>(`${this.basePath}account/delete`, { params });
   }
 }

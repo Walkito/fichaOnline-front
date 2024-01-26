@@ -14,12 +14,13 @@
 
     .column-a {
       display: flex;
-      justify-content: center;
+      justify-content: flex-start;
       align-items: center;
-      width: 6%;
+      width: 15%;
 
       a{
         transition: 0.25s;
+        margin-left: 25%;
       }
 
       a:hover{
@@ -32,12 +33,29 @@
       text-align: center;
       justify-content: center;
       align-items: center;
-      width: 90%;
+      width: 73%;
 
       h1 {
         margin: 0;
         padding: 0;
         font-size: 48px;
+      }
+
+    }
+    .column-add{
+      display: flex;
+      text-align: center;
+      justify-content: flex-start;
+      align-items: center;
+      width: 5%;
+
+      img{
+        transition: 0.25s;
+        cursor: pointer;
+      }
+
+      img:hover{
+        transform: scale(1.2);
       }
     }
   }

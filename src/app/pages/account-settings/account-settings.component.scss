@@ -81,6 +81,21 @@
 
       }
 
+      .row-buttons{
+        display: flex;
+        width: 100%;
+        align-items: center;
+        justify-content: center;
+        margin: 2% 0;
+
+        .column{
+          display: flex;
+          width: 50%;
+          align-items: center;
+          justify-content: center;
+        }
+      }
+
       button {
         margin: 2% 0;
         width: 150px;
@@ -92,6 +107,16 @@
         color: var(--buttonBlue);
         cursor: pointer;
         transition: 0.25s;
+      }
+
+      .btn-delete{
+        border: 2px solid var(--buttonRed);
+        color: var(--buttonRed);
+      }
+
+      .btn-delete:hover{
+        color: white;
+        background-color: var(--buttonRed);
       }
 
       button:hover {

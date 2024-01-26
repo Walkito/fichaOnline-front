@@ -17,6 +17,7 @@
     border-bottom-right-radius: 5px;
     border-top-right-radius: 5px;
     animation: treeApper 0.75s forwards;
+
     .row{
       display: flex;
       flex-direction: column;
@@ -25,6 +26,22 @@
       align-items: center;
       text-align: center;
       margin: 12% 0 0 0;
+
+      .profilePicture{
+        width: 180px;
+        border: 6px solid black;
+        border-radius: 50%;
+        cursor: pointer;
+        transition: 0.25s;
+      }
+
+      .profilePicture:hover{
+        transform: scale(1.1);
+      }
+
+      .profile-picture-input{
+        display: none;
+      }
 
       h1,h2{
         margin: 1% 0 0 0;

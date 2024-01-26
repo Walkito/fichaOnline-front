@@ -10,6 +10,10 @@ import { CAccount } from 'src/app/class/CAccount';
 import { ModalCreateComponent } from '../modal-create/modal-create.component';
 import { NgForm } from '@angular/forms';
 import { ModalErrorComponent } from '../modal-error/modal-error.component';
+import { SessionStorageService } from 'src/app/utils/session-storage.service';
+import { CPlayerSheet } from 'src/app/class/CPlayerSheet';
+import { CRun } from 'src/app/class/CRun';
+import { CErro } from 'src/app/class/CErro';
 @Component({
   selector: 'app-sheet',
   templateUrl: './dndSheet.component.html',
@@ -17,27 +21,28 @@ import { ModalErrorComponent } from '../modal-error/modal-error.component';
 })
 export class DndSheetComponent implements OnInit {
   private idSheet = 0;
-  private typeSheet: number = 0;
+  private typeSheet: number = this.sessionStorage.getData('sheetType');
   private dictionaryInputs: { [key: string]: string} = {};
+
   sheetDnD: CSheetDnD = new CSheetDnD();
-  account: CAccount = new CAccount();
+  account: CAccount = this.sessionStorage.getData('account');
+  private run: CRun = this.sessionStorage.getData('runCreateSheet');
 
   constructor(private service: SheetService,
     private utils: UtilsService,
     private router: Router,
-    private dialog: MatDialog) { }
+    private dialog: MatDialog,
+    private sessionStorage: SessionStorageService) { }
 
   ngOnInit() {
-    this.account = this.utils.getTemporaryAccountInfos();
-    this.typeSheet = this.utils.getSheetType();
     this.populateDictionary();
 
     if (this.typeSheet === 1) {
-      this.changeTextButtons();
       this.sheetDnD.personalInfo.playerName = this.account.name;
+      this.changeTextButtons();
       this.updateAttributesInCreation();
     } else {
-      this.idSheet = this.utils.getSheetId();
+      this.idSheet = this.sessionStorage.getData('sheetId');
       this.getSheet();
       this.hideCleanButton();
     }
@@ -86,11 +91,18 @@ export class DndSheetComponent implements OnInit {
       this.openErrorDialog(errorsToSend);
     } else if (this.typeSheet === 1) {
       this.service.postSheet(this.sheetDnD).subscribe({
-        next: () => {
-          this.router.navigate(['/home/my-sheets']);
-          const dialogRef = this.dialog.open(ModalCreateComponent, {
-            disableClose: true
-          })
+        next: async (sheet: CSheetDnD) => {
+          this.sheetDnD = sheet;
+          const response = await this.linkPlayerSheet();
+
+          if(response){
+            this.router.navigate(['/home/my-sheets']);
+            const dialogRef = this.dialog.open(ModalCreateComponent, {
+              disableClose: true
+            });
+          } else {
+            this.router.navigate(['/home/my-sheets']);
+          }
         },
         error: (error) => this.utils.showError(error)
       });
@@ -236,5 +248,22 @@ export class DndSheetComponent implements OnInit {
         return fieldName + " deve possuir um valor máximo de " + control.errors.max.max +";";
       }
     return "Nenhum erro encontrado";
+  }
+
+  private linkPlayerSheet():Promise<boolean>{
+    return new Promise<boolean>((resolve, reject)=>{
+      const playerSheet = new CPlayerSheet();
+      playerSheet.account = this.account;
+      playerSheet.run = this.run;
+      playerSheet.sheetDnD = this.sheetDnD;
+
+      this.service.linkSheet(playerSheet).subscribe({
+        next: (response: boolean) => resolve(response),
+        error: (error: CErro) => {
+          alert(this.utils.showError);
+          reject(error);
+        }
+      })
+    })
   }
 }

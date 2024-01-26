@@ -1,0 +1,27 @@
+<div class="alert-box">
+  <div class="row-title">
+    <h1 class="alert-title"> Adicionar Nova Ficha</h1>
+  </div>
+  <div class="row-form">
+    <form #addSheetForm="ngForm">
+      <div class="row">
+        <label for="selectedRun">Selecione a Run(Campanha)</label>
+        <select #selectRun id="selectedRun" name="selectedRun" class="form-select selected-run" (change)="updateLabels($event)">
+          <option value={{run.id}} *ngFor="let run of runs"> {{run.campaign}} </option>
+        </select>
+      </div>
+      <div class="row">
+        <label for="">Sistema</label>
+        <h1 class="system-title">{{selectedRun.system.name}}</h1>
+      </div>
+      <div class="row">
+        <label for="">Mestre</label>
+        <h1 class="system-title">{{runMasterName}}</h1>
+      </div>
+      <div class="alert-buttons">
+        <button class="btn-yes" (click)="close(1)">Criar</button>
+        <button class="btn-no" (click)="close(0)">Cancelar</button>
+      </div>
+    </form>
+  </div>
+</div>

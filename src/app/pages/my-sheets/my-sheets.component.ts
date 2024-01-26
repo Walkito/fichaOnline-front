@@ -9,6 +9,8 @@ import { CErro } from 'src/app/class/CErro';
 import { MatDialog } from '@angular/material/dialog';
 import { ModalConfirmComponent } from './modal-confirm/modal-confirm.component';
 import { ModalSucessDeleteSheetComponent } from './modal-sucess-delete-sheet/modal-sucess-delete-sheet.component';
+import { SessionStorageService } from 'src/app/utils/session-storage.service';
+import { ModalAddSheetComponent } from './modal-add-sheet/modal-add-sheet.component';
 
 @Component({
   selector: 'app-my-sheets',
@@ -17,7 +19,7 @@ import { ModalSucessDeleteSheetComponent } from './modal-sucess-delete-sheet/mod
 })
 export class MySheetsComponent implements OnInit {
   constructor(private service: MySheetsService, private utils: UtilsService, private router: Router,
-    private dialog: MatDialog) {
+    private dialog: MatDialog, private sessionStorage: SessionStorageService) {
 
   }
 
@@ -25,7 +27,7 @@ export class MySheetsComponent implements OnInit {
   playerSheets: CPlayerSheet[] = [];
 
   ngOnInit() {
-    this.account = this.utils.getTemporaryAccountInfos();
+    this.account = this.sessionStorage.getData('account');
     this.getSheets();
   }
 
@@ -50,7 +52,25 @@ export class MySheetsComponent implements OnInit {
     })
   }
 
-  getSheets() {
+  openSheetPage(sheetNumber: number) {
+    this.sessionStorage.saveData('sheetId', this.playerSheets[sheetNumber].sheetDnD.id);
+    const sheetSystem = this.playerSheets[sheetNumber].run.system.name;
+
+    this.navigateToSheet(sheetSystem, 2);
+  }
+
+  addSheet(){
+    this.dialog.open(ModalAddSheetComponent, {
+      disableClose: true
+    }).afterClosed().subscribe((result:any) => {
+      if(result.option === 1){
+        this.sessionStorage.saveData('runCreateSheet',result.run);
+        this.navigateToSheet(result.system, 1);
+      }
+    })
+  }
+
+  private getSheets() {
     this.service.getSheets(this.account.id, 0).subscribe({
       next: (sheet) => {
         this.playerSheets = sheet;
@@ -59,9 +79,12 @@ export class MySheetsComponent implements OnInit {
     })
   }
 
-  openSheetPage(sheetNumber: number) {
-    this.utils.setSheetId(this.playerSheets[sheetNumber].sheetDnD.id);
-    this.utils.setSheetType(2);
-    this.router.navigate(['home/my-sheets/dnd-sheet']);
+  private navigateToSheet(sheetSystem: string, type: number){
+    this.sessionStorage.saveData('sheetType', type);
+    switch(sheetSystem){
+      case 'D&D 5e':
+        this.router.navigate(['home/my-sheets/dnd-sheet']);
+        break;
+    }
   }
 }
