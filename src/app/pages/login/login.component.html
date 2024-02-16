@@ -10,7 +10,7 @@
           <div class="row-label">
             <label for="user">Usuário</label>
           </div>
-          <input id="user" class="input-user" type="text" placeholder="Usuário ou E-mail" [(ngModel)]="login.user"
+          <input id="user" class="input-user" type="text" placeholder="Usuário ou E-mail" [(ngModel)]="login.user" [(ngModel)]="login.email"
             (keydown.enter)="doLogin()">
         </div>
         <div class="row">

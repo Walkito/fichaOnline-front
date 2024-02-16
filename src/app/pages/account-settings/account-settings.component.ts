@@ -51,7 +51,7 @@ export class AccountSettingsComponent {
   }
 
   async editAccount(form: NgForm) {
-    const validUserEmail = await this.verifyEmailAndUser(form.value.email, form.value.username);
+    const validUserEmail = await this.verifyEmailAndUser(form.value.email, form.value.username, this.account.id);
     if (validUserEmail) {
       form.form.setErrors({ 'emailUserInvalid': true });
     }
@@ -112,12 +112,11 @@ export class AccountSettingsComponent {
     });
   }
 
-  private verifyEmailAndUser(email: string, user: string): Promise<boolean> {
+  private verifyEmailAndUser(email: string, user: string, id: number): Promise<boolean> {
     return new Promise<boolean>((resolve, reject) => {
       email = email === this.actualEmail ? "emailNunca@gmail.com" : email;
       user = user === this.actualUser ? "" : user;
-
-      this.service.verifyEmailUser(email, user).subscribe({
+      this.service.verifyEmailUser(email, user, id).subscribe({
         next: (response: number) => {
           this.emailErrorMessage = "";
           this.userErrorMessage = "";

@@ -1,6 +1,6 @@
 import { MatDialog } from '@angular/material/dialog';
 import { Component, HostListener, OnInit } from '@angular/core';
-import { SheetService } from './dndSheet.service';
+import { DnDSheetService } from './dndSheet.service';
 import { UtilsService } from 'src/app/utils/utils.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CSheetDnD } from 'src/app/class/sheets/CSheetDnD';
@@ -22,21 +22,21 @@ import { CErro } from 'src/app/class/CErro';
 export class DndSheetComponent implements OnInit {
   private idSheet = 0;
   private typeSheet: number = this.sessionStorage.getData('sheetType');
-  private dictionaryInputs: { [key: string]: string} = {};
+  private dictionaryInputs: { [key: string]: string } = {};
 
   sheetDnD: CSheetDnD = new CSheetDnD();
   account: CAccount = this.sessionStorage.getData('account');
+  characterPictureURL: string = "";
   private run: CRun = this.sessionStorage.getData('runCreateSheet');
 
-  constructor(private service: SheetService,
+  constructor(private service: DnDSheetService,
     private utils: UtilsService,
     private router: Router,
     private dialog: MatDialog,
     private sessionStorage: SessionStorageService) { }
 
-  ngOnInit() {
+  async ngOnInit() {
     this.populateDictionary();
-
     if (this.typeSheet === 1) {
       this.sheetDnD.personalInfo.playerName = this.account.name;
       this.changeTextButtons();
@@ -45,13 +45,25 @@ export class DndSheetComponent implements OnInit {
       this.idSheet = this.sessionStorage.getData('sheetId');
       this.getSheet();
       this.hideCleanButton();
+      this.characterPictureURL = await this.getCharacterPicture();
+    }
+  }
+
+  async choosePicture(event: any) {
+    const file: File = event.target.files[0];
+    const fileName: string = file.name;
+    const imageData: any = await this.utils.readFile(file);
+    const imageSaved: boolean = await this.saveImage(imageData, fileName);
+    if (imageSaved) {
+      this.characterPictureURL = await this.getCharacterPicture();
+    } else {
+      alert("Já existe um arquivo com este mesmo nome. Por favor, renomeie com um nome de arquivo não utilizado.");
     }
   }
 
   @HostListener('focusin', ['$event'])
   onFocusIn(event: FocusEvent): void {
     const elementRef = event.target as HTMLElement;
-
     elementRef.classList.remove(`input-blinking`);
   }
 
@@ -82,7 +94,7 @@ export class DndSheetComponent implements OnInit {
       let errorsToSend: string[] = new Array();
       for (const controlName in form.controls) {
         const control = form.controls[controlName];
-        if(control.errors){
+        if (control.errors) {
           const translateFieldName = this.translateFields(controlName);
           errorsToSend.push(this.verifyErrors(translateFieldName, control));
           this.paintComponent(controlName);
@@ -95,7 +107,7 @@ export class DndSheetComponent implements OnInit {
           this.sheetDnD = sheet;
           const response = await this.linkPlayerSheet();
 
-          if(response){
+          if (response) {
             this.router.navigate(['/home/my-sheets']);
             const dialogRef = this.dialog.open(ModalCreateComponent, {
               disableClose: true
@@ -148,18 +160,57 @@ export class DndSheetComponent implements OnInit {
     input.blur();
   }
 
-  private openErrorDialog(errors: string[]){
+  private getCharacterPicture(): Promise<string> {
+    return new Promise<string>(async (resolve, reject) => {
+      try {
+        const blob: Blob = await this.getImage();
+        resolve(URL.createObjectURL(blob));
+      } catch (error: any) {
+        resolve("assets/iconePersonagem.png");
+      }
+    });
+  }
+
+  private getImage(): Promise<Blob> {
+    return new Promise<Blob>((resolve, reject) => {
+      this.service.getCharacterPicture(this.idSheet).subscribe({
+        next: (image: Blob) => resolve(image),
+        error: (error: CErro) => {
+          reject(error);
+        }
+      })
+    })
+  }
+
+  private saveImage(imageB64: string, fileName: string): Promise<boolean> {
+    return new Promise<boolean>((resolve, reject) => {
+      const imageObject = {
+        id: this.idSheet,
+        imageB64: imageB64,
+        fileName: fileName
+      };
+      this.service.uploadCharacterPicture(imageObject).subscribe({
+        next: (response: boolean) => resolve(response),
+        error: (error: CErro) => {
+          alert(this.utils.showError(error));
+          reject(error);
+        }
+      });
+    });
+  }
+
+  private openErrorDialog(errors: string[]) {
     const dialogRef = this.dialog.open(ModalErrorComponent, {
-      data: { errors: errors},
+      data: { errors: errors },
       disableClose: true,
     })
   }
 
-  private translateFields(field: string):string{
+  private translateFields(field: string): string {
     return this.dictionaryInputs[field];
   }
 
-  private populateDictionary(){
+  private populateDictionary() {
     this.dictionaryInputs['character-name-input'] = 'Nome do Personagem';
     this.dictionaryInputs['class-input'] = 'Classe';
     this.dictionaryInputs['level-input'] = 'Nível';
@@ -232,26 +283,26 @@ export class DndSheetComponent implements OnInit {
   }
 
   private verifyErrors(fieldName: string, control: any): string {
-      if (control.errors.required) {
-        return fieldName + " é obrigatório;";
-      }
-      if (control.errors.minlength) {
-        return fieldName + " deve possuir no mínimomo " + control.errors.minlength.requiredLength + " caracteres;";
-      }
-      if (control.errors.maxlength) {
-        return fieldName + " deve possuir no máximo " + control.errors.maxlength.requiredLength + " caracteres;";
-      }
-      if (control.errors.min) {
-        return fieldName + " deve possuir um valor minímo de " + control.errors.min.min +";";
-      }
-      if (control.errors.max) {
-        return fieldName + " deve possuir um valor máximo de " + control.errors.max.max +";";
-      }
+    if (control.errors.required) {
+      return fieldName + " é obrigatório;";
+    }
+    if (control.errors.minlength) {
+      return fieldName + " deve possuir no mínimomo " + control.errors.minlength.requiredLength + " caracteres;";
+    }
+    if (control.errors.maxlength) {
+      return fieldName + " deve possuir no máximo " + control.errors.maxlength.requiredLength + " caracteres;";
+    }
+    if (control.errors.min) {
+      return fieldName + " deve possuir um valor minímo de " + control.errors.min.min + ";";
+    }
+    if (control.errors.max) {
+      return fieldName + " deve possuir um valor máximo de " + control.errors.max.max + ";";
+    }
     return "Nenhum erro encontrado";
   }
 
-  private linkPlayerSheet():Promise<boolean>{
-    return new Promise<boolean>((resolve, reject)=>{
+  private linkPlayerSheet(): Promise<boolean> {
+    return new Promise<boolean>((resolve, reject) => {
       const playerSheet = new CPlayerSheet();
       playerSheet.account = this.account;
       playerSheet.run = this.run;

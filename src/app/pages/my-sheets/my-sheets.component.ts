@@ -47,9 +47,9 @@ export class MySheetsComponent implements OnInit {
           error: (error: CErro) => {
             alert(this.utils.showError(error));
           }
-        })
+        });
       }
-    })
+    });
   }
 
   openSheetPage(sheetNumber: number) {
@@ -67,7 +67,7 @@ export class MySheetsComponent implements OnInit {
         this.sessionStorage.saveData('runCreateSheet',result.run);
         this.navigateToSheet(result.system, 1);
       }
-    })
+    });
   }
 
   private getSheets() {
@@ -76,7 +76,7 @@ export class MySheetsComponent implements OnInit {
         this.playerSheets = sheet;
       },
       error: (error) => this.utils.showError(error)
-    })
+    });
   }
 
   private navigateToSheet(sheetSystem: string, type: number){

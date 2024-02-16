@@ -1,0 +1,19 @@
+.alert-box{
+  background-color: rgb(56, 55, 55);
+  padding: 2% 5%;
+
+  .column-form{
+    display: flex;
+    margin-bottom: 10%;
+
+    select{
+      color: black;
+      width: 20em;
+      font-size: 18px;
+      height: 2em;
+      border: 3px solid black;
+      outline: none;
+      border-radius: 5px;
+    }
+  }
+}

@@ -29,6 +29,4 @@ export class MySheetsService {
 
     return this.http.delete<boolean>(`${this.basePath}playerSheet/delete`, {params});
   }
-
-
 }

@@ -8,4 +8,6 @@ export class CAccount{
     email: string = "";
     password: string = "";
     type: string = "";
+    situation: string = "";
+    profilePictureName: string = "";
 }

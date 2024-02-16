@@ -7,6 +7,8 @@ import { AccountSettingsComponent } from './pages/account-settings/account-setti
 import { MyRunsComponent } from './pages/my-runs/my-runs.component';
 import { MySheetsComponent } from './pages/my-sheets/my-sheets.component';
 import { DndSheetComponent } from './pages/sheet/dnd/dndSheet.component';
+import { MasterAreaComponent } from './pages/master-area/master-area.component';
+import { MasterRunComponent } from './pages/master-run/master-run.component';
 
 const routes: Routes = [
   {path: "", component: LoginComponent},
@@ -15,7 +17,9 @@ const routes: Routes = [
   {path: "home/account-settings", component: AccountSettingsComponent},
   {path: "home/my-runs", component: MyRunsComponent},
   {path: "home/my-sheets", component: MySheetsComponent},
-  {path: "home/my-sheets/dnd-sheet", component: DndSheetComponent}
+  {path: "home/my-sheets/dnd-sheet", component: DndSheetComponent},
+  {path: "home/master-area", component: MasterAreaComponent},
+  {path: "home/master-area/master-run", component: MasterRunComponent}
 ];
 
 @NgModule({

@@ -1,0 +1,14 @@
+<div class="alert-box">
+  <div class="colum-title">
+    <h1 class="alert-title"> Selecione a Run</h1>
+  </div>
+  <div class="column-form">
+    <select name="select-master-run" id="select-master-run" [(ngModel)]="run.id" class="selected-master-run-select" required>
+      <option [value]="run.id" *ngFor="let run of runs" selected>{{run.campaign}}</option>
+    </select>
+  </div>
+  <div class="alert-buttons">
+    <button class="btn-yes" (click)="close(1)">Selecionar</button>
+    <button class="btn-no" (click)="close(0)">Cancelar</button>
+  </div>
+</div>

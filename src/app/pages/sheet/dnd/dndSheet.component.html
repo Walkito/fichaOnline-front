@@ -860,7 +860,15 @@
     <div class="sheet-body-row2">
       <div class="row2-column1">
         <div class="character-picture-div">
-
+          <div class="column-image">
+            <img src={{characterPictureURL}} alt="Icone de um personagem genérico" class="characterPicture">
+          </div>
+          <div class="column-icon">
+            <label for="fileinput">
+              <img src="assets/uploadIcon.png" alt="Ícone para realizar o upload do arquivo" class="icon-upload" width="35px">
+              <input id="fileinput" name="fileinput" type="file" class="character-picture-input" (change)="choosePicture($event)">
+            </label>
+          </div>
         </div>
       </div>
       <div class="row2-column2">

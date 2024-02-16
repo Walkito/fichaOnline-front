@@ -35,6 +35,7 @@ $ficha-online-theme: mat.define-light-theme((color: (primary: $ficha-online-prim
   --buttonRed: rgb(250, 143, 143);
   --buttonGreen: rgb(137, 231, 137);
   --cleanYellow: rgb(253, 251, 100);
+  --buttonOrange: rgb(235, 181, 82);
 }
 
 body {
@@ -50,7 +51,9 @@ body {
 }
 
 input,
-button{
+button,
+label,
+textarea{
   font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 
@@ -93,8 +96,8 @@ body {
     }
 
     .btn-yes{
-      color: rgb(0, 0, 0);
-      border: 3px solid rgb(0, 0, 0);
+      color: rgb(82, 207, 82);
+      border: 3px solid rgb(82, 207, 82);
       background-color: white;
       cursor: pointer;
     }
@@ -107,8 +110,8 @@ body {
 
     .btn-no{
       margin-left: 5%;
-      color: rgb(0, 0, 0);
-      border: 3px solid rgb(0, 0, 0);
+      color: rgb(238, 96, 96);
+      border: 3px solid rgb(238, 96, 96);
       background-color: white;
       cursor: pointer;
     }
@@ -118,6 +121,23 @@ body {
       border: 3px solid rgb(255, 255, 255);
       background-color: rgb(238, 96, 96);
     }
+  }
+
+  .btn-search{
+    width: 120px;
+    height: 50px;
+    border-radius: 10px;
+    font-size: 22px;
+    color: rgb(85, 96, 247);
+    border: 3px solid rgb(85, 96, 247);
+    background-color: white;
+    cursor: pointer;
+  }
+
+  .btn-search:hover{
+    color: rgb(255, 255, 255);
+    border: 3px solid rgb(255, 255, 255);
+    background-color: rgb(85, 96, 247);
   }
 }
 

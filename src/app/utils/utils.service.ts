@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpHeaders, HttpParams } from '@angular/common/http';
-import { CAccount} from '../class/CAccount';
+import { CAccount } from '../class/CAccount';
 import { CErro } from '../class/CErro';
 import { Subject } from 'rxjs';
 import { SessionStorageService } from './session-storage.service';
@@ -14,7 +14,7 @@ export class UtilsService {
 
   private accountType: string = this.sessionStorage.getData('accountType');
 
-  showError(error: CErro):string{
+  showError(error: CErro): string {
     return error.error.mensagem;
   }
 
@@ -39,7 +39,56 @@ export class UtilsService {
     }
   }
 
-  getAccountType(){
+  getAccountType() {
     return this.accountType;
+  }
+
+  readFile(file: File): Promise<String> {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+
+      reader.onload = () => {
+        if (reader.result) {
+          const base64Splited = (reader.result as string).split(',');
+          resolve(base64Splited[1]);
+        }
+      }
+
+      reader.onerror = () => {
+        reject(reader.error);
+      }
+      if (file) {
+        reader.readAsDataURL(file);
+      }
+    });
+  }
+
+  convertBase64Blob(base64: string): Promise<Blob> {
+    return new Promise<Blob>((resolve, reject) => {
+      const byteCharacters = atob(base64);
+      const byteNumbers = new Array(byteCharacters.length);
+      for (let i = 0; i < byteCharacters.length; i++) {
+        byteNumbers[i] = byteCharacters.charCodeAt(i);
+      }
+      const byteArray = new Uint8Array(byteNumbers);
+      resolve(new Blob([byteArray], { type: 'image/png' }));
+    });
+  }
+
+  convertBlobBase64(blob: Blob): Promise<string> {
+    return new Promise<string>((resolve, reject) => {
+      const reader = new FileReader();
+
+      reader.onload = () => {
+        if (reader.result) {
+          const base64Splited = (reader.result as string).split(',');
+          resolve(base64Splited[1]);
+        }
+      }
+
+      if (blob) {
+        reader.readAsDataURL(blob);
+      }
+    });
   }
 }

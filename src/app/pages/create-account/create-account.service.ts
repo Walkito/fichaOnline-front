@@ -23,7 +23,8 @@ export class CreateAccountService {
   verifyEmailUser(email: string, user: string):Observable<number>{
     const params = new HttpParams()
       .set(`email`, email)
-      .set(`user`, user);
+      .set(`user`, user)
+      .set(`id`, 0);
 
     return this.http.get<number>(`${this.basePath}account/verifyEmailUser`, { params });
   }

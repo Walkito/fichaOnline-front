@@ -1,0 +1,14 @@
+<div class="alert-box">
+  <div class="colum-title">
+    <h1 class="alert-title"> Selecione o Status</h1>
+  </div>
+  <div class="column-form">
+    <select name="select-master-run" id="select-master-run" class="selected-master-run-select" required [(ngModel)]="selectedStatus">
+      <option [value]="statu" *ngFor="let statu of status" selected>{{statu}}</option>
+    </select>
+  </div>
+  <div class="alert-buttons">
+    <button class="btn-yes" (click)="close(1)">Selecionar</button>
+    <button class="btn-no" (click)="close(0)">Cancelar</button>
+  </div>
+</div>

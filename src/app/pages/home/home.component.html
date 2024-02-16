@@ -2,9 +2,10 @@
   <div class="tree-div">
     <div class="row">
       <label for="fileinput" class="profile-picture-label">
-      <img src={{profilePictureURL}} alt="Icone de um usuário genérico" class="profilePicture">
-      <input id="fileinput" name="fileinput" type="file" class="profile-picture-input" (change)="choosePicture($event)">
-    </label>
+        <img src={{profilePictureURL}} alt="Icone de um usuário genérico" class="profilePicture">
+        <input id="fileinput" name="fileinput" type="file" class="profile-picture-input"
+          (change)="choosePicture($event)">
+      </label>
       <h2>{{account.user || "Usuário"}}</h2>
     </div>
     <div class="row">
@@ -12,10 +13,11 @@
     </div>
     <div class="row">
       <ul>
+        <li routerLink="/home/master-area" *ngIf="accountType === 'M' || accountType === 'A'"> Área do Mestre</li>
         <li routerLink="/home/my-sheets"> Minhas Fichas </li>
         <li routerLink="/home/my-runs"> Minhas Runs </li>
         <li routerLink="/home/account-settings"> Configurações </li>
-        <li routerLink=""> Sair </li>
+        <li (click)="exit()"> Sair </li>
       </ul>
     </div>
   </div>

@@ -1,0 +1,56 @@
+.alert-box{
+  background-color: rgb(56, 55, 55);
+  padding: 2% 5%;
+
+  .column-form{
+    display: flex;
+    width: 100%;
+
+    form{
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      justify-content: center;
+      align-items: flex-start;
+
+      input,
+      select{
+        border: 2px solid black;
+        border-radius: 5px;
+        outline: none;
+        margin: 0;
+        padding: 0;
+        font-size: 18px;
+      }
+
+      input{
+        height: 1.7em;
+        width: 100%;
+      }
+
+      select{
+        width: 102%;
+        height: 2em;
+        cursor: pointer;
+      }
+
+      label{
+        font-size: 20px;
+        margin: 5% 0 1% 0;
+      }
+
+
+    }
+  }
+  .alert-buttons{
+    margin-top: 8%;
+  }
+}
+
+.error-field{
+  margin: 0;
+  color: red;
+  font-weight: bolder;
+}
+
+

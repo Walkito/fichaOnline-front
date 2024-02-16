@@ -25,10 +25,11 @@ export class AccountSettingsService {
       return this.http.get<CAccount>(`${this.basePath}account/accountInfos`, { params })
   }
 
-  verifyEmailUser(email: string, user: string):Observable<number>{
+  verifyEmailUser(email: string, user: string, id: number):Observable<number>{
     const params = new HttpParams()
       .set(`email`, email)
-      .set(`user`, user);
+      .set(`user`, user)
+      .set(`id`, id)
 
     return this.http.get<number>(`${this.basePath}account/verifyEmailUser`, { params });
   }

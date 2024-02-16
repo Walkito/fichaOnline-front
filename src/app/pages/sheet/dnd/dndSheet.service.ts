@@ -9,7 +9,7 @@ import { UtilsService } from 'src/app/utils/utils.service';
 @Injectable({
   providedIn: 'root'
 })
-export class SheetService {
+export class DnDSheetService {
 
   constructor(private http: HttpClient, private utils: UtilsService) { }
 
@@ -17,8 +17,15 @@ export class SheetService {
 
   getSheet(id: number):Observable<CSheetDnD>{
     const params = new HttpParams().set("id", id);
-
     return this.http.get<CSheetDnD>(`${this.basePath}sheetDnD`, {params});
+  }
+
+  getCharacterPicture(id: number):Observable<Blob>{
+    const params = new HttpParams().set("id", id);
+    return this.http.get<Blob>(`${this.basePath}sheetDnD/characterPicture`, {
+      params,
+      responseType: 'blob' as 'json',
+    });
   }
 
   editSheet(sheetDnD: CSheetDnD):Observable<CSheetDnD>{
@@ -29,6 +36,11 @@ export class SheetService {
   postSheet(sheetDnD: CSheetDnD):Observable<CSheetDnD>{
     const headers = this.utils.getHeaders();
     return this.http.post<CSheetDnD>(`${this.basePath}sheetDnD/create`, sheetDnD, {headers});
+  }
+
+  uploadCharacterPicture(image: Object):Observable<boolean>{
+    const headers = this.utils.getHeaders();
+    return this.http.post<boolean>(`${this.basePath}sheetDnD/uploadCharacterPicture`, image, {headers});
   }
 
   updateAttributesInCreation(sheetDnD: CSheetDnD):Observable<CSheetDnD>{
