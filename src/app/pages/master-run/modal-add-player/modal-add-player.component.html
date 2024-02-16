@@ -1,0 +1,21 @@
+<div class="alert-box">
+  <div class="row-title">
+    <h1 class="alert-title">Adicionar Jogador(a)</h1>
+  </div>
+  <div class="row-form">
+    <div class="row">
+      <label for="playerinput">Buscar Jogador(a)</label>
+      <input id="playerinput" type="text" class="playerinput" placeholder="Digite o nome de usuário"
+        [(ngModel)]="input">
+      <button class="btn-search" (click)="getAccount()">Buscar</button>
+    </div>
+    <div class="row">
+      <label for="">Jogador(a) selecionado(a)</label>
+      <h1 class="player-title">{{account.name}} {{account.lastName}} - {{account.user}}</h1>
+    </div>
+    <div class="alert-buttons">
+      <button class="btn-yes" (click)="close(1)">Adicionar</button>
+      <button class="btn-no" (click)="close(0)">Cancelar</button>
+    </div>
+  </div>
+</div>

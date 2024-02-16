@@ -1,0 +1,49 @@
+.alert-box {
+  background-color: rgb(56, 55, 55);
+
+
+  .row-title {
+    margin: 2%;
+  }
+
+  .row-form {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+
+    label {
+      font-size: 22px;
+      margin: 0;
+      font-weight: bold;
+    }
+
+    input {
+      width: 90%;
+      font-size: 20px;
+      font-family: Roboto, "Helvetica Neue", sans-serif;
+      border-radius: 10px;
+      height: 2em;
+      border: 2px solid black;
+      margin-top: 4%;
+    }
+
+    h1 {
+      margin: 0 0 5% 0;
+      font-size: 22px;
+      font-weight: lighter;
+    }
+
+    .row {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      margin: 4% 0;
+    }
+
+    .btn-search {
+      margin-top: 3%;
+    }
+
+  }
+}
