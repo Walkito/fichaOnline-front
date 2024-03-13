@@ -282,10 +282,11 @@ export class MasterRunComponent implements OnInit {
           if(matchingSheet){
             this.dndAllies[indexA] = matchingSheet;
           }
-        });
+        })
       });
     });
   }
+
 
 
   private getNpcs(): Promise<CNpc[]> {
