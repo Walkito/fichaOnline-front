@@ -1,1 +1,9 @@
-<p>modal-confirm-remove-player works!</p>
+<div class="alert-box">
+  <h1 class="alert-title"> Atenção!</h1>
+  <h2 class="alert-content"> Deseja mesmo excluir este jogador desta Run?</h2>
+  <div class="alert-buttons">
+    <button class="btn-yes" (click)="close(1)">Sim</button>
+    <button class="btn-no" (click)="close(0)">Não</button>
+  </div>
+</div>
+

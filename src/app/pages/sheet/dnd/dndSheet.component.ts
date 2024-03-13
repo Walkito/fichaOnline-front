@@ -21,7 +21,7 @@ import { CErro } from 'src/app/class/CErro';
 })
 export class DndSheetComponent implements OnInit {
   private idSheet = 0;
-  private typeSheet: number = this.sessionStorage.getData('sheetType');
+  typeSheet: number = 0
   private dictionaryInputs: { [key: string]: string } = {};
 
   sheetDnD: CSheetDnD = new CSheetDnD();
@@ -36,6 +36,7 @@ export class DndSheetComponent implements OnInit {
     private sessionStorage: SessionStorageService) { }
 
   async ngOnInit() {
+    this.typeSheet = this.sessionStorage.getData('sheetType');
     this.populateDictionary();
     if (this.typeSheet === 1) {
       this.sheetDnD.personalInfo.playerName = this.account.name;

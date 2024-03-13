@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
 import { ModalComponent } from '../../sheet/modal/modal.component';
 import { NgForm } from '@angular/forms';
@@ -20,6 +20,9 @@ export class ModalCreateRunComponent implements OnInit {
     private sessionStorage: SessionStorageService,
     private service: ModalCreateRunService,
     private utils: UtilsService) { }
+
+    @ViewChild('runSystemSelect') selectSystem: ElementRef | undefined;
+
   runName: string = "";
   selectedSystem: CSystem = new CSystem();
   systems: CSystem[] = [];
@@ -29,6 +32,10 @@ export class ModalCreateRunComponent implements OnInit {
     this.systems = await this.getSystems();
     const account: CAccount = this.sessionStorage.getData('account');
     this.accountID = account.id;
+    const selectElement = this.selectSystem?.nativeElement;
+    setTimeout(() => {
+      selectElement.dispatchEvent(new Event('change'));
+    }, 0);
   }
 
   async create(option:number,form: NgForm) {
@@ -39,12 +46,6 @@ export class ModalCreateRunComponent implements OnInit {
       response = await this.linkAccountRun(this.accountID, run.id);
     };
     this.dialog.close({option, response, run});
-  }
-
-  onChange(event: any){
-    if (event){
-      console.log(this.selectedSystem.id);
-    }
   }
 
   private getSystems(): Promise<CSystem[]> {

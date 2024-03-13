@@ -12,7 +12,7 @@
         <p class="error-field">O campo é obrigatório</p>
       </div>
       <label for="run-system-select" class="run-system-label">Sistema</label>
-      <select  [(ngModel)]="selectedSystem.id" name="run-system-select" id="run-system-select" class="run-system-select" required>
+      <select #runSystemSelect [(ngModel)]="selectedSystem.id" name="run-system-select" id="run-system-select" class="run-system-select" required>
         <option [value]="system.id" *ngFor="let system of systems">{{system.name}}</option>
       </select>
       <div class="invalid-field"

@@ -42,6 +42,7 @@ import { ModalChangeStatusComponent } from './pages/master-run/modal-change-stat
 import { ModalCancelRunComponent } from './pages/master-run/modal-cancel-run/modal-cancel-run.component';
 import { ModalAddPlayerComponent } from './pages/master-run/modal-add-player/modal-add-player.component';
 import { ModalConfirmRemovePlayerComponent } from './pages/master-run/modal-confirm-remove-player/modal-confirm-remove-player.component';
+import * as SockJS from 'sockjs-client';
 
 @NgModule({
   declarations: [

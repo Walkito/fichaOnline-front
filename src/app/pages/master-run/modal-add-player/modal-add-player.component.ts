@@ -33,6 +33,11 @@ export class ModalAddPlayerComponent {
 
   close(option: number) {
     const account : CAccount = this.account;
-    this.dialog.close({option, account});
+    if(account.name !== '' && account.name !== 'Usuário não encontrado.' && option === 1){
+      this.dialog.close({option, account});
+    }
+    if(option === 0){
+      this.dialog.close(option);
+    }
   }
 }

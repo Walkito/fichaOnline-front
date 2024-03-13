@@ -24,8 +24,6 @@ export class MasterAreaComponent {
     private service: MasterAreaService,
     private utils: UtilsService) { }
 
-
-
   openModalCreateRun() {
     this.dialog.open(ModalCreateRunComponent, {
       disableClose: true

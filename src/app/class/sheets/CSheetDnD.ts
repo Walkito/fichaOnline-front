@@ -45,7 +45,6 @@ export class CSheetDnD{
     equipment: string = "";
     featuresTraits: string = "";
     characterPictureFileName: string = "";
-    characterPictureAddress: string = "";
     backstory: string = "";
     spellcastingClass: string = "";
     spellcastingHability: string = "";
@@ -61,4 +60,8 @@ export class CSheetDnD{
     spellsLevelSeven: CSpellsLevelSeven = new CSpellsLevelSeven();
     spellsLevelEigth: CSpellsLevelEigth = new CSpellsLevelEigth();
     spellsLevelNine: CSpellsLevelNine = new CSpellsLevelNine();
+
+    //Não está no Banco
+    combatBonus: string = "";
+    combatNotes: string = "";
 }
