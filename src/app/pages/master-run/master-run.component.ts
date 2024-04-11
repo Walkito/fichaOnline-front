@@ -19,6 +19,7 @@ import { ModalConfirmRemovePlayerComponent } from './modal-confirm-remove-player
 import { CCombatInitiative } from 'src/app/class/sheets/dndSheet/CCombatInitiative';
 import { CSpellTime } from 'src/app/class/sheets/dndSheet/CSpellTime';
 import { WebSocketService } from 'src/app/utils/web-socket.service';
+import { CMusic } from 'src/app/class/CMusic';
 
 @Component({
   selector: 'app-master-run',
@@ -56,18 +57,26 @@ export class MasterRunComponent implements OnInit {
   dndSpellsTime: CSpellTime[] = [];
   round: number = 0;
 
+  //Musicas
+  musics: CMusic[] = [];
+  linkInput: string = "";
+  nameInput: string = "";
+  oldDiscordCommand: string = "";
+
   partyNumber: number = 0;
+
 
   async ngOnInit() {
     this.socketConfig();
 
-    this.openInitialTab();
-
     const idRun: number = Number.parseInt(this.sessionStorage.getData('idRunMasterRun'));
     this.run = await this.getRun(idRun);
+    this.musics = this.run.musics;
+    this.oldDiscordCommand = this.run.discordBotCommand;
     this.npcs = await this.getNpcs();
     this.addEmptyNpc();
 
+    this.openInitialTab();
 
     this.players = await this.getAccounts();
     this.removeMasterFromPlayers();
@@ -273,13 +282,47 @@ export class MasterRunComponent implements OnInit {
   }
 
 
+
+  async musicRegister() {
+    if (this.linkInput === '') {
+      this.snackBar.open("Link não pode estar vazio.", "OK");
+      return;
+    }
+
+    const music: CMusic = new CMusic;
+    music.link = this.run.discordBotCommand + ' ' + this.linkInput;
+    music.run = this.run;
+    music.name = this.nameInput;
+
+    this.musics.push(await this.registerMusic(music));
+    this.linkInput = "";
+    this.nameInput = "";
+  }
+
+  async musicExclude(id: number) {
+    const response: boolean = await this.deleteMusic(id);
+    if (!response) {
+      this.snackBar.open("Não foi possível excluir a música.", "Ok");
+      return;
+    }
+
+    this.run = await this.getRun(this.run.id);
+    this.musics = this.run.musics;
+  }
+
+  saveDiscordCommand() {
+    this.saveRun();
+    this.verifyAndChangeCommand();
+  }
+
+
   private socketConfig() {
     this.socketService.connect().subscribe(() => {
       this.socketService.subscribe('/topic/SheetEdit', async (message: any) => {
         const sheets = await this.getDnD5eCharacters();
         this.dndAllies.forEach((allie, indexA) => {
           const matchingSheet = sheets.find(sheet => sheet.id === allie.id && sheet != allie);
-          if(matchingSheet){
+          if (matchingSheet) {
             this.dndAllies[indexA] = matchingSheet;
           }
         })
@@ -563,4 +606,45 @@ export class MasterRunComponent implements OnInit {
     this.dndSpellsTime.sort((a, b) => b.time - a.time);
   }
 
+
+
+  private registerMusic(music: CMusic): Promise<CMusic> {
+    return new Promise<CMusic>((resolve, reject) => {
+      this.service.registerMusic(music).subscribe({
+        next: (music: CMusic) => {
+          resolve(music);
+        },
+        error: (error: CErro) => {
+          this.utils.showError(error);
+          reject(error);
+        }
+      });
+    });
+  }
+
+  private deleteMusic(id: number): Promise<boolean> {
+    console.log(id);
+    return new Promise<boolean>((resolve, reject) => {
+      this.service.deleteMusic(id).subscribe({
+        next: (response: boolean) => {
+          resolve(response);
+        },
+        error: (error: CErro) => {
+          this.utils.showError(error);
+          reject(error);
+        }
+      })
+    });
+  }
+
+  private verifyAndChangeCommand() {
+    for (let music of this.run.musics) {
+      if (music.link.includes(this.oldDiscordCommand)) {
+        music.link = music.link.replace(this.oldDiscordCommand, this.run.discordBotCommand);
+      }
+    }
+    this.oldDiscordCommand = this.run.discordBotCommand;
+    this.saveRun();
+    this.musics = this.run.musics;
+  }
 }

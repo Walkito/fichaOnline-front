@@ -122,7 +122,8 @@
       <div class="dnd5e-combat" *ngIf="run.system.name === 'D&D 5e'">
         <div class="row-one">
           <div class="column-one">
-            <h2 class="round-title" (mousedown)="increaseRound($event)" (contextmenu)="decreasesRound($event)" >Rodada: {{round}}</h2>
+            <h2 class="round-title" (mousedown)="increaseRound($event)" (contextmenu)="decreasesRound($event)">Rodada:
+              {{round}}</h2>
           </div>
           <div class="column-two">
             <h4>1 minuto equivale à 10 rodadas</h4>
@@ -144,15 +145,24 @@
                 <th></th>
               </tr>
               <tr *ngFor="let allie of dndAllies; let i = index">
-                <td><textarea (change)="insertCombatOrderDnD5e(allie.personalInfo.characterName, 0)" placeholder="Nome" cdkTextareaAutosize [disabled]="i < partyNumber" [(ngModel)]="allie.personalInfo.characterName"></textarea></td>
-                <td><textarea placeholder="Classe" cdkTextareaAutosize [disabled]="i < partyNumber" [(ngModel)]="allie.personalInfo._class"></textarea></td>
-                <td><textarea placeholder="Nível" cdkTextareaAutosize [disabled]="i < partyNumber" [(ngModel)]="allie.personalInfo.level"></textarea></td>
-                <td><textarea placeholder="V.A" cdkTextareaAutosize [disabled]="i < partyNumber" [(ngModel)]="allie.currentHp"></textarea></td>
-                <td><textarea placeholder="V.T" cdkTextareaAutosize [disabled]="i < partyNumber" [(ngModel)]="allie.hpMax"></textarea></td>
-                <td><textarea placeholder="C.A" cdkTextareaAutosize [disabled]="i < partyNumber" [(ngModel)]="allie.armorClass"></textarea></td>
+                <td><textarea (change)="insertCombatOrderDnD5e(allie.personalInfo.characterName, 0)" placeholder="Nome"
+                    cdkTextareaAutosize [disabled]="i < partyNumber"
+                    [(ngModel)]="allie.personalInfo.characterName"></textarea></td>
+                <td><textarea placeholder="Classe" cdkTextareaAutosize [disabled]="i < partyNumber"
+                    [(ngModel)]="allie.personalInfo._class"></textarea></td>
+                <td><textarea placeholder="Nível" cdkTextareaAutosize [disabled]="i < partyNumber"
+                    [(ngModel)]="allie.personalInfo.level"></textarea></td>
+                <td><textarea placeholder="V.A" cdkTextareaAutosize [disabled]="i < partyNumber"
+                    [(ngModel)]="allie.currentHp"></textarea></td>
+                <td><textarea placeholder="V.T" cdkTextareaAutosize [disabled]="i < partyNumber"
+                    [(ngModel)]="allie.hpMax"></textarea></td>
+                <td><textarea placeholder="C.A" cdkTextareaAutosize [disabled]="i < partyNumber"
+                    [(ngModel)]="allie.armorClass"></textarea></td>
                 <td><textarea placeholder="Bônus" cdkTextareaAutosize [(ngModel)]="allie.combatBonus"></textarea></td>
-                <td><textarea placeholder="Observações" cdkTextareaAutosize [(ngModel)]="allie.combatNotes"></textarea></td>
-                <td><img *ngIf="i >= partyNumber" (click)="removeAllieDnD5e(allie)" src="assets/removeIcon.png" alt="Ícone de X para excluir"></td>
+                <td><textarea placeholder="Observações" cdkTextareaAutosize [(ngModel)]="allie.combatNotes"></textarea>
+                </td>
+                <td><img *ngIf="i >= partyNumber" (click)="removeAllieDnD5e(allie)" src="assets/removeIcon.png"
+                    alt="Ícone de X para excluir"></td>
               </tr>
             </table>
           </div>
@@ -170,15 +180,21 @@
                 <th></th>
               </tr>
               <tr *ngFor="let enemie of dndEnemies; let i = index">
-                <td><textarea (change)="insertCombatOrderDnD5e(enemie.personalInfo.characterName, 1)" cdkTextareaAutosize placeholder="Nome" [(ngModel)]="enemie.personalInfo.characterName"></textarea></td>
-                <td><textarea cdkTextareaAutosize placeholder="Classe" [(ngModel)]="enemie.personalInfo._class"></textarea></td>
-                <td><textarea cdkTextareaAutosize placeholder="Nível" [(ngModel)]="enemie.personalInfo.level"></textarea></td>
+                <td><textarea (change)="insertCombatOrderDnD5e(enemie.personalInfo.characterName, 1)"
+                    cdkTextareaAutosize placeholder="Nome" [(ngModel)]="enemie.personalInfo.characterName"></textarea>
+                </td>
+                <td><textarea cdkTextareaAutosize placeholder="Classe"
+                    [(ngModel)]="enemie.personalInfo._class"></textarea></td>
+                <td><textarea cdkTextareaAutosize placeholder="Nível"
+                    [(ngModel)]="enemie.personalInfo.level"></textarea></td>
                 <td><textarea cdkTextareaAutosize placeholder="V.A" [(ngModel)]="enemie.currentHp"></textarea></td>
                 <td><textarea cdkTextareaAutosize placeholder="V.T" [(ngModel)]="enemie.hpMax"></textarea></td>
                 <td><textarea cdkTextareaAutosize placeholder="CA" [(ngModel)]="enemie.armorClass"></textarea></td>
                 <td><textarea cdkTextareaAutosize placeholder="Bônus" [(ngModel)]="enemie.combatBonus"></textarea></td>
-                <td><textarea cdkTextareaAutosize placeholder="Observações" [(ngModel)]="enemie.combatNotes"></textarea></td>
-                <td><img (click)="removeEnemieDnD5e(enemie)" src="assets/removeIcon.png" alt="Ícone de X para excluir" width="18px"></td>
+                <td><textarea cdkTextareaAutosize placeholder="Observações" [(ngModel)]="enemie.combatNotes"></textarea>
+                </td>
+                <td><img (click)="removeEnemieDnD5e(enemie)" src="assets/removeIcon.png" alt="Ícone de X para excluir"
+                    width="18px"></td>
               </tr>
             </table>
           </div>
@@ -193,10 +209,14 @@
                 <th></th>
               </tr>
               <tr *ngFor="let spellTime of dndSpellsTime">
-                <td><textarea (change)="addSpellDnD5e()" cdkTextareaAutosize placeholder="Nome da Habilidade/Magia" [(ngModel)]="spellTime.spellName"></textarea></td>
-                <td><textarea cdkTextareaAutosize placeholder="Nome do Personagem" [(ngModel)]="spellTime.character"></textarea></td>
-                <td><textarea (change)="orderSpells()" cdkTextareaAutosize placeholder="Rodadas" [(ngModel)]="spellTime.time"></textarea></td>
-                <td><img (click)="removeSpellDnD5e(spellTime)" src="assets/removeIcon.png" alt="Ícone de X para excluir"></td>
+                <td><textarea (change)="addSpellDnD5e()" cdkTextareaAutosize placeholder="Nome da Habilidade/Magia"
+                    [(ngModel)]="spellTime.spellName"></textarea></td>
+                <td><textarea cdkTextareaAutosize placeholder="Nome do Personagem"
+                    [(ngModel)]="spellTime.character"></textarea></td>
+                <td><textarea (change)="orderSpells()" cdkTextareaAutosize placeholder="Rodadas"
+                    [(ngModel)]="spellTime.time"></textarea></td>
+                <td><img (click)="removeSpellDnD5e(spellTime)" src="assets/removeIcon.png"
+                    alt="Ícone de X para excluir"></td>
               </tr>
             </table>
           </div>
@@ -211,12 +231,40 @@
                   <textarea placeholder="Nome" disabled cdkTextareaAutosize [(ngModel)]="character.name"></textarea>
                 </td>
                 <td>
-                  <textarea placeholder="Valor Iniciativa" (change)="orderCombat()" cdkTextareaAutosize [(ngModel)]="character.initiative"></textarea>
+                  <textarea placeholder="Valor Iniciativa" (change)="orderCombat()" cdkTextareaAutosize
+                    [(ngModel)]="character.initiative"></textarea>
                 </td>
               </tr>
             </table>
           </div>
         </div>
+      </div>
+
+
+    </div>
+
+    <div class="tab-four tabs" *ngIf="tabs[3]">
+      <div class="row-one">
+        <div class="column-one">
+          <h2 class="discord-command-title">Comando Bot</h2>
+          <input type="text" class="discord-command-input" [(ngModel)]="run.discordBotCommand" (blur)="saveDiscordCommand()">
+        </div>
+        <div class="column-two">
+          <h2 class="music-link-title">Nome</h2>
+          <input type="text" class="name-music-input" [(ngModel)]="nameInput">
+          <h2 class="music-link-title">Link da Música</h2>
+          <input type="text" class="music-link-input" [(ngModel)]="linkInput">
+          <button class="add-music-link" (click)="musicRegister()">Adicionar</button>
+        </div>
+      </div>
+      <div class="row-two">
+        <ul>
+          <li *ngFor="let music of musics">
+            <span><p>{{music.name}} - {{music.link}}</p></span>
+            <span><img src="assets/copy.png" alt="Ícone de Copiar" width="25px"></span>
+            <span><img src="assets/removeIcon.png" alt="Ícone de Fechar" width="25px" (click)="musicExclude(music.id)"></span>
+          </li>
+        </ul>
       </div>
     </div>
   </div>

@@ -7,6 +7,7 @@ import { CRun } from 'src/app/class/CRun';
 import { SessionStorageService } from 'src/app/utils/session-storage.service';
 import { CPlayerSheet } from 'src/app/class/CPlayerSheet';
 import { CErro } from 'src/app/class/CErro';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-my-runs',

@@ -1,4 +1,5 @@
 import { CAccount } from "./CAccount";
+import { CMusic } from "./CMusic";
 import { CSystem } from "./CSystem";
 
 export class CRun{
@@ -18,5 +19,7 @@ export class CRun{
   annotationFour: string = "";
   annotationFive: string = "";
   annotationSix: string = "";
+  discordBotCommand: string = "";
   accounts: CAccount[] = [];
+  musics: CMusic[] = [];
 }

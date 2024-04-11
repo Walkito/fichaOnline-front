@@ -16,6 +16,10 @@
     margin: 0 0 0 5%;
   }
 
+  img{
+    cursor: pointer;
+  }
+
   h5 {
     margin-left: 1%;
     font-weight: normal;
@@ -713,6 +717,130 @@
               background-color: #91f3eb;
             }
 
+          }
+        }
+      }
+    }
+
+    .tab-four {
+      min-height: 100vh;
+
+      .row-one {
+        display: flex;
+        width: 100%;
+
+        h2 {
+          margin: 2%;
+        }
+
+        .column-one {
+          display: flex;
+          width: 28%;
+          margin-left: 10%;
+          align-items: center;
+
+          input {
+            margin: 0;
+            margin-left: 3%;
+            height: 35%;
+            width: 30%;
+            font-size: 22px;
+            text-align: center;
+            border-radius: 5px;
+            border: 2px solid black;
+            outline: none;
+          }
+        }
+
+        .column-two {
+          display: flex;
+          width: 60%;
+          align-items: center;
+
+          input {
+            margin: 0;
+            margin-left: 0;
+            height: 35%;
+            width: 70%;
+            font-size: 18px;
+            border-radius: 5px;
+            border: 2px solid black;
+            outline: none;
+          }
+
+          button {
+            width: 140px;
+            height: 40px;
+            margin-left: 5%;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: 0.25s;
+            font-size: 18px;
+            background-color: white;
+            color: var(--buttonGreen);
+            border: 2px solid var(--buttonGreen);
+          }
+
+          button:hover {
+            background-color: var(--buttonGreen);
+            color: white;
+          }
+        }
+      }
+
+      .row-two {
+        display: flex;
+        width: 100%;
+
+        ul {
+          display: flex;
+          flex-wrap: wrap;
+          list-style: none;
+          width: 100%;
+          margin: 0 0 2% 0;
+          padding: 0;
+
+          li {
+            display: flex;
+            width: 50%;
+            margin: 2% 0 0 0;
+            padding: 0%;
+            font-size: 19px;
+
+            img {
+              width: 25px;
+              height: 25px;
+              transition: 0.25s;
+            }
+
+            img:hover {
+              cursor: pointer;
+              transform: scale(1.2);
+            }
+          }
+
+          li span:nth-child(1) {
+            display: flex;
+            width: 80%;
+            margin-left: 5%;
+
+            p{
+              margin: 0;
+              padding: 0;
+              max-width: 100%;
+              flex-wrap: wrap;
+              overflow: auto;
+            }
+          }
+
+          li span:nth-child(2) {
+            display: flex;
+            margin-left: 3%;
+          }
+
+          li span:nth-child(3) {
+            display: flex;
+            margin-left: 3%;
           }
         }
       }

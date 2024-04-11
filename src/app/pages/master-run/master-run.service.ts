@@ -2,6 +2,7 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { CAccount } from 'src/app/class/CAccount';
+import { CMusic } from 'src/app/class/CMusic';
 import { CNpc } from 'src/app/class/CNpc';
 import { CPlayerSheet } from 'src/app/class/CPlayerSheet';
 import { CRun } from 'src/app/class/CRun';
@@ -77,5 +78,15 @@ export class MasterRunService {
     const params = new HttpParams()
     .set('idRun', idRun);
     return this.http.get<CPlayerSheet[]>(`${this.basePath}playerSheet/get`, { params});
+  }
+
+  registerMusic(music: CMusic): Observable<CMusic> {
+    const headers = this.utils.getHeaders();
+    return this.http.post<CMusic>(`${this.basePath}musics/register`, music, { headers });
+  }
+
+  deleteMusic(id: number): Observable<boolean> {
+    const params = new HttpParams().set('id', id);
+    return this.http.delete<boolean>(`${this.basePath}musics/delete`, { params });
   }
 }
