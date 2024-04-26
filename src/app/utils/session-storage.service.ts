@@ -13,7 +13,7 @@ export class SessionStorageService {
 
   getData(key: string): any{
     const object = sessionStorage.getItem(key);
-    if(object != undefined && object != null){
+    if(object != undefined && object != null && object != ""){
       return JSON.parse(object);
     } else {
       return "";

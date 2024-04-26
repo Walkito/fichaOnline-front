@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { catchError, Observable } from 'rxjs';
 import { WEBSOCKET_PATH } from '../environments/environment';
 import { Stomp } from '@stomp/stompjs';
 import * as SockJS from "sockjs-client";
@@ -14,6 +14,7 @@ export class WebSocketService {
 
   connect(): Observable<any> {
     const socket = new SockJS(WEBSOCKET_PATH);
+
     this.stompClient = Stomp.over(socket);
     return new Observable(observer => {
       this.stompClient.connect({}, (frame: any) => {

@@ -4,6 +4,7 @@ import { CAccount } from '../class/CAccount';
 import { CErro } from '../class/CErro';
 import { Subject } from 'rxjs';
 import { SessionStorageService } from './session-storage.service';
+import { Token } from '@angular/compiler';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +13,7 @@ export class UtilsService {
 
   constructor(private sessionStorage: SessionStorageService) { }
 
-  private accountType: string = this.sessionStorage.getData('accountType');
+  private accountType: string = this.sessionStorage.getData('accountRole');
 
   showError(error: CErro): string {
     return error.error.mensagem;
@@ -90,5 +91,10 @@ export class UtilsService {
         reader.readAsDataURL(blob);
       }
     });
+  }
+
+  userLogged(): boolean{
+    let session = this.sessionStorage.getData('userToken')!= '' ? true : false;
+    return  session;
   }
 }
