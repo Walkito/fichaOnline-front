@@ -15,9 +15,9 @@ export class CreateAccountService {
     private utils: UtilsService) { }
 
   createLogin(account: CAccount) {
-    const headers = this.utils.getHeaders();
 
-    return this.http.post(`${this.basePath}account/create`, account, { headers });
+
+    return this.http.post(`${this.basePath}account/create`, account);
   }
 
   verifyEmailUser(email: string, user: string):Observable<number>{

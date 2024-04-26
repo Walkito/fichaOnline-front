@@ -21,12 +21,12 @@ export class ModalCreateRunService {
     }
 
     registerRun(run: CRun):Observable<CRun>{
-      const headers = this.utils.getHeaders();
-      return this.http.post<CRun>(`${this.basePath}run/register`, run, {headers});
+
+      return this.http.post<CRun>(`${this.basePath}run/register`, run);
     }
 
     linkAccountRun(accountRunDTO: Object):Observable<boolean>{
-      const headers = this.utils.getHeaders();
-      return this.http.post<boolean>(`${this.basePath}run/linkAccount`, accountRunDTO, {headers});
+
+      return this.http.post<boolean>(`${this.basePath}run/linkAccount`, accountRunDTO);
     }
 }

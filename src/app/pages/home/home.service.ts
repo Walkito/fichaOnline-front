@@ -15,9 +15,9 @@ export class HomeService {
   private basePath = API_PATH;
 
   uploadImage(image: object): Observable<boolean> {
-    const headers = this.utils.getHeaders();
 
-    return this.http.post<boolean>(`${this.basePath}account/upload`, image, { headers });
+
+    return this.http.post<boolean>(`${this.basePath}account/upload`, image);
   }
 
   downloadImage(id: number): Observable<Blob> {

@@ -260,8 +260,8 @@
       <div class="row-two">
         <ul>
           <li *ngFor="let music of musics">
-            <span><p>{{music.name}} - {{music.link}}</p></span>
-            <span><img src="assets/copy.png" alt="Ícone de Copiar" width="25px"></span>
+            <span><p #valueMusic>{{music.name}} - {{music.link}}</p></span>
+            <span><img src="assets/copy.png" alt="Ícone de Copiar" width="25px" [cdkCopyToClipboard]="music.link"></span>
             <span><img src="assets/removeIcon.png" alt="Ícone de Fechar" width="25px" (click)="musicExclude(music.id)"></span>
           </li>
         </ul>

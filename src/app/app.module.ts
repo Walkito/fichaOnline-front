@@ -42,8 +42,9 @@ import { ModalChangeStatusComponent } from './pages/master-run/modal-change-stat
 import { ModalCancelRunComponent } from './pages/master-run/modal-cancel-run/modal-cancel-run.component';
 import { ModalAddPlayerComponent } from './pages/master-run/modal-add-player/modal-add-player.component';
 import { ModalConfirmRemovePlayerComponent } from './pages/master-run/modal-confirm-remove-player/modal-confirm-remove-player.component';
-import * as SockJS from 'sockjs-client';
-
+import {ClipboardModule} from '@angular/cdk/clipboard';
+import { HttpInterceptorModule } from './modules/interceptor.module';
+import { ModalErrorTokenComponent } from './utils/modal-error-token/modal-error-token/modal-error-token.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -77,7 +78,8 @@ import * as SockJS from 'sockjs-client';
     ModalChangeStatusComponent,
     ModalCancelRunComponent,
     ModalAddPlayerComponent,
-    ModalConfirmRemovePlayerComponent
+    ModalConfirmRemovePlayerComponent,
+    ModalErrorTokenComponent
   ],
   imports: [
     BrowserModule,
@@ -90,7 +92,9 @@ import * as SockJS from 'sockjs-client';
     MatFormFieldModule,
     MatInputModule,
     MatSelectModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    ClipboardModule,
+    HttpInterceptorModule
   ],
   providers: [],
   bootstrap: [AppComponent]

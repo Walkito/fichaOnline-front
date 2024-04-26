@@ -25,13 +25,13 @@ export class MasterRunService {
   }
 
   addNpc(npc: CNpc): Observable<CNpc[]> {
-    const headers = this.utils.getHeaders();
-    return this.http.post<CNpc[]>(`${this.basePath}npc/add`, npc, { headers });
+
+    return this.http.post<CNpc[]>(`${this.basePath}npc/add`, npc);
   }
 
   editNpc(npc: CNpc): Observable<CNpc[]> {
-    const headers = this.utils.getHeaders();
-    return this.http.put<CNpc[]>(`${this.basePath}npc/edit`, npc, { headers });
+
+    return this.http.put<CNpc[]>(`${this.basePath}npc/edit`, npc);
   }
 
   getRun(id: number): Observable<CRun> {
@@ -40,8 +40,7 @@ export class MasterRunService {
   }
 
   saveRun(run: CRun): Observable<CRun> {
-    const headers = this.utils.getHeaders();
-    return this.http.put<CRun>(`${this.basePath}run/edit`, run, { headers });
+    return this.http.put<CRun>(`${this.basePath}run/edit`, run);
   }
 
   deleteRun(idRun: number): Observable<boolean> {
@@ -55,8 +54,8 @@ export class MasterRunService {
   }
 
   linkAccount(runAccountDTO: Object): Observable<boolean> {
-    const headers = this.utils.getHeaders();
-    return this.http.post<boolean>(`${this.basePath}run/linkAccount`, runAccountDTO, { headers });
+
+    return this.http.post<boolean>(`${this.basePath}run/linkAccount`, runAccountDTO);
   }
 
   unlinkAccount(runAccountDTO: any): Observable<boolean> {
@@ -81,8 +80,8 @@ export class MasterRunService {
   }
 
   registerMusic(music: CMusic): Observable<CMusic> {
-    const headers = this.utils.getHeaders();
-    return this.http.post<CMusic>(`${this.basePath}musics/register`, music, { headers });
+
+    return this.http.post<CMusic>(`${this.basePath}musics/register`, music);
   }
 
   deleteMusic(id: number): Observable<boolean> {

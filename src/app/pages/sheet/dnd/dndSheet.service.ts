@@ -29,27 +29,27 @@ export class DnDSheetService {
   }
 
   editSheet(sheetDnD: CSheetDnD):Observable<CSheetDnD>{
-    const headers = this.utils.getHeaders();
-    return this.http.put<CSheetDnD>(`${this.basePath}sheetDnD/edit`, sheetDnD, {headers});
+
+    return this.http.put<CSheetDnD>(`${this.basePath}sheetDnD/edit`, sheetDnD);
   }
 
   postSheet(sheetDnD: CSheetDnD):Observable<CSheetDnD>{
-    const headers = this.utils.getHeaders();
-    return this.http.post<CSheetDnD>(`${this.basePath}sheetDnD/create`, sheetDnD, {headers});
+
+    return this.http.post<CSheetDnD>(`${this.basePath}sheetDnD/create`, sheetDnD);
   }
 
   uploadCharacterPicture(image: Object):Observable<boolean>{
-    const headers = this.utils.getHeaders();
-    return this.http.post<boolean>(`${this.basePath}sheetDnD/uploadCharacterPicture`, image, {headers});
+
+    return this.http.post<boolean>(`${this.basePath}sheetDnD/uploadCharacterPicture`, image);
   }
 
   updateAttributesInCreation(sheetDnD: CSheetDnD):Observable<CSheetDnD>{
-    const headers = this.utils.getHeaders();
-    return this.http.post<CSheetDnD>(`${this.basePath}sheetDnD/create/updateAttributes`, sheetDnD, {headers});
+
+    return this.http.post<CSheetDnD>(`${this.basePath}sheetDnD/create/updateAttributes`, sheetDnD);
   }
 
   linkSheet(sheet: CPlayerSheet):Observable<boolean>{
-    const headers = this.utils.getHeaders();
-    return this.http.post<boolean>(`${this.basePath}playerSheet/linkSheet`, sheet, {headers});
+
+    return this.http.post<boolean>(`${this.basePath}playerSheet/linkSheet`, sheet);
   }
 }

@@ -7,7 +7,7 @@ export class CAccount{
     user: string = "";
     email: string = "";
     password: string = "";
-    type: string = "";
+    role: string = "";
     situation: string = "";
     profilePictureName: string = "";
 }

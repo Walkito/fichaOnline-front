@@ -7,6 +7,8 @@ import { MatDialog } from '@angular/material/dialog';
 import { ModalErrorComponent } from '../sheet/modal-error/modal-error.component';
 import { ModalErrorLoginComponent } from './modal-error-login/modal-error-login.component';
 import { SessionStorageService } from 'src/app/utils/session-storage.service';
+import { CAccount } from 'src/app/class/CAccount';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-login',
@@ -15,28 +17,33 @@ import { SessionStorageService } from 'src/app/utils/session-storage.service';
 })
 export class LoginComponent {
 
-login : CLogin = new CLogin();
+  login: CLogin = new CLogin();
+  private token: String = "";
+  user: string = "";
+  password: string = "";
 
-constructor(private service:LoginService,
-            private utils:UtilsService,
-            private router:Router,
-            private dialog: MatDialog,
-            private sessionStorage: SessionStorageService){}
+  constructor(private service: LoginService,
+    private utils: UtilsService,
+    private router: Router,
+    private dialog: MatDialog,
+    private sessionStorage: SessionStorageService) { }
 
 
-async doLogin(){
-  this.service.doLogin(this.login).subscribe({
-    next: (account) =>{
-      this.sessionStorage.saveData('account', account);
-      this.sessionStorage.saveData('accountType', account.type);
-      this.router.navigate(['/home']);
-    },
-    error: (error) => {
-      const dialogRef = this.dialog.open(ModalErrorLoginComponent,{
-        data: {error: this.utils.showError(error)},
-        disableClose: true,
-      })
-    }
-  })
+  getToken() {
+    this.service.getToken(this.login).subscribe({
+      next: (loginResponse: CLogin) => {
+        this.sessionStorage.saveData('account', loginResponse.account);
+        this.sessionStorage.saveData('accountRole', loginResponse.account.role);
+        this.sessionStorage.saveData('userToken', loginResponse.token);
+        this.router.navigate(['/home']);
+      },
+      error: (error) => {
+        const dialogRef = this.dialog.open(ModalErrorLoginComponent, {
+          data: { error: this.utils.showError(error) },
+          disableClose: true,
+        })
+      }
+    })
+  }
 }
-}
+

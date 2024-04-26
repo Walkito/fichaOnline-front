@@ -22,11 +22,11 @@ export class HomeComponent {
 
   account: CAccount = new CAccount;
   profilePictureURL: string = "assets/iconeUsuario.png";
-  accountType: string = "";
+  accountRole: string = "";
 
   async ngOnInit() {
     this.account = this.sessionStorage.getData('account');
-    this.accountType = this.sessionStorage.getData('accountType');
+    this.accountRole = this.sessionStorage.getData('accountRole');
     this.profilePictureURL = await this.getProfilePicture();
   }
 

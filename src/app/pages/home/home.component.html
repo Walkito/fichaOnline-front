@@ -13,7 +13,7 @@
     </div>
     <div class="row">
       <ul>
-        <li routerLink="/home/master-area" *ngIf="accountType === 'M' || accountType === 'A'"> Área do Mestre</li>
+        <li routerLink="/home/master-area" *ngIf="accountRole === 'MASTER' || accountRole === 'PLAYER'"> Área do Mestre</li>
         <li routerLink="/home/my-sheets"> Minhas Fichas </li>
         <li routerLink="/home/my-runs"> Minhas Runs </li>
         <li routerLink="/home/account-settings"> Configurações </li>

@@ -10,18 +10,17 @@
           <div class="row-label">
             <label for="user">Usuário</label>
           </div>
-          <input id="user" class="input-user" type="text" placeholder="Usuário ou E-mail" [(ngModel)]="login.user" [(ngModel)]="login.email"
-            (keydown.enter)="doLogin()">
+          <input id="user" class="input-user" type="text" placeholder="Usuário ou E-mail" [(ngModel)]="login.user" (keydown.enter)="getToken()">
         </div>
         <div class="row">
           <div class="row-label">
             <label for="password">Senha</label>
           </div>
           <input id="password" class="input-password" type="password" placeholder="Senha" [(ngModel)]="login.password"
-            (keydown.enter)="doLogin()">
+            (keydown.enter)="getToken()">
         </div>
         <div class="row">
-          <button (click)="doLogin()">Login</button>
+          <button (click)="getToken()">Login</button>
           <a routerLink="/create-account">Não possui conta? Crie uma agora.</a>
         </div>
       </div>

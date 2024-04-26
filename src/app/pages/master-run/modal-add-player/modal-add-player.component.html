@@ -5,7 +5,7 @@
   <div class="row-form">
     <div class="row">
       <label for="playerinput">Buscar Jogador(a)</label>
-      <input id="playerinput" type="text" class="playerinput" placeholder="Digite o nome de usuário"
+      <input autocomplete="off" aria-autocomplete="none" id="playerinput" type="text" class="playerinput" placeholder="Digite o nome de usuário"
         [(ngModel)]="input" (blur)="getAccount()" (keydown.enter)="getAccount()">
       <button class="btn-search" (click)="getAccount()">Buscar</button>
     </div>

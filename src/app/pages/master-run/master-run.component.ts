@@ -315,7 +315,6 @@ export class MasterRunComponent implements OnInit {
     this.verifyAndChangeCommand();
   }
 
-
   private socketConfig() {
     this.socketService.connect().subscribe(() => {
       this.socketService.subscribe('/topic/SheetEdit', async (message: any) => {

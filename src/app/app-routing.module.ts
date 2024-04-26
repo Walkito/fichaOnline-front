@@ -9,17 +9,19 @@ import { MySheetsComponent } from './pages/my-sheets/my-sheets.component';
 import { DndSheetComponent } from './pages/sheet/dnd/dndSheet.component';
 import { MasterAreaComponent } from './pages/master-area/master-area.component';
 import { MasterRunComponent } from './pages/master-run/master-run.component';
+import { guardianGuard } from './utils/guardian.guard';
 
 const routes: Routes = [
-  {path: "", component: LoginComponent},
+  { path: '', component: LoginComponent, pathMatch: 'full' },
+  {path: "login", component: LoginComponent},
   {path: "create-account", component: CreateAccountComponent},
-  {path: "home", component: HomeComponent},
-  {path: "home/account-settings", component: AccountSettingsComponent},
-  {path: "home/my-runs", component: MyRunsComponent},
-  {path: "home/my-sheets", component: MySheetsComponent},
-  {path: "home/my-sheets/dnd-sheet", component: DndSheetComponent},
-  {path: "home/master-area", component: MasterAreaComponent},
-  {path: "home/master-area/master-run", component: MasterRunComponent}
+  {path: "home", component: HomeComponent, canActivate:[guardianGuard]},
+  {path: "home/account-settings", component: AccountSettingsComponent, canActivate:[guardianGuard]},
+  {path: "home/my-runs", component: MyRunsComponent, canActivate:[guardianGuard]},
+  {path: "home/my-sheets", component: MySheetsComponent, canActivate:[guardianGuard]},
+  {path: "home/my-sheets/dnd-sheet", component: DndSheetComponent, canActivate:[guardianGuard]},
+  {path: "home/master-area", component: MasterAreaComponent, canActivate:[guardianGuard]},
+  {path: "home/master-area/master-run", component: MasterRunComponent, canActivate:[guardianGuard]}
 ];
 
 @NgModule({
