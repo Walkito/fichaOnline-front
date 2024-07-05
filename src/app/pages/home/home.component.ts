@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, ViewChild, ViewChildren } from '@angular/core';
 import { CAccount } from 'src/app/class/CAccount';
 import { LoginService } from '../login/login.service';
 import { UtilsService } from 'src/app/utils/utils.service';
@@ -20,14 +20,21 @@ export class HomeComponent {
     private router: Router,
   ) { }
 
+
+  @ViewChild('treeDiv') treeDiv!: ElementRef;
+
   account: CAccount = new CAccount;
+  roleNumber: string = '';
   profilePictureURL: string = "assets/iconeUsuario.png";
   accountRole: string = "";
+  mobile: boolean = false;
 
   async ngOnInit() {
     this.account = this.sessionStorage.getData('account');
-    this.accountRole = this.sessionStorage.getData('accountRole');
+    this.roleNumber = this.sessionStorage.getData('accountRole');
     this.profilePictureURL = await this.getProfilePicture();
+
+    this.mobile = window.innerWidth <= 430 ? true : false;
   }
 
   async choosePicture(event: any) {
@@ -43,9 +50,18 @@ export class HomeComponent {
     }
   }
 
-  exit(){
+  exit() {
     this.sessionStorage.clearAll();
     this.router.navigate(['/']);
+  }
+
+  openMenu() {
+    this.treeDiv.nativeElement.style.animation = 'treeApper2 1s forwards';
+    this.treeDiv.nativeElement.style.display = 'flex';
+  }
+
+  closeMenu() {
+    this.treeDiv.nativeElement.style.animation = 'treeDisapper 1s forwards';
   }
 
   private getProfilePicture(): Promise<string> {
@@ -94,4 +110,5 @@ export class HomeComponent {
       })
     });
   }
+
 }

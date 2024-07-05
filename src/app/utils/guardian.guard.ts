@@ -4,7 +4,11 @@ import { UtilsService } from './utils.service';
 
 export const guardianGuard: CanActivateFn = (route, state) => {
 
-  const userLogged = inject(UtilsService).userLogged();
+  const userLogged: boolean = inject(UtilsService).userLogged();
 
-  return userLogged ? true : inject(Router).navigate(["login"]);
+  const authRoles: any = JSON.parse(JSON.stringify(route.data)).role.toString();
+
+  const role: boolean = inject(UtilsService).userRole(authRoles);
+
+  return userLogged && role ? true : inject(Router).navigate(["login"]);
 };

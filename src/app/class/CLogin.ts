@@ -4,5 +4,5 @@ export class CLogin{
   user: string = "";
   password: string = "";
   token: string = "";
-  account: CAccount = new CAccount();
+  accountDTO: CAccount = new CAccount();
 }

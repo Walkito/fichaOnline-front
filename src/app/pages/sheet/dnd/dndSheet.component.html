@@ -12,7 +12,7 @@
           <input name="character-name-input" #characterInput class="character-name-input" type="text"
             placeholder="Nome de Personagem" [(ngModel)]="sheetDnD.personalInfo.characterName" (blur)="editSheet()"
             (keydown.enter)="lostFocus(characterInput)" required maxlength="35" [disabled]="typeSheet === 3">
-          <h4 class="character-name-title"> Nome de Personagem </h4>
+          <h4 class="character-name-title"> Personagem </h4>
         </div>
       </div>
       <div class="row1-column3">
@@ -22,11 +22,6 @@
               <input name="class-input" #classInput type="text" class="class-input personal-infos-inputs"
                 placeholder="Classe" [(ngModel)]="sheetDnD.personalInfo._class" (blur)="editSheet()"
                 (keydown.enter)="lostFocus(classInput)" required maxlength="35" [disabled]="typeSheet === 3">
-              <p class="nv-title"> Nv.</p>
-              <label for="level-input"></label>
-              <input name="level-input" #levelInput type="number" class="level-input personal-infos-inputs"
-                placeholder="Nível" [(ngModel)]="sheetDnD.personalInfo.level" (blur)="editSheet()"
-                (keydown.enter)="lostFocus(levelInput)" required min="1" max="20" [disabled]="typeSheet === 3">
             </div>
             <div class="row-one-column">
               <input name="antecedent-input" #antecedentInput type="text" class="antecedent-input personal-infos-inputs"
@@ -48,7 +43,7 @@
               <h4 class="antecedent-title personal-infos-titles"> Antecedente </h4>
             </div>
             <div class="row-three-column">
-              <h4 class="player-name-title personal-infos-titles"> Nome do Jogador</h4>
+              <h4 class="player-name-title personal-infos-titles"> Jogador</h4>
             </div>
           </div>
           <div class="row-four">
@@ -80,7 +75,7 @@
               <h4 class="trend-title personal-infos-titles"> Tendência </h4>
             </div>
             <div class="row-six-column">
-              <h4 class="experience-title personal-infos-titles"> Pontos de Experiência </h4>
+              <h4 class="experience-title personal-infos-titles"> Experiência </h4>
             </div>
           </div>
         </div>
@@ -173,22 +168,28 @@
               <div class="saving-throws-proeficiency-div">
                 <input [ngModelOptions]="{standalone: true}" type="checkbox"
                   class="strength-proeficiency proeficiency-checkbox" placeholder="a"
-                  [(ngModel)]="sheetDnD.savingThrow.strengthProeficiency" (change)="editSheet()" [disabled]="typeSheet === 3">
+                  [(ngModel)]="sheetDnD.savingThrow.strengthProeficiency" (change)="editSheet()"
+                  [disabled]="typeSheet === 3">
                 <input [ngModelOptions]="{standalone: true}" type="checkbox"
                   class="dexterity-proeficiency proeficiency-checkbox" placeholder="a"
-                  [(ngModel)]="sheetDnD.savingThrow.dexterityProeficiency" (change)="editSheet()" [disabled]="typeSheet === 3">
+                  [(ngModel)]="sheetDnD.savingThrow.dexterityProeficiency" (change)="editSheet()"
+                  [disabled]="typeSheet === 3">
                 <input [ngModelOptions]="{standalone: true}" type="checkbox"
                   class="constitution-proeficiency proeficiency-checkbox" placeholder="a"
-                  [(ngModel)]="sheetDnD.savingThrow.constitutionProeficiency" (change)="editSheet()" [disabled]="typeSheet === 3">
+                  [(ngModel)]="sheetDnD.savingThrow.constitutionProeficiency" (change)="editSheet()"
+                  [disabled]="typeSheet === 3">
                 <input [ngModelOptions]="{standalone: true}" type="checkbox"
                   class="intelligence-proeficiency proeficiency-checkbox" placeholder="a"
-                  [(ngModel)]="sheetDnD.savingThrow.intelligenceProeficiency" (change)="editSheet()" [disabled]="typeSheet === 3">
+                  [(ngModel)]="sheetDnD.savingThrow.intelligenceProeficiency" (change)="editSheet()"
+                  [disabled]="typeSheet === 3">
                 <input [ngModelOptions]="{standalone: true}" type="checkbox"
                   class="wisdom-proeficiency proeficiency-checkbox" placeholder="a"
-                  [(ngModel)]="sheetDnD.savingThrow.wisdomProeficiency" (change)="editSheet()" [disabled]="typeSheet === 3">
+                  [(ngModel)]="sheetDnD.savingThrow.wisdomProeficiency" (change)="editSheet()"
+                  [disabled]="typeSheet === 3">
                 <input [ngModelOptions]="{standalone: true}" type="checkbox"
                   class="charisma-proeficiency proeficiency-checkbox" placeholder="a"
-                  [(ngModel)]="sheetDnD.savingThrow.charismaProeficiency" (change)="editSheet()" [disabled]="typeSheet === 3">
+                  [(ngModel)]="sheetDnD.savingThrow.charismaProeficiency" (change)="editSheet()"
+                  [disabled]="typeSheet === 3">
               </div>
             </div>
             <div class="saving-throws-row1-column2">
@@ -222,7 +223,8 @@
               <div class="skills-column1">
                 <input [ngModelOptions]="{standalone: true}" type="checkbox"
                   class="acrobatics-proeficiency skills-proeficiency proeficiency-checkbox" placeholder="a"
-                  [(ngModel)]="sheetDnD.skill.acrobaticsProeficiency" (change)="editSheet()" [disabled]="typeSheet === 3">
+                  [(ngModel)]="sheetDnD.skill.acrobaticsProeficiency" (change)="editSheet()"
+                  [disabled]="typeSheet === 3">
               </div>
               <div class="skills-column2">
                 <h4 class="acrobatics-value"> {{sheetDnD.skill.acrobatics}} </h4>
@@ -254,7 +256,8 @@
               <div class="skills-column1">
                 <input [ngModelOptions]="{standalone: true}" type="checkbox"
                   class="athletics-proeficiency skills-proeficiency proeficiency-checkbox" placeholder="a"
-                  [(ngModel)]="sheetDnD.skill.athleticsProeficiency" (change)="editSheet()" [disabled]="typeSheet === 3">
+                  [(ngModel)]="sheetDnD.skill.athleticsProeficiency" (change)="editSheet()"
+                  [disabled]="typeSheet === 3">
               </div>
               <div class="skills-column2">
                 <h4 class="athletics-value"> {{sheetDnD.skill.athletics}} </h4>
@@ -270,7 +273,8 @@
               <div class="skills-column1">
                 <input [ngModelOptions]="{standalone: true}" type="checkbox"
                   class="performance-proeficiency skills-proeficiency proeficiency-checkbox" placeholder="a"
-                  [(ngModel)]="sheetDnD.skill.performanceProeficiency" (change)="editSheet()" [disabled]="typeSheet === 3">
+                  [(ngModel)]="sheetDnD.skill.performanceProeficiency" (change)="editSheet()"
+                  [disabled]="typeSheet === 3">
               </div>
               <div class="skills-column2">
                 <h4 class="performance-value"> {{sheetDnD.skill.performance}} </h4>
@@ -286,7 +290,8 @@
               <div class="skills-column1">
                 <input [ngModelOptions]="{standalone: true}" type="checkbox"
                   class="deception-proeficiency skills-proeficiency proeficiency-checkbox" placeholder="a"
-                  [(ngModel)]="sheetDnD.skill.deceptionProeficiency" (change)="editSheet()" [disabled]="typeSheet === 3">
+                  [(ngModel)]="sheetDnD.skill.deceptionProeficiency" (change)="editSheet()"
+                  [disabled]="typeSheet === 3">
               </div>
               <div class="skills-column2">
                 <h4 class="deception-value"> {{sheetDnD.skill.deception}} </h4>
@@ -334,7 +339,8 @@
               <div class="skills-column1">
                 <input [ngModelOptions]="{standalone: true}" type="checkbox"
                   class="intimidation-proeficiency skills-proeficiency proeficiency-checkbox" placeholder="a"
-                  [(ngModel)]="sheetDnD.skill.intimidationProeficiency" (change)="editSheet()" [disabled]="typeSheet === 3">
+                  [(ngModel)]="sheetDnD.skill.intimidationProeficiency" (change)="editSheet()"
+                  [disabled]="typeSheet === 3">
               </div>
               <div class="skills-column2">
                 <h4 class="intimidation-value"> {{sheetDnD.skill.intimidation}} </h4>
@@ -368,7 +374,8 @@
               <div class="skills-column1">
                 <input [ngModelOptions]="{standalone: true}" type="checkbox"
                   class="investigation-proeficiency skills-proeficiency proeficiency-checkbox" placeholder="a"
-                  [(ngModel)]="sheetDnD.skill.investigationProeficiency" (change)="editSheet()" [disabled]="typeSheet === 3">
+                  [(ngModel)]="sheetDnD.skill.investigationProeficiency" (change)="editSheet()"
+                  [disabled]="typeSheet === 3">
               </div>
               <div class="skills-column2">
                 <h4 class="investigation-value"> {{sheetDnD.skill.investigation}} </h4>
@@ -384,7 +391,8 @@
               <div class="skills-column1">
                 <input [ngModelOptions]="{standalone: true}" type="checkbox"
                   class="animal-handling-proeficiency skills-proeficiency proeficiency-checkbox" placeholder="a"
-                  [(ngModel)]="sheetDnD.skill.animalHandlingProeficiency" (change)="editSheet()" [disabled]="typeSheet === 3">
+                  [(ngModel)]="sheetDnD.skill.animalHandlingProeficiency" (change)="editSheet()"
+                  [disabled]="typeSheet === 3">
               </div>
               <div class="skills-column2">
                 <h4 class="animal-handling-value"> {{sheetDnD.skill.animalHandling}} </h4>
@@ -432,7 +440,8 @@
               <div class="skills-column1">
                 <input [ngModelOptions]="{standalone: true}" type="checkbox"
                   class="perception-proeficiency skills-proeficiency proeficiency-checkbox" placeholder="a"
-                  [(ngModel)]="sheetDnD.skill.perceptionProeficiency" (change)="editSheet()" [disabled]="typeSheet === 3">
+                  [(ngModel)]="sheetDnD.skill.perceptionProeficiency" (change)="editSheet()"
+                  [disabled]="typeSheet === 3">
               </div>
               <div class="skills-column2">
                 <h4 class="perception-value"> {{sheetDnD.skill.perception}} </h4>
@@ -448,7 +457,8 @@
               <div class="skills-column1">
                 <input [ngModelOptions]="{standalone: true}" type="checkbox"
                   class="persuasion-proeficiency skills-proeficiency proeficiency-checkbox" placeholder="a"
-                  [(ngModel)]="sheetDnD.skill.persuasionProeficiency" (change)="editSheet()" [disabled]="typeSheet === 3">
+                  [(ngModel)]="sheetDnD.skill.persuasionProeficiency" (change)="editSheet()"
+                  [disabled]="typeSheet === 3">
               </div>
               <div class="skills-column2">
                 <h4 class="persuasion-value"> {{sheetDnD.skill.persuasion}} </h4>
@@ -464,7 +474,8 @@
               <div class="skills-column1">
                 <input [ngModelOptions]="{standalone: true}" type="checkbox"
                   class="sleightOf-proeficiency skills-proeficiency proeficiency-checkbox" placeholder="a"
-                  [(ngModel)]="sheetDnD.skill.sleightOfProeficiency" (change)="editSheet()" [disabled]="typeSheet === 3">
+                  [(ngModel)]="sheetDnD.skill.sleightOfProeficiency" (change)="editSheet()"
+                  [disabled]="typeSheet === 3">
               </div>
               <div class="skills-column2">
                 <h4 class="sleightOf-value"> {{sheetDnD.skill.sleightOf}} </h4>
@@ -558,7 +569,8 @@
             <div class="temporary-health-points-div background-white">
               <input name="temporary-health-points-input" #temporaryInput type="number"
                 class="temporary-health-points-input" placeholder="12" [(ngModel)]="sheetDnD.temporaryHp"
-                (blur)="editSheet()" (keydown.enter)="lostFocus(temporaryInput)" min="0" max="999" [disabled]="typeSheet === 3">
+                (blur)="editSheet()" (keydown.enter)="lostFocus(temporaryInput)" min="0" max="999"
+                [disabled]="typeSheet === 3">
               <h4 class="temporary-health-points"> Pontos de Vida Temporários</h4>
             </div>
           </div>
@@ -583,7 +595,8 @@
                 <input [ngModelOptions]="{standalone: true}" type="checkbox" class="sucess-2 circle-checkbox"
                   placeholder="a" [(ngModel)]="sheetDnD.successTwo" (change)="editSheet()" [disabled]="typeSheet === 3">
                 <input [ngModelOptions]="{standalone: true}" type="checkbox" class="sucess-3 circle-checkbox"
-                  placeholder="a" [(ngModel)]="sheetDnD.successThree" (change)="editSheet()" [disabled]="typeSheet === 3">
+                  placeholder="a" [(ngModel)]="sheetDnD.successThree" (change)="editSheet()"
+                  [disabled]="typeSheet === 3">
               </div>
               <div class="death-tests-row2">
                 <h5 class="death-tests-failures-title"> Fracassos</h5>
@@ -604,22 +617,26 @@
           <div class="white-line">
             <div class="personal-infos-traits-div default-div">
               <textarea name="traits-input" class="traits-input" placeholder="Traços de Personalidade"
-                [(ngModel)]="sheetDnD.personality.personalityTraits" (blur)="editSheet()" required [disabled]="typeSheet === 3"></textarea>
+                [(ngModel)]="sheetDnD.personality.personalityTraits" (blur)="editSheet()" required
+                [disabled]="typeSheet === 3"></textarea>
               <h4 class="traits-title">Traços de Personalidade</h4>
             </div>
             <div class="personal-infos-ideals default-div">
               <textarea name="ideals-input" class="ideals-input" placeholder="Ideais"
-                [(ngModel)]="sheetDnD.personality.ideals" (blur)="editSheet()" required [disabled]="typeSheet === 3"></textarea>
+                [(ngModel)]="sheetDnD.personality.ideals" (blur)="editSheet()" required
+                [disabled]="typeSheet === 3"></textarea>
               <h4 class="ideals-title">Ideais</h4>
             </div>
             <div class="personal-infos-bonds default-div">
               <textarea name="bonds-input" class="bonds-input" placeholder="Vínculos"
-                [(ngModel)]="sheetDnD.personality.bonds" (blur)="editSheet()" required [disabled]="typeSheet === 3"></textarea>
+                [(ngModel)]="sheetDnD.personality.bonds" (blur)="editSheet()" required
+                [disabled]="typeSheet === 3"></textarea>
               <h4 class="bonds-title">Vínculos</h4>
             </div>
             <div class="personal-infos-weaknesses default-div">
               <textarea name="weaknesses-input" class="weaknesses-input" placeholder="Fraquezas"
-                [(ngModel)]="sheetDnD.personality.flaws" (blur)="editSheet()" required [disabled]="typeSheet === 3"></textarea>
+                [(ngModel)]="sheetDnD.personality.flaws" (blur)="editSheet()" required
+                [disabled]="typeSheet === 3"></textarea>
               <h4 class="weaknesses-title">Fraquezas</h4>
             </div>
           </div>
@@ -766,8 +783,8 @@
       <div class="row4-column3">
         <div class="characteristics-traits-div">
           <textarea name="characteristics-traits-input" class="characteristics-traits-input"
-            placeholder="Característics e Traços" [(ngModel)]="sheetDnD.traits" (blur)="editSheet()"
-            required [disabled]="typeSheet === 3"></textarea>
+            placeholder="Característics e Traços" [(ngModel)]="sheetDnD.traits" (blur)="editSheet()" required
+            [disabled]="typeSheet === 3"></textarea>
           <h4 class="characteristics-traits-title">Características e Traços</h4>
         </div>
       </div>
@@ -786,8 +803,9 @@
         <div class="character-name-div">
           <input name="character-name-input2" #characterName2Input class="character-name-input character-name-input2"
             type="text" placeholder="Nome de Personagem" [(ngModel)]="sheetDnD.personalInfo.characterName"
-            (blur)="editSheet()" (keydown.enter)="lostFocus(characterName2Input)" required maxlength="35" [disabled]="typeSheet === 3">
-          <h4 class="character-name-title"> Nome de Personagem </h4>
+            (blur)="editSheet()" (keydown.enter)="lostFocus(characterName2Input)" required maxlength="35"
+            [disabled]="typeSheet === 3">
+          <h4 class="character-name-title"> Personagem </h4>
         </div>
       </div>
       <div class="row1-column3">
@@ -865,8 +883,10 @@
           </div>
           <div class="column-icon">
             <label for="fileinput">
-              <img src="assets/uploadIcon.png" alt="Ícone para realizar o upload do arquivo" class="icon-upload" width="35px">
-              <input id="fileinput" name="fileinput" type="file" class="character-picture-input" (change)="choosePicture($event)" [disabled]="typeSheet === 3">
+              <img src="assets/uploadIcon.png" alt="Ícone para realizar o upload do arquivo" class="icon-upload"
+                width="35px">
+              <input id="fileinput" name="fileinput" type="file" class="character-picture-input"
+                (change)="choosePicture($event)" [disabled]="typeSheet === 3">
             </label>
           </div>
         </div>
@@ -913,7 +933,7 @@
               (keydown.enter)="lostFocus(spellCastingHabilityInput)" maxlength="30" [disabled]="typeSheet === 3">
             <h4 class="key-attribute-title">Habilidade Chave</h4>
           </div>
-          <div class="column">
+          <div class="column column2">
             <input name="difficulty-class-input" #difficultyClassInput type="number" class="difficulty-class-input"
               placeholder="14" [(ngModel)]="sheetDnD.spellDC" (blur)="editSheet()"
               (keydown.enter)="lostFocus(difficultyClassInput)" min="0" max="99" [disabled]="typeSheet === 3">
@@ -986,7 +1006,8 @@
               <div class="column2">
                 <input #totalSlotsLv1 type="number" min="0" class="total-spaces" placeholder="0"
                   [(ngModel)]="sheetDnD.spellsLevelOne.level1TotalSlots" (blur)="editSheet()"
-                  (keydown.enter)="lostFocus(totalSlotsLv1)" [ngModelOptions]="{standalone: true}" [disabled]="typeSheet === 3">
+                  (keydown.enter)="lostFocus(totalSlotsLv1)" [ngModelOptions]="{standalone: true}"
+                  [disabled]="typeSheet === 3">
               </div>
               <div class="column3">
                 <input [ngModelOptions]="{standalone: true}" #slotsExpendedLv1 type="number" min="0" class="left-spaces"
@@ -1026,40 +1047,52 @@
                 <h6 class="spell-name-label">Nome da Magia</h6>
                 <input #spell1Lv1 type="text" class="spell-name" placeholder="Nome da Magia"
                   [(ngModel)]="sheetDnD.spellsLevelOne.level1Slot1" (blur)="editSheet()"
-                  (keydown.enter)="lostFocus(spell1Lv1)" [ngModelOptions]="{standalone: true}" [disabled]="typeSheet === 3">
+                  (keydown.enter)="lostFocus(spell1Lv1)" [ngModelOptions]="{standalone: true}"
+                  [disabled]="typeSheet === 3">
                 <input #spell2Lv1 type="text" class="spell-name" placeholder="Nome da Magia"
                   [(ngModel)]="sheetDnD.spellsLevelOne.level1Slot2" (blur)="editSheet()"
-                  (keydown.enter)="lostFocus(spell2Lv1)" [ngModelOptions]="{standalone: true}" [disabled]="typeSheet === 3">
+                  (keydown.enter)="lostFocus(spell2Lv1)" [ngModelOptions]="{standalone: true}"
+                  [disabled]="typeSheet === 3">
                 <input #spell3Lv1 type="text" class="spell-name" placeholder="Nome da Magia"
                   [(ngModel)]="sheetDnD.spellsLevelOne.level1Slot3" (blur)="editSheet()"
-                  (keydown.enter)="lostFocus(spell3Lv1)" [ngModelOptions]="{standalone: true}" [disabled]="typeSheet === 3">
+                  (keydown.enter)="lostFocus(spell3Lv1)" [ngModelOptions]="{standalone: true}"
+                  [disabled]="typeSheet === 3">
                 <input #spell4Lv1 type="text" class="spell-name" placeholder="Nome da Magia"
                   [(ngModel)]="sheetDnD.spellsLevelOne.level1Slot4" (blur)="editSheet()"
-                  (keydown.enter)="lostFocus(spell4Lv1)" [ngModelOptions]="{standalone: true}" [disabled]="typeSheet === 3">
+                  (keydown.enter)="lostFocus(spell4Lv1)" [ngModelOptions]="{standalone: true}"
+                  [disabled]="typeSheet === 3">
                 <input #spell5Lv1 type="text" class="spell-name" placeholder="Nome da Magia"
                   [(ngModel)]="sheetDnD.spellsLevelOne.level1Slot5" (blur)="editSheet()"
-                  (keydown.enter)="lostFocus(spell5Lv1)" [ngModelOptions]="{standalone: true}" [disabled]="typeSheet === 3">
+                  (keydown.enter)="lostFocus(spell5Lv1)" [ngModelOptions]="{standalone: true}"
+                  [disabled]="typeSheet === 3">
                 <input #spell6Lv1 type="text" class="spell-name" placeholder="Nome da Magia"
                   [(ngModel)]="sheetDnD.spellsLevelOne.level1Slot6" (blur)="editSheet()"
-                  (keydown.enter)="lostFocus(spell6Lv1)" [ngModelOptions]="{standalone: true}" [disabled]="typeSheet === 3">
+                  (keydown.enter)="lostFocus(spell6Lv1)" [ngModelOptions]="{standalone: true}"
+                  [disabled]="typeSheet === 3">
                 <input #spell7Lv1 type="text" class="spell-name" placeholder="Nome da Magia"
                   [(ngModel)]="sheetDnD.spellsLevelOne.level1Slot7" (blur)="editSheet()"
-                  (keydown.enter)="lostFocus(spell7Lv1)" [ngModelOptions]="{standalone: true}" [disabled]="typeSheet === 3">
+                  (keydown.enter)="lostFocus(spell7Lv1)" [ngModelOptions]="{standalone: true}"
+                  [disabled]="typeSheet === 3">
                 <input #spell8Lv1 type="text" class="spell-name" placeholder="Nome da Magia"
                   [(ngModel)]="sheetDnD.spellsLevelOne.level1Slot8" (blur)="editSheet()"
-                  (keydown.enter)="lostFocus(spell8Lv1)" [ngModelOptions]="{standalone: true}" [disabled]="typeSheet === 3">
+                  (keydown.enter)="lostFocus(spell8Lv1)" [ngModelOptions]="{standalone: true}"
+                  [disabled]="typeSheet === 3">
                 <input #spell9Lv1 type="text" class="spell-name" placeholder="Nome da Magia"
                   [(ngModel)]="sheetDnD.spellsLevelOne.level1Slot9" (blur)="editSheet()"
-                  (keydown.enter)="lostFocus(spell9Lv1)" [ngModelOptions]="{standalone: true}" [disabled]="typeSheet === 3">
+                  (keydown.enter)="lostFocus(spell9Lv1)" [ngModelOptions]="{standalone: true}"
+                  [disabled]="typeSheet === 3">
                 <input #spell10Lv1 type="text" class="spell-name" placeholder="Nome da Magia"
                   [(ngModel)]="sheetDnD.spellsLevelOne.level1Slot10" (blur)="editSheet()"
-                  (keydown.enter)="lostFocus(spell10Lv1)" [ngModelOptions]="{standalone: true}" [disabled]="typeSheet === 3">
+                  (keydown.enter)="lostFocus(spell10Lv1)" [ngModelOptions]="{standalone: true}"
+                  [disabled]="typeSheet === 3">
                 <input #spell11Lv1 type="text" class="spell-name" placeholder="Nome da Magia"
                   [(ngModel)]="sheetDnD.spellsLevelOne.level1Slot11" (blur)="editSheet()"
-                  (keydown.enter)="lostFocus(spell11Lv1)" [ngModelOptions]="{standalone: true}" [disabled]="typeSheet === 3">
+                  (keydown.enter)="lostFocus(spell11Lv1)" [ngModelOptions]="{standalone: true}"
+                  [disabled]="typeSheet === 3">
                 <input #spell12Lv1 type="text" class="spell-name" placeholder="Nome da Magia"
                   [(ngModel)]="sheetDnD.spellsLevelOne.level1Slot12" (blur)="editSheet()"
-                  (keydown.enter)="lostFocus(spell12Lv1)" [ngModelOptions]="{standalone: true}" [disabled]="typeSheet === 3">
+                  (keydown.enter)="lostFocus(spell12Lv1)" [ngModelOptions]="{standalone: true}"
+                  [disabled]="typeSheet === 3">
               </div>
             </div>
           </div>
@@ -1087,38 +1120,52 @@
               <div class="column3">
                 <input [ngModelOptions]="{standalone: true}" #slotsExpendedLv2 type="number" min="0" class="left-spaces"
                   placeholder="0" [(ngModel)]="sheetDnD.spellsLevelTwo.level2SlotsExpended" (blur)="editSheet()"
-                  (keydown.enter)="lostFocus(slotsExpendedLv2)" [disabled]="typeSheet === 3" [disabled]="typeSheet === 3">
+                  (keydown.enter)="lostFocus(slotsExpendedLv2)" [disabled]="typeSheet === 3"
+                  [disabled]="typeSheet === 3">
               </div>
             </div>
             <div class="spells-level2-content-row content-row">
               <div class="prepared-spell-column1">
                 <div class="circle"></div>
                 <input [ngModelOptions]="{standalone: true}" type="checkbox" class="prepared-spell"
-                  [(ngModel)]="sheetDnD.spellsLevelTwo.level2Prepared1" (change)="editSheet()" [disabled]="typeSheet === 3">
+                  [(ngModel)]="sheetDnD.spellsLevelTwo.level2Prepared1" (change)="editSheet()"
+                  [disabled]="typeSheet === 3">
                 <input [ngModelOptions]="{standalone: true}" type="checkbox" class="prepared-spell"
-                  [(ngModel)]="sheetDnD.spellsLevelTwo.level2Prepared2" (change)="editSheet()" [disabled]="typeSheet === 3">
+                  [(ngModel)]="sheetDnD.spellsLevelTwo.level2Prepared2" (change)="editSheet()"
+                  [disabled]="typeSheet === 3">
                 <input [ngModelOptions]="{standalone: true}" type="checkbox" class="prepared-spell"
-                  [(ngModel)]="sheetDnD.spellsLevelTwo.level2Prepared3" (change)="editSheet()" [disabled]="typeSheet === 3">
+                  [(ngModel)]="sheetDnD.spellsLevelTwo.level2Prepared3" (change)="editSheet()"
+                  [disabled]="typeSheet === 3">
                 <input [ngModelOptions]="{standalone: true}" type="checkbox" class="prepared-spell"
-                  [(ngModel)]="sheetDnD.spellsLevelTwo.level2Prepared4" (change)="editSheet()" [disabled]="typeSheet === 3">
+                  [(ngModel)]="sheetDnD.spellsLevelTwo.level2Prepared4" (change)="editSheet()"
+                  [disabled]="typeSheet === 3">
                 <input [ngModelOptions]="{standalone: true}" type="checkbox" class="prepared-spell"
-                  [(ngModel)]="sheetDnD.spellsLevelTwo.level2Prepared5" (change)="editSheet()" [disabled]="typeSheet === 3">
+                  [(ngModel)]="sheetDnD.spellsLevelTwo.level2Prepared5" (change)="editSheet()"
+                  [disabled]="typeSheet === 3">
                 <input [ngModelOptions]="{standalone: true}" type="checkbox" class="prepared-spell"
-                  [(ngModel)]="sheetDnD.spellsLevelTwo.level2Prepared6" (change)="editSheet()" [disabled]="typeSheet === 3">
+                  [(ngModel)]="sheetDnD.spellsLevelTwo.level2Prepared6" (change)="editSheet()"
+                  [disabled]="typeSheet === 3">
                 <input [ngModelOptions]="{standalone: true}" type="checkbox" class="prepared-spell"
-                  [(ngModel)]="sheetDnD.spellsLevelTwo.level2Prepared7" (change)="editSheet()" [disabled]="typeSheet === 3">
+                  [(ngModel)]="sheetDnD.spellsLevelTwo.level2Prepared7" (change)="editSheet()"
+                  [disabled]="typeSheet === 3">
                 <input [ngModelOptions]="{standalone: true}" type="checkbox" class="prepared-spell"
-                  [(ngModel)]="sheetDnD.spellsLevelTwo.level2Prepared8" (change)="editSheet()" [disabled]="typeSheet === 3">
+                  [(ngModel)]="sheetDnD.spellsLevelTwo.level2Prepared8" (change)="editSheet()"
+                  [disabled]="typeSheet === 3">
                 <input [ngModelOptions]="{standalone: true}" type="checkbox" class="prepared-spell"
-                  [(ngModel)]="sheetDnD.spellsLevelTwo.level2Prepared9" (change)="editSheet()" [disabled]="typeSheet === 3">
+                  [(ngModel)]="sheetDnD.spellsLevelTwo.level2Prepared9" (change)="editSheet()"
+                  [disabled]="typeSheet === 3">
                 <input [ngModelOptions]="{standalone: true}" type="checkbox" class="prepared-spell"
-                  [(ngModel)]="sheetDnD.spellsLevelTwo.level2Prepared10" (change)="editSheet()" [disabled]="typeSheet === 3">
+                  [(ngModel)]="sheetDnD.spellsLevelTwo.level2Prepared10" (change)="editSheet()"
+                  [disabled]="typeSheet === 3">
                 <input [ngModelOptions]="{standalone: true}" type="checkbox" class="prepared-spell"
-                  [(ngModel)]="sheetDnD.spellsLevelTwo.level2Prepared11" (change)="editSheet()" [disabled]="typeSheet === 3">
+                  [(ngModel)]="sheetDnD.spellsLevelTwo.level2Prepared11" (change)="editSheet()"
+                  [disabled]="typeSheet === 3">
                 <input [ngModelOptions]="{standalone: true}" type="checkbox" class="prepared-spell"
-                  [(ngModel)]="sheetDnD.spellsLevelTwo.level2Prepared12" (change)="editSheet()" [disabled]="typeSheet === 3">
+                  [(ngModel)]="sheetDnD.spellsLevelTwo.level2Prepared12" (change)="editSheet()"
+                  [disabled]="typeSheet === 3">
                 <input [ngModelOptions]="{standalone: true}" type="checkbox" class="prepared-spell"
-                  [(ngModel)]="sheetDnD.spellsLevelTwo.level2Prepared13" (change)="editSheet()" [disabled]="typeSheet === 3">
+                  [(ngModel)]="sheetDnD.spellsLevelTwo.level2Prepared13" (change)="editSheet()"
+                  [disabled]="typeSheet === 3">
               </div>
               <div class="spell-name-column2">
                 <h6 class="spell-name-label">Nome da Magia</h6>
@@ -1197,31 +1244,44 @@
               <div class="prepared-spell-column1">
                 <div class="circle"></div>
                 <input [ngModelOptions]="{standalone: true}" type="checkbox" class="prepared-spell"
-                  [(ngModel)]="sheetDnD.spellsLevelThree.level3Prepared1" (change)="editSheet()" [disabled]="typeSheet === 3">
+                  [(ngModel)]="sheetDnD.spellsLevelThree.level3Prepared1" (change)="editSheet()"
+                  [disabled]="typeSheet === 3">
                 <input [ngModelOptions]="{standalone: true}" type="checkbox" class="prepared-spell"
-                  [(ngModel)]="sheetDnD.spellsLevelThree.level3Prepared2" (change)="editSheet()" [disabled]="typeSheet === 3">
+                  [(ngModel)]="sheetDnD.spellsLevelThree.level3Prepared2" (change)="editSheet()"
+                  [disabled]="typeSheet === 3">
                 <input [ngModelOptions]="{standalone: true}" type="checkbox" class="prepared-spell"
-                  [(ngModel)]="sheetDnD.spellsLevelThree.level3Prepared3" (change)="editSheet()" [disabled]="typeSheet === 3">
+                  [(ngModel)]="sheetDnD.spellsLevelThree.level3Prepared3" (change)="editSheet()"
+                  [disabled]="typeSheet === 3">
                 <input [ngModelOptions]="{standalone: true}" type="checkbox" class="prepared-spell"
-                  [(ngModel)]="sheetDnD.spellsLevelThree.level3Prepared4" (change)="editSheet()" [disabled]="typeSheet === 3">
+                  [(ngModel)]="sheetDnD.spellsLevelThree.level3Prepared4" (change)="editSheet()"
+                  [disabled]="typeSheet === 3">
                 <input [ngModelOptions]="{standalone: true}" type="checkbox" class="prepared-spell"
-                  [(ngModel)]="sheetDnD.spellsLevelThree.level3Prepared5" (change)="editSheet()" [disabled]="typeSheet === 3">
+                  [(ngModel)]="sheetDnD.spellsLevelThree.level3Prepared5" (change)="editSheet()"
+                  [disabled]="typeSheet === 3">
                 <input [ngModelOptions]="{standalone: true}" type="checkbox" class="prepared-spell"
-                  [(ngModel)]="sheetDnD.spellsLevelThree.level3Prepared6" (change)="editSheet()" [disabled]="typeSheet === 3">
+                  [(ngModel)]="sheetDnD.spellsLevelThree.level3Prepared6" (change)="editSheet()"
+                  [disabled]="typeSheet === 3">
                 <input [ngModelOptions]="{standalone: true}" type="checkbox" class="prepared-spell"
-                  [(ngModel)]="sheetDnD.spellsLevelThree.level3Prepared7" (change)="editSheet()" [disabled]="typeSheet === 3">
+                  [(ngModel)]="sheetDnD.spellsLevelThree.level3Prepared7" (change)="editSheet()"
+                  [disabled]="typeSheet === 3">
                 <input [ngModelOptions]="{standalone: true}" type="checkbox" class="prepared-spell"
-                  [(ngModel)]="sheetDnD.spellsLevelThree.level3Prepared8" (change)="editSheet()" [disabled]="typeSheet === 3">
+                  [(ngModel)]="sheetDnD.spellsLevelThree.level3Prepared8" (change)="editSheet()"
+                  [disabled]="typeSheet === 3">
                 <input [ngModelOptions]="{standalone: true}" type="checkbox" class="prepared-spell"
-                  [(ngModel)]="sheetDnD.spellsLevelThree.level3Prepared9" (change)="editSheet()" [disabled]="typeSheet === 3">
+                  [(ngModel)]="sheetDnD.spellsLevelThree.level3Prepared9" (change)="editSheet()"
+                  [disabled]="typeSheet === 3">
                 <input [ngModelOptions]="{standalone: true}" type="checkbox" class="prepared-spell"
-                  [(ngModel)]="sheetDnD.spellsLevelThree.level3Prepared10" (change)="editSheet()" [disabled]="typeSheet === 3">
+                  [(ngModel)]="sheetDnD.spellsLevelThree.level3Prepared10" (change)="editSheet()"
+                  [disabled]="typeSheet === 3">
                 <input [ngModelOptions]="{standalone: true}" type="checkbox" class="prepared-spell"
-                  [(ngModel)]="sheetDnD.spellsLevelThree.level3Prepared11" (change)="editSheet()" [disabled]="typeSheet === 3">
+                  [(ngModel)]="sheetDnD.spellsLevelThree.level3Prepared11" (change)="editSheet()"
+                  [disabled]="typeSheet === 3">
                 <input [ngModelOptions]="{standalone: true}" type="checkbox" class="prepared-spell"
-                  [(ngModel)]="sheetDnD.spellsLevelThree.level3Prepared12" (change)="editSheet()" [disabled]="typeSheet === 3">
+                  [(ngModel)]="sheetDnD.spellsLevelThree.level3Prepared12" (change)="editSheet()"
+                  [disabled]="typeSheet === 3">
                 <input [ngModelOptions]="{standalone: true}" type="checkbox" class="prepared-spell"
-                  [(ngModel)]="sheetDnD.spellsLevelThree.level3Prepared13" (change)="editSheet()" [disabled]="typeSheet === 3">
+                  [(ngModel)]="sheetDnD.spellsLevelThree.level3Prepared13" (change)="editSheet()"
+                  [disabled]="typeSheet === 3">
               </div>
               <div class="spell-name-column2">
                 <h6 class="spell-name-label">Nome da Magia</h6>
@@ -1298,31 +1358,44 @@
               <div class="prepared-spell-column1">
                 <div class="circle"></div>
                 <input [ngModelOptions]="{standalone: true}" type="checkbox" class="prepared-spell"
-                  [(ngModel)]="sheetDnD.spellsLevelFour.level4Prepared1" (change)="editSheet()" [disabled]="typeSheet === 3">
+                  [(ngModel)]="sheetDnD.spellsLevelFour.level4Prepared1" (change)="editSheet()"
+                  [disabled]="typeSheet === 3">
                 <input [ngModelOptions]="{standalone: true}" type="checkbox" class="prepared-spell"
-                  [(ngModel)]="sheetDnD.spellsLevelFour.level4Prepared2" (change)="editSheet()" [disabled]="typeSheet === 3">
+                  [(ngModel)]="sheetDnD.spellsLevelFour.level4Prepared2" (change)="editSheet()"
+                  [disabled]="typeSheet === 3">
                 <input [ngModelOptions]="{standalone: true}" type="checkbox" class="prepared-spell"
-                  [(ngModel)]="sheetDnD.spellsLevelFour.level4Prepared3" (change)="editSheet()" [disabled]="typeSheet === 3">
+                  [(ngModel)]="sheetDnD.spellsLevelFour.level4Prepared3" (change)="editSheet()"
+                  [disabled]="typeSheet === 3">
                 <input [ngModelOptions]="{standalone: true}" type="checkbox" class="prepared-spell"
-                  [(ngModel)]="sheetDnD.spellsLevelFour.level4Prepared4" (change)="editSheet()" [disabled]="typeSheet === 3">
+                  [(ngModel)]="sheetDnD.spellsLevelFour.level4Prepared4" (change)="editSheet()"
+                  [disabled]="typeSheet === 3">
                 <input [ngModelOptions]="{standalone: true}" type="checkbox" class="prepared-spell"
-                  [(ngModel)]="sheetDnD.spellsLevelFour.level4Prepared5" (change)="editSheet()" [disabled]="typeSheet === 3">
+                  [(ngModel)]="sheetDnD.spellsLevelFour.level4Prepared5" (change)="editSheet()"
+                  [disabled]="typeSheet === 3">
                 <input [ngModelOptions]="{standalone: true}" type="checkbox" class="prepared-spell"
-                  [(ngModel)]="sheetDnD.spellsLevelFour.level4Prepared6" (change)="editSheet()" [disabled]="typeSheet === 3">
+                  [(ngModel)]="sheetDnD.spellsLevelFour.level4Prepared6" (change)="editSheet()"
+                  [disabled]="typeSheet === 3">
                 <input [ngModelOptions]="{standalone: true}" type="checkbox" class="prepared-spell"
-                  [(ngModel)]="sheetDnD.spellsLevelFour.level4Prepared7" (change)="editSheet()" [disabled]="typeSheet === 3">
+                  [(ngModel)]="sheetDnD.spellsLevelFour.level4Prepared7" (change)="editSheet()"
+                  [disabled]="typeSheet === 3">
                 <input [ngModelOptions]="{standalone: true}" type="checkbox" class="prepared-spell"
-                  [(ngModel)]="sheetDnD.spellsLevelFour.level4Prepared8" (change)="editSheet()" [disabled]="typeSheet === 3">
+                  [(ngModel)]="sheetDnD.spellsLevelFour.level4Prepared8" (change)="editSheet()"
+                  [disabled]="typeSheet === 3">
                 <input [ngModelOptions]="{standalone: true}" type="checkbox" class="prepared-spell"
-                  [(ngModel)]="sheetDnD.spellsLevelFour.level4Prepared9" (change)="editSheet()" [disabled]="typeSheet === 3">
+                  [(ngModel)]="sheetDnD.spellsLevelFour.level4Prepared9" (change)="editSheet()"
+                  [disabled]="typeSheet === 3">
                 <input [ngModelOptions]="{standalone: true}" type="checkbox" class="prepared-spell"
-                  [(ngModel)]="sheetDnD.spellsLevelFour.level4Prepared10" (change)="editSheet()" [disabled]="typeSheet === 3">
+                  [(ngModel)]="sheetDnD.spellsLevelFour.level4Prepared10" (change)="editSheet()"
+                  [disabled]="typeSheet === 3">
                 <input [ngModelOptions]="{standalone: true}" type="checkbox" class="prepared-spell"
-                  [(ngModel)]="sheetDnD.spellsLevelFour.level4Prepared11" (change)="editSheet()" [disabled]="typeSheet === 3">
+                  [(ngModel)]="sheetDnD.spellsLevelFour.level4Prepared11" (change)="editSheet()"
+                  [disabled]="typeSheet === 3">
                 <input [ngModelOptions]="{standalone: true}" type="checkbox" class="prepared-spell"
-                  [(ngModel)]="sheetDnD.spellsLevelFour.level4Prepared12" (change)="editSheet()" [disabled]="typeSheet === 3">
+                  [(ngModel)]="sheetDnD.spellsLevelFour.level4Prepared12" (change)="editSheet()"
+                  [disabled]="typeSheet === 3">
                 <input [ngModelOptions]="{standalone: true}" type="checkbox" class="prepared-spell"
-                  [(ngModel)]="sheetDnD.spellsLevelFour.level4Prepared13" (change)="editSheet()" [disabled]="typeSheet === 3">
+                  [(ngModel)]="sheetDnD.spellsLevelFour.level4Prepared13" (change)="editSheet()"
+                  [disabled]="typeSheet === 3">
               </div>
               <div class="spell-name-column2">
                 <h6 class="spell-name-label">Nome da Magia</h6>
@@ -1399,23 +1472,30 @@
               <div class="prepared-spell-column1">
                 <div class="circle"></div>
                 <input [ngModelOptions]="{standalone: true}" type="checkbox" class="prepared-spell"
-                  [(ngModel)]="sheetDnD.spellsLevelFive.level5Prepared1" (change)="editSheet()" [disabled]="typeSheet === 3">
+                  [(ngModel)]="sheetDnD.spellsLevelFive.level5Prepared1" (change)="editSheet()"
+                  [disabled]="typeSheet === 3">
                 <input [ngModelOptions]="{standalone: true}" type="checkbox" class="prepared-spell"
-                  [(ngModel)]="sheetDnD.spellsLevelFive.level5Prepared2" (change)="editSheet()" [disabled]="typeSheet === 3">
+                  [(ngModel)]="sheetDnD.spellsLevelFive.level5Prepared2" (change)="editSheet()"
+                  [disabled]="typeSheet === 3">
                 <input [ngModelOptions]="{standalone: true}" type="checkbox" class="prepared-spell"
-                  [(ngModel)]="sheetDnD.spellsLevelFive.level5Prepared3" (change)="editSheet()" [disabled]="typeSheet === 3">
+                  [(ngModel)]="sheetDnD.spellsLevelFive.level5Prepared3" (change)="editSheet()"
+                  [disabled]="typeSheet === 3">
                 <input [ngModelOptions]="{standalone: true}" type="checkbox" class="prepared-spell"
-                  [(ngModel)]="sheetDnD.spellsLevelFive.level5Prepared4" (change)="editSheet()" [disabled]="typeSheet === 3">
+                  [(ngModel)]="sheetDnD.spellsLevelFive.level5Prepared4" (change)="editSheet()"
+                  [disabled]="typeSheet === 3">
                 <input [ngModelOptions]="{standalone: true}" type="checkbox" class="prepared-spell"
                   [(ngModel)]="sheetDnD.spellsLevelFive.level5Prepared5" (change)="editSheet()">
                 <input [ngModelOptions]="{standalone: true}" type="checkbox" class="prepared-spell"
                   [(ngModel)]="sheetDnD.spellsLevelFive.level5Prepared6" (change)="editSheet()">
                 <input [ngModelOptions]="{standalone: true}" type="checkbox" class="prepared-spell"
-                  [(ngModel)]="sheetDnD.spellsLevelFive.level5Prepared7" (change)="editSheet()" [disabled]="typeSheet === 3">
+                  [(ngModel)]="sheetDnD.spellsLevelFive.level5Prepared7" (change)="editSheet()"
+                  [disabled]="typeSheet === 3">
                 <input [ngModelOptions]="{standalone: true}" type="checkbox" class="prepared-spell"
-                  [(ngModel)]="sheetDnD.spellsLevelFive.level5Prepared8" (change)="editSheet()" [disabled]="typeSheet === 3">
+                  [(ngModel)]="sheetDnD.spellsLevelFive.level5Prepared8" (change)="editSheet()"
+                  [disabled]="typeSheet === 3">
                 <input [ngModelOptions]="{standalone: true}" type="checkbox" class="prepared-spell"
-                  [(ngModel)]="sheetDnD.spellsLevelFive.level5Prepared9" (change)="editSheet()" [disabled]="typeSheet === 3">
+                  [(ngModel)]="sheetDnD.spellsLevelFive.level5Prepared9" (change)="editSheet()"
+                  [disabled]="typeSheet === 3">
               </div>
               <div class="spell-name-column2">
                 <h6 class="spell-name-label">Nome da Magia</h6>
@@ -1482,23 +1562,32 @@
               <div class="prepared-spell-column1">
                 <div class="circle"></div>
                 <input [ngModelOptions]="{standalone: true}" type="checkbox" class="prepared-spell"
-                  [(ngModel)]="sheetDnD.spellsLevelSix.level6Prepared1" (change)="editSheet()" [disabled]="typeSheet === 3">
+                  [(ngModel)]="sheetDnD.spellsLevelSix.level6Prepared1" (change)="editSheet()"
+                  [disabled]="typeSheet === 3">
                 <input [ngModelOptions]="{standalone: true}" type="checkbox" class="prepared-spell"
-                  [(ngModel)]="sheetDnD.spellsLevelSix.level6Prepared2" (change)="editSheet()" [disabled]="typeSheet === 3">
+                  [(ngModel)]="sheetDnD.spellsLevelSix.level6Prepared2" (change)="editSheet()"
+                  [disabled]="typeSheet === 3">
                 <input [ngModelOptions]="{standalone: true}" type="checkbox" class="prepared-spell"
-                  [(ngModel)]="sheetDnD.spellsLevelSix.level6Prepared3" (change)="editSheet()" [disabled]="typeSheet === 3">
+                  [(ngModel)]="sheetDnD.spellsLevelSix.level6Prepared3" (change)="editSheet()"
+                  [disabled]="typeSheet === 3">
                 <input [ngModelOptions]="{standalone: true}" type="checkbox" class="prepared-spell"
-                  [(ngModel)]="sheetDnD.spellsLevelSix.level6Prepared4" (change)="editSheet()" [disabled]="typeSheet === 3">
+                  [(ngModel)]="sheetDnD.spellsLevelSix.level6Prepared4" (change)="editSheet()"
+                  [disabled]="typeSheet === 3">
                 <input [ngModelOptions]="{standalone: true}" type="checkbox" class="prepared-spell"
-                  [(ngModel)]="sheetDnD.spellsLevelSix.level6Prepared5" (change)="editSheet()" [disabled]="typeSheet === 3">
+                  [(ngModel)]="sheetDnD.spellsLevelSix.level6Prepared5" (change)="editSheet()"
+                  [disabled]="typeSheet === 3">
                 <input [ngModelOptions]="{standalone: true}" type="checkbox" class="prepared-spell"
-                  [(ngModel)]="sheetDnD.spellsLevelSix.level6Prepared6" (change)="editSheet()" [disabled]="typeSheet === 3">
+                  [(ngModel)]="sheetDnD.spellsLevelSix.level6Prepared6" (change)="editSheet()"
+                  [disabled]="typeSheet === 3">
                 <input [ngModelOptions]="{standalone: true}" type="checkbox" class="prepared-spell"
-                  [(ngModel)]="sheetDnD.spellsLevelSix.level6Prepared7" (change)="editSheet()" [disabled]="typeSheet === 3">
+                  [(ngModel)]="sheetDnD.spellsLevelSix.level6Prepared7" (change)="editSheet()"
+                  [disabled]="typeSheet === 3">
                 <input [ngModelOptions]="{standalone: true}" type="checkbox" class="prepared-spell"
-                  [(ngModel)]="sheetDnD.spellsLevelSix.level6Prepared8" (change)="editSheet()" [disabled]="typeSheet === 3">
+                  [(ngModel)]="sheetDnD.spellsLevelSix.level6Prepared8" (change)="editSheet()"
+                  [disabled]="typeSheet === 3">
                 <input [ngModelOptions]="{standalone: true}" type="checkbox" class="prepared-spell"
-                  [(ngModel)]="sheetDnD.spellsLevelSix.level6Prepared9" (change)="editSheet()" [disabled]="typeSheet === 3">
+                  [(ngModel)]="sheetDnD.spellsLevelSix.level6Prepared9" (change)="editSheet()"
+                  [disabled]="typeSheet === 3">
               </div>
               <div class="spell-name-column2">
                 <h6 class="spell-name-label">Nome da Magia</h6>
@@ -1563,23 +1652,32 @@
               <div class="prepared-spell-column1">
                 <div class="circle"></div>
                 <input [ngModelOptions]="{standalone: true}" type="checkbox" class="prepared-spell"
-                  [(ngModel)]="sheetDnD.spellsLevelSeven.level7Prepared1" (change)="editSheet()" [disabled]="typeSheet === 3">
+                  [(ngModel)]="sheetDnD.spellsLevelSeven.level7Prepared1" (change)="editSheet()"
+                  [disabled]="typeSheet === 3">
                 <input [ngModelOptions]="{standalone: true}" type="checkbox" class="prepared-spell"
-                  [(ngModel)]="sheetDnD.spellsLevelSeven.level7Prepared2" (change)="editSheet()" [disabled]="typeSheet === 3">
+                  [(ngModel)]="sheetDnD.spellsLevelSeven.level7Prepared2" (change)="editSheet()"
+                  [disabled]="typeSheet === 3">
                 <input [ngModelOptions]="{standalone: true}" type="checkbox" class="prepared-spell"
-                  [(ngModel)]="sheetDnD.spellsLevelSeven.level7Prepared3" (change)="editSheet()" [disabled]="typeSheet === 3">
+                  [(ngModel)]="sheetDnD.spellsLevelSeven.level7Prepared3" (change)="editSheet()"
+                  [disabled]="typeSheet === 3">
                 <input [ngModelOptions]="{standalone: true}" type="checkbox" class="prepared-spell"
-                  [(ngModel)]="sheetDnD.spellsLevelSeven.level7Prepared4" (change)="editSheet()" [disabled]="typeSheet === 3">
+                  [(ngModel)]="sheetDnD.spellsLevelSeven.level7Prepared4" (change)="editSheet()"
+                  [disabled]="typeSheet === 3">
                 <input [ngModelOptions]="{standalone: true}" type="checkbox" class="prepared-spell"
-                  [(ngModel)]="sheetDnD.spellsLevelSeven.level7Prepared5" (change)="editSheet()" [disabled]="typeSheet === 3">
+                  [(ngModel)]="sheetDnD.spellsLevelSeven.level7Prepared5" (change)="editSheet()"
+                  [disabled]="typeSheet === 3">
                 <input [ngModelOptions]="{standalone: true}" type="checkbox" class="prepared-spell"
-                  [(ngModel)]="sheetDnD.spellsLevelSeven.level7Prepared6" (change)="editSheet()" [disabled]="typeSheet === 3">
+                  [(ngModel)]="sheetDnD.spellsLevelSeven.level7Prepared6" (change)="editSheet()"
+                  [disabled]="typeSheet === 3">
                 <input [ngModelOptions]="{standalone: true}" type="checkbox" class="prepared-spell"
-                  [(ngModel)]="sheetDnD.spellsLevelSeven.level7Prepared7" (change)="editSheet()" [disabled]="typeSheet === 3">
+                  [(ngModel)]="sheetDnD.spellsLevelSeven.level7Prepared7" (change)="editSheet()"
+                  [disabled]="typeSheet === 3">
                 <input [ngModelOptions]="{standalone: true}" type="checkbox" class="prepared-spell"
-                  [(ngModel)]="sheetDnD.spellsLevelSeven.level7Prepared8" (change)="editSheet()" [disabled]="typeSheet === 3">
+                  [(ngModel)]="sheetDnD.spellsLevelSeven.level7Prepared8" (change)="editSheet()"
+                  [disabled]="typeSheet === 3">
                 <input [ngModelOptions]="{standalone: true}" type="checkbox" class="prepared-spell"
-                  [(ngModel)]="sheetDnD.spellsLevelSeven.level7Prepared9" (change)="editSheet()" [disabled]="typeSheet === 3">
+                  [(ngModel)]="sheetDnD.spellsLevelSeven.level7Prepared9" (change)="editSheet()"
+                  [disabled]="typeSheet === 3">
               </div>
               <div class="spell-name-column2">
                 <h6 class="spell-name-label">Nome da Magia</h6>
@@ -1644,19 +1742,26 @@
               <div class="prepared-spell-column1">
                 <div class="circle"></div>
                 <input [ngModelOptions]="{standalone: true}" type="checkbox" class="prepared-spell"
-                  [(ngModel)]="sheetDnD.spellsLevelEigth.level8Prepared1" (change)="editSheet()" [disabled]="typeSheet === 3">
+                  [(ngModel)]="sheetDnD.spellsLevelEigth.level8Prepared1" (change)="editSheet()"
+                  [disabled]="typeSheet === 3">
                 <input [ngModelOptions]="{standalone: true}" type="checkbox" class="prepared-spell"
-                  [(ngModel)]="sheetDnD.spellsLevelEigth.level8Prepared2" (change)="editSheet()" [disabled]="typeSheet === 3">
+                  [(ngModel)]="sheetDnD.spellsLevelEigth.level8Prepared2" (change)="editSheet()"
+                  [disabled]="typeSheet === 3">
                 <input [ngModelOptions]="{standalone: true}" type="checkbox" class="prepared-spell"
-                  [(ngModel)]="sheetDnD.spellsLevelEigth.level8Prepared3" (change)="editSheet()" [disabled]="typeSheet === 3">
+                  [(ngModel)]="sheetDnD.spellsLevelEigth.level8Prepared3" (change)="editSheet()"
+                  [disabled]="typeSheet === 3">
                 <input [ngModelOptions]="{standalone: true}" type="checkbox" class="prepared-spell"
-                  [(ngModel)]="sheetDnD.spellsLevelEigth.level8Prepared4" (change)="editSheet()" [disabled]="typeSheet === 3">
+                  [(ngModel)]="sheetDnD.spellsLevelEigth.level8Prepared4" (change)="editSheet()"
+                  [disabled]="typeSheet === 3">
                 <input [ngModelOptions]="{standalone: true}" type="checkbox" class="prepared-spell"
-                  [(ngModel)]="sheetDnD.spellsLevelEigth.level8Prepared5" (change)="editSheet()" [disabled]="typeSheet === 3">
+                  [(ngModel)]="sheetDnD.spellsLevelEigth.level8Prepared5" (change)="editSheet()"
+                  [disabled]="typeSheet === 3">
                 <input [ngModelOptions]="{standalone: true}" type="checkbox" class="prepared-spell"
-                  [(ngModel)]="sheetDnD.spellsLevelEigth.level8Prepared6" (change)="editSheet()" [disabled]="typeSheet === 3">
+                  [(ngModel)]="sheetDnD.spellsLevelEigth.level8Prepared6" (change)="editSheet()"
+                  [disabled]="typeSheet === 3">
                 <input [ngModelOptions]="{standalone: true}" type="checkbox" class="prepared-spell"
-                  [(ngModel)]="sheetDnD.spellsLevelEigth.level8Prepared7" (change)="editSheet()" [disabled]="typeSheet === 3">
+                  [(ngModel)]="sheetDnD.spellsLevelEigth.level8Prepared7" (change)="editSheet()"
+                  [disabled]="typeSheet === 3">
               </div>
               <div class="spell-name-column2">
                 <h6 class="spell-name-label">Nome da Magia</h6>
@@ -1715,19 +1820,26 @@
               <div class="prepared-spell-column1">
                 <div class="circle"></div>
                 <input [ngModelOptions]="{standalone: true}" type="checkbox" class="prepared-spell"
-                  [(ngModel)]="sheetDnD.spellsLevelNine.level9Prepared1" (change)="editSheet()" [disabled]="typeSheet === 3">
+                  [(ngModel)]="sheetDnD.spellsLevelNine.level9Prepared1" (change)="editSheet()"
+                  [disabled]="typeSheet === 3">
                 <input [ngModelOptions]="{standalone: true}" type="checkbox" class="prepared-spell"
-                  [(ngModel)]="sheetDnD.spellsLevelNine.level9Prepared2" (change)="editSheet()" [disabled]="typeSheet === 3">
+                  [(ngModel)]="sheetDnD.spellsLevelNine.level9Prepared2" (change)="editSheet()"
+                  [disabled]="typeSheet === 3">
                 <input [ngModelOptions]="{standalone: true}" type="checkbox" class="prepared-spell"
-                  [(ngModel)]="sheetDnD.spellsLevelNine.level9Prepared3" (change)="editSheet()" [disabled]="typeSheet === 3">
+                  [(ngModel)]="sheetDnD.spellsLevelNine.level9Prepared3" (change)="editSheet()"
+                  [disabled]="typeSheet === 3">
                 <input [ngModelOptions]="{standalone: true}" type="checkbox" class="prepared-spell"
-                  [(ngModel)]="sheetDnD.spellsLevelNine.level9Prepared4" (change)="editSheet()" [disabled]="typeSheet === 3">
+                  [(ngModel)]="sheetDnD.spellsLevelNine.level9Prepared4" (change)="editSheet()"
+                  [disabled]="typeSheet === 3">
                 <input [ngModelOptions]="{standalone: true}" type="checkbox" class="prepared-spell"
-                  [(ngModel)]="sheetDnD.spellsLevelNine.level9Prepared5" (change)="editSheet()" [disabled]="typeSheet === 3">
+                  [(ngModel)]="sheetDnD.spellsLevelNine.level9Prepared5" (change)="editSheet()"
+                  [disabled]="typeSheet === 3">
                 <input [ngModelOptions]="{standalone: true}" type="checkbox" class="prepared-spell"
-                  [(ngModel)]="sheetDnD.spellsLevelNine.level9Prepared6" (change)="editSheet()" [disabled]="typeSheet === 3">
+                  [(ngModel)]="sheetDnD.spellsLevelNine.level9Prepared6" (change)="editSheet()"
+                  [disabled]="typeSheet === 3">
                 <input [ngModelOptions]="{standalone: true}" type="checkbox" class="prepared-spell"
-                  [(ngModel)]="sheetDnD.spellsLevelNine.level9Prepared7" (change)="editSheet()" [disabled]="typeSheet === 3">
+                  [(ngModel)]="sheetDnD.spellsLevelNine.level9Prepared7" (change)="editSheet()"
+                  [disabled]="typeSheet === 3">
               </div>
               <div class="spell-name-column2">
                 <h6 class="spell-name-label">Nome da Magia</h6>

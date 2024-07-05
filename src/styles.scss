@@ -29,7 +29,7 @@ $ficha-online-theme: mat.define-light-theme((color: (primary: $ficha-online-prim
 // that you are using.
 @include mat.all-component-themes($ficha-online-theme);
 
-:root{
+:root {
   --primaryBlue: #134074;
   --buttonBlue: rgb(71, 112, 226);
   --buttonRed: rgb(250, 143, 143);
@@ -53,7 +53,7 @@ body {
 input,
 button,
 label,
-textarea{
+textarea {
   font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 
@@ -62,12 +62,26 @@ body {
   font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 
+*::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-image: linear-gradient(rgb(163, 160, 160), rgb(189, 184, 184));
+  border-radius: 20px;
+}
+
 .mat-mdc-dialog-container {
   --mdc-dialog-container-color: none !important;
   --mdc-dialog-container-elevation-shadow: none !important;
 }
 
-.alert-box{
+.alert-box {
   display: flex;
   flex-direction: column;
   width: auto;
@@ -78,37 +92,45 @@ body {
   text-align: center;
   justify-content: center;
   margin: auto;
-  font-family: Roboto, "Helvetica Neue", sans-serif; /*'Averia Sans Libre', sans-serif;*/
-  h2{
-    margin:4% 2%;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+
+  /*'Averia Sans Libre', sans-serif;*/
+  h2 {
+    margin: 4% 2%;
+    font-size: 38px;
   }
-  .alert-buttons{
+
+  h1 {
+    font-size: 42px;
+  }
+
+  .alert-buttons {
     display: flex;
     justify-content: center;
     margin-bottom: 2%;
     width: 100%;
 
-    button{
-      width: 120px;
-      height: 50px;
+    button {
+      width: 180px;
+      height: 60px;
       border-radius: 10px;
-      font-size: 22px;
+      font-size: 30px;
     }
 
-    .btn-yes{
+    .btn-yes {
       color: rgb(82, 207, 82);
       border: 3px solid rgb(82, 207, 82);
       background-color: white;
       cursor: pointer;
     }
 
-    .btn-yes:hover{
+    .btn-yes:hover {
       color: rgb(255, 255, 255);
       border: 3px solid rgb(255, 255, 255);
       background-color: rgb(82, 207, 82);
     }
 
-    .btn-no{
+    .btn-no {
       margin-left: 5%;
       color: rgb(238, 96, 96);
       border: 3px solid rgb(238, 96, 96);
@@ -116,32 +138,32 @@ body {
       cursor: pointer;
     }
 
-    .btn-no:hover{
+    .btn-no:hover {
       color: rgb(255, 255, 255);
       border: 3px solid rgb(255, 255, 255);
       background-color: rgb(238, 96, 96);
     }
   }
 
-  .btn-search{
-    width: 120px;
-    height: 50px;
+  .btn-search {
+    width: 180px;
+    height: 80px;
     border-radius: 10px;
-    font-size: 22px;
+    font-size: 30px;
     color: rgb(85, 96, 247);
     border: 3px solid rgb(85, 96, 247);
     background-color: white;
     cursor: pointer;
   }
 
-  .btn-search:hover{
+  .btn-search:hover {
     color: rgb(255, 255, 255);
     border: 3px solid rgb(255, 255, 255);
     background-color: rgb(85, 96, 247);
   }
 }
 
-.input-blinking{
+.input-blinking {
   animation: inputBlink 0.5s infinite;
 }
 
@@ -149,10 +171,148 @@ body {
   0% {
     border-color: black
   }
-  50%{
+
+  50% {
     border-color: red;
   }
+
   100% {
     border-color: black
+  }
+}
+
+@media (max-width: 1600px) {
+  .alert-box {
+    h2 {
+      font-size: 28px;
+    }
+
+    h1 {
+      font-size: 34px;
+    }
+
+    .alert-buttons {
+      button {
+        width: 140px;
+        height: 60px;
+        font-size: 22px;
+      }
+    }
+
+    .btn-search {
+      width: 120px;
+      height: 60px;
+      font-size: 22px;
+    }
+  }
+}
+
+@media (max-width: 1366px) {
+  .alert-box {
+    h2 {
+      font-size: 26px;
+    }
+
+    h1 {
+      font-size: 32px;
+    }
+
+    .alert-buttons {
+      button {
+        width: 140px;
+        height: 50px;
+        font-size: 20px;
+      }
+    }
+
+    .btn-search {
+      width: 120px;
+      height: 50px;
+      font-size: 20px;
+    }
+  }
+}
+
+@media (max-width: 430px) {
+  .alert-box {
+    display: flex;
+    flex-direction: column;
+    width: auto;
+    height: 100%;
+    background-color: #134074;
+    border: 5px solid white;
+    border-radius: 25px;
+    text-align: center;
+    justify-content: center;
+    margin: auto;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+
+    /*'Averia Sans Libre', sans-serif;*/
+    h2 {
+      margin: 4% 2%;
+      font-size: 26px;
+    }
+
+    h1 {
+      font-size:30px;
+    }
+
+    .alert-buttons {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 2%;
+      width: 100%;
+
+      button {
+        width: 140px;
+        height: 55px;
+        border-radius: 10px;
+        font-size: 22px;
+      }
+
+      .btn-yes {
+        color: rgb(82, 207, 82);
+        border: 3px solid rgb(82, 207, 82);
+        background-color: white;
+        cursor: pointer;
+      }
+
+      .btn-yes:hover {
+        color: rgb(255, 255, 255);
+        border: 3px solid rgb(255, 255, 255);
+        background-color: rgb(82, 207, 82);
+      }
+
+      .btn-no {
+        margin-left: 5%;
+        color: rgb(238, 96, 96);
+        border: 3px solid rgb(238, 96, 96);
+        background-color: white;
+        cursor: pointer;
+      }
+
+      .btn-no:hover {
+        color: rgb(255, 255, 255);
+        border: 3px solid rgb(255, 255, 255);
+        background-color: rgb(238, 96, 96);
+      }
+    }
+
+    .btn-search {
+      width: 140px;
+      height: 55px;
+      border-radius: 10px;
+      font-size: 22px;
+      color: rgb(85, 96, 247);
+      border: 3px solid rgb(85, 96, 247);
+      background-color: white;
+      cursor: pointer;
+    }
+
+    .btn-search:hover {
+      color: rgb(255, 255, 255);
+      border: 3px solid rgb(255, 255, 255);
+      background-color: rgb(85, 96, 247);
+    }
   }
 }

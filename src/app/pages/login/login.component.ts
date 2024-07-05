@@ -32,8 +32,12 @@ export class LoginComponent {
   getToken() {
     this.service.getToken(this.login).subscribe({
       next: (loginResponse: CLogin) => {
-        this.sessionStorage.saveData('account', loginResponse.account);
-        this.sessionStorage.saveData('accountRole', loginResponse.account.role);
+        const role : string = loginResponse.accountDTO.role === 'MASTER' ? '62' : '91';
+        this.sessionStorage.saveData('accountRole', role);
+
+        loginResponse.accountDTO.role = '';
+
+        this.sessionStorage.saveData('account', loginResponse.accountDTO);
         this.sessionStorage.saveData('userToken', loginResponse.token);
         this.router.navigate(['/home']);
       },

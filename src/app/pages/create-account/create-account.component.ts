@@ -31,6 +31,7 @@ export class CreateAccountComponent {
       form.form.setErrors({'emailUserInvalid': true});
     }
     if (form.valid) {
+      this.account.role = "PLAYER";
       this.service.createLogin(this.account).subscribe({
         next: () => {
           this.router.navigate(["/"]);

@@ -8,6 +8,6 @@ export class CAccount{
     email: string = "";
     password: string = "";
     role: string = "";
-    situation: string = "";
+    situation: string = "A";
     profilePictureName: string = "";
 }

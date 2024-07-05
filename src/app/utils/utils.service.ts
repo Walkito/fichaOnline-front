@@ -97,4 +97,11 @@ export class UtilsService {
     let session = this.sessionStorage.getData('userToken')!= '' ? true : false;
     return  session;
   }
+
+  userRole(roles: string): boolean{
+    const roleNumber: string = this.sessionStorage.getData('accountRole');
+    const role: string = roleNumber === '62' ? 'MASTER' : 'PLAYER';
+
+    return roles.includes(role);
+  }
 }

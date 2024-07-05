@@ -2,7 +2,6 @@ export class CPersonalInfos{
     id: number = 0;
     characterName: string = "";
     _class: string = "";
-    level: number = 0;
     antecedent: string = "";
     playerName: string = "";
     race: string = "";

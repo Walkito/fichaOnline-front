@@ -1,19 +1,23 @@
 <div class="body-div">
-  <div class="tree-div">
+  <div #treeDiv class="tree-div">
+    <div class="hamburguer-menu" *ngIf="mobile">
+      <img src="assets/hamburguerMenu.png" alt="Ícone de um Menu" (click)="closeMenu()">
+    </div>
     <div class="row">
       <label for="fileinput" class="profile-picture-label">
         <img src={{profilePictureURL}} alt="Icone de um usuário genérico" class="profilePicture">
         <input id="fileinput" name="fileinput" type="file" class="profile-picture-input"
           (change)="choosePicture($event)">
       </label>
-      <h2>{{account.user || "Usuário"}}</h2>
     </div>
     <div class="row">
       <h1>{{account.name + " " + account.lastName}}</h1>
     </div>
     <div class="row">
       <ul>
-        <li routerLink="/home/master-area" *ngIf="accountRole === 'MASTER' || accountRole === 'PLAYER'"> Área do Mestre</li>
+        <ng-container *ngIf="roleNumber == '62'">
+          <li routerLink="/home/master-area"> Área do Mestre</li>
+        </ng-container>
         <li routerLink="/home/my-sheets"> Minhas Fichas </li>
         <li routerLink="/home/my-runs"> Minhas Runs </li>
         <li routerLink="/home/account-settings"> Configurações </li>
@@ -21,6 +25,11 @@
       </ul>
     </div>
   </div>
+
+  <div class="hamburguer-menu2" *ngIf="mobile">
+    <img src="assets/hamburguerMenuBranco.png" alt="Ícone de um Menu" (click)="openMenu()">
+  </div>
+
   <div class="content-div">
     <div class="row">
       <h1> Bem-Vindo(a) {{account.user || "Usuário"}} </h1>
@@ -33,7 +42,7 @@
     </div>
     <div class="row fun-fact-row">
       <h4 class="func-facts-title">Trechos/Curiosidades</h4>
-      <p class="fun-fact">Você sabia que em Relíquias do Caos a Diandra quase adotou a Felipa pela Run inteira?</p>
+      <p class="fun-fact">Você sabia que o jogador Dimitri possui 2 assassinatos de cavalos em suas costas?</p>
     </div>
   </div>
 </div>

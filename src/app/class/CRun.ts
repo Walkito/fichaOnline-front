@@ -8,7 +8,7 @@ export class CRun{
   system : CSystem = new CSystem();
   status : string = "Não Iniciada";
   dateBeginning : Date = new Date();
-  dateEnding : Date | null = null;
+  dateEnding : any = new Date();
   masterId: number = 0;
   masterName: string = "";
   sessionNumber: number = 0;

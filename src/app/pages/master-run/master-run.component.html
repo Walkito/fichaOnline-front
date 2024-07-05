@@ -1,7 +1,7 @@
 <div class="body-div">
   <div class="title-row">
     <div class="a-column">
-      <a (click)="goBack()"><img src="assets/setaVoltar.png" alt="Seta apontando para a esquerda" width="55px"></a>
+      <a (click)="goBack()"><img src="assets/setaVoltar.png" alt="Seta apontando para a esquerda" width="75px"></a>
     </div>
     <div class="title-column">
       <h1>{{run.campaign}}</h1>
@@ -89,7 +89,7 @@
               <li *ngFor="let player of players; let i = index">
                 {{player.name}} {{player.lastName}}
                 <img src="assets/removeIcon.png" alt="Ícone de uma lixeira par excluir" title="Remover Jogador"
-                  width="18px" (click)="removePlayer(i)">
+                   (click)="removePlayer(i)">
               </li>
             </ul>
           </div>
@@ -108,7 +108,7 @@
                   {{name}}
                 </span>
                 <span class="character-open-sheet-span">
-                  <img src="assets/fichaIcon.png" alt="Ícone para abrir a ficha" width="32px" title="Abrir Ficha"
+                  <img src="assets/fichaIcon.png" alt="Ícone para abrir a ficha" title="Abrir Ficha"
                     (click)="openPlayerSheet(i)">
                 </span>
               </li>
@@ -136,7 +136,6 @@
               <tr>
                 <th>Nome</th>
                 <th>Classe</th>
-                <th>Nível</th>
                 <th>V.A</th>
                 <th>V.T</th>
                 <th>C.A</th>
@@ -150,8 +149,6 @@
                     [(ngModel)]="allie.personalInfo.characterName"></textarea></td>
                 <td><textarea placeholder="Classe" cdkTextareaAutosize [disabled]="i < partyNumber"
                     [(ngModel)]="allie.personalInfo._class"></textarea></td>
-                <td><textarea placeholder="Nível" cdkTextareaAutosize [disabled]="i < partyNumber"
-                    [(ngModel)]="allie.personalInfo.level"></textarea></td>
                 <td><textarea placeholder="V.A" cdkTextareaAutosize [disabled]="i < partyNumber"
                     [(ngModel)]="allie.currentHp"></textarea></td>
                 <td><textarea placeholder="V.T" cdkTextareaAutosize [disabled]="i < partyNumber"
@@ -171,7 +168,6 @@
               <tr>
                 <th>Nome</th>
                 <th>Classe</th>
-                <th>Nível</th>
                 <th>V.A</th>
                 <th>V.T</th>
                 <th>C.A</th>
@@ -185,8 +181,6 @@
                 </td>
                 <td><textarea cdkTextareaAutosize placeholder="Classe"
                     [(ngModel)]="enemie.personalInfo._class"></textarea></td>
-                <td><textarea cdkTextareaAutosize placeholder="Nível"
-                    [(ngModel)]="enemie.personalInfo.level"></textarea></td>
                 <td><textarea cdkTextareaAutosize placeholder="V.A" [(ngModel)]="enemie.currentHp"></textarea></td>
                 <td><textarea cdkTextareaAutosize placeholder="V.T" [(ngModel)]="enemie.hpMax"></textarea></td>
                 <td><textarea cdkTextareaAutosize placeholder="CA" [(ngModel)]="enemie.armorClass"></textarea></td>
@@ -242,7 +236,6 @@
 
 
     </div>
-
     <div class="tab-four tabs" *ngIf="tabs[3]">
       <div class="row-one">
         <div class="column-one">

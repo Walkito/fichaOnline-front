@@ -12,9 +12,11 @@
     display: flex;
     flex-direction: column;
 
-    .error-field{
+    .error-field {
       margin: 0;
       color: red;
+      font-size: 24px;
+
     }
 
     .title {
@@ -22,9 +24,10 @@
       text-align: center;
       justify-content: center;
       align-items: center;
-
+      width: 100%;
       h1 {
         margin-left: 5%;
+        font-size: 40px;
       }
 
       a {
@@ -67,7 +70,7 @@
           height: 2.2em;
           border: 2px solid #000000;
           border-radius: 8px;
-          font-size: 18px;
+          font-size: 30px;
         }
 
         input:focus {
@@ -76,19 +79,19 @@
         }
 
         label {
-          font-size: 22px;
+          font-size: 32px;
         }
 
       }
 
       button {
-        margin: 2% 0;
-        width: 150px;
-        height: 50px;
+        margin: 4% 0;
+        width: 180px;
+        height: 80px;
         border: 2px solid var(--buttonBlue);
         border-radius: 5px;
         background-color: white;
-        font-size: 20px;
+        font-size: 32px;
         color: var(--buttonBlue);
         cursor: pointer;
         transition: 0.25s;
@@ -103,7 +106,335 @@
   }
 }
 
-.error-input{
+.error-input {
   border-color: red;
   color: red;
+}
+
+@media (max-width: 1728px){
+  .body-div {
+    form {
+      width: 35%;
+    }
+  }
+}
+
+@media (max-width: 1600px) {
+  .body-div {
+    form {
+      width: 30%;
+
+      .error-field {
+        margin: 0;
+        color: red;
+        font-size: 16px;
+
+      }
+
+      .title {
+        h1 {
+          font-size: 30px;
+        }
+      }
+
+      .form-div {
+        .row {
+          input {
+            font-size: 22px;
+          }
+
+          label {
+            font-size: 22px;
+          }
+
+        }
+
+        button {
+          width: 160px;
+          height: 60px;
+          font-size: 24px;
+        }
+      }
+
+    }
+  }
+}
+
+@media (max-width: 1440px) {
+  .body-div {
+    form {
+      width: 32%;
+    }
+  }
+}
+
+@media (max-width: 1366px) {
+  .body-div {
+    form {
+      .error-field {
+        font-size: 14px;
+
+      }
+
+      .title {
+        h1 {
+          font-size: 26px;
+        }
+
+        img{
+          width: 50px;
+        }
+      }
+
+      .form-div {
+        .row {
+          input {
+            font-size: 20px;
+          }
+
+          label {
+            font-size: 20px;
+          }
+
+        }
+
+        button {
+          width: 140px;
+          height: 50px;
+          font-size: 20px;
+        }
+      }
+
+    }
+  }
+}
+
+@media (max-width: 884px) {
+  .body-div {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    margin-top: 5%;
+    margin-bottom: 3%;
+
+    form {
+      width: 40%;
+      display: flex;
+      flex-direction: column;
+
+      .error-field {
+        margin: 0;
+        color: red;
+        font-size: 20px;
+
+      }
+
+      .title {
+        display: flex;
+        text-align: center;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        h1 {
+          margin-left: 3%;
+          font-size: 34px;
+        }
+
+        a {
+          margin: 0 0 0 0;
+          transition: 0.25s;
+        }
+
+        a:hover {
+          scale: (1.2);
+        }
+      }
+
+      .form-div {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        background-color: white;
+        border: 6px solid white;
+        border-radius: 20px;
+        padding: 1%;
+
+        .blue-border {
+          display: flex;
+          flex-direction: column;
+          border: 6px solid var(--primaryBlue);
+          border-radius: 20px;
+          color: var(--primaryBlue);
+          justify-content: center;
+          align-items: center;
+        }
+
+        .row {
+          display: flex;
+          flex-direction: column;
+          width: 70%;
+          margin-top: 5%;
+
+          input {
+            margin-top: 2%;
+            height: 2.2em;
+            border: 2px solid #000000;
+            border-radius: 8px;
+            font-size: 24px;
+          }
+
+          input:focus {
+            border-color: var(--primaryBlue);
+            outline: none;
+          }
+
+          label {
+            font-size: 24px;
+          }
+
+        }
+
+        button {
+          margin: 4% 0;
+          width: 180px;
+          height: 60px;
+          border: 2px solid var(--buttonBlue);
+          border-radius: 5px;
+          background-color: white;
+          font-size: 24px;
+          color: var(--buttonBlue);
+          cursor: pointer;
+          transition: 0.25s;
+        }
+
+        button:hover {
+          background-color: var(--buttonBlue);
+          color: white;
+        }
+      }
+
+    }
+  }
+
+  .error-input {
+    border-color: red;
+    color: red;
+  }
+}
+
+@media (max-width: 430px) {
+  .body-div {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    margin-top: 5%;
+    margin-bottom: 3%;
+
+    form {
+      width: 80%;
+      display: flex;
+      flex-direction: column;
+
+      .error-field {
+        margin: 0;
+        color: red;
+        font-size: 20px;
+
+      }
+
+      .title {
+        display: flex;
+        text-align: center;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        h1 {
+          margin-left: 3%;
+          font-size: 34px;
+        }
+
+        a {
+          margin: 0 0 0 0;
+          transition: 0.25s;
+        }
+
+        a:hover {
+          scale: (1.2);
+        }
+      }
+
+      .form-div {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        background-color: white;
+        border: 6px solid white;
+        border-radius: 20px;
+        padding: 1%;
+
+        .blue-border {
+          display: flex;
+          flex-direction: column;
+          border: 6px solid var(--primaryBlue);
+          border-radius: 20px;
+          color: var(--primaryBlue);
+          justify-content: center;
+          align-items: center;
+        }
+
+        .row {
+          display: flex;
+          flex-direction: column;
+          width: 70%;
+          margin-top: 5%;
+
+          input {
+            margin-top: 2%;
+            height: 2.2em;
+            border: 2px solid #000000;
+            border-radius: 8px;
+            font-size: 24px;
+          }
+
+          input:focus {
+            border-color: var(--primaryBlue);
+            outline: none;
+          }
+
+          label {
+            font-size: 24px;
+          }
+
+        }
+
+        button {
+          margin: 4% 0;
+          width: 180px;
+          height: 60px;
+          border: 2px solid var(--buttonBlue);
+          border-radius: 5px;
+          background-color: white;
+          font-size: 24px;
+          color: var(--buttonBlue);
+          cursor: pointer;
+          transition: 0.25s;
+        }
+
+        button:hover {
+          background-color: var(--buttonBlue);
+          color: white;
+        }
+      }
+
+    }
+  }
+
+  .error-input {
+    border-color: red;
+    color: red;
+  }
 }

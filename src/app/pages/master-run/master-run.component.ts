@@ -14,7 +14,7 @@ import { CSheetDnD } from 'src/app/class/sheets/CSheetDnD';
 import { CPlayerSheet } from 'src/app/class/CPlayerSheet';
 import { DnDSheetService } from '../sheet/dnd/dndSheet.service';
 import { ModalAddPlayerComponent } from './modal-add-player/modal-add-player.component';
-import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatSnackBar, MatSnackBarConfig } from '@angular/material/snack-bar';
 import { ModalConfirmRemovePlayerComponent } from './modal-confirm-remove-player/modal-confirm-remove-player.component';
 import { CCombatInitiative } from 'src/app/class/sheets/dndSheet/CCombatInitiative';
 import { CSpellTime } from 'src/app/class/sheets/dndSheet/CSpellTime';
@@ -137,6 +137,7 @@ export class MasterRunComponent implements OnInit {
     this.service.saveRun(this.run).subscribe({
       next: (run: CRun) => {
         this.run = run;
+        console.log(this.run);
       },
       error: (erro: CErro) => {
         alert(this.utils.showError(erro));
@@ -200,7 +201,11 @@ export class MasterRunComponent implements OnInit {
           if (serviceResponse) {
             location.reload();
           } else {
-            this.snackBar.open('Este jogador já está vinculado com esta Run.', 'Entendi.');
+            this.snackBar.open('Este jogador já está vinculado com esta Run.', 'Entendi.', {
+              verticalPosition: 'top',
+              horizontalPosition: 'end',
+              panelClass: ['.green-snackbar']
+            });
           }
         }
       }
@@ -227,7 +232,6 @@ export class MasterRunComponent implements OnInit {
     const sheetID = this.sheetsIDs.at(index);
     this.sessionStorage.saveData('sheetType', 3);
     this.sessionStorage.saveData('sheetId', sheetID);
-    console.log(sheetID);
 
     switch (this.run.system.name) {
       case 'D&D 5e':

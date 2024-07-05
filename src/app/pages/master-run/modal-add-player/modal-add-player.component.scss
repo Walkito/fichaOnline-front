@@ -12,14 +12,14 @@
     flex-direction: column;
 
     label {
-      font-size: 22px;
+      font-size: 32px;
       margin: 0;
       font-weight: bold;
     }
 
     input {
       width: 90%;
-      font-size: 20px;
+      font-size: 28px;
       font-family: Roboto, "Helvetica Neue", sans-serif;
       border-radius: 10px;
       height: 2em;
@@ -29,7 +29,7 @@
 
     h1 {
       margin: 0 0 5% 0;
-      font-size: 22px;
+      font-size: 28px;
       font-weight: lighter;
     }
 
@@ -45,5 +45,41 @@
       margin-top: 3%;
     }
 
+  }
+}
+
+@media (max-width: 1600px) {
+  .alert-box {
+    .row-form {
+      label {
+        font-size: 20px;
+      }
+
+      input {
+        font-size: 20px;
+      }
+
+      h1 {
+        font-size: 20px;
+      }
+    }
+  }
+}
+
+@media (max-width: 1366px) {
+  .alert-box {
+    .row-form {
+      label {
+        font-size: 18px;
+      }
+
+      input {
+        font-size: 18px;
+      }
+
+      h1 {
+        font-size: 18px;
+      }
+    }
   }
 }

@@ -41,7 +41,7 @@ export class ModalCreateRunComponent implements OnInit {
   async create(option:number,form: NgForm) {
     let response: boolean = false;
     let run: CRun = new CRun();
-    if (form.valid) {
+    if (form.valid && option == 1) {
       run = await this.registerRun();
       response = await this.linkAccountRun(this.accountID, run.id);
     };
@@ -66,6 +66,7 @@ export class ModalCreateRunComponent implements OnInit {
       run.campaign = this.runName;
       run.system.id = this.selectedSystem.id;
       run.dateBeginning = new Date();
+      run.dateEnding = null;
       run.masterId = this.accountID;
 
       this.service.registerRun(run).subscribe({

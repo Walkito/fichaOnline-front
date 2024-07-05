@@ -12,9 +12,11 @@
     display: flex;
     flex-direction: column;
 
-    .error-field{
+    .error-field {
       margin: 0;
       color: red;
+      font-size: 24px;
+
     }
 
     .title {
@@ -25,6 +27,7 @@
 
       h1 {
         margin-left: 5%;
+        font-size: 40px;
       }
 
       a {
@@ -67,7 +70,7 @@
           height: 2.2em;
           border: 2px solid #000000;
           border-radius: 8px;
-          font-size: 18px;
+          font-size: 30px;
         }
 
         input:focus {
@@ -76,59 +79,473 @@
         }
 
         label {
-          font-size: 22px;
+          font-size: 32px;
         }
 
       }
 
-      .row-buttons{
+      .row-buttons {
         display: flex;
         width: 100%;
-        align-items: center;
         justify-content: center;
-        margin: 2% 0;
 
-        .column{
-          display: flex;
-          width: 50%;
-          align-items: center;
-          justify-content: center;
+        button {
+          margin: 8% 0;
+          width: 180px;
+          height: 80px;
+          border-radius: 5px;
+          font-size: 32px;
+          cursor: pointer;
+          transition: 0.25s;
         }
-      }
 
-      button {
-        margin: 2% 0;
-        width: 150px;
-        height: 50px;
-        border: 2px solid var(--buttonBlue);
-        border-radius: 5px;
-        background-color: white;
-        font-size: 20px;
-        color: var(--buttonBlue);
-        cursor: pointer;
-        transition: 0.25s;
-      }
+        .btn-create:hover {
+          background-color: var(--buttonBlue);
+          color: white;
+        }
 
-      .btn-delete{
-        border: 2px solid var(--buttonRed);
-        color: var(--buttonRed);
-      }
+        .btn-create{
+          border: 2px solid var(--buttonBlue);
+          color: var(--buttonBlue);
+          background-color: white;
+        }
 
-      .btn-delete:hover{
-        color: white;
-        background-color: var(--buttonRed);
-      }
+        .btn-delete{
+          margin-left: 5%;
+          border: 2px solid var(--buttonRed);
+          color: var(--buttonRed);
+          background-color: white;
+        }
 
-      button:hover {
-        background-color: var(--buttonBlue);
-        color: white;
+        .btn-delete:hover {
+          background-color: var(--buttonRed);
+          color: white;
+        }
+
       }
     }
 
   }
 }
 
-.error-input{
+.error-input {
   border-color: red;
   color: red;
+}
+
+@media (max-width: 1728px) {
+  .body-div {
+    form {
+      width: 35%;
+
+      .title {
+        width: 100%;
+      }
+
+      .form-div {
+        .row-buttons {
+          .btn-delete{
+            margin-left: 18%;
+          }
+        }
+      }
+
+    }
+  }
+}
+
+@media (max-width: 1600px) {
+  .body-div {
+    form {
+      img{
+        width: 55px;
+        height: 55px;
+      }
+      width: 27%;
+      .error-field {
+        font-size: 16px;
+      }
+
+      .title {
+        h1 {
+          margin-left: 5%;
+          font-size: 30px;
+        }
+      }
+
+      .form-div {
+        .row {
+          input {
+            font-size: 22px;
+          }
+
+          label {
+            font-size: 22px;
+          }
+
+        }
+
+        .row-buttons {
+          button {
+            width: 160px;
+            height: 60px;
+            font-size: 22px;
+          }
+        }
+      }
+
+    }
+  }
+}
+
+@media (max-width: 1440px) {
+  .body-div {
+    form {
+      .form-div {
+        .row-buttons {
+          button {
+            width: 160px;
+            height: 60px;
+            font-size: 20px;
+          }
+        }
+      }
+
+    }
+  }
+}
+
+@media (max-width: 1366px) {
+  .body-div {
+    form {
+      img{
+        width: 55px;
+        height: 55px;
+      }
+      width: 30%;
+      .error-field {
+        font-size: 14px;
+      }
+
+      .title {
+        h1 {
+          font-size: 28px;
+        }
+      }
+
+      .form-div {
+        .row {
+          input {
+            font-size: 20px;
+          }
+
+          label {
+            font-size: 20px;
+          }
+
+        }
+
+        .row-buttons {
+          button {
+            width: 160px;
+            height: 50px;
+            font-size: 20px;
+          }
+        }
+      }
+
+    }
+  }
+}
+
+@media (max-width: 1280px) {
+  .body-div {
+    form {
+      .form-div {
+        .row-buttons {
+          button {
+            width: 140px;
+            height: 50px;
+            font-size: 20px;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 884px) {
+  .body-div {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    margin-top: 5%;
+    margin-bottom: 3%;
+
+    form {
+      width: 45%;
+      display: flex;
+      flex-direction: column;
+
+      .error-field {
+        margin: 0;
+        color: red;
+        font-size: 20px;
+
+      }
+
+      .title {
+        display: flex;
+        text-align: center;
+        justify-content: center;
+        align-items: center;
+
+        h1 {
+          margin-left: 5%;
+          font-size: 32px;
+        }
+
+        a {
+          margin: 0 0 0 0;
+          transition: 0.25s;
+        }
+
+        a:hover {
+          scale: (1.2);
+        }
+      }
+
+      .form-div {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        background-color: white;
+        border: 6px solid white;
+        border-radius: 20px;
+        padding: 1%;
+
+        .blue-border {
+          display: flex;
+          flex-direction: column;
+          border: 6px solid var(--primaryBlue);
+          border-radius: 20px;
+          color: var(--primaryBlue);
+          justify-content: center;
+          align-items: center;
+        }
+
+        .row {
+          display: flex;
+          flex-direction: column;
+          width: 70%;
+          margin-top: 5%;
+
+          input {
+            margin-top: 2%;
+            height: 2.2em;
+            border: 2px solid #000000;
+            border-radius: 8px;
+            font-size: 24px;
+          }
+
+          input:focus {
+            border-color: var(--primaryBlue);
+            outline: none;
+          }
+
+          label {
+            font-size: 24px;
+          }
+
+        }
+
+        .row-buttons {
+          display: flex;
+          width: 100%;
+          justify-content: center;
+
+          button {
+            margin: 8% 0;
+            width: 160px;
+            height: 60px;
+            border-radius: 5px;
+            font-size: 24px;
+            cursor: pointer;
+            transition: 0.25s;
+          }
+
+          .btn-create:hover {
+            background-color: var(--buttonBlue);
+            color: white;
+          }
+
+          .btn-create{
+            border: 2px solid var(--buttonBlue);
+            color: var(--buttonBlue);
+            background-color: white;
+          }
+
+          .btn-delete{
+            margin-left: 5%;
+            border: 2px solid var(--buttonRed);
+            color: var(--buttonRed);
+            background-color: white;
+          }
+
+          .btn-delete:hover {
+            background-color: var(--buttonRed);
+            color: white;
+          }
+
+        }
+      }
+
+    }
+  }
+
+  .error-input {
+    border-color: red;
+    color: red;
+  }
+}
+
+@media (max-width: 430px) {
+  .body-div {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    margin-top: 5%;
+    margin-bottom: 3%;
+
+    form {
+      width: 80%;
+      display: flex;
+      flex-direction: column;
+
+      .error-field {
+        margin: 0;
+        color: red;
+        font-size: 20px;
+
+      }
+
+      .title {
+        display: flex;
+        text-align: center;
+        justify-content: center;
+        align-items: center;
+
+        h1 {
+          margin-left: 5%;
+          font-size: 34px;
+        }
+
+        a {
+          margin: 0 0 0 0;
+          transition: 0.25s;
+        }
+
+        a:hover {
+          scale: (1.2);
+        }
+      }
+
+      .form-div {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        background-color: white;
+        border: 6px solid white;
+        border-radius: 20px;
+        padding: 1%;
+
+        .blue-border {
+          display: flex;
+          flex-direction: column;
+          border: 6px solid var(--primaryBlue);
+          border-radius: 20px;
+          color: var(--primaryBlue);
+          justify-content: center;
+          align-items: center;
+        }
+
+        .row {
+          display: flex;
+          flex-direction: column;
+          width: 70%;
+          margin-top: 5%;
+
+          input {
+            margin-top: 2%;
+            height: 2.2em;
+            border: 2px solid #000000;
+            border-radius: 8px;
+            font-size: 24px;
+          }
+
+          input:focus {
+            border-color: var(--primaryBlue);
+            outline: none;
+          }
+
+          label {
+            font-size: 24px;
+          }
+
+        }
+
+        .row-buttons {
+          display: flex;
+          flex-direction: column;
+          width: 100%;
+          justify-content: center;
+          align-items: center;
+
+          button {
+            margin: 5% 0;
+            width: 180px;
+            height: 60px;
+            border-radius: 5px;
+            font-size: 24px;
+            cursor: pointer;
+            transition: 0.25s;
+          }
+
+          .btn-create:hover {
+            background-color: var(--buttonBlue);
+            color: white;
+          }
+
+          .btn-create{
+            border: 2px solid var(--buttonBlue);
+            color: var(--buttonBlue);
+            background-color: white;
+          }
+
+          .btn-delete{
+            margin-left: -1%;
+            border: 2px solid var(--buttonRed);
+            color: var(--buttonRed);
+            background-color: white;
+          }
+
+          .btn-delete:hover {
+            background-color: var(--buttonRed);
+            color: white;
+          }
+
+        }
+      }
+
+    }
+  }
+
+  .error-input {
+    border-color: red;
+    color: red;
+  }
 }

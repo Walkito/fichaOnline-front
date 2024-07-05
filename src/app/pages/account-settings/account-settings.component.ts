@@ -56,9 +56,11 @@ export class AccountSettingsComponent {
       form.form.setErrors({ 'emailUserInvalid': true });
     }
     if (form.valid) {
+      this.account.role = this.sessionStorage.getData("accountRole") === '62' ? 'MASTER' : 'PLAYER';
+      this.account.situation = 'A';
       this.service.editAccount(this.account).subscribe({
         next: () => {
-          this.router.navigate(["home"])
+          this.router.navigate(["home"]);
           this.dialog.open(ModalSucessEditAccountComponent, {
             disableClose: true
           })
