@@ -1,0 +1,166 @@
+.alert-box {
+  background-color: rgb(56, 55, 55);
+}
+
+.row-title {
+  margin: 2%;
+}
+
+.row-form {
+  display: flex;
+
+
+  form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+
+    label {
+      font-size: 32px;
+      margin: 0%;
+      font-weight: bold;
+    }
+
+    select {
+      width: 90%;
+      font-size: 28px;
+      font-family: Roboto, "Helvetica Neue", sans-serif;
+      border-radius: 10px;
+      height: 2em;
+      border: 2px solid black;
+    }
+
+    select option {
+      font-size: 20px;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 28px;
+      font-weight: lighter;
+    }
+
+    .row {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      margin: 4% 0;
+    }
+
+    button {
+      margin: 3%;
+    }
+  }
+
+}
+
+@media (max-width: 1728px) {
+  .row-form {
+    form {
+      select option {
+        font-size: 16px;
+      }
+    }
+
+  }
+}
+
+@media (max-width: 1600px) {
+  .row-form {
+    form {
+      label {
+        font-size: 22px;
+      }
+
+      select {
+        width: 80%;
+        font-size: 22px;
+      }
+
+      select option {
+        font-size: 20px;
+      }
+
+      h1 {
+        font-size: 20px;
+      }
+    }
+
+  }
+}
+
+@media (max-width: 1366px) {
+  .row-form {
+    form {
+      label {
+        font-size: 20px;
+      }
+
+      select {
+        width: 80%;
+        font-size: 20px;
+      }
+
+      select option {
+        font-size: 18px;
+      }
+
+      h1 {
+        font-size: 18px;
+      }
+    }
+
+  }
+}
+
+@media (max-width: 884px) {
+  .row-form {
+    display: flex;
+
+
+    form {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+
+      label {
+        font-size: 26px;
+        margin: 0%;
+        font-weight: bold;
+      }
+
+      select {
+        width: 90%;
+        font-size: 26px;
+        font-family: Roboto, "Helvetica Neue", sans-serif;
+        border-radius: 10px;
+        height: 2em;
+        border: 2px solid black;
+      }
+
+      select option {
+        font-size: 20px;
+      }
+
+      h1 {
+        margin: 0;
+        font-size: 28px;
+        font-weight: lighter;
+      }
+
+      .row {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin: 4% 0;
+      }
+
+      button {
+        margin: 3%;
+      }
+    }
+
+  }
+}

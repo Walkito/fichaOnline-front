@@ -1,0 +1,51 @@
+.alert-box{
+  background-color: rgb(56, 55, 55);
+  padding: 2% 5%;
+
+  .column-form{
+    display: flex;
+    margin-bottom: 10%;
+
+    select{
+      color: black;
+      width: 20em;
+      font-size: 28px;
+      height: 2em;
+      border: 3px solid black;
+      outline: none;
+      border-radius: 5px;
+    }
+
+    select option{
+      font-size: 18px;
+    }
+  }
+}
+
+@media (max-width: 1600px) {
+  .alert-box{
+    .column-form{
+      select{
+        font-size: 22px;
+      }
+
+      select option{
+        font-size: 20px;
+      }
+    }
+  }
+}
+
+@media (max-width: 1366px) {
+  .alert-box{
+    .column-form{
+      select{
+        font-size: 20px;
+      }
+
+      select option{
+        font-size: 18px;
+      }
+    }
+  }
+}

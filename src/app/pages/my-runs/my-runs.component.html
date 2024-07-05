@@ -1,0 +1,36 @@
+<div class="body-div">
+  <div class="title-row">
+    <div class="a-column">
+      <a routerLink="/home"><img src="assets/setaVoltar.png" alt="Seta apontando para a esquerda" width="75px"></a>
+    </div>
+    <div class="title-column">
+      <h1>Minhas Runs (Campanhas)</h1>
+    </div>
+  </div>
+  <div class="runs-row">
+    <ul *ngFor="let run of runs; let i = index">
+      <li class="run-basic"><span class="column-one">{{run.system.name}} - {{run.campaign}}</span>
+        <span class="column-two"> <span #circle class="circle"></span> {{run.status}} </span>
+        <span class="column-three"> De {{run.dateBeginning | datetime}} à {{run.dateEnding | datetime}} </span>
+        <span class="column-four"> <img #imgButton src="assets/setaBaixo.png" alt="Seta apontando pra baixo"
+            width="55px" (click)="openRunInfo(i)" [class.rotate]="run.opened" [class.not-rotate]="!run.opened"> </span>
+      </li>
+      <li class="run-info" *ngIf="this.run.opened">
+        <div class="column-one">
+          <h2>Jogadores</h2>
+          <div class="overflow">
+            <div class="players" *ngFor="let account of run.accounts; let j = index">
+              <h3>{{account.name}} {{account.lastName}} como {{charactersNames[i][j]}}</h3>
+            </div>
+          </div>
+        </div>
+        <div class="column-two">
+          <h2>Mestre</h2>
+          <div class="dm">
+            <h3>{{run.masterName}}</h3>
+          </div>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>

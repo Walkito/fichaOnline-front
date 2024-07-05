@@ -1,0 +1,31 @@
+export class CSpellsLevelThree{
+    id: number = 0;
+    level3TotalSlots: number = 0;
+    level3SlotsExpended: number = 0;
+    level3Slot1: string = "";
+    level3Prepared1: boolean = false;
+    level3Slot2: string = "";
+    level3Prepared2: boolean = false;
+    level3Slot3: string = "";
+    level3Prepared3: boolean = false;
+    level3Slot4: string = "";
+    level3Prepared4: boolean = false;
+    level3Slot5: string = "";
+    level3Prepared5: boolean = false;
+    level3Slot6: string = "";
+    level3Prepared6: boolean = false;
+    level3Slot7: string = "";
+    level3Prepared7: boolean = false;
+    level3Slot8: string = "";
+    level3Prepared8: boolean = false;
+    level3Slot9: string = "";
+    level3Prepared9: boolean = false;
+    level3Slot10: string = "";
+    level3Prepared10: boolean = false;
+    level3Slot11: string = "";
+    level3Prepared11: boolean = false;
+    level3Slot12: string = "";
+    level3Prepared12: boolean = false;
+    level3Slot13: string = "";
+    level3Prepared13: boolean = false;
+}

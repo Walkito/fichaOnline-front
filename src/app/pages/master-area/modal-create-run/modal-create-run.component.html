@@ -1,0 +1,28 @@
+<div class="alert-box">
+  <div class="colum-title">
+    <h1 class="alert-title"> Criar Nova Run</h1>
+  </div>
+  <div class="column-form">
+    <form #createRunForm="ngForm">
+      <label for="run-name-input" class="run-name-label">Nome da Run</label>
+      <input name="run-name-input" id="run-name-input" type="text" class="run-name-input" [(ngModel)]="runName"
+      required maxlength="50">
+      <div class="invalid-field"
+        *ngIf="createRunForm.controls['run-name-input']?.invalid && createRunForm.controls['run-name-input']?.touched">
+        <p class="error-field">O campo é obrigatório</p>
+      </div>
+      <label for="run-system-select" class="run-system-label">Sistema</label>
+      <select #runSystemSelect [(ngModel)]="selectedSystem.id" name="run-system-select" id="run-system-select" class="run-system-select" required>
+        <option [value]="system.id" *ngFor="let system of systems">{{system.name}}</option>
+      </select>
+      <div class="invalid-field"
+      *ngIf="createRunForm.controls['run-system-select']?.invalid && createRunForm.controls['run-system-select']?.touched">
+      <p class="error-field">O campo é obrigatório</p>
+    </div>
+    </form>
+  </div>
+  <div class="alert-buttons">
+    <button class="btn-yes" (click)="create(1,createRunForm)">Criar</button>
+    <button class="btn-no" (click)="create(0,createRunForm)">Cancelar</button>
+  </div>
+</div>

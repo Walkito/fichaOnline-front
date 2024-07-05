@@ -1,0 +1,531 @@
+.body-div {
+  width: 99%;
+  min-height: 95%;
+  margin: 0%;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--primaryBlue);
+  color: white;
+
+  .row {
+    display: flex;
+    width: 100%;
+    margin-top: 1%;
+
+    .column-a {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      width: 15%;
+
+      a {
+        transition: 0.25s;
+        margin-left: 25%;
+      }
+
+      a:hover {
+        transform: scale(1.2);
+      }
+    }
+
+    .column-title {
+      display: flex;
+      text-align: center;
+      justify-content: center;
+      align-items: center;
+      width: 73%;
+
+      h1 {
+        margin: 0;
+        padding: 0;
+        font-size: 54px;
+      }
+
+    }
+
+    .column-add {
+      display: flex;
+      text-align: center;
+      justify-content: flex-start;
+      align-items: center;
+      width: 5%;
+
+      img {
+        transition: 0.25s;
+        cursor: pointer;
+      }
+
+      img:hover {
+        transform: scale(1.2);
+      }
+    }
+  }
+
+  .cards {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    margin: 0;
+    padding: 0;
+
+    @keyframes cardApper {
+      0% {
+        transform: translateX(-500%);
+      }
+
+      100% {
+        transform: translateX(0%);
+      }
+    }
+
+    .cardbox {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      margin: 0;
+      padding: 0;
+      background-color: white;
+      color: var(--primaryBlue);
+      border: 3px solid var(--buttonBlue);
+      border-radius: 15px;
+      animation: cardApper 1s forwards;
+    }
+
+    ul {
+      display: flex;
+      width: 25%;
+      margin: 1%;
+      padding: 0;
+      list-style: none;
+      font-size: 28px;
+
+      li:nth-child(1) {
+        justify-content: center;
+        align-items: center;
+        font-size: 36px;
+        font-weight: bold;
+      }
+
+      li:nth-child(4) {
+        justify-content: center;
+        align-items: center;
+      }
+
+      li {
+        display: flex;
+        margin: 3% 0 0 3%;
+      }
+
+      button {
+        width: 180px;
+        height: 80px;
+        font-size: 28px;
+        border-radius: 20px;
+        margin: 4% 5%;
+        cursor: pointer;
+        transition: 0.25s;
+        background-color: white;
+      }
+
+      .open-sheet {
+        color: var(--buttonBlue);
+        border: 3px solid var(--buttonBlue);
+      }
+
+      .open-sheet:hover {
+        background-color: var(--buttonBlue);
+        color: white;
+      }
+
+      .delete-sheet {
+        color: var(--buttonRed);
+        border: 3px solid var(--buttonRed);
+      }
+
+      .delete-sheet:hover {
+        background-color: var(--buttonRed);
+        color: white;
+      }
+    }
+  }
+}
+
+@media (max-width: 1600px) {
+  .body-div {
+    .row {
+      .column-title {
+        h1 {
+          font-size: 45px;
+        }
+      }
+
+      img {
+        width: 55px;
+      }
+
+    }
+
+    .cards {
+      ul {
+        font-size: 22px;
+
+        li:nth-child(1) {
+          font-size: 30px;
+        }
+
+        button {
+          width: 140px;
+          height: 60px;
+          font-size: 20px;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 1366px) {
+  .body-div {
+    .row {
+      .column-title {
+        h1 {
+          font-size: 40px;
+        }
+      }
+
+      img {
+        width: 50px;
+      }
+
+    }
+
+    .cards {
+      ul {
+        font-size: 18px;
+
+        li:nth-child(1) {
+          font-size: 24px;
+        }
+
+        button {
+          width: 140px;
+          height: 55px;
+          font-size: 18px;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 884px) {
+  .body-div {
+    width: 99%;
+    min-height: 95%;
+    margin: 0%;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--primaryBlue);
+    color: white;
+
+    .row {
+      display: flex;
+      width: 100%;
+      margin-top: 1%;
+
+      .column-a {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        width: 15%;
+
+        a {
+          transition: 0.25s;
+          margin-left: 25%;
+        }
+
+        a:hover {
+          transform: scale(1.2);
+        }
+      }
+
+      .column-title {
+        display: flex;
+        text-align: center;
+        justify-content: center;
+        align-items: center;
+        width: 73%;
+
+        h1 {
+          margin: 0;
+          padding: 0;
+          font-size: 36px;
+        }
+
+      }
+
+      .column-add {
+        display: flex;
+        text-align: center;
+        justify-content: flex-start;
+        align-items: center;
+        width: 5%;
+
+        img {
+          transition: 0.25s;
+          cursor: pointer;
+        }
+
+        img:hover {
+          transform: scale(1.2);
+        }
+      }
+    }
+
+    .cards {
+      display: flex;
+      width: 100%;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+      margin: 0;
+      padding: 0;
+
+      @keyframes cardApper {
+        0% {
+          transform: translateX(-500%);
+        }
+
+        100% {
+          transform: translateX(0%);
+        }
+      }
+
+      .cardbox {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        margin: 0;
+        padding: 0;
+        background-color: white;
+        color: var(--primaryBlue);
+        border: 3px solid var(--buttonBlue);
+        border-radius: 15px;
+        animation: cardApper 1s forwards;
+      }
+
+      ul {
+        display: flex;
+        width: 30%;
+        margin: 1%;
+        padding: 0;
+        list-style: none;
+        font-size: 22px;
+
+        li:nth-child(1) {
+          justify-content: center;
+          align-items: center;
+          font-size: 22px;
+          font-weight: bold;
+        }
+
+        li:nth-child(4) {
+          justify-content: center;
+          align-items: center;
+        }
+
+        li {
+          display: flex;
+          margin: 3% 0 0 3%;
+        }
+
+        button {
+          width: 180px;
+          height: 60px;
+          font-size: 20px;
+          border-radius: 20px;
+          margin: 4% 5%;
+          cursor: pointer;
+          transition: 0.25s;
+          background-color: white;
+        }
+
+        .open-sheet {
+          color: var(--buttonBlue);
+          border: 3px solid var(--buttonBlue);
+        }
+
+        .open-sheet:hover {
+          background-color: var(--buttonBlue);
+          color: white;
+        }
+
+        .delete-sheet {
+          color: var(--buttonRed);
+          border: 3px solid var(--buttonRed);
+        }
+
+        .delete-sheet:hover {
+          background-color: var(--buttonRed);
+          color: white;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 430px) {
+  .body-div {
+    width: 99%;
+    min-height: 95%;
+    margin: 0%;
+    padding: 0;
+    display: flex;
+    background-color: var(--primaryBlue);
+    color: white;
+
+    .row {
+      display: flex;
+      width: 100%;
+      margin-top: 1%;
+
+      .column-a {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        width: 15%;
+
+        a {
+          transition: 0.25s;
+          margin-left: 25%;
+        }
+
+        a:hover {
+          transform: scale(1.2);
+        }
+      }
+
+      .column-title {
+        display: flex;
+        text-align: center;
+        justify-content: center;
+        align-items: center;
+        width: 73%;
+
+        h1 {
+          margin: 0;
+          padding: 0;
+          font-size: 30px;
+        }
+
+      }
+
+      .column-add {
+        display: flex;
+        text-align: center;
+        justify-content: flex-start;
+        align-items: center;
+        width: 5%;
+
+        img {
+          transition: 0.25s;
+          cursor: pointer;
+        }
+
+        img:hover {
+          transform: scale(1.2);
+        }
+      }
+    }
+
+    .cards {
+      display: flex;
+      width: 100%;
+      flex-wrap: wrap;
+      margin: 0;
+      padding: 0;
+
+      @keyframes cardApper {
+        0% {
+          transform: translateX(-500%);
+        }
+
+        100% {
+          transform: translateX(0%);
+        }
+      }
+
+      .cardbox {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        margin: 0;
+        padding: 0;
+        background-color: white;
+        color: var(--primaryBlue);
+        border: 3px solid var(--buttonBlue);
+        border-radius: 15px;
+        animation: cardApper 1s forwards;
+      }
+
+      ul {
+        display: flex;
+        width: 90%;
+        margin: 2%;
+        padding: 0;
+        list-style: none;
+        font-size: 22px;
+
+        li:nth-child(1) {
+          justify-content: center;
+          align-items: center;
+          font-size: 28px;
+          font-weight: bold;
+        }
+
+        li:nth-child(4) {
+          justify-content: center;
+          align-items: center;
+        }
+
+        li {
+          display: flex;
+          margin: 3% 0 0 3%;
+        }
+
+        button {
+          width: 160px;
+          height: 55px;
+          font-size: 22px;
+          border-radius: 20px;
+          margin: 4% 5%;
+          cursor: pointer;
+          transition: 0.25s;
+          background-color: white;
+        }
+
+        .open-sheet {
+          color: var(--buttonBlue);
+          border: 3px solid var(--buttonBlue);
+        }
+
+        .open-sheet:hover {
+          background-color: var(--buttonBlue);
+          color: white;
+        }
+
+        .delete-sheet {
+          color: var(--buttonRed);
+          border: 3px solid var(--buttonRed);
+        }
+
+        .delete-sheet:hover {
+          background-color: var(--buttonRed);
+          color: white;
+        }
+      }
+    }
+  }
+}

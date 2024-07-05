@@ -1,0 +1,33 @@
+export class CAttack{
+    id: number = 0;
+    atkName1: string = "";
+    atkBonus1: string = "";
+    atkDamageType1: string = "";    
+    atkName2: string = "";
+    atkBonus2: string = "";
+    atkDamageType2: string = "";    
+    atkName3: string = "";
+    atkBonus3: string = "";
+    atkDamageType3: string = "";    
+    atkName4: string = "";
+    atkBonus4: string = "";
+    atkDamageType4: string = "";    
+    atkName5: string = "";
+    atkBonus5: string = "";
+    atkDamageType5: string = "";    
+    atkName6: string = "";
+    atkBonus6: string = "";
+    atkDamageType6: string = "";    
+    atkName7: string = "";
+    atkBonus7: string = "";
+    atkDamageType7: string = "";    
+    atkName8: string = "";
+    atkBonus8: string = "";
+    atkDamageType8: string = "";    
+    atkName9: string = "";
+    atkBonus9: string = "";
+    atkDamageType9: string = "";    
+    atkName10: string = "";
+    atkBonus10: string = "";
+    atkDamageType10: string = "";    
+}

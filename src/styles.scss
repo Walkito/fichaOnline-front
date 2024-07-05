@@ -1,1 +1,318 @@
-/* You can add global styles to this file, and also import other style files */
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+@use '@angular/material' as mat;
+// Plus imports for other components in your app.
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat.core();
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://material.io/design/color/
+$ficha-online-primary: mat.define-palette(mat.$indigo-palette);
+$ficha-online-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
+
+// The warn palette is optional (defaults to red).
+$ficha-online-warn: mat.define-palette(mat.$red-palette);
+
+// Create the theme object. A theme consists of configurations for individual
+// theming systems such as "color" or "typography".
+$ficha-online-theme: mat.define-light-theme((color: (primary: $ficha-online-primary,
+        accent: $ficha-online-accent,
+        warn: $ficha-online-warn,
+      )));
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include mat.all-component-themes($ficha-online-theme);
+
+:root {
+  --primaryBlue: #134074;
+  --buttonBlue: rgb(71, 112, 226);
+  --buttonRed: rgb(250, 143, 143);
+  --buttonGreen: rgb(137, 231, 137);
+  --cleanYellow: rgb(253, 251, 100);
+  --buttonOrange: rgb(235, 181, 82);
+}
+
+body {
+  background-color: var(--primaryBlue);
+  color: white;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+input,
+button,
+label,
+textarea {
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+*::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-image: linear-gradient(rgb(163, 160, 160), rgb(189, 184, 184));
+  border-radius: 20px;
+}
+
+.mat-mdc-dialog-container {
+  --mdc-dialog-container-color: none !important;
+  --mdc-dialog-container-elevation-shadow: none !important;
+}
+
+.alert-box {
+  display: flex;
+  flex-direction: column;
+  width: auto;
+  height: 100%;
+  background-color: #134074;
+  border: 5px solid white;
+  border-radius: 25px;
+  text-align: center;
+  justify-content: center;
+  margin: auto;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+
+  /*'Averia Sans Libre', sans-serif;*/
+  h2 {
+    margin: 4% 2%;
+    font-size: 38px;
+  }
+
+  h1 {
+    font-size: 42px;
+  }
+
+  .alert-buttons {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 2%;
+    width: 100%;
+
+    button {
+      width: 180px;
+      height: 60px;
+      border-radius: 10px;
+      font-size: 30px;
+    }
+
+    .btn-yes {
+      color: rgb(82, 207, 82);
+      border: 3px solid rgb(82, 207, 82);
+      background-color: white;
+      cursor: pointer;
+    }
+
+    .btn-yes:hover {
+      color: rgb(255, 255, 255);
+      border: 3px solid rgb(255, 255, 255);
+      background-color: rgb(82, 207, 82);
+    }
+
+    .btn-no {
+      margin-left: 5%;
+      color: rgb(238, 96, 96);
+      border: 3px solid rgb(238, 96, 96);
+      background-color: white;
+      cursor: pointer;
+    }
+
+    .btn-no:hover {
+      color: rgb(255, 255, 255);
+      border: 3px solid rgb(255, 255, 255);
+      background-color: rgb(238, 96, 96);
+    }
+  }
+
+  .btn-search {
+    width: 180px;
+    height: 80px;
+    border-radius: 10px;
+    font-size: 30px;
+    color: rgb(85, 96, 247);
+    border: 3px solid rgb(85, 96, 247);
+    background-color: white;
+    cursor: pointer;
+  }
+
+  .btn-search:hover {
+    color: rgb(255, 255, 255);
+    border: 3px solid rgb(255, 255, 255);
+    background-color: rgb(85, 96, 247);
+  }
+}
+
+.input-blinking {
+  animation: inputBlink 0.5s infinite;
+}
+
+@keyframes inputBlink {
+  0% {
+    border-color: black
+  }
+
+  50% {
+    border-color: red;
+  }
+
+  100% {
+    border-color: black
+  }
+}
+
+@media (max-width: 1600px) {
+  .alert-box {
+    h2 {
+      font-size: 28px;
+    }
+
+    h1 {
+      font-size: 34px;
+    }
+
+    .alert-buttons {
+      button {
+        width: 140px;
+        height: 60px;
+        font-size: 22px;
+      }
+    }
+
+    .btn-search {
+      width: 120px;
+      height: 60px;
+      font-size: 22px;
+    }
+  }
+}
+
+@media (max-width: 1366px) {
+  .alert-box {
+    h2 {
+      font-size: 26px;
+    }
+
+    h1 {
+      font-size: 32px;
+    }
+
+    .alert-buttons {
+      button {
+        width: 140px;
+        height: 50px;
+        font-size: 20px;
+      }
+    }
+
+    .btn-search {
+      width: 120px;
+      height: 50px;
+      font-size: 20px;
+    }
+  }
+}
+
+@media (max-width: 430px) {
+  .alert-box {
+    display: flex;
+    flex-direction: column;
+    width: auto;
+    height: 100%;
+    background-color: #134074;
+    border: 5px solid white;
+    border-radius: 25px;
+    text-align: center;
+    justify-content: center;
+    margin: auto;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+
+    /*'Averia Sans Libre', sans-serif;*/
+    h2 {
+      margin: 4% 2%;
+      font-size: 26px;
+    }
+
+    h1 {
+      font-size:30px;
+    }
+
+    .alert-buttons {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 2%;
+      width: 100%;
+
+      button {
+        width: 140px;
+        height: 55px;
+        border-radius: 10px;
+        font-size: 22px;
+      }
+
+      .btn-yes {
+        color: rgb(82, 207, 82);
+        border: 3px solid rgb(82, 207, 82);
+        background-color: white;
+        cursor: pointer;
+      }
+
+      .btn-yes:hover {
+        color: rgb(255, 255, 255);
+        border: 3px solid rgb(255, 255, 255);
+        background-color: rgb(82, 207, 82);
+      }
+
+      .btn-no {
+        margin-left: 5%;
+        color: rgb(238, 96, 96);
+        border: 3px solid rgb(238, 96, 96);
+        background-color: white;
+        cursor: pointer;
+      }
+
+      .btn-no:hover {
+        color: rgb(255, 255, 255);
+        border: 3px solid rgb(255, 255, 255);
+        background-color: rgb(238, 96, 96);
+      }
+    }
+
+    .btn-search {
+      width: 140px;
+      height: 55px;
+      border-radius: 10px;
+      font-size: 22px;
+      color: rgb(85, 96, 247);
+      border: 3px solid rgb(85, 96, 247);
+      background-color: white;
+      cursor: pointer;
+    }
+
+    .btn-search:hover {
+      color: rgb(255, 255, 255);
+      border: 3px solid rgb(255, 255, 255);
+      background-color: rgb(85, 96, 247);
+    }
+  }
+}

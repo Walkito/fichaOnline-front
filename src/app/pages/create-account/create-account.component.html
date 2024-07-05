@@ -1,0 +1,64 @@
+<div class="body-div">
+  <form #createAccountForm="ngForm">
+    <div class="title">
+      <a routerLink="/"> <img src="assets/setaVoltar.png" alt="Seta Apontando para a Esquerda" width="60px"></a>
+      <h1>Cadastrar Uma Nova Conta</h1>
+    </div>
+    <div class="form-div">
+      <div class="blue-border">
+        <div class="row">
+          <label for="name">Nome</label>
+          <input name="name" id="name" class="form-control input-formulario" type="text" placeholder="Nome"
+            [(ngModel)]="account.name" required maxlength="15">
+          <div class="invalid-field"
+            *ngIf="createAccountForm.controls['name']?.invalid && createAccountForm.controls['name']?.touched">
+            <p class="error-field">O campo é obrigatório</p>
+          </div>
+        </div>
+        <div class="row">
+          <label for="lastName">Sobrenome</label>
+          <input name="lastName" id="lastName" class="form-control input-formulario" type="text" placeholder="Sobrenome"
+            [(ngModel)]="account.lastName" required maxlength="20">
+          <div class="invalid-field"
+            *ngIf="createAccountForm.controls['lastName']?.invalid && createAccountForm.controls['lastName']?.touched">
+            <p class="error-field">O campo é obrigatório</p>
+          </div>
+        </div>
+        <div class="row">
+          <label for="user">Usuário</label>
+          <input name="username" id="user" class="form-control input-formulario" type="text" placeholder="Usuário"
+            [(ngModel)]="account.user" required maxlength="20">
+          <div class="invalid-field"
+            *ngIf="createAccountForm.controls['username']?.invalid && createAccountForm.controls['username']?.touched">
+            <p class="error-field">O campo é obrigatório</p>
+          </div>
+          <div class="invalid-field" *ngIf="createAccountForm.hasError('emailUserInvalid')">
+            <p class="error-field">{{userErrorMessage}}</p>
+          </div>
+        </div>
+        <div class="row">
+          <label for="email">E-mail</label>
+          <input name="email" id="email" class="form-control input-formulario" type="text" placeholder="E-mail"
+            [(ngModel)]="account.email" required maxlength="50">
+          <div class="invalid-field"
+            *ngIf="createAccountForm.controls['email']?.invalid && createAccountForm.controls['email']?.touched">
+            <p class="error-field">O campo é obrigatório</p>
+          </div>
+          <div class="invalid-field" *ngIf="createAccountForm.hasError('emailUserInvalid')">
+            <p class="error-field">{{emailErrorMessage}}</p>
+          </div>
+        </div>
+        <div class="row">
+          <label for="password">Senha</label>
+          <input name="password" id="password" class="form-control input-formulario" type="password" placeholder="Senha"
+            [(ngModel)]="account.password" required maxlength="30">
+          <div class="invalid-field"
+            *ngIf="createAccountForm.controls['password']?.invalid && createAccountForm.controls['password']?.touched">
+            <p class="error-field">O campo é obrigatório</p>
+          </div>
+        </div>
+        <button (click)="createAccount(createAccountForm)" class="btn-create">Cadastrar</button>
+      </div>
+    </div>
+  </form>
+</div>

@@ -1,0 +1,838 @@
+.body-div {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  min-height: 95%;
+
+  .title-row {
+    display: flex;
+    width: 100%;
+    margin-top: 1%;
+
+    .a-column {
+      display: flex;
+      margin-left: 1%;
+      justify-content: center;
+      align-items: center;
+
+      img {
+        transition: 0.25s;
+      }
+
+      img:hover {
+        transform: scale(1.2);
+      }
+    }
+
+    .title-column {
+      display: flex;
+      width: 100%;
+      justify-content: center;
+      align-items: center;
+
+      h1 {
+        margin: 0;
+        padding: 0;
+        font-size: 54px;
+      }
+    }
+  }
+
+  .runs-row {
+    display: flex;
+    flex-direction: column;
+    width: 96%;
+    margin-top: 1%;
+
+    ul {
+      display: flex;
+      flex-direction: column;
+      list-style: none;
+      margin: 0;
+      margin-left: 4%;
+      padding: 0;
+
+      .run-info {
+        display: flex;
+        flex-wrap: wrap;
+        margin: 0%;
+        padding: 0;
+        width: 100%;
+        min-height: 15em;
+        background-color: white;
+        z-index: 1;
+        animation: runInfosApper 0.75s forwards;
+
+        .column-one {
+          display: flex;
+          flex-direction: column;
+          width: 50%;
+          height: 100%;
+
+          h2 {
+            margin: 3% 0 0 0;
+            text-align: center;
+            color: black;
+            font-size: 36px;
+          }
+
+          .overflow {
+            display: flex;
+            overflow: scroll;
+            flex-wrap: wrap;
+            width: 100%;
+
+            .players {
+              display: flex;
+              width: 50%;
+
+              h3 {
+                margin: 3% 0 0 5%;
+                width: 100%;
+                font-weight: 500;
+                color: var(--buttonBlue);
+                font-size: 28px;
+
+              }
+            }
+          }
+
+        }
+
+        .column-two {
+          display: flex;
+          flex-direction: column;
+          width: 50%;
+
+          h2 {
+            margin: 3% 0 0 0;
+            text-align: center;
+            color: black;
+            font-size: 36px;
+          }
+
+          .dm {
+            display: flex;
+            width: 100%;
+            flex-wrap: wrap;
+            height: 100%;
+            justify-content: center;
+            align-items: center;
+
+            h3 {
+              margin: 0 0 0 0;
+              color: var(--buttonBlue);
+              font-size: 30px;
+            }
+          }
+        }
+      }
+
+      li {
+        display: flex;
+        background-color: white;
+        border: 2px solid black;
+        border-radius: 10px;
+        color: var(--primaryBlue);
+        margin: 1% 0 0 0;
+        padding: 0;
+        width: 100%;
+        height: 4em;
+      }
+
+      .run-basic {
+        align-items: center;
+        font-size: 32px;
+        font-weight: bolder;
+        animation: liPush 1s forwards;
+        z-index: 2;
+
+        span {
+          margin: 0;
+          padding: 0;
+        }
+
+        .column-one {
+          display: flex;
+          margin-left: 3%;
+          width: 35%;
+          align-items: center;
+        }
+
+        .column-two {
+          display: flex;
+          width: 20%;
+          align-items: center;
+
+          .circle {
+            margin-left: 2%;
+            margin-right: 15%;
+            transform: scale(3);
+            border: 1px solid black;
+            border-radius: 50%;
+            height: 0.5em;
+            width: 0.5em;
+          }
+
+        }
+
+        .column-three {
+          display: flex;
+          width: 30%;
+          justify-content: center;
+
+        }
+
+        .column-four {
+          display: flex;
+          width: 8%;
+          justify-content: flex-end;
+
+          img {
+            transition: 0.40s;
+            cursor: pointer;
+          }
+
+          .not-rotate:hover {
+            transform: scale(1.3);
+          }
+
+          .rotate {
+            transform: rotate(180deg);
+          }
+
+          .rotate:hover {
+            transform: scale(1.3) rotate(180deg);
+          }
+        }
+      }
+    }
+
+    @keyframes liPush {
+      0% {
+        transform: translateX(-150%);
+      }
+
+      100% {
+        transform: translateX(0);
+      }
+    }
+
+    @keyframes runInfosApper {
+      0% {
+        display: none;
+        transform: translateY(-40%);
+      }
+
+      100% {
+        display: flex;
+        transform: translateY(0%);
+      }
+    }
+  }
+}
+
+@media (max-width: 1600px) {
+  .body-div {
+    .title-row {
+      .a-column {
+        img {
+          width: 65px;
+        }
+      }
+
+      .title-column {
+        h1 {
+          font-size: 45px;
+        }
+      }
+    }
+
+    .runs-row {
+      width: 98%;
+
+      ul {
+        .run-info {
+          .column-one {
+            h2 {
+              font-size: 28px;
+            }
+
+            .overflow {
+              .players {
+                h3 {
+                  font-size: 22px;
+                }
+              }
+            }
+
+          }
+
+          .column-two {
+            h2 {
+              font-size: 28px;
+            }
+
+            .dm {
+              h3 {
+                font-size: 24px;
+              }
+            }
+          }
+        }
+        .run-basic {
+          font-size: 28px;
+
+          .column-four {
+            img {
+              width: 45px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 1366px) {
+  .body-div {
+    .title-row {
+      .a-column {
+        img {
+          width: 55px;
+        }
+      }
+
+      .title-column {
+        h1 {
+          font-size: 40px;
+        }
+      }
+    }
+
+    .runs-row {
+      width: 96%;
+
+      ul {
+        .run-info {
+          .column-one {
+            h2 {
+              font-size: 26px;
+            }
+
+            .overflow {
+              .players {
+                h3 {
+                  font-size: 20px;
+                }
+              }
+            }
+
+          }
+
+          .column-two {
+            h2 {
+              font-size: 26px;
+            }
+
+            .dm {
+              h3 {
+                font-size: 22px;
+              }
+            }
+          }
+        }
+        .run-basic {
+          font-size: 24px;
+
+          .column-four {
+            img {
+              width: 42px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 884px) {
+  .body-div {
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    min-height: 95%;
+
+    .title-row {
+      display: flex;
+      width: 100%;
+      margin-top: 1%;
+
+      .a-column {
+        display: flex;
+        margin-left: 1%;
+        justify-content: center;
+        align-items: center;
+
+        img {
+          transition: 0.25s;
+        }
+
+        img:hover {
+          transform: scale(1.2);
+        }
+      }
+
+      .title-column {
+        display: flex;
+        width: 100%;
+        justify-content: center;
+        align-items: center;
+
+        h1 {
+          margin: 0;
+          padding: 0;
+          font-size: 36px;
+        }
+      }
+    }
+
+    .runs-row {
+      display: flex;
+      flex-direction: column;
+      width: 96%;
+      margin-top: 1%;
+
+      ul {
+        display: flex;
+        flex-direction: column;
+        list-style: none;
+        margin: 0;
+        margin-left: 4%;
+        padding: 0;
+
+        .run-info {
+          display: flex;
+          flex-wrap: wrap;
+          margin: 0%;
+          padding: 0;
+          width: 100%;
+          min-height: 15em;
+          background-color: white;
+          z-index: 1;
+          animation: runInfosApper 0.75s forwards;
+
+          .column-one {
+            display: flex;
+            flex-direction: column;
+            width: 50%;
+            height: 100%;
+
+            h2 {
+              margin: 3% 0 0 0;
+              text-align: center;
+              color: black;
+              font-size: 30px;
+            }
+
+            .overflow {
+              display: flex;
+              overflow: scroll;
+              flex-wrap: wrap;
+              width: 100%;
+
+              .players {
+                display: flex;
+                width: 50%;
+
+                h3 {
+                  margin: 5% 0 0 5%;
+                  width: 100%;
+                  font-weight: 500;
+                  color: var(--buttonBlue);
+                  font-size: 22px;
+
+                }
+              }
+            }
+
+          }
+
+          .column-two {
+            display: flex;
+            flex-direction: column;
+            width: 50%;
+
+            h2 {
+              margin: 3% 0 0 0;
+              text-align: center;
+              color: black;
+              font-size: 30px;
+            }
+
+            .dm {
+              display: flex;
+              width: 100%;
+              flex-wrap: wrap;
+              height: 100%;
+              justify-content: center;
+              align-items: center;
+
+              h3 {
+                margin: 0 0 0 0;
+                color: var(--buttonBlue);
+                font-size: 26px;
+              }
+            }
+          }
+        }
+
+        li {
+          display: flex;
+          background-color: white;
+          border: 2px solid black;
+          border-radius: 10px;
+          color: var(--primaryBlue);
+          margin: 1% 0 0 0;
+          padding: 0;
+          width: 100%;
+          height: 4em;
+        }
+
+        .run-basic {
+          align-items: center;
+          font-size: 22px;
+          font-weight: bolder;
+          animation: liPush 1s forwards;
+          z-index: 2;
+
+          span {
+            margin: 0;
+            padding: 0;
+          }
+
+          .column-one {
+            display: flex;
+            margin-left: 3%;
+            width: 30%;
+            align-items: center;
+          }
+
+          .column-two {
+            display: flex;
+            width: 23%;
+            align-items: center;
+
+            .circle {
+              margin-left: 2%;
+              margin-right: 15%;
+              transform: scale(3);
+              border: 1px solid black;
+              border-radius: 50%;
+              height: 0.5em;
+              width: 0.5em;
+            }
+
+          }
+
+          .column-three {
+            display: flex;
+            width: 32%;
+            justify-content: center;
+
+          }
+
+          .column-four {
+            display: flex;
+            width: 8%;
+            justify-content: flex-end;
+
+            img {
+              transition: 0.40s;
+              cursor: pointer;
+            }
+
+            .not-rotate:hover {
+              transform: scale(1.3);
+            }
+
+            .rotate {
+              transform: rotate(180deg);
+            }
+
+            .rotate:hover {
+              transform: scale(1.3) rotate(180deg);
+            }
+          }
+        }
+      }
+
+      @keyframes liPush {
+        0% {
+          transform: translateX(-150%);
+        }
+
+        100% {
+          transform: translateX(0);
+        }
+      }
+
+      @keyframes runInfosApper {
+        0% {
+          display: none;
+          transform: translateY(-40%);
+        }
+
+        100% {
+          display: flex;
+          transform: translateY(0%);
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 430px) {
+  .body-div {
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    min-height: 95%;
+
+    .title-row {
+      display: flex;
+      width: 100%;
+      margin-top: 3%;
+
+      .a-column {
+        display: flex;
+        margin-left: 1%;
+        justify-content: center;
+        align-items: center;
+
+        img {
+          width: 40px;
+          transition: 0.25s;
+        }
+
+        img:hover {
+          transform: scale(1.2);
+        }
+      }
+
+      .title-column {
+        display: flex;
+        width: 100%;
+        justify-content: center;
+        align-items: center;
+
+        h1 {
+          margin: 0;
+          padding: 0;
+          font-size: 30px;
+        }
+      }
+    }
+
+    .runs-row {
+      display: flex;
+      flex-direction: column;
+      width: 96%;
+      margin-top: 1%;
+
+      ul {
+        display: flex;
+        flex-direction: column;
+        list-style: none;
+        margin: 0;
+        margin-left: 4%;
+        padding: 0;
+
+        .run-info {
+          display: flex;
+          flex-wrap: wrap;
+          margin: 0%;
+          padding: 0;
+          width: 100%;
+          min-height: 15em;
+          background-color: white;
+          z-index: 1;
+          animation: runInfosApper 0.75s forwards;
+
+          .column-one {
+            display: flex;
+            flex-direction: column;
+            width: 50%;
+            height: 100%;
+
+            h2 {
+              margin: 3% 0 0 0;
+              text-align: center;
+              color: black;
+              font-size: 24px;
+            }
+
+            .overflow {
+              display: flex;
+              overflow: scroll;
+              width: 100%;
+
+              .players {
+                display: flex;
+                width: 100%;
+
+                h3 {
+                  margin: 5% 0 0 5%;
+                  width: 100%;
+                  font-weight: 500;
+                  color: var(--buttonBlue);
+                  font-size: 20px;
+
+                }
+              }
+            }
+
+          }
+
+          .column-two {
+            display: flex;
+            flex-direction: column;
+            width: 50%;
+
+            h2 {
+              margin: 3% 0 0 0;
+              text-align: center;
+              color: black;
+              font-size: 24px;
+            }
+
+            .dm {
+              display: flex;
+              width: 100%;
+              flex-wrap: wrap;
+              height: 100%;
+              justify-content: center;
+              align-items: center;
+
+              h3 {
+                margin: 0 0 0 0;
+                color: var(--buttonBlue);
+                font-size: 22px;
+              }
+            }
+          }
+        }
+
+        li {
+          display: flex;
+          background-color: white;
+          border: 2px solid black;
+          border-radius: 10px;
+          color: var(--primaryBlue);
+          margin: 5% 0 0 0;
+          padding: 0;
+          width: 100%;
+          height: 7em;
+        }
+
+        .run-basic {
+          align-items: center;
+          font-size: 24px;
+          font-weight: bolder;
+          animation: liPush 1s forwards;
+          z-index: 2;
+          flex-wrap: wrap;
+          display: flex;
+
+          span {
+            margin: 0;
+            padding: 0;
+          }
+
+          .column-one {
+            display: flex;
+            margin-left: 3%;
+            width: 40%;
+            align-items: center;
+          }
+
+          .column-two {
+            display: flex;
+            width: 50%;
+            align-items: center;
+            margin-left: 5%;
+
+            .circle {
+              margin-left: 2%;
+              margin-right: 15%;
+              transform: scale(3);
+              border: 1px solid black;
+              border-radius: 50%;
+              height: 0.5em;
+              width: 0.5em;
+            }
+
+          }
+
+          .column-three {
+            display: flex;
+            width: 80%;
+            justify-content: center;
+            margin-left: 3%;
+
+          }
+
+          .column-four {
+            display: flex;
+            justify-content: flex-end;
+
+            img {
+              transition: 0.40s;
+              cursor: pointer;
+            }
+
+            .not-rotate:hover {
+              transform: scale(1.3);
+            }
+
+            .rotate {
+              transform: rotate(180deg);
+            }
+
+            .rotate:hover {
+              transform: scale(1.3) rotate(180deg);
+            }
+          }
+        }
+      }
+
+      @keyframes liPush {
+        0% {
+          transform: translateX(-150%);
+        }
+
+        100% {
+          transform: translateX(0);
+        }
+      }
+
+      @keyframes runInfosApper {
+        0% {
+          display: none;
+          transform: translateY(-40%);
+        }
+
+        100% {
+          display: flex;
+          transform: translateY(0%);
+        }
+      }
+    }
+  }
+}

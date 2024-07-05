@@ -1,0 +1,67 @@
+import { CAttack } from "./dndSheet/CAttack";
+import { CAttribute } from "./dndSheet/CAttribute";
+import { CCantrips } from "./dndSheet/CCantrips";
+import { CPersonalInfos } from "./dndSheet/CPersonalInfos";
+import { CPersonality } from "./dndSheet/CPersonality";
+import { CSavingThrow } from "./dndSheet/CSavingThrow";
+import { CSkill } from "./dndSheet/CSkill";
+import { CSpellsLevelEigth } from "./dndSheet/CSpellsLevelEigth";
+import { CSpellsLevelFive } from "./dndSheet/CSpellsLevelFive";
+import { CSpellsLevelFour } from "./dndSheet/CSpellsLevelFour";
+import { CSpellsLevelNine } from "./dndSheet/CSpellsLevelNine";
+import { CSpellsLevelOne } from "./dndSheet/CSpellsLevelOne";
+import { CSpellsLevelSeven } from "./dndSheet/CSpellsLevelSeven";
+import { CSpellsLevelSix } from "./dndSheet/CSpellsLevelSix";
+import { CSpellsLevelThree } from "./dndSheet/CSpellsLevelThree";
+import { CSpellsLevelTwo } from "./dndSheet/CSpellsLevelTwo";
+
+export class CSheetDnD{
+    id : number = 0;
+    personalInfo: CPersonalInfos = new CPersonalInfos();
+    attribute: CAttribute = new CAttribute();
+    inspiration: number = 0;
+    proeficiencyBonus: number= 0;
+    savingThrow: CSavingThrow = new CSavingThrow();
+    skill: CSkill = new CSkill();
+    armorClass: number = 0;
+    initiative: number = 0;
+    speed: string = "";
+    hpMax: number = 0;
+    currentHp: number = 0;
+    temporaryHp: number = 0;
+    totalHitDice: string = "";
+    hitDice: string = "";
+    successOne: boolean = false;
+    successTwo: boolean = false;
+    successThree: boolean = false;
+    failOne: boolean = false;
+    failTwo: boolean = false;
+    failThree: boolean = false;
+    attack: CAttack = new CAttack();
+    personality: CPersonality = new CPersonality();
+    passiveWisdom: number = 0;
+    othersProficiencies: string = "";
+    traits: string = "";
+    equipment: string = "";
+    featuresTraits: string = "";
+    characterPictureFileName: string = "";
+    backstory: string = "";
+    spellcastingClass: string = "";
+    spellcastingHability: string = "";
+    spellDC: string = "";
+    spellAtkBonus: string = "";
+    cantrips: CCantrips = new CCantrips();
+    spellsLevelOne: CSpellsLevelOne = new CSpellsLevelOne();
+    spellsLevelTwo: CSpellsLevelTwo = new CSpellsLevelTwo();
+    spellsLevelThree: CSpellsLevelThree = new CSpellsLevelThree();
+    spellsLevelFour: CSpellsLevelFour = new CSpellsLevelFour();
+    spellsLevelFive: CSpellsLevelFive = new CSpellsLevelFive();
+    spellsLevelSix: CSpellsLevelSix = new CSpellsLevelSix();
+    spellsLevelSeven: CSpellsLevelSeven = new CSpellsLevelSeven();
+    spellsLevelEigth: CSpellsLevelEigth = new CSpellsLevelEigth();
+    spellsLevelNine: CSpellsLevelNine = new CSpellsLevelNine();
+
+    //Não está no Banco
+    combatBonus: string = "";
+    combatNotes: string = "";
+}

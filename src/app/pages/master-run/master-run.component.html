@@ -1,0 +1,264 @@
+<div class="body-div">
+  <div class="title-row">
+    <div class="a-column">
+      <a (click)="goBack()"><img src="assets/setaVoltar.png" alt="Seta apontando para a esquerda" width="75px"></a>
+    </div>
+    <div class="title-column">
+      <h1>{{run.campaign}}</h1>
+    </div>
+  </div>
+  <div class="panel-div">
+    <div class="tab-row">
+      <button [ngClass]="{'clicked': tabs[0]}" (click)="changeTab(1)">Geral</button>
+      <button [ngClass]="{'clicked': tabs[1]}" (click)="changeTab(2)">Jogadores</button>
+      <button [ngClass]="{'clicked': tabs[2]}" (click)="changeTab(3)">Combate</button>
+      <button [ngClass]="{'clicked': tabs[3]}" (click)="changeTab(4)">Músicas</button>
+    </div>
+    <div class="tab-one tabs" *ngIf="tabs[0]">
+      <div class="rowOne">
+        <div class="columnOne">
+          <h3>Sistema:</h3>
+          <h5>{{run.system.name}}</h5>
+          <h3>Data de Ínicio:</h3>
+          <h5>{{run.dateBeginning | date:'dd/MM/yyyy' }}</h5>
+          <h3>Status:</h3>
+          <h5>{{run.status}}</h5>
+        </div>
+        <div class="columnTwo">
+          <div class="session-number">
+            <img src="assets/lessIcon.png" alt="Simbolo de menos" class="less-icon" (click)="changeEpisode('less')">
+            <div class="session-title">
+              <h3>Sessão</h3>
+              <h5>{{this.run.sessionNumber}}</h5>
+            </div>
+            <img src="assets/addIcon.png" alt="Simbolo de mais" class="plus-icon" (click)="changeEpisode('plus')">
+          </div>
+          <button class="change-status-run" (click)="changeStatus()">Mudar Status</button>
+          <button class="delete-run" (click)="deleteRun()">Excluir Run</button>
+        </div>
+      </div>
+      <div class="rowTwo">
+        <div class="columnOne">
+          <h3>Personagens Não Jogáveis (NPCs)</h3>
+          <table>
+            <tr>
+              <th>Nome</th>
+              <th>Raça / Etnia </th>
+              <th>O que faz?</th>
+              <th>Local da Aparição</th>
+              <th>Episódio</th>
+            </tr>
+            <tr *ngFor="let npc of npcs; let i = index">
+              <td><textarea cdkTextareaAutosize [(ngModel)]="npc.name" placeholder="Nome do NPC"></textarea></td>
+              <td><textarea cdkTextareaAutosize [(ngModel)]="npc.race" placeholder="Raça / Etnia"></textarea></td>
+              <td><textarea cdkTextareaAutosize [(ngModel)]="npc.whatDo" placeholder="O que faz"></textarea></td>
+              <td><textarea cdkTextareaAutosize [(ngModel)]="npc.location" placeholder="Local"></textarea></td>
+              <td><textarea cdkTextareaAutosize [(ngModel)]="npc.session" (blur)="addNpc(i)"
+                  placeholder="Episódio"></textarea></td>
+            </tr>
+          </table>
+        </div>
+        <div class="columnTwo">
+          <h3>Anotações</h3>
+          <textarea *ngIf="annotations[0]" [(ngModel)]="this.run.annotationOne"></textarea>
+          <textarea *ngIf="annotations[1]" [(ngModel)]="this.run.annotationTwo"></textarea>
+          <textarea *ngIf="annotations[2]" [(ngModel)]="this.run.annotationThree"></textarea>
+          <textarea *ngIf="annotations[3]" [(ngModel)]="this.run.annotationFour"></textarea>
+          <textarea *ngIf="annotations[4]" [(ngModel)]="this.run.annotationFive"></textarea>
+          <textarea *ngIf="annotations[5]" [(ngModel)]="this.run.annotationSix"></textarea>
+          <div class="annotations-tabs">
+            <button [ngClass]="{'clicked': annotations[0]}" (click)="changeAnnotations(1)">Anotação 1</button>
+            <button [ngClass]="{'clicked': annotations[1]}" (click)="changeAnnotations(2)">Anotação 2</button>
+            <button [ngClass]="{'clicked': annotations[2]}" (click)="changeAnnotations(3)">Anotação 3</button>
+            <button [ngClass]="{'clicked': annotations[3]}" (click)="changeAnnotations(4)">Anotação 4</button>
+            <button [ngClass]="{'clicked': annotations[4]}" (click)="changeAnnotations(5)">Anotação 5</button>
+            <button [ngClass]="{'clicked': annotations[5]}" (click)="changeAnnotations(6)">Anotação 6</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="tab-two tabs" *ngIf="tabs[1]">
+      <div class="tab-row-one">
+        <div class="column-one">
+          <div class="row-one">
+            <h2 class="column-title">Jogadores</h2>
+            <button class="add-btn" (click)="addPlayer()">Adicionar</button>
+          </div>
+          <div class="row-two">
+            <ul>
+              <li *ngFor="let player of players; let i = index">
+                {{player.name}} {{player.lastName}}
+                <img src="assets/removeIcon.png" alt="Ícone de uma lixeira par excluir" title="Remover Jogador"
+                   (click)="removePlayer(i)">
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="column-two">
+          <div class="row-one">
+            <h2 class="column-title">Personagens</h2>
+          </div>
+          <div class="row-two">
+            <ul>
+              <li *ngFor="let name of charactersNames; let i = index">
+                <span class="character-picture-span">
+                  <img class="character-picture" src="{{urlsCharactersPictures[i]}}" alt="Foto do Personagem">
+                </span>
+                <span class="character-names-span">
+                  {{name}}
+                </span>
+                <span class="character-open-sheet-span">
+                  <img src="assets/fichaIcon.png" alt="Ícone para abrir a ficha" title="Abrir Ficha"
+                    (click)="openPlayerSheet(i)">
+                </span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="tab-three tabs" *ngIf="tabs[2]">
+
+      <div class="dnd5e-combat" *ngIf="run.system.name === 'D&D 5e'">
+        <div class="row-one">
+          <div class="column-one">
+            <h2 class="round-title" (mousedown)="increaseRound($event)" (contextmenu)="decreasesRound($event)">Rodada:
+              {{round}}</h2>
+          </div>
+          <div class="column-two">
+            <h4>1 minuto equivale à 10 rodadas</h4>
+            <h4>10 minutos equivalem à 100 rodadas</h4>
+          </div>
+        </div>
+        <div class="row-two">
+          <div class="column-one">
+            <table class="allies-table">
+              <tr>
+                <th>Nome</th>
+                <th>Classe</th>
+                <th>V.A</th>
+                <th>V.T</th>
+                <th>C.A</th>
+                <th>Bônus</th>
+                <th>Observações</th>
+                <th></th>
+              </tr>
+              <tr *ngFor="let allie of dndAllies; let i = index">
+                <td><textarea (change)="insertCombatOrderDnD5e(allie.personalInfo.characterName, 0)" placeholder="Nome"
+                    cdkTextareaAutosize [disabled]="i < partyNumber"
+                    [(ngModel)]="allie.personalInfo.characterName"></textarea></td>
+                <td><textarea placeholder="Classe" cdkTextareaAutosize [disabled]="i < partyNumber"
+                    [(ngModel)]="allie.personalInfo._class"></textarea></td>
+                <td><textarea placeholder="V.A" cdkTextareaAutosize [disabled]="i < partyNumber"
+                    [(ngModel)]="allie.currentHp"></textarea></td>
+                <td><textarea placeholder="V.T" cdkTextareaAutosize [disabled]="i < partyNumber"
+                    [(ngModel)]="allie.hpMax"></textarea></td>
+                <td><textarea placeholder="C.A" cdkTextareaAutosize [disabled]="i < partyNumber"
+                    [(ngModel)]="allie.armorClass"></textarea></td>
+                <td><textarea placeholder="Bônus" cdkTextareaAutosize [(ngModel)]="allie.combatBonus"></textarea></td>
+                <td><textarea placeholder="Observações" cdkTextareaAutosize [(ngModel)]="allie.combatNotes"></textarea>
+                </td>
+                <td><img *ngIf="i >= partyNumber" (click)="removeAllieDnD5e(allie)" src="assets/removeIcon.png"
+                    alt="Ícone de X para excluir"></td>
+              </tr>
+            </table>
+          </div>
+          <div class="column-two">
+            <table class="enemies-table">
+              <tr>
+                <th>Nome</th>
+                <th>Classe</th>
+                <th>V.A</th>
+                <th>V.T</th>
+                <th>C.A</th>
+                <th>Bônus</th>
+                <th>Observações</th>
+                <th></th>
+              </tr>
+              <tr *ngFor="let enemie of dndEnemies; let i = index">
+                <td><textarea (change)="insertCombatOrderDnD5e(enemie.personalInfo.characterName, 1)"
+                    cdkTextareaAutosize placeholder="Nome" [(ngModel)]="enemie.personalInfo.characterName"></textarea>
+                </td>
+                <td><textarea cdkTextareaAutosize placeholder="Classe"
+                    [(ngModel)]="enemie.personalInfo._class"></textarea></td>
+                <td><textarea cdkTextareaAutosize placeholder="V.A" [(ngModel)]="enemie.currentHp"></textarea></td>
+                <td><textarea cdkTextareaAutosize placeholder="V.T" [(ngModel)]="enemie.hpMax"></textarea></td>
+                <td><textarea cdkTextareaAutosize placeholder="CA" [(ngModel)]="enemie.armorClass"></textarea></td>
+                <td><textarea cdkTextareaAutosize placeholder="Bônus" [(ngModel)]="enemie.combatBonus"></textarea></td>
+                <td><textarea cdkTextareaAutosize placeholder="Observações" [(ngModel)]="enemie.combatNotes"></textarea>
+                </td>
+                <td><img (click)="removeEnemieDnD5e(enemie)" src="assets/removeIcon.png" alt="Ícone de X para excluir"
+                    width="18px"></td>
+              </tr>
+            </table>
+          </div>
+        </div>
+        <div class="row-three">
+          <div class="column-one">
+            <table class="spells-time">
+              <tr>
+                <th>Habilidade/Magia</th>
+                <th>Personagem Afetado</th>
+                <th>Rodadas</th>
+                <th></th>
+              </tr>
+              <tr *ngFor="let spellTime of dndSpellsTime">
+                <td><textarea (change)="addSpellDnD5e()" cdkTextareaAutosize placeholder="Nome da Habilidade/Magia"
+                    [(ngModel)]="spellTime.spellName"></textarea></td>
+                <td><textarea cdkTextareaAutosize placeholder="Nome do Personagem"
+                    [(ngModel)]="spellTime.character"></textarea></td>
+                <td><textarea (change)="orderSpells()" cdkTextareaAutosize placeholder="Rodadas"
+                    [(ngModel)]="spellTime.time"></textarea></td>
+                <td><img (click)="removeSpellDnD5e(spellTime)" src="assets/removeIcon.png"
+                    alt="Ícone de X para excluir"></td>
+              </tr>
+            </table>
+          </div>
+          <div class="column-two">
+            <table class="combat-order">
+              <tr>
+                <th>Nome</th>
+                <th>Iniciativa</th>
+              </tr>
+              <tr *ngFor="let character of combatOrder; let i = index">
+                <td>
+                  <textarea placeholder="Nome" disabled cdkTextareaAutosize [(ngModel)]="character.name"></textarea>
+                </td>
+                <td>
+                  <textarea placeholder="Valor Iniciativa" (change)="orderCombat()" cdkTextareaAutosize
+                    [(ngModel)]="character.initiative"></textarea>
+                </td>
+              </tr>
+            </table>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+    <div class="tab-four tabs" *ngIf="tabs[3]">
+      <div class="row-one">
+        <div class="column-one">
+          <h2 class="discord-command-title">Comando Bot</h2>
+          <input type="text" class="discord-command-input" [(ngModel)]="run.discordBotCommand" (blur)="saveDiscordCommand()">
+        </div>
+        <div class="column-two">
+          <h2 class="music-link-title">Nome</h2>
+          <input type="text" class="name-music-input" [(ngModel)]="nameInput">
+          <h2 class="music-link-title">Link da Música</h2>
+          <input type="text" class="music-link-input" [(ngModel)]="linkInput">
+          <button class="add-music-link" (click)="musicRegister()">Adicionar</button>
+        </div>
+      </div>
+      <div class="row-two">
+        <ul>
+          <li *ngFor="let music of musics">
+            <span><p #valueMusic>{{music.name}} - {{music.link}}</p></span>
+            <span><img src="assets/copy.png" alt="Ícone de Copiar" width="25px" [cdkCopyToClipboard]="music.link"></span>
+            <span><img src="assets/removeIcon.png" alt="Ícone de Fechar" width="25px" (click)="musicExclude(music.id)"></span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
