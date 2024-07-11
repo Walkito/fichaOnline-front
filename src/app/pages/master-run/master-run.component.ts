@@ -137,10 +137,9 @@ export class MasterRunComponent implements OnInit {
     this.service.saveRun(this.run).subscribe({
       next: (run: CRun) => {
         this.run = run;
-        console.log(this.run);
       },
       error: (erro: CErro) => {
-        alert(this.utils.showError(erro));
+        this.utils.showError(erro);
       }
     })
   }
@@ -182,7 +181,7 @@ export class MasterRunComponent implements OnInit {
               clearInterval(this.runInterval);
               response === true && this.router.navigate(['/home/master-area']);
             },
-            error: (error: CErro) => alert(this.utils.showError(error))
+            error: (error: CErro) => this.utils.showError(error)
           });
         }
       }
@@ -340,7 +339,7 @@ export class MasterRunComponent implements OnInit {
       this.service.getNpcs(this.run.id).subscribe({
         next: (npcs: CNpc[]) => resolve(npcs),
         error: (error: CErro) => {
-          alert(this.utils.showError(error));
+          this.utils.showError(error);
           reject(error);
         }
       });
@@ -359,7 +358,7 @@ export class MasterRunComponent implements OnInit {
         }
         ,
         error: (error: CErro) => {
-          alert(this.utils.showError(error));
+          this.utils.showError(error);
           reject(error);
         }
       });
@@ -372,7 +371,7 @@ export class MasterRunComponent implements OnInit {
         this.npcs = npcs;
         index === this.npcs.length - 1 && this.addEmptyNpc();
       },
-      error: (error: CErro) => alert(this.utils.showError(error))
+      error: (error: CErro) => this.utils.showError(error)
     });
   }
 
@@ -381,7 +380,7 @@ export class MasterRunComponent implements OnInit {
       next: (npcs: CNpc[]) => {
         this.npcs = npcs;
       },
-      error: (error: CErro) => alert(this.utils.showError(error))
+      error: (error: CErro) => this.utils.showError(error)
     })
   }
 
@@ -412,7 +411,7 @@ export class MasterRunComponent implements OnInit {
       this.service.unlinkAccount(runAccountDTO).subscribe({
         next: (response: boolean) => resolve(response),
         error: (error: CErro) => {
-          alert(this.utils.showError);
+          this.utils.showError;
           reject(error);
         }
       })
@@ -428,7 +427,7 @@ export class MasterRunComponent implements OnInit {
       this.service.linkAccount(runAccountDTO).subscribe({
         next: (response: boolean) => resolve(response),
         error: (error: CErro) => {
-          alert(this.utils.showError);
+          this.utils.showError;
           reject(error);
         }
       });
@@ -483,7 +482,7 @@ export class MasterRunComponent implements OnInit {
           resolve(sheets);
         },
         error: (error: CErro) => {
-          alert(this.utils.showError(error));
+          this.utils.showError(error);
           reject(error);
         }
       });
@@ -501,7 +500,7 @@ export class MasterRunComponent implements OnInit {
           resolve(ids);
         },
         error: (error: CErro) => {
-          alert(this.utils.showError(error));
+          this.utils.showError(error);
           reject(error);
         }
       });
@@ -524,7 +523,7 @@ export class MasterRunComponent implements OnInit {
           resolve(accounts);
         },
         error: (error: CErro) => {
-          alert(this.utils.showError(error));
+          this.utils.showError(error);
           reject(error);
         }
       });
@@ -626,7 +625,6 @@ export class MasterRunComponent implements OnInit {
   }
 
   private deleteMusic(id: number): Promise<boolean> {
-    console.log(id);
     return new Promise<boolean>((resolve, reject) => {
       this.service.deleteMusic(id).subscribe({
         next: (response: boolean) => {

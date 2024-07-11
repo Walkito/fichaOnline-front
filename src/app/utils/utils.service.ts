@@ -15,8 +15,8 @@ export class UtilsService {
 
   private accountType: string = this.sessionStorage.getData('accountRole');
 
-  showError(error: CErro): string {
-    return error.error.mensagem;
+  showError(error: CErro): void {
+    console.log(error);
   }
 
   getHeaders(): HttpHeaders {

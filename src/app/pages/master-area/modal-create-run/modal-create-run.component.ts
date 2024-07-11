@@ -53,7 +53,7 @@ export class ModalCreateRunComponent implements OnInit {
       this.service.getSystem().subscribe({
         next: (systems: CSystem[]) => resolve(systems),
         error: (error: CErro) => {
-          alert(this.utils.showError(error));
+          this.utils.showError(error);
           reject(error);
         }
       })
@@ -72,7 +72,7 @@ export class ModalCreateRunComponent implements OnInit {
       this.service.registerRun(run).subscribe({
         next: (run: CRun) => resolve(run),
         error: (error: CErro) => {
-          alert(this.utils.showError(error));
+          this.utils.showError(error);
           reject(error);
         }
       });
@@ -88,7 +88,7 @@ export class ModalCreateRunComponent implements OnInit {
       this.service.linkAccountRun(accountRunDTO).subscribe({
         next: (response: boolean) => resolve(response),
         error: (error: CErro) => {
-          alert(this.utils.showError(error));
+          this.utils.showError(error);
           reject(error);
         }
       })

@@ -126,7 +126,7 @@ export class AccountSettingsComponent {
           resolve(valid);
         },
         error: (error: CErro) => {
-          alert(this.utils.showError(error));
+          this.utils.showError(error);
           reject(error);
         }
       })

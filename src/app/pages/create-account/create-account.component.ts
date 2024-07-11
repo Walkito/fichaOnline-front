@@ -39,7 +39,7 @@ export class CreateAccountComponent {
             disableClose: true,
           })
         },
-        error: (error: CErro) => alert(this.utils.showError(error))
+        error: (error: CErro) => this.utils.showError(error)
       });
     } else {
       this.dialog.open(ModalErrorCreateAccountComponent, {
@@ -58,7 +58,7 @@ export class CreateAccountComponent {
           resolve(valid);
         },
         error: (error: CErro) => {
-          alert(this.utils.showError(error));
+          this.utils.showError(error);
           reject(error);
         }
       })

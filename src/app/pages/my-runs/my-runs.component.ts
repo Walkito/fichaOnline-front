@@ -15,7 +15,7 @@ import { format } from 'date-fns';
   templateUrl: './my-runs.component.html',
   styleUrls: ['./my-runs.component.scss']
 })
-export class MyRunsComponent implements AfterViewInit{
+export class MyRunsComponent implements AfterViewInit {
   constructor(private service: MyRunsService,
     private utils: UtilsService,
     private route: ActivatedRoute,
@@ -48,10 +48,18 @@ export class MyRunsComponent implements AfterViewInit{
     })
   }
 
-  private getLinkedAccounts(idRun: number): Promise<CAccount[]> {
+  private getLinkedAccounts(idRun: number, idMaster: number): Promise<CAccount[]> {
     return new Promise<CAccount[]>((resolve, reject) => {
       this.service.getLinkedAccounts(idRun).subscribe({
-        next: (accounts: CAccount[]) => resolve(accounts),
+        next: (accounts: CAccount[]) => {
+          let newAccounts: CAccount[] = [];
+          for(let account of accounts){
+            if(account.id != idMaster){
+              newAccounts.push(account);
+            }
+          }
+          resolve(newAccounts);
+        },
         error: (error: CErro) => {
           this.utils.showError(error);
           reject(error);
@@ -66,7 +74,7 @@ export class MyRunsComponent implements AfterViewInit{
         next: (runs) => {
           this.runs = runs;
           this.runs.forEach(async run => {
-            run.accounts = await this.getLinkedAccounts(run.id);
+            run.accounts = await this.getLinkedAccounts(run.id, run.masterId);
             run.masterName = await this.getMasterName(run.masterId);
           });
           resolve();
@@ -92,6 +100,7 @@ export class MyRunsComponent implements AfterViewInit{
     return new Promise<string[]>(async (resolve) => {
       let characterNames: string[] = [];
       const sheets = await this.getSheets(idRun);
+      sheets.sort((a, b) => a.account.id - b.account.id);
       sheets.forEach(sheet => {
         if (sheet.sheetDnD) {
           characterNames.push(sheet.sheetDnD.personalInfo.characterName);

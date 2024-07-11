@@ -34,7 +34,7 @@ export class ModalSelectRunComponent implements OnInit {
       this.service.getMasterRuns(this.idAccount).subscribe({
         next: (runs: CRun[]) => resolve(runs),
         error: (error: CErro) => {
-          alert(this.utils.showError(error));
+          this.utils.showError(error);
           reject(error);
         }
       });

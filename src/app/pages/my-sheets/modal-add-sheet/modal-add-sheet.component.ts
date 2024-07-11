@@ -56,7 +56,7 @@ export class ModalAddSheetComponent implements AfterViewInit{
       this.service.getMasterRun(idRun).subscribe({
         next: (masterAccount: CRun) => resolve(masterAccount.masterName),
         error: (error: CErro) => {
-          alert(this.utils.showError(error));
+          this.utils.showError(error);
           reject(error);
         }
       })
@@ -71,7 +71,7 @@ export class ModalAddSheetComponent implements AfterViewInit{
           resolve();
         },
         error: (error: CErro) => {
-          alert(this.utils.showError(error));
+          this.utils.showError(error);
           reject();
         }
       })

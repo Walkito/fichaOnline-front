@@ -45,7 +45,7 @@ export class MySheetsComponent implements OnInit {
             this.getSheets();
           },
           error: (error: CErro) => {
-            alert(this.utils.showError(error));
+            this.utils.showError(error);
           }
         });
       }

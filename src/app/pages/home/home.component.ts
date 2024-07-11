@@ -93,7 +93,7 @@ export class HomeComponent {
       this.service.uploadImage(imageObject).subscribe({
         next: (response: boolean) => resolve(response),
         error: (error: CErro) => {
-          alert(this.utils.showError(error));
+          this.utils.showError(error);
           reject(error);
         }
       })

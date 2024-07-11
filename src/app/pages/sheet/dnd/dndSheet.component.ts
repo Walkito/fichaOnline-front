@@ -26,7 +26,7 @@ export class DndSheetComponent implements OnInit {
 
   sheetDnD: CSheetDnD = new CSheetDnD();
   account: CAccount = this.sessionStorage.getData('account');
-  characterPictureURL: string = "";
+  characterPictureURL: string = "assets/iconePersonagem.png";
   private run: CRun = this.sessionStorage.getData('runCreateSheet');
 
   constructor(private service: DnDSheetService,
@@ -51,12 +51,18 @@ export class DndSheetComponent implements OnInit {
   }
 
   async choosePicture(event: any) {
+    if(this.typeSheet === 1){
+      alert("Não é possível selecionar uma imagem antes de criar a ficha. Por favor, crie a ficha primeiro.");
+      return;
+    }
+
     const file: File = event.target.files[0];
     const fileName: string = file.name;
     const imageData: any = await this.utils.readFile(file);
     const imageSaved: boolean = await this.saveImage(imageData, fileName);
     if (imageSaved) {
       this.characterPictureURL = await this.getCharacterPicture();
+      this.sheetDnD.characterPictureFileName = fileName;
     } else {
       alert("Já existe um arquivo com este mesmo nome. Por favor, renomeie com um nome de arquivo não utilizado.");
     }
@@ -193,7 +199,7 @@ export class DndSheetComponent implements OnInit {
       this.service.uploadCharacterPicture(imageObject).subscribe({
         next: (response: boolean) => resolve(response),
         error: (error: CErro) => {
-          alert(this.utils.showError(error));
+          this.utils.showError(error);
           reject(error);
         }
       });
@@ -305,6 +311,7 @@ export class DndSheetComponent implements OnInit {
   private linkPlayerSheet(): Promise<boolean> {
     return new Promise<boolean>((resolve, reject) => {
       const playerSheet = new CPlayerSheet();
+      this.account.role = this.sessionStorage.getData('accountRole') === '62' ? 'PLAYER' : 'MASTER';
       playerSheet.account = this.account;
       playerSheet.run = this.run;
       playerSheet.sheetDnD = this.sheetDnD;
@@ -312,7 +319,7 @@ export class DndSheetComponent implements OnInit {
       this.service.linkSheet(playerSheet).subscribe({
         next: (response: boolean) => resolve(response),
         error: (error: CErro) => {
-          alert(this.utils.showError);
+          this.utils.showError;
           reject(error);
         }
       })
