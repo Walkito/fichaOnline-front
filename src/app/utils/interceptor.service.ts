@@ -2,7 +2,7 @@ import { UtilsService } from 'src/app/utils/utils.service';
 import { HttpErrorResponse, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest, HttpResponse } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { catchError, Observable, tap, throwError } from 'rxjs';
-import { API_PATH } from '../environments/environment';
+import { API_PATH } from '../environments/environment-prod';
 import { SessionStorageService } from './session-storage.service';
 import { Router } from '@angular/router';
 import { ModalErrorTokenComponent } from './modal-error-token/modal-error-token/modal-error-token.component';

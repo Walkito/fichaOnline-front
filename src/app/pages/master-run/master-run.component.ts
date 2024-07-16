@@ -153,7 +153,7 @@ export class MasterRunComponent implements OnInit {
   changeEpisode(type: string) {
     let episode = this.run.sessionNumber;
     episode = type === 'plus' ? episode + 1 : episode - 1;
-    this.run.sessionNumber = episode;
+    this.run.sessionNumber = episode < 0 ? 0 : episode;
     this.saveRun();
   }
 
@@ -164,6 +164,12 @@ export class MasterRunComponent implements OnInit {
       next: (response: any) => {
         if (response.option === 1) {
           this.run.status = response.status;
+          if(response.status !== 'Em Andamento'){
+            const now = new Date();
+            this.run.dateEnding = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+          } else {
+            this.run.dateEnding = null;
+          }
           this.saveRun();
         }
       }
@@ -251,7 +257,7 @@ export class MasterRunComponent implements OnInit {
 
   decreasesRound(event: MouseEvent) {
     event.preventDefault();
-    if (this.round != 0) {
+    if (this.round !== 0) {
       this.round -= 1;
     }
   }

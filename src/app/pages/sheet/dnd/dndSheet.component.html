@@ -782,7 +782,7 @@
       </div>
       <div class="row4-column3">
         <div class="characteristics-traits-div">
-          <textarea name="characteristics-traits-input" class="characteristics-traits-input"
+          <textarea name="characteristics-traits-input" #characteristicsTraitsInput class="characteristics-traits-input"
             placeholder="Característics e Traços" [(ngModel)]="sheetDnD.traits" (blur)="editSheet()" required
             [disabled]="typeSheet === 3"></textarea>
           <h4 class="characteristics-traits-title">Características e Traços</h4>

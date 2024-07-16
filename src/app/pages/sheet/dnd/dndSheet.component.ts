@@ -294,7 +294,7 @@ export class DndSheetComponent implements OnInit {
       return fieldName + " é obrigatório;";
     }
     if (control.errors.minlength) {
-      return fieldName + " deve possuir no mínimomo " + control.errors.minlength.requiredLength + " caracteres;";
+      return fieldName + " deve possuir no mínimo " + control.errors.minlength.requiredLength + " caracteres;";
     }
     if (control.errors.maxlength) {
       return fieldName + " deve possuir no máximo " + control.errors.maxlength.requiredLength + " caracteres;";

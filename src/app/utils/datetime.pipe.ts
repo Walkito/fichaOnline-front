@@ -11,7 +11,7 @@ export class DatetimePipe implements PipeTransform {
     if(date === null){
       return 'Em Andamento';
     }
-    const convertDate: moment.Moment = moment(date).add(1, 'day');
+    const convertDate: moment.Moment = moment(date);
 
     return convertDate.format('DD/MM/YYYY');
   }

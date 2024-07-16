@@ -9,6 +9,7 @@ import { ModalErrorLoginComponent } from './modal-error-login/modal-error-login.
 import { SessionStorageService } from 'src/app/utils/session-storage.service';
 import { CAccount } from 'src/app/class/CAccount';
 import { Observable } from 'rxjs';
+import { CErro } from 'src/app/class/CErro';
 
 @Component({
   selector: 'app-login',
@@ -41,9 +42,10 @@ export class LoginComponent {
         this.sessionStorage.saveData('userToken', loginResponse.token);
         this.router.navigate(['/home']);
       },
-      error: (error) => {
-        const dialogRef = this.dialog.open(ModalErrorLoginComponent, {
-          data: { error: this.utils.showError(error) },
+      error: (error: CErro) => {
+        const errorMessage = error.error.mensagem ? error.error.mensagem : "Erro interno do sistema."
+        this.dialog.open(ModalErrorLoginComponent, {
+          data: { error: errorMessage },
           disableClose: true,
         })
       }

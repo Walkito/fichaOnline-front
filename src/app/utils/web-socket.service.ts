@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { catchError, Observable } from 'rxjs';
-import { WEBSOCKET_PATH } from '../environments/environment';
+import { WEBSOCKET_PATH } from '../environments/environment-prod';
 import { Stomp } from '@stomp/stompjs';
 import * as SockJS from "sockjs-client";
 

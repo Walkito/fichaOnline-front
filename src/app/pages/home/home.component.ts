@@ -74,6 +74,7 @@ export class HomeComponent {
           this.sessionStorage.saveData('profileImage', blobInBase64);
           resolve(URL.createObjectURL(blob));
         } catch (error: any) {
+          console.log(error);
           resolve("assets/iconeUsuario.png");
         }
       } else {
