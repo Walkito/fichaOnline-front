@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
-import { API_PATH } from 'src/app/environments/environment';
+import { environment } from 'src/app/environments/environment';
 import { Observable } from 'rxjs/internal/Observable';
 import { UtilsService } from 'src/app/utils/utils.service';
 import { CAccount } from 'src/app/class/CAccount';
@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
   providedIn: 'root'
 })
 export class LoginService {
-  private basePath = API_PATH;
+  private basePath = environment.API_PATH;;
   constructor(private http: HttpClient,
     private utils: UtilsService,
   private router: Router) { }

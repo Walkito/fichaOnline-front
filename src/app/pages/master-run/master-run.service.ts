@@ -7,7 +7,7 @@ import { CNpc } from 'src/app/class/CNpc';
 import { CPlayerSheet } from 'src/app/class/CPlayerSheet';
 import { CRun } from 'src/app/class/CRun';
 import { CSheetDnD } from 'src/app/class/sheets/CSheetDnD';
-import { API_PATH } from 'src/app/environments/environment';
+import { environment } from 'src/app/environments/environment';
 import { UtilsService } from 'src/app/utils/utils.service';
 
 @Injectable({
@@ -17,7 +17,7 @@ export class MasterRunService {
 
   constructor(private http: HttpClient, private utils: UtilsService) { }
 
-  private basePath = API_PATH;
+  private basePath = environment.API_PATH;;
 
   getNpcs(runId: number): Observable<CNpc[]> {
     const params = new HttpParams().set('runId', runId);

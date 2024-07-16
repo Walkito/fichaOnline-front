@@ -1,2 +1,5 @@
-export const API_PATH = "http://localhost:8080/api/";
-export const WEBSOCKET_PATH = "http://localhost:8080/ws";
+export const environment = {
+  production: false,
+  API_PATH : "http://localhost:8080/api/",
+  WEBSOCKET_PATH : "http://localhost:8080/ws"
+}

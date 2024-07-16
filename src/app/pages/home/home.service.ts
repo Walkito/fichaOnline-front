@@ -1,7 +1,7 @@
 import { HttpClient, HttpParams, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { API_PATH } from 'src/app/environments/environment';
+import { environment } from 'src/app/environments/environment';
 import { UtilsService } from 'src/app/utils/utils.service';
 
 @Injectable({
@@ -12,7 +12,7 @@ export class HomeService {
   constructor(private http: HttpClient,
     private utils: UtilsService) { }
 
-  private basePath = API_PATH;
+  private basePath = environment.API_PATH;;
 
   uploadImage(image: object): Observable<boolean> {
 

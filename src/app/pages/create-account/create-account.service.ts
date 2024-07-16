@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { API_PATH } from 'src/app/environments/environment';
+import { environment } from 'src/app/environments/environment';
 import { CAccount } from 'src/app/class/CAccount';
 import { UtilsService } from 'src/app/utils/utils.service';
 
@@ -9,7 +9,7 @@ import { UtilsService } from 'src/app/utils/utils.service';
   providedIn: 'root'
 })
 export class CreateAccountService {
-  private basePath = API_PATH;
+  private basePath = environment.API_PATH;;
 
   constructor(private http: HttpClient,
     private utils: UtilsService) { }
