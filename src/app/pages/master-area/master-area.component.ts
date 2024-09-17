@@ -57,4 +57,8 @@ export class MasterAreaComponent {
       }
     });
   }
+
+  openFunFact(){
+    this.router.navigate(['home/master-area/fun-fact']);
+  }
 }

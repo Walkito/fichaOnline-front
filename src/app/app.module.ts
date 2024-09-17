@@ -46,6 +46,7 @@ import {ClipboardModule} from '@angular/cdk/clipboard';
 import { HttpInterceptorModule } from './modules/interceptor.module';
 import { ModalErrorTokenComponent } from './utils/modal-error-token/modal-error-token/modal-error-token.component';
 import { DatetimePipe } from './utils/datetime.pipe';
+import { FunFactComponent } from './pages/fun-fact/fun-fact.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -81,7 +82,8 @@ import { DatetimePipe } from './utils/datetime.pipe';
     ModalAddPlayerComponent,
     ModalConfirmRemovePlayerComponent,
     ModalErrorTokenComponent,
-    DatetimePipe
+    DatetimePipe,
+    FunFactComponent
   ],
   imports: [
     BrowserModule,

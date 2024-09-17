@@ -10,6 +10,7 @@ import { DndSheetComponent } from './pages/sheet/dnd/dndSheet.component';
 import { MasterAreaComponent } from './pages/master-area/master-area.component';
 import { MasterRunComponent } from './pages/master-run/master-run.component';
 import { guardianGuard } from './utils/guardian.guard';
+import { FunFactComponent } from './pages/fun-fact/fun-fact.component';
 
 const routes: Routes = [
   { path: '', component: LoginComponent, pathMatch: 'full' },
@@ -21,7 +22,8 @@ const routes: Routes = [
   {path: "home/my-sheets", component: MySheetsComponent, canActivate:[guardianGuard], data: {role:['MASTER','PLAYER']}},
   {path: "home/my-sheets/dnd-sheet", component: DndSheetComponent, canActivate:[guardianGuard], data: {role:['MASTER','PLAYER']}},
   {path: "home/master-area", component: MasterAreaComponent, canActivate:[guardianGuard], data: {role:['MASTER']}},
-  {path: "home/master-area/master-run", component: MasterRunComponent, canActivate:[guardianGuard], data: {role:['MASTER']}}
+  {path: "home/master-area/master-run", component: MasterRunComponent, canActivate:[guardianGuard], data: {role:['MASTER']}},
+  {path: "home/master-area/fun-fact", component: FunFactComponent, canActivate:[guardianGuard], data: {role:['MASTER']}}
 ];
 
 @NgModule({
