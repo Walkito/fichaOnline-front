@@ -1,0 +1,15 @@
+<div class="alert-box">
+  <h1 class="alert-title"> Editar Curiosidade</h1>
+  <h2 class="alert-content">Edite o fato/curiosidade abaixo: </h2>
+  <form #createFunFactForm="ngForm">
+    <textarea name="text-fun-fact" [(ngModel)]="funFact.fact" required=""></textarea>
+    <div class="invalid-field"
+      *ngIf="createFunFactForm.controls['text-fun-fact']?.invalid && createFunFactForm.controls['text-fun-fact']?.touched">
+      <p class="error-field">O campo é obrigatório</p>
+    </div>
+  </form>
+  <div class="alert-buttons">
+    <button class="btn-yes" (click)="editFunFact()">Criar</button>
+    <button class="btn-no" (click)="closeDialog()">Voltar</button>
+  </div>
+</div>

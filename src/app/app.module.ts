@@ -47,6 +47,9 @@ import { HttpInterceptorModule } from './modules/interceptor.module';
 import { ModalErrorTokenComponent } from './utils/modal-error-token/modal-error-token/modal-error-token.component';
 import { DatetimePipe } from './utils/datetime.pipe';
 import { FunFactComponent } from './pages/fun-fact/fun-fact.component';
+import { ModalCreateFunFactComponent } from './pages/fun-fact/modal-create-fun-fact/modal-create-fun-fact.component';
+import { ModalDeleteFunFactComponent } from './pages/fun-fact/modal-delete-fun-fact/modal-delete-fun-fact.component';
+import { ModalEditFunFactComponent } from './pages/fun-fact/modal-edit-fun-fact/modal-edit-fun-fact.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -83,7 +86,10 @@ import { FunFactComponent } from './pages/fun-fact/fun-fact.component';
     ModalConfirmRemovePlayerComponent,
     ModalErrorTokenComponent,
     DatetimePipe,
-    FunFactComponent
+    FunFactComponent,
+    ModalCreateFunFactComponent,
+    ModalDeleteFunFactComponent,
+    ModalEditFunFactComponent
   ],
   imports: [
     BrowserModule,

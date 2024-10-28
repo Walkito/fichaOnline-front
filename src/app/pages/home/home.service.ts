@@ -1,6 +1,7 @@
 import { HttpClient, HttpParams, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { CFunFact } from 'src/app/class/CFunFact';
 import { environment } from 'src/app/environments/environment';
 import { UtilsService } from 'src/app/utils/utils.service';
 
@@ -28,5 +29,9 @@ export class HomeService {
       params,
       responseType: 'blob' as 'json',
     });
+  }
+
+  getRandomFunFact(): Observable<CFunFact> {
+    return this.http.get<CFunFact>(`${this.basePath}funfact/randomFact`);
   }
 }

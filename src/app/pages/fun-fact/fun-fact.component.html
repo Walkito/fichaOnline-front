@@ -1,13 +1,29 @@
 <div class="body-div">
   <div class="title-row">
     <div class="a-column">
-      <a routerLink="/home"><img src="assets/setaVoltar.png" alt="Seta apontando para a esquerda" width="75px"></a>
+      <a routerLink="/home/master-area"><img src="assets/setaVoltar.png" alt="Seta apontando para a esquerda"></a>
     </div>
     <div class="title-column">
       <h1>Fatos e Curiosidades</h1>
     </div>
+    <div class="column-add">
+      <img src="assets/sinalAdicao.png" alt="Sinal de adição" (click)="openCreateModal()">
+    </div>
   </div>
-  <div class="row">
-
+  <div class="body-fact">
+    <div class="row-fact" *ngFor="let fact of funFacts">
+      <div class="column column-id">
+        <h3>{{fact.id}}</h3>
+      </div>
+      <div class="column column-fact">
+        <h3>{{fact.fact}}</h3>
+      </div>
+      <div class="column column-img">
+        <img src="assets/lapisEditar.png" alt="Desenho de um lápis para editar" (click)="editFunFact(fact.id, fact.fact)">
+      </div>
+      <div class="column column-img">
+        <img src="assets/lixeiraExclusao.png" alt="Desenho de uma lixeira para excluir" (click)="deleteFunFact(fact.id)">
+      </div>
+    </div>
   </div>
 </div>

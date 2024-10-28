@@ -7,6 +7,7 @@ import { SessionStorageService } from 'src/app/utils/session-storage.service';
 import { HomeService } from './home.service';
 import { CErro } from 'src/app/class/CErro';
 import { HttpResponse } from '@angular/common/http';
+import { CFunFact } from 'src/app/class/CFunFact';
 ;
 @Component({
   selector: 'app-home',
@@ -23,17 +24,18 @@ export class HomeComponent {
 
   @ViewChild('treeDiv') treeDiv!: ElementRef;
 
-  account: CAccount = new CAccount;
+  account: CAccount = new CAccount();
   roleNumber: string = '';
   profilePictureURL: string = "assets/iconeUsuario.png";
   accountRole: string = "";
   mobile: boolean = false;
+  funFact: CFunFact = new CFunFact();
 
   async ngOnInit() {
     this.account = this.sessionStorage.getData('account');
     this.roleNumber = this.sessionStorage.getData('accountRole');
     this.profilePictureURL = await this.getProfilePicture();
-
+    this.funFact = await this.getRandomFunFact();
     this.mobile = window.innerWidth <= 430 ? true : false;
   }
 
@@ -112,4 +114,14 @@ export class HomeComponent {
     });
   }
 
+  private getRandomFunFact(): Promise<CFunFact> {
+    return new Promise<CFunFact>((resolve, reject) => {
+      this.service.getRandomFunFact().subscribe({
+        next: (response: CFunFact) => resolve(response),
+        error: (error: CErro) => {
+          reject(error);
+        }
+      });
+    });
+  }
 }

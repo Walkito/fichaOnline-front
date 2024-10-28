@@ -1,0 +1,36 @@
+.alert-box {
+  width: 55em;
+
+.alert-content{
+  margin: 0 0 2% 0;
+}
+
+  form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    margin: 0;
+
+    textarea {
+      width: 97%;
+      margin: 0 1%;
+      height: 15em;
+      border: 2px solid black;
+      outline: none;
+      resize: none;
+      font-size: 18px;
+    }
+  }
+
+  .alert-buttons {
+    margin-top: 3%;
+  }
+}
+
+.error-field{
+  margin: 0;
+  color: rgb(255, 0, 0);
+  font-weight: bolder;
+  font-size: 18px;
+}
